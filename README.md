@@ -30,5 +30,17 @@ $ python3 -m pip install Django
 ## Clone the repository
 Clone the repository to your local machine by running the following command in your terminal:
 ```
-git clone ...
+git clone https://github.com/milosptr/verklegt-namskeid-2.git
+```
+
+# Running the project
+1. Navigate to the project directory
+2. Run the following command to install the required packages:
+```
+pip install -r requirements.txt
+```
+3. Run the following command to start the server:
+```
+python manage.py runserver
+python3 manage.py runserver
 ```

@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 
+from django.core.exceptions import ImproperlyConfigured
+
+
 def get_env_variable(var_name):
     try:
         return os.getenv(var_name)
@@ -20,9 +23,9 @@ def get_env_variable(var_name):
         error_msg = f"Set the {var_name} environment variable"
         raise ImproperlyConfigured(error_msg)
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -34,7 +37,6 @@ SECRET_KEY = 'django-insecure-yd5jpp_gz&#6sfuno7&y!uoyd%hkg1ejxxl1k*a3a)ss_r4anl
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -62,7 +64,9 @@ ROOT_URLCONF = 'jarvis.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'src' / 'templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,21 +81,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'jarvis.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-            'ENGINE': get_env_variable('DB_ENGINE'),
-            'NAME': get_env_variable('DB_NAME'),
-            'USER': get_env_variable('DB_USER'),
-            'PASSWORD': get_env_variable('DB_PASSWORD'),
-            'HOST': get_env_variable('DB_HOST'),
-            'PORT': get_env_variable('DB_PORT'),
-        }
+        'ENGINE': get_env_variable('DB_ENGINE'),
+        'NAME': get_env_variable('DB_NAME'),
+        'USER': get_env_variable('DB_USER'),
+        'PASSWORD': get_env_variable('DB_PASSWORD'),
+        'HOST': get_env_variable('DB_HOST'),
+        'PORT': get_env_variable('DB_PORT'),
+    }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -111,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -122,7 +123,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
