@@ -42,5 +42,8 @@ pip install -r requirements.txt
 3. Run the following command to start the server:
 ```
 python manage.py runserver
+----------- or -----------
 python3 manage.py runserver
 ```
+4. Open your browser and navigate to provided URL (usually http://127.0.0.1:8000/)
+5. Enjoy the project!
