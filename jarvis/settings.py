@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'src'
 ]
 
 MIDDLEWARE = [
@@ -83,15 +84,17 @@ WSGI_APPLICATION = 'jarvis.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': get_env_variable('DB_ENGINE'),
-        'NAME': get_env_variable('DB_NAME'),
-        'USER': get_env_variable('DB_USER'),
-        'PASSWORD': get_env_variable('DB_PASSWORD'),
-        'HOST': get_env_variable('DB_HOST'),
-        'PORT': get_env_variable('DB_PORT'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'vln2_assignment_groups_20_user',
+        'PASSWORD': 'b3w1P2C1pz',
+        'HOST': 'verklegt-namskeid-ii.northeurope.cloudapp.azure.com',
+        'PORT': '5432',
+        'OPTIONS': {
+            'options': '-c search_path=vln2_assignment_groups_20'
+        }
     }
 }
 

@@ -47,3 +47,10 @@ python3 manage.py runserver
 ```
 4. Open your browser and navigate to provided URL (usually http://127.0.0.1:8000/)
 5. Enjoy the project!
+
+## Running migrations
+If you are making changes to the models, you will need to run the following command to apply the changes to the database:
+```
+python manage.py makemigrations src
+python manage.py migrate src
+```
