@@ -1,0 +1,28 @@
+{% extends "common/base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<p class="text-lg text-white mt-20 ">
+    Info
+</p>
+<p class="text-lg text-white">
+    Email: jarvis@jarvis.is
+</p>
+<p class="text-lg text-white ">
+    Phone number: 999 1111
+</p>
+
+<label for="message" class="mt-10 block text-lg text-white">Message</label>
+<textarea id="message" name="message" cols="50" rows="10" placeholder="Write your text here" class="bg-[#4E288F] text-white rounded-2xl"></textarea>
+
+<label for="info" class="mt-5 block text-lg text-white">Your information</label>
+<input class="mt-2 pt-2 pb-2 bg-[#4E288F] text-white rounded-2xl" size="30" id="name" name="name" placeholder="Name" type="text"></input>
+<br>
+<input class="mt-2 pt-2 pb-2 bg-[#4E288F] text-white rounded-2xl" size="30" id="phone" name="phone" placeholder="Phone number" type="text"></input>
+<br>
+<input class="mt-2 pt-2 pb-2 bg-[#4E288F] text-white rounded-2xl" size="30" id="email" name="email" placeholder="Email" type="text"></input>
+<br>
+<button type="submit" class="block text-white bg-[#4E288F] rounded-2xl">Send</button>
+
+{% endblock %}
