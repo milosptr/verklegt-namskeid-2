@@ -19,7 +19,7 @@ git clone https://github.com/milosptr/verklegt-namskeid-2.git
 ### Install the virtual environment
 Navigate to the project folder and run the following command to install the virtual environment:
 ```
-python3 venv venv
+python3 -m venv venv
 ```
 Once you have installed virtualenv, you can create a virtual environment by running:
 
