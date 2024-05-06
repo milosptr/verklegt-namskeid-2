@@ -10,71 +10,69 @@
 
 {% include "components/h3.html" with text="CV" %}
     
-<div class="flex items-center">
-
-    <p class=" pl-40 pr-10 text-justify leading-8">
+<div>
+    <p>
     Your CV should have your name, age, address, contact information, job experience, 
-        education, skills and a picture of you.
-    <br>
-    <a class="underline font-bold"> Job experience:</a>
-    List your job history in reverse chronological order, including position titles, and dates of employment.
-    <br>
+        education, skills and a picture of you.</p>
+        
+    <p class="pt-2"> <a class="underline font-bold"> Job experience:</a>
+    List your job history in reverse chronological order, including position titles, and dates of employment.</p>
     
-    <a class="underline font-bold"> Education:</a>
-    Include your academic background, also in reverse chronological order.
-    <br>
+    <p class="pt-2"> <a class="underline font-bold"> Education:</a>
+    Include your academic background, also in reverse chronological order.</p>
     
-    <a class="underline font-bold"> Skills:</a>
+    <p class="pt-2"> <a class="underline font-bold"> Skills:</a>
     List skills that are pertinent to the job, such as programming languages, software proficiency, 
-        languages you know and interpersonal skills.
-    <br>
+        languages you know and interpersonal skills. </p>
     
-    <a class="underline font-bold"> Recommendations:</a>
+    <p class="pt-2"> <a class="underline font-bold"> Recommendations:</a>
     It is good to include recommendations for the employer to contact your former employers and see 
         how it is to work with you. If you want to add a recommendation you will have to ask your 
         employer if it is okay fo you to add their contacts to your CV. You can also choose to write 
         if you want the person that is going over your CV to contact you first before they contact your 
-        former employer.
+        former employer.</p>
     
+    <p class="pt-2">
     It i important to use professional language, so avoid using slang and overly casual language. 
         It is also important to think about the layout, make it clean and readable. 
         A CV should be one page, at max two pages.
     </p>
 
     {% load static %}
-    <img class="max-w-sm mr-40" src="{% static "assets/cv.webp" %}" alt="picture of a cv" />
+    <img class="h-auto max-w-sm ms-auto" src="{% static "assets/cv.webp" %}" alt="picture of a cv" />
 </div>
   
     
     
 {% include "components/h3.html" with text="Cover letter" %}
     
-<p class="pt-2 pl-40 pr-40 text-justify leading-8">
-Writing a compelling cover letter is crucial as it introduces you to potential employers and 
-    complements your CV. Here are some essential guidelines for crafting an effective cover letter:
-<br>
-    <a class="underline font-bold">Customize Your Letter:</a>
-Tailor each cover letter to the job and company you are applying to. 
-    Address the specific needs mentioned in the job description and how your skills and experiences 
-    make you a perfect fit.
-<br>
-    <a class="underline font-bold">Keep it Brief and Focused:</a> 
-A cover letter should not exceed one page. It should be concise and to the point, comprising three 
-    to four paragraphs that cover the key points of your application.
-<br>
+<div> 
+    <p>
+    Writing a compelling cover letter is crucial as it introduces you to potential employers and 
+        complements your CV. Here are some essential guidelines for crafting an effective cover letter:<p/>
 
-    <a class="underline font-bold">Structure Effectively:</a>
-Opening: Start with a strong opening line that grabs attention. Mention the job you’re applying for 
-    and how you learned about it.
-Body: In one or two paragraphs, explain why you’re a good fit for the position. Highlight relevant 
-    experiences and skills. Use specific examples to demonstrate how you’ve successfully  applied these 
-    skills in the past.
-Closing: Conclude by thanking the employer for considering your application. Express enthusiasm 
-    about the possibility of discussing your application in more detail.
-<br>
+    <p class="pt-2"> <a class="underline font-bold">Customize Your Letter:</a>
+    Tailor each cover letter to the job and company you are applying to. 
+        Address the specific needs mentioned in the job description and how your skills and experiences 
+        make you a perfect fit.</p>
+    
+    
+    <p class="pt-2"> <a class="underline font-bold">Keep it Brief and Focused:</a> 
+    A cover letter should not exceed one page. It should be concise and to the point, comprising three 
+        to four paragraphs that cover the key points of your application.</p>
+    
+    <p class="pt-2"> <a class="underline font-bold">Structure Effectively:</a>
+    Opening: Start with a strong opening line that grabs attention. Mention the job you’re applying for 
+        and how you learned about it.
+    Body: In one or two paragraphs, explain why you’re a good fit for the position. Highlight relevant 
+        experiences and skills. Use specific examples to demonstrate how you’ve successfully  applied these 
+        skills in the past.
+    Closing: Conclude by thanking the employer for considering your application. Express enthusiasm 
+        about the possibility of discussing your application in more detail.</p>
+    
+    <p class="pt-2"><a class="underline font-bold">Professional language:</a>
+    It is important to use professional and polite language.</p>
 
-    <a class="underline font-bold">Professional language:</a>
-It is important to use professional and polite language.
-</p>
+</div>
     
 {% endblock %}
