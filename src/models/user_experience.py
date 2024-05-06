@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 
@@ -9,8 +11,8 @@ class UserExperience(models.Model):
     role = models.CharField(max_length=150)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField(null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField( default=datetime.now)
+    updated_at = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
         return f"{self.title} ({self.company}) - {self.role}"
