@@ -1,0 +1,43 @@
+{% extends "common/base.html" %}
+
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+
+    
+<div class="bg-purple-950 rounded-lg p-4 w-1/4 mx-auto shadow-md mb-10">
+    <h1 class="text-3xl text-center">
+    Welcome back
+    </h1>
+    <div class="w-64 mx-auto">
+      <input type="text" id="input-group-1" class="border border-gray-300 text-gray-900 text-sm rounded-lg block ps-5 p-2.5 mt-5 w-full" 
+             placeholder="Enter email">
+
+      <input type="text" id="input-group-1" class="border border-gray-300 text-gray-900 text-sm rounded-lg block ps-5 p-2.5 mt-5 w-full" 
+             placeholder="Enter password">
+    </div>
+
+    <div class="w-64 mx-auto text-center">
+        <button type="button" class="text-white bg-purple-700 border-2 border-purple-800 hover:bg-purple-800 hover:border-purple-700 
+        focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 m-4">
+            Log in
+        </button>
+    </div>
+</div>
+    
+    
+<div class="w-64 mx-auto">
+    <h1 class="text-3xl text-center">
+        New here?
+    </h1>
+    <div class="w-64 mx-auto text-center">
+    <button type="button" class="text-white bg-purple-700 border-2 border-purple-800 hover:bg-purple-800 hover:border-purple-700 
+        focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 m-4">
+        Create an account
+    </button>
+    </div>
+
+</div>
+    
+    
+{% endblock %}

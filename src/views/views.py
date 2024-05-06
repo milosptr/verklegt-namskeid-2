@@ -19,3 +19,6 @@ def about_us(request):
 
 def application_guide(request):
     return render(request, 'pages/application_guide.html')
+
+def log_in(request):
+    return render(request, 'pages/log_in.html')
