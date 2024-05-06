@@ -6,6 +6,14 @@
     <title>{% block title %}My Site{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     {% block extrahead %}{% endblock %}
+    <style>
+        html {
+            background: linear-gradient(180deg, #000019, #6C37BDA1) no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+        }
+    </style>
+    {% load static %}
 </head>
 <body>
 {% include "common/header.html" %}
