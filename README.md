@@ -63,3 +63,8 @@ This step is required (_ONLY IF DATABASE IS TRUNCATED FULLY_) to seed the databa
 python3 manage.py loaddata src/seed/0001_countries.json 
 python3 manage.py loaddata src/seed/0001_cities_is.json 
 ```
+# DON'Ts
+1. **DO NOT** push directly to the main branch. Create a new branch and make a pull request.
+2. **DO NOT** manually change or add data to the database. Use Django's ORM to make changes to the database.
+3. **DO NOT** manually edit or add files in the `src/seed` directory. Use Django's fixtures to seed the database.
+4. **DO NOT** manually edit or add files in the `src/migrations` directory. Use Django's migrations to make changes to the database schema.
