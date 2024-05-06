@@ -68,3 +68,9 @@ python3 manage.py loaddata src/seed/0001_cities_is.json
 2. **DO NOT** manually change or add data to the database. Use Django's ORM to make changes to the database.
 3. **DO NOT** manually edit or add files in the `src/seed` directory. Use Django's fixtures to seed the database.
 4. **DO NOT** manually edit or add files in the `src/migrations` directory. Use Django's migrations to make changes to the database schema.
+
+# 🟢 DOs 🟢
+1. **DO** create a new branch for your feature or bug fix.
+2. **DO** make a pull request to the main branch when you are ready to merge your changes.
+3. **DO** use Django's ORM to make changes to the database.
+4. **DO** use Tailwind CSS for styling.
