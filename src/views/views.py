@@ -22,3 +22,6 @@ def application_guide(request):
 
 def log_in(request):
     return render(request, 'pages/log_in.html')
+
+def create_account(request):
+    return render(request, 'pages/create_account.html')
