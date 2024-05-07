@@ -11,13 +11,24 @@
         </h1>
         
         <div class="w-64 mx-auto">
-          <input type="text"class="border border-gray-300 text-gray-900 text-sm rounded-full block 
-          ps-5 p-2.5 mt-5 w-full" 
+            <input type="text" class="border border-gray-300 text-gray-900 text-sm rounded-full block 
+            ps-5 p-2.5 mt-5 w-full placeholder:text-[#B084F3]" 
                  placeholder="Enter email">
+            
+{#         If the email is wrong #}
+{#            <input type="text" class="border border-red-600 text-gray-900 text-sm rounded-full block #}
+{#            ps-5 p-2.5 mt-5 w-full placeholder:text-red-600" #}
+{#                 placeholder="Wrong email - try again">#}
     
-          <input type="text" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 
-          p-2.5 mt-5 w-full" 
+            <input type="text" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 
+            p-2.5 mt-5 w-full placeholder:text-[#B084F3]" 
                  placeholder="Enter password">
+            
+            
+{#         If the password is wrong #}
+{#            <input type="text" class="border-2 border-red-600 text-gray-900 text-sm rounded-full block ps-5 #}
+{#            p-2.5 mt-5 w-full placeholder:text-red-600" #}
+{#                 placeholder="Wrong password - try again">#}
         </div>
     
         <div class="w-64 mx-auto text-center">
@@ -36,7 +47,7 @@
         
         <div class="w-64 mx-auto text-center">
         <button type="button" class="text-white bg-[#6C37BD] border-2 border-[#8E5ADD] hover:bg-[#A374EC] hover:border-[#7E40DD]
-            focus:ring-4 font-medium rounded-full text-md w-48 py-2 mt-3">
+            focus:ring-4 font-medium rounded-full text-md w-48 py-2 mt-3 shadow-md">
             Create an account
         </button>
         </div>
@@ -44,16 +55,6 @@
 </div>
     
     
-<div class="w-64 mx-auto">
-    <h1 class="text-3xl text-center">
-        New here?
-    </h1>
-    <div class="w-64 mx-auto text-center">
-    <button type="button" class="text-white bg-purple-700 border-2 border-purple-800 hover:bg-purple-800 hover:border-purple-700 
-        focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 m-4">
-        Create an account
-    </button>
-    </div>
 
 </div>
 {% endblock %}
