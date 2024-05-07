@@ -3,6 +3,8 @@ from django.urls import path
 from .views.views import home
 from .views.views import about_us
 from .views.views import application_guide
+from .views.views import log_in
+from .views.views import create_account
 from .views.views import companies
 # This will be our main urls file
 # We will include all the urls from the apps here
@@ -13,5 +15,7 @@ urlpatterns = [
     path('', home, name='home'),
     path('about-us', about_us, name='about_us'),
     path('application-guide', application_guide, name='application_guide'),
+    path('log-in', log_in, name='log_in'),
+    path('create_account', create_account, name='create_account'),
     path('companies', companies, name='companies')
 ]
