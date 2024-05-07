@@ -2,6 +2,8 @@ import profile
 
 from django.urls import path
 
+from .views.views import home, contact_us
+
 from .views.views import home
 from .views.views import about_us
 from .views.views import application_guide
@@ -17,6 +19,7 @@ from .views.views import companies
 
 urlpatterns = [
     path('', home, name='home'),
+    path('contact_us', contact_us, name='contact_us'),
     path('about-us', about_us, name='about_us'),
     path('application-guide', application_guide, name='application_guide'),
     path('log-in', log_in, name='log_in'),
