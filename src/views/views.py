@@ -30,3 +30,12 @@ def application_guide(request):
 
 def companies(request):
     return render(request, 'pages/companies.html')
+
+def about_us(request):
+    return render(request, 'pages/about_us.html')
+
+def application_guide(request):
+    return render(request, 'pages/application_guide.html')
+
+def companies(request):
+    return render(request, 'pages/companies.html')
