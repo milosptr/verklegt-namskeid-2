@@ -25,3 +25,6 @@ def log_in(request):
 
 def create_account(request):
     return render(request, 'pages/create_account.html')
+
+def create_account_info(request):
+    return render(request, 'pages/create_account_info.html')
