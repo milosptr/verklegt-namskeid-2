@@ -31,3 +31,6 @@ def create_account_info(request):
 
 def profile(request):
     return render(request, 'pages/profile.html')
+
+def companies(request):
+    return render(request, 'pages/companies.html')
