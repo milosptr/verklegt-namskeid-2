@@ -54,3 +54,6 @@ def companies(request):
 
 def company_profile(request):
     return render(request, 'pages/company_profile.html')
+
+def job_offer(request):
+    return render(request, 'pages/job_offer.html')
