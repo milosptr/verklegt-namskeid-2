@@ -1,3 +1,5 @@
+import profile
+
 from django.urls import path
 
 from .views.views import home
@@ -6,6 +8,7 @@ from .views.views import application_guide
 from .views.views import log_in
 from .views.views import create_account
 from .views.views import create_account_info
+from .views.views import profile
 # This will be our main urls file
 # We will include all the urls from the apps here
 # Look at it as the main router of the application
@@ -18,4 +21,5 @@ urlpatterns = [
     path('log-in', log_in, name='log_in'),
     path('create_account', create_account, name='create_account'),
     path('create_account_info', create_account_info, name='create_account_info'),
+    path('profile', profile, name='profile'),
 ]

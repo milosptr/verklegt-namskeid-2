@@ -1,0 +1,38 @@
+{% extends "common/base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    
+    <h1 class="text-3xl">
+    Users Name
+    </h1>
+    <h3>
+    Home address
+    </h3>
+    <h3>
+    Postal code
+    </h3>
+    <h3>
+    Country
+    </h3>
+    
+    <button type="button" class="border-2 border-purple-800 rounded-full p-2 px-3 text-purple-300 text-sm 
+    hover:bg-purple-900 mt-3">
+    Edit information
+    </button>
+    
+    <h2 class="my-3">
+    About you
+    </h2>
+    
+    <textarea type="text" cols="50" rows="10" class="rounded-lg bg-purple-900 shadow-2xl"></textarea>
+    
+    
+    <button type="button" class="border-2 border-purple-800 rounded-full p-2 px-3 text-purple-300 text-sm 
+    hover:bg-purple-900 mt-3">
+    Edit image
+    </button>
+    
+    
+{% endblock %}
