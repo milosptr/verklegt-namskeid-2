@@ -6,39 +6,39 @@
 <div hidden class="bg-[#1CB424] p-2 w-48 fixed top-8 left-[calc(50%-100px)] rounded-lg text-center mx-auto">
     <p>Successfully sent</p>
 </div>
-    
+
 <p class="text-lg text-white">
     Info
 </p>
-    
+
 <p class="text-lg text-white">
     Email: jarvis@jarvis.is
 </p>
-    
+
 <p class="text-lg text-white">
     Phone number: 999 1111
 </p>
-    
+
 <form>
     <label for="message" class="mt-10 block text-lg text-white ">Message</label>
-    <textarea required id="message" name="message" cols="50" rows="10" class="bg-[#4E288F] rounded-xl text-white 
+    <textarea required id="message" name="message" cols="50" rows="10" class="bg-[#4E288F] rounded-xl text-white
     pl-2 pt-2 mt-2 placeholder:text-[#9889AF]" placeholder="Write your text here" ></textarea>
     <div>
         <label for="info" class="mt-5 block text-lg text-white">Your information</label>
-        <input required class="mt-2 py-2 pl-2 bg-[#4E288F] rounded-full placeholder:pl-3 placeholder:text-[#9889AF]" 
+        <input required class="mt-2 py-2 pl-5 bg-[#4E288F] rounded-full  placeholder:text-[#9889AF]"
                size="30" id="name" name="name" placeholder="Name" type="text"></input>
     </div>
 
     <div>
-        <input required class="mt-2 py-2 pl-2 bg-[#4E288F] text-white rounded-full placeholder:pl-3 
+        <input required class="mt-2 py-2 pl-5 bg-[#4E288F] text-white rounded-full
         placeholder:text-[#9889AF]" size="30" id="phone" name="phone" placeholder="Phone number" type="text"></input>
     </div>
-    
+
     <div>
-        <input required class="mt-2 py-2 pl-2 bg-[#4E288F] text-white rounded-full placeholder:pl-3 
+        <input required class="mt-2 py-2 pl-5 bg-[#4E288F] text-white rounded-full
         placeholder:text-[#9889AF]" size="30" id="email" name="email" placeholder="Email" type="text"></input>
     </div>
-    
+
     <button type="submit" class="block text-white bg-[#6C37BD] rounded-full px-10 py-2 mt-2 hover:bg-[#9365DA]">Send</button>
 </form>
 {% endblock %}
