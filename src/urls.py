@@ -1,6 +1,7 @@
 from django.urls import path
 
-from .views.views import home, contact_us
+from .views.views import home
+from .views.views import contact_us
 from .views.views import home
 from .views.views import about_us
 from .views.views import application_guide
