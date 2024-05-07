@@ -6,11 +6,11 @@
     
     {% load static %}
     
-<div class="bg-purple-600 text-white font-sans">
+<div class="text-white font-sans">
     <div class="max-w-2xl mx-auto py-12 px-4">
         <!-- Header with Logo -->
         <div class="text-center">
-            <img src="https://via.placeholder.com/40" alt="Bónus Logo" class="mx-auto mb-6" style="width: 80px;"> <!-- Replace path_to_logo.jpg with your actual image path -->
+            <img src="{% static 'assets/logo-bonus.png' %}" alt="Bónus Logo" class="mx-auto mb-6" style="width: 180px;"> <!-- Replace path_to_logo.jpg with your actual image path -->
             <h1 class="text-3xl font-bold">Bónus</h1>
         </div>
 
@@ -29,22 +29,15 @@
         <!-- Job Offers Section -->
         <div class="mt-6">
             <h2 class="text-xl font-semibold">Job offers</h2>
-            <div class="bg-purple-700 p-4 rounded-lg">
-                <div class="flex justify-between items-center">
-                    <span class="font-medium">Manager</span>
-                    <span>111 Reykjavik</span>
-                    <span class="bg-purple-800 text-purple-300 px-3 py-1 rounded">Full time</span>
-                </div>
-            </div>
-            <div class="bg-purple-700 mt-4 p-4 rounded-lg">
-                <div class="flex justify-between items-center">
-                    <span class="font-medium">Manager</span>
-                    <span>111 Reykjavik</span>
-                    <span class="bg-purple-800 text-purple-300 px-3 py-1 rounded">Full time</span>
-                </div>
-            </div>
+
+            {% include 'components/job_offer_company_profile_card.html' %}
+            {% include 'components/job_offer_company_profile_card.html' %}
+            {% include 'components/job_offer_company_profile_card.html' %}
+
         </div>
     </div>
 </div>
+
+
 
 {% endblock %}
