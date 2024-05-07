@@ -28,3 +28,6 @@ def create_account(request):
 
 def create_account_info(request):
     return render(request, 'pages/create_account_info.html')
+
+def companies(request):
+    return render(request, 'pages/companies.html')

@@ -3,6 +3,7 @@ from django.urls import path
 from .views.views import home
 from .views.views import about_us
 from .views.views import application_guide
+from .views.views import companies
 from .views.views import log_in
 from .views.views import create_account
 from .views.views import create_account_info
@@ -15,6 +16,7 @@ urlpatterns = [
     path('', home, name='home'),
     path('about-us', about_us, name='about_us'),
     path('application-guide', application_guide, name='application_guide'),
+    path('companies', companies, name='companies'),
     path('log-in', log_in, name='log_in'),
     path('create_account', create_account, name='create_account'),
     path('create_account_info', create_account_info, name='create_account_info'),
