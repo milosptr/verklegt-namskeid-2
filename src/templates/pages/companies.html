@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    <form class="mt-10 max-w-md mx-auto mb-10">
+<form class="mt-10 max-w-md mx-auto mb-10">
     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
     <div class="relative">
         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -16,60 +16,28 @@
         <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
         <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
     </div>
-    </form>
+</form>
 
 
 
-<div class="container mx-auto max-w-4xl p-4 my-5 mb-20">
-    <div class="text-white grid grid-cols-3 gap-4">
+<div class="container mx-auto max-w-4xl p-4 my-5">
+    <div class="text-white grid grid-cols-3 gap-4 py-5">
         <div class="text-center border-r border-gray-500">Company</div>
         <div class="text-center border-r border-gray-500">Address</div>
         <div class="text-center">Available Jobs</div>
     </div>
+        {% include 'components/companies_card.html' %}
+        {% include 'components/companies_card.html' %}
+        {% include 'components/companies_card.html' %}
+        {% include 'components/companies_card.html' %}
+        {% include 'components/companies_card.html' %}
+        {% include 'components/companies_card.html' %}
+        {% include 'components/companies_card.html' %}
+        {% include 'components/companies_card.html' %}
+        {% include 'components/companies_card.html' %}
 
-    <!-- Company List -->
-    <div class="container mx-auto max-w-4xl p-4 my-5 mb-20">
-     <!-- Alferð Entry -->
-    <a href="https://example.com/alferd" class="block text-white grid grid-cols-3 gap-4 items-center bg-purple-700 rounded-md p-3 hover:bg-purple-800 focus:bg-purple-800 transition-colors">
-        <div class="flex items-center justify-start space-x-3">
-            <img src="https://via.placeholder.com/40" alt="Alferð Logo" class="rounded-full bg-gray-200"> <!-- Placeholder for Alferð logo -->
-            <span>Alferð</span>
-        </div>
-        <div class="text-center">111 Reykjavik</div>
-        <div class="text-center">9 jobs</div>
-    </a>
-
-    <!-- Bifreið Entry -->
-    <a href="https://example.com/bifreid" class="block text-white grid grid-cols-3 gap-4 items-center bg-purple-700 rounded-md p-3 hover:bg-purple-800 focus:bg-purple-800 transition-colors mt-4">
-        <div class="flex items-center justify-start space-x-3">
-            <img src="https://via.placeholder.com/40" alt="Bifreið Logo" class="rounded-full bg-gray-200"> <!-- Placeholder for Bifreið logo -->
-            <span>Bifreið</span>
-        </div>
-        <div class="text-center">101 Reykjavik</div>
-        <div class="text-center">5 jobs</div>
-    </a>
-
-    <!-- Ferðin Entry -->
-    <a href="https://example.com/ferdin" class="block text-white grid grid-cols-3 gap-4 items-center bg-purple-700 rounded-md p-3 hover:bg-purple-800 focus:bg-purple-800 transition-colors mt-4">
-        <div class="flex items-center justify-start space-x-3">
-            <img src="https://via.placeholder.com/40" alt="Ferðin Logo" class="rounded-full bg-gray-200"> <!-- Placeholder for Ferðin logo -->
-            <span>Ferðin</span>
-        </div>
-        <div class="text-center">105 Reykjavik</div>
-        <div class="text-center">12 jobs</div>
-    </a>
-
-    <!-- Vegferð Entry -->
-    <a href="https://example.com/vegferd" class="block text-white grid grid-cols-3 gap-4 items-center bg-purple-700 rounded-md p-3 hover:bg-purple-800 focus:bg-purple-800 transition-colors mt-4">
-        <div class="flex items-center justify-start space-x-3">
-            <img src="https://via.placeholder.com/40" alt="Vegferð Logo" class="rounded-full bg-gray-200"> <!-- Placeholder for Vegferð logo -->
-            <span>Vegferð</span>
-        </div>
-        <div class="text-center">107 Reykjavik</div>
-        <div class="text-center">8 jobs</div>
-    </a>
-    </div>
 </div>
+
 
 
 {% endblock %}
