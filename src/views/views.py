@@ -21,3 +21,12 @@ def contact_us(request):
 
 # Do this for all views that you need to create
 # And then create the templates in the templates folder
+
+def about_us(request):
+    return render(request, 'pages/about_us.html')
+
+def application_guide(request):
+    return render(request, 'pages/application_guide.html')
+
+def companies(request):
+    return render(request, 'pages/companies.html')

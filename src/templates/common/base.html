@@ -8,8 +8,9 @@
     {% block extrahead %}{% endblock %}
     <style>
         html {
-            background: linear-gradient(180deg, #000019, #6C37BDA1) no-repeat;
+            background: linear-gradient(180deg, #000019 11%, #6C37BD 96%) no-repeat;
             background-size: cover;
+            color: white;
             min-height: 100vh;
         }
     </style>
@@ -18,8 +19,9 @@
 <body>
 {% include "common/header.html" %}
 
-{% block content %}
-{% endblock %}
+<main class="mx-auto max-w-screen-xl py-10">
+{% block content %}{% endblock %}
+</main>
 
 {% include "common/footer.html" %}
 
