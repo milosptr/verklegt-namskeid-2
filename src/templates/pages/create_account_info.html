@@ -1,0 +1,47 @@
+{% extends "common/base.html" %}
+
+{% block title %}Application Guide{% endblock %}
+
+{% block content %}
+<div class="bg-[#6C37BD] rounded-lg p-5 p w-2/6 shadow-md mb-10">
+    <h1 class="text-3xl text-center">
+    Contact and information
+    </h1>
+    <div>
+        <input type="text" id="input-group-1" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 
+        p-2.5 mt-5 w-full" 
+               placeholder="Full name">
+    
+        <input type="text" id="input-group-1" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 
+        p-2.5 mt-5 w-full" 
+               placeholder="Street name">
+            
+        <input type="text" id="input-group-1" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 
+        p-2.5 mt-5 w-full" 
+               placeholder="House number">
+            
+        <input type="text" id="input-group-1" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 
+        p-2.5 mt-5 w-full" 
+               placeholder="City">
+        
+        <label class="text-white">Country:</label>
+        <select class="text-gray-500 border border-gray-300 mt-5 size-3/5">
+            <option>Iceland</option>
+            <option>Denmark</option>
+            <option>Spain</option>
+            <option>Serbia</option>
+        </select>
+            
+        <input type="text" id="input-group-1" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 p-2.5 mt-5 w-full" 
+               placeholder="Postal code">
+    </div>
+
+    <div class="w-64 mx-auto text-center">
+        <button type="button" class="text-white bg-[#6836B5] border-2 border-[#975EEE] hover:bg-[#411586] hover:border-[#9F68F3]
+        focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 m-4">
+            Continue
+        </button>
+    </div>
+</div>
+    
+{% endblock %}
