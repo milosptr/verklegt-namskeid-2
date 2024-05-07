@@ -32,14 +32,5 @@ def create_account_info(request):
 def profile(request):
     return render(request, 'pages/profile.html')
 
-def log_in(request):
-    return render(request, 'pages/log_in.html')
-
 def companies(request):
     return render(request, 'pages/companies.html')
-
-def log_in(request):
-    return render(request, 'pages/log_in.html')
-
-def create_account(request):
-    return render(request, 'pages/create_account.html')
