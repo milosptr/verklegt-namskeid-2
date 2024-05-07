@@ -1,9 +1,11 @@
 from django.urls import path
 
+from .models import company
 from .views.views import home
 from .views.views import about_us
 from .views.views import application_guide
 from .views.views import companies
+from .views.views import company_profile
 # This will be our main urls file
 # We will include all the urls from the apps here
 # Look at it as the main router of the application
@@ -13,5 +15,6 @@ urlpatterns = [
     path('', home, name='home'),
     path('about-us', about_us, name='about_us'),
     path('application-guide', application_guide, name='application_guide'),
-    path('companies', companies, name='companies')
+    path('companies', companies, name='companies'),
+    path('company-profile', company_profile, name='company_profile')
 ]

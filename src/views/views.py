@@ -22,3 +22,6 @@ def application_guide(request):
 
 def companies(request):
     return render(request, 'pages/companies.html')
+
+def company_profile(request):
+    return render(request, 'pages/company_profile.html')
