@@ -11,5 +11,12 @@ def home(request):
     """
     return render(request, 'pages/home.html')
 
+
+def contact_us(request):
+    """
+    This is the contact us view
+    """
+    return render(request, 'pages/contact_us.html')
+
 # Do this for all views that you need to create
 # And then create the templates in the templates folder

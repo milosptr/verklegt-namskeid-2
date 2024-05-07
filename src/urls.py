@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views.views import home
+from .views.views import home, contact_us
 
 # This will be our main urls file
 # We will include all the urls from the apps here
@@ -9,4 +9,5 @@ from .views.views import home
 
 urlpatterns = [
     path('', home, name='home'),
+    path('contact_us', contact_us, name='contact_us')
 ]
