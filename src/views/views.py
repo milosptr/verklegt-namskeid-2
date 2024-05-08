@@ -60,3 +60,7 @@ def company_details(request):
 
 def creating_account(request):
     return render(request, 'pages/creating_account.html')
+    return render(request, 'pages/company_profile.html')
+
+def company_details(request):
+    return render(request, 'pages/company_details.html')
