@@ -44,4 +44,5 @@ urlpatterns = [
     path('companies', companies, name='companies'),
     path('application/<int:id>/<int:step>', application, name='application'),
     re_path(r'.*', not_found, name='not_found'),  # This is a catch-all url that leads to a 404 page
+    path('creating-account', creating_account, name='creating_account'),
 ]
