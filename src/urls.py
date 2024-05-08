@@ -1,3 +1,4 @@
+from django.urls import path, re_path
 import profile
 
 from django.urls import path
@@ -13,6 +14,8 @@ from .views.views import create_account_info
 from .views.views import profile
 from .views.views import log_in
 from .views.views import companies
+from .views.views import application
+from .views.views import not_found
 from .views.views import company_profile
 from .views.views import make_job_offer
 from .views.views import company_details
@@ -25,7 +28,7 @@ from .views.views import creating_account
 
 urlpatterns = [
     path('', home, name='home'),
-    path('contact_us', contact_us, name='contact_us'),
+    path('contact-us', contact_us, name='contact_us'),
     path('about-us', about_us, name='about_us'),
     path('application-guide', application_guide, name='application_guide'),
     path('companies', companies, name='companies'),
@@ -38,4 +41,7 @@ urlpatterns = [
     path('company-details', company_details, name='company_details'),
     path('make-job-offer', make_job_offer, name='make_job_offer'),
     path('job-offer', job_offer, name='job_offer'),
+    path('companies', companies, name='companies'),
+    path('application/<int:id>/<int:step>', application, name='application'),
+    re_path(r'.*', not_found, name='not_found'),  # This is a catch-all url that leads to a 404 page
 ]
