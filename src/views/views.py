@@ -42,3 +42,7 @@ def application_guide(request):
 
 def companies(request):
     return render(request, 'pages/companies.html')
+
+
+def employer_dashboard(request):
+    return render(request, 'pages/employer-dashboard.html')
