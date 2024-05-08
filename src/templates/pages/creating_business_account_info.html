@@ -1,0 +1,32 @@
+{% extends "common/base.html" %}
+
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+
+    <div class="bg-[#6C37BD] rounded-lg p-5 p w-2/6 shadow-md mb-10">
+        <h1 class="text-3xl text-center">
+        Information
+        </h1>
+        <div>
+            <input type="text" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 
+            p-2.5 mt-5 w-full" 
+                   placeholder="Company title">
+        
+            <input type="text" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 
+            p-2.5 mt-5 w-full" 
+                   placeholder="Address">
+            
+            <textarea required cols="30" rows="10" class="border border-gray-300 text-gray-900 text-sm rounded-xl block ps-5 
+            p-2.5 mt-5 w-full" placeholder="Description of company"></textarea>
+        </div>
+    
+        <div class="w-64 mx-auto text-center">
+            <button type="button" class="text-white bg-[#6836B5] border-2 border-[#975EEE] hover:bg-[#411586] hover:border-[#9F68F3]
+            focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 m-4 mb-2">
+                Continue
+            </button>
+        </div>
+    </div>
+    
+{% endblock %}
