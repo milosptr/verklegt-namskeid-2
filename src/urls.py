@@ -15,6 +15,7 @@ from .views.views import log_in
 from .views.views import companies
 from .views.views import company_profile
 from .views.views import company_details
+from .views.views import creating_account
 # This will be our main urls file
 # We will include all the urls from the apps here
 # Look at it as the main router of the application
@@ -33,4 +34,5 @@ urlpatterns = [
     path('profile', profile, name='profile'),
     path('companies', companies, name='companies'),
     path('company-details', company_details, name='company_details'),
+    path('creating-account', creating_account, name='creating_account'),
 ]
