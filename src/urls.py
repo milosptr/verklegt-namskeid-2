@@ -14,6 +14,7 @@ from .views.views import profile
 from .views.views import log_in
 from .views.views import companies
 from .views.views import company_profile
+from .views.views import company_details
 # This will be our main urls file
 # We will include all the urls from the apps here
 # Look at it as the main router of the application
