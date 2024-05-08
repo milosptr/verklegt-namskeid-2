@@ -30,5 +30,6 @@ urlpatterns = [
     path('create_account', create_account, name='create_account'),
     path('create_account_info', create_account_info, name='create_account_info'),
     path('profile', profile, name='profile'),
-    path('companies', companies, name='companies')
+    path('companies', companies, name='companies'),
+    path('company-details', company_details, name='company_details'),
 ]

@@ -54,3 +54,6 @@ def companies(request):
 
 def company_profile(request):
     return render(request, 'pages/company_profile.html')
+
+def company_details(request):
+    return render(request, 'pages/company_details.html')
