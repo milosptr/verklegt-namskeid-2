@@ -1,43 +1,10 @@
-{% extends "common/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
 
-{% block title %} Company Profile {% endblock %}
-
-{% block content %}
-    
-    {% load static %}
-    
-<div class="text-white font-sans">
-    <div class="max-w-2xl mx-auto py-12 px-4">
-        <!-- Header with Logo -->
-        <div class="text-center">
-            <img src="{% static 'assets/logo-bonus.png' %}" alt="Bónus Logo" class="mx-auto mb-6" style="width: 180px;"> <!-- Replace path_to_logo.jpg with your actual image path -->
-            <h1 class="text-3xl font-bold">Bónus</h1>
-        </div>
-
-        <!-- Address Section -->
-        <div class="mt-6">
-            <h2 class="text-xl font-semibold">Address</h2>
-            <p>110 Reykjavik, 110 Reykjavik, 110 Reykjavik</p>
-        </div>
-
-        <!-- About Section -->
-        <div class="mt-6">
-            <h2 class="text-xl font-semibold">About</h2>
-            <p>About Bónus About Bónus About Bónus About Bónus About Bónus About Bónus About Bónus About Bónus About Bónus About Bónus</p>
-        </div>
-    
-        <!-- Job Offers Section -->
-        <div class="mt-6">
-            <h2 class="text-xl font-semibold">Job offers</h2>
-
-            {% include 'components/job_offer_company_profile_card.html' %}
-            {% include 'components/job_offer_company_profile_card.html' %}
-            {% include 'components/job_offer_company_profile_card.html' %}
-
-        </div>
-    </div>
-</div>
-
-
-
-{% endblock %}
+</body>
+</html>
