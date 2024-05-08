@@ -14,6 +14,7 @@ from .views.views import profile
 from .views.views import log_in
 from .views.views import companies
 from .views.views import company_profile
+from .views.views import job_offer
 from .views.views import company_details
 from .views.views import creating_account
 # This will be our main urls file
@@ -33,6 +34,5 @@ urlpatterns = [
     path('create-account-info', create_account_info, name='create_account_info'),
     path('profile', profile, name='profile'),
     path('companies', companies, name='companies'),
-    path('company-details', company_details, name='company_details'),
-    path('creating-account', creating_account, name='creating_account'),
+    path('job-offer', job_offer, name='job_offer'),
 ]

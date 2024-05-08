@@ -64,3 +64,7 @@ def creating_account(request):
 
 def company_details(request):
     return render(request, 'pages/company_details.html')
+
+
+def job_offer(request):
+    return render(request, 'pages/job_offer.html')
