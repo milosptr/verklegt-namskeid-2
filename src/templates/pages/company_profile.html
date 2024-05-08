@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "common/base.html" %}
 
-</body>
-</html>
+{% block title %} Company Profile {% endblock %}
+
+{% block content %}
+    
+    {% load static %}
+    
+    <div class="flex">
+        
+        <div class="w-2/4">
+            <h1 class="text-5xl">
+                Sidekick Health ehf
+            </h1>
+        
+            <h4 class="text-gray-400 mt-5">
+                Address
+            </h4>
+            
+            <h4>
+                100 Reykjavik
+            </h4>
+        
+            <button type="button" class="rounded-full bg-[#6C37BD] py-2 px-5 mt-5"> 
+                Company page
+            </button>
+        
+            <div>
+                <h3 class="text-xl mt-6">About the company</h3>
+                <textarea type="text" cols="50" rows="10" class="rounded-lg bg-[#6C37BD] shadow-2xl mt-2"></textarea>
+            </div>
+        </div>
+        
+        <div class="w-2/4 fade-bottom::after">
+            <img src="{% static 'assets/company_cover_img.jpg' %}" alt="cover photo" class="h-auto max-w-xl transition-all 
+            duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0">
+        </div>
+    </div>
+    
+    
+    
+{% endblock %}
