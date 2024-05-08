@@ -53,7 +53,18 @@ def companies(request):
     return render(request, 'pages/companies.html')
 
 def company_profile(request):
+    return render(request, 'pages/company_details.html')
+
+def company_details(request):
+    return render(request, 'pages/company_details.html')
+
+def creating_account(request):
+    return render(request, 'pages/creating_account.html')
     return render(request, 'pages/company_profile.html')
+
+def company_details(request):
+    return render(request, 'pages/company_details.html')
+
 
 def job_offer(request):
     return render(request, 'pages/job_offer.html')
