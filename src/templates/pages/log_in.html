@@ -5,14 +5,14 @@
 {% block content %}
     
 <div class="flex">
-    <div class="bg-[#532D8D] rounded-lg p-4 mx-auto shadow-md w-1/4">
+    <div class="bg-[#CDACFF] bg-opacity-15 rounded-lg p-4 mx-auto shadow-md w-1/4">
         <h1 class="text-3xl text-center">
         Welcome back
         </h1>
         
         <div class="w-64 mx-auto">
-            <input type="text" class="border border-gray-300 text-gray-900 text-sm rounded-full block 
-            ps-5 p-2.5 mt-5 w-full placeholder:text-[#B084F3]" 
+            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block 
+            ps-5 p-2.5 mt-5 w-full text-white" 
                  placeholder="Enter email">
             
 {#         If the email is wrong #}
@@ -20,8 +20,8 @@
 {#            ps-5 p-2.5 mt-5 w-full placeholder:text-red-600" #}
 {#                 placeholder="Wrong email - try again">#}
     
-            <input type="text" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 
-            p-2.5 mt-5 w-full placeholder:text-[#B084F3]" 
+            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block ps-5 
+            p-2.5 mt-5 w-full text-white" 
                  placeholder="Enter password">
             
             
@@ -30,9 +30,10 @@
 {#            p-2.5 mt-5 w-full placeholder:text-red-600" #}
 {#                 placeholder="Wrong password - try again">#}
         </div>
+        
         <div class="w-64 mx-auto text-center">
             <a href="/profile">
-                <button type="button" class="text-white bg-[#6C37BD] border-2 border-[#8E5ADD] hover:bg-[#A374EC] hover:border-[#7E40DD] 
+                <button type="button" class="text-white bg-[#6C37BD] hover:bg-[#A374EC] hover:border-[#7E40DD] 
                 focus:ring-4 font-medium rounded-full text-sm px-5 py-2 m-4">
                     Log in
                 </button>
@@ -48,7 +49,7 @@
         
         <div class="w-64 mx-auto text-center">
             <a href="/create-account">
-                <button type="button" class="text-white bg-[#6C37BD] border-2 border-[#8E5ADD] hover:bg-[#A374EC] hover:border-[#7E40DD]
+                <button type="button" class="text-white bg-[#6C37BD] hover:bg-[#A374EC] hover:border-[#7E40DD]
                     focus:ring-4 font-medium rounded-full text-md w-48 py-2 mt-3 shadow-md">
                     Create an account
                 </button>
