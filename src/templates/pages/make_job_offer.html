@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="bg-[#6C37BD] rounded-lg p-5 p w-2/6 shadow-md mb-10">
-        <h1 class="text-3xl text-center">
+        <h1 class="text-3xl text-center mb-4">
         Make new job offer
         </h1>
         
@@ -39,25 +39,7 @@
         </div>
         
         <div>
-            <label class="text-sm">Start date of job offer</label>
-            <div date-rangepicker class="flex items-cente mb-6">
-                <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                     <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" 
-                          fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                    </svg>
-                  </div>
-                  <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-                  focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 
-                  dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                         placeholder="Select date start">
-                </div>
-            </div>
-        </div>
-        
-        <div>
-            <label class="text-sm">Due date of job offer</label>
+            <label class="text-sm">Start date of job offer:</label>
             <div date-rangepicker class="flex items-center mb-6">
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -69,15 +51,41 @@
                     <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                     focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 
                     dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                         placeholder="Select date start">
+                         placeholder="Select start date">
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <label class="text-sm">Due date of job offer:</label>
+            <div date-rangepicker class="flex items-center mb-6">
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" 
+                          fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                        </svg>
+                    </div>
+                    <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                    focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 
+                    dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                         placeholder="Select due date">
                 </div>
             </div>
         </div>
     
-        <label class="mt-10 block text-sm text-white ">Description of job offering</label>
+        <label class="mt-10 block text-sm text-white ">Description of job offering:</label>
         <textarea required cols="38" rows="10" class="bg-[#4E288F] rounded-xl text-white text:p-4 
          mt-2 placeholder:text-[#9889AF] placeholder:p-4" placeholder="Write your text here" ></textarea>
     
+        <div class="w-64 mx-auto text-center">
+            <a href="/create-account">
+                <button type="button" class="text-white bg-[#6C37BD] border-2 border-[#8E5ADD] hover:bg-[#A374EC] hover:border-[#7E40DD]
+                    focus:ring-4 font-medium rounded-full text-md w-48 py-2 mt-3 shadow-md">
+                    Create job offer
+                </button>
+            </a>
+        </div>
     </div>
     
 {% endblock %}
