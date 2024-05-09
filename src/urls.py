@@ -17,8 +17,9 @@ from .views.views import companies
 from .views.views import application
 from .views.views import not_found
 from .views.views import company_profile
-from .views.views import make_job_offer
 from .views.views import company_details
+from .views.views import creating_business_account_info
+from .views.views import make_job_offer
 from .views.views import job_offer
 from .views.views import creating_account
 # This will be our main urls file
@@ -39,6 +40,7 @@ urlpatterns = [
     path('profile', profile, name='profile'),
     path('companies', companies, name='companies'),
     path('company-details', company_details, name='company_details'),
+    path('creating-business-account-info',creating_business_account_info, name="creating_business_account_info"),
     path('make-job-offer', make_job_offer, name='make_job_offer'),
     path('job-offer', job_offer, name='job_offer'),
     path('companies', companies, name='companies'),
