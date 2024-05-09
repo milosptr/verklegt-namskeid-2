@@ -46,3 +46,4 @@ def companies(request):
 
 def employer_dashboard(request):
     return render(request, 'pages/employer-dashboard.html')
+

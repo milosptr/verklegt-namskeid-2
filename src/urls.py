@@ -21,4 +21,4 @@ urlpatterns = [
     path('log-in', log_in, name='log_in'),
     path('companies', companies, name='companies'),
     path('employer-dashboard', employer_dashboard, name='employer_dashboard')
-]
+    ]
