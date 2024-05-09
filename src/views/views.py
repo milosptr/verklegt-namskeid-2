@@ -85,7 +85,6 @@ def application(request, id: int, step: int):
         print(f'Error: {e}')
         return render(request, 'pages/404.html')
 
-
 def about_us(request):
     return render(request, 'pages/about_us.html')
 
@@ -116,3 +115,6 @@ def creating_account(request):
 
 def job_offer(request):
     return render(request, 'pages/job_offer.html')
+
+def employer_dashboard(request):
+    return render(request, 'pages/employer-dashboard.html')

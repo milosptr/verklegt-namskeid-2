@@ -1,0 +1,236 @@
+
+{% extends "common/base.html" %}
+
+{% block title %}Employer Dashboard{% endblock %}
+
+{% block content %}
+<h1 class="text-xl">Employer Dashboard</h1>
+<div class="gap-14 flex mt-5">
+    <div class="w-1/6 px-5 py-4 bg-[#5C477F] rounded-lg">
+        <p class="font-bold">Jobs</p>
+        <p class="text-xs mt-2">2 active job offers</p>
+        <p class="text-xs">1 finished job offer</p>
+    </div>
+    <div class=" w-1/6 px-5 py-4 gap-5 bg-[#5C477F] rounded-lg">
+        <p class=" font-bold">Candidates</p>
+        <p class="text-xs mt-2">3 new applications</p>
+        <p class="text-xs">21 reviewed applications</p>
+    </div>
+    <div class=" w-1/6 px-5 py-4 bg-[#5C477F] rounded-lg">
+        <p class="font-bold">Employer Profile</p>
+        <div class="mt-6">
+        <button type="button" class="block text-white bg-[#4E288F] rounded-full pl-5 pt-2 pr-5 mt-2 pb-2 hover:bg-purple-500 text-xs">Edit Profile →</button>
+            </div>
+    </div>
+
+</div>
+<h1 class="mt-10 text-xl mb-4">Jobs</h1>
+<div class="px-5 w-3/5 bg-[#5C477F] rounded-lg">
+<p class="pt-5 text-lg font-bold">List of jobs you offer</p>
+
+<div class="relative overflow-x-auto">
+    <table class="mb-5 w-full text-sm text-left">
+        <thead class="text-xs">
+            <tr class="border-b">
+                <th scope="col" class="px-6 py-3 ">
+                    Job
+                </th>
+                <th scope="col" class="px-6 py-3 ">
+                    Due date
+                </th>
+                <th scope="col" class="px-6 py-3 ">
+                    Created date
+                </th>
+                <th scope="col" class="px-6 py-3 text-center">
+                    Status
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="border-b text-xs">
+                <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ">
+                    Microsoft
+                </th>
+                <td class="px-6 py-4">
+                    2021-05-22 22:01:59
+                </td>
+                <td class="px-6 py-4">
+                    2021-05-22 22:01:59
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#09FBC2] bg-[#3F768E] hover:bg-[#09FBC2] rounded-full text-center px-2 py-1">
+                    <button type="button" class="text-[#09FBC2] hover:text-[#3F768E]">Active</button>
+                    </div>
+                </td>
+            </tr>
+            <tr class="border-b text-xs">
+                <th scope="row" class=" px-6 py-4 font-medium whitespace-nowrap">
+                    Yahoo
+                </th>
+                <td class="px-6 py-4">
+                    2021-05-22 22:01:59
+                </td>
+                <td class="px-6 py-4">
+                    2021-05-22 22:01:59
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#DF0404] bg-[#FFC5C5] hover:bg-[#DF0404] rounded-full text-center px-2 py-1">
+                    <button type="button" class="text-[#DF0404] hover:text-[#FFC5C5]">Finished</button>
+                    </div>
+                </td>
+            </tr>
+            <tr class="border-b text-xs">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Adobe
+                </th>
+                <td class="px-6 py-4">
+                    2021-05-22 22:01:59
+                </td>
+                <td class="px-6 py-4">
+                    2021-05-22 22:01:59
+                </td>
+                <td class="px-6 py-4 hover:text-[#FFC5C5]">
+                    <div class="border border-[#DF0404] bg-[#FFC5C5] hover:bg-[#DF0404] rounded-full text-center px-2 py-1">
+                    <button type="button" class="text-[#DF0404] hover:text-[#FFC5C5]">Finished</button>
+                    </div>
+                </td>
+            </tr>
+        <tr class="border-b text-xs">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Tesla
+                </th>
+                <td class="px-6 py-4">
+                    2021-05-22 22:01:59
+                </td>
+                <td class="px-6 py-4">
+                    2021-05-22 22:01:59
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#09FBC2] bg-[#3F768E] hover:bg-[#09FBC2] rounded-full text-center px-2 py-1">
+                    <button type="button" class="text-[#09FBC2] hover:text-[#3F768E]">Active</button>
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <div class="flex justify-center mb-4">
+    <div class="bg-purple-500 rounded-full text-center px-1 py-1 w-48 hover:bg-[#4E288F]">
+    <button type="button">Add a new job offer</button>
+    </div>
+        </div>
+</div>
+</div>
+
+<h1 class="mt-10 text-xl mb-4">Candidates</h1>
+<div class="px-5 w-3/5 bg-[#5C477F] rounded-lg">
+<p class="pt-5 text-lg font-bold">List of candidates</p>
+
+<div class="relative overflow-x-auto">
+    <table class="mb-5 w-full text-sm text-left">
+        <thead class="text-xs">
+            <tr class="border-b">
+                <th scope="col" class="px-6 py-3 ">
+                    Name
+                </th>
+                <th scope="col" class="px-6 py-3 ">
+                    Job
+                </th>
+                <th scope="col" class="px-6 py-3 ">
+                    Phone Number
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3 text-center">
+                    Status
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="border-b text-xs">
+                <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ">
+                    Jane Cooper
+                </th>
+                <td class="px-6 py-4">
+                    Microsoft
+                </td>
+                <td class="px-6 py-4">
+                    (225) 555-0118
+                </td>
+                <td class="px-6 py-4">
+                    jane@microsoft.com
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#09FBC2] bg-[#3F768E] hover:bg-[#09FBC2] rounded-full text-center px-2 py-1">
+                    <button type="button" class="text-[#09FBC2] hover:text-[#3F768E]">Invited</button>
+                    </div>
+                </td>
+            </tr>
+            <tr class="border-b text-xs">
+                <th scope="row" class=" px-6 py-4 font-medium whitespace-nowrap">
+                    Floyd Miles
+                </th>
+                <td class="px-6 py-4">
+                    Yahoo
+                </td>
+                <td class="px-6 py-4">
+                    (205) 555-0100
+                </td>
+                <td class="px-6 py-4">
+                    floyd@yahoo.com
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#DF0404] bg-[#FFC5C5] hover:bg-[#DF0404] rounded-full text-center px-3 py-1">
+                    <button type="button" class="text-[#DF0404] hover:text-[#FFC5C5] whitespace-nowrap">Not invited</button>
+                    </div>
+                </td>
+            </tr>
+            <tr class="border-b text-xs">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Ronald Richards
+                </th>
+                <td class="px-6 py-4">
+                    Adobe
+                </td>
+                <td class="px-6 py-4">
+                    (302) 555-0107
+                </td>
+                <td class="px-6 py-4">
+                    ronald@adobe.com
+                </td>
+                <td class="px-6 py-4 hover:text-[#FFC5C5]">
+                    <div class="border border-[#DF0404] bg-[#FFC5C5] hover:bg-[#DF0404] rounded-full text-center px-2 py-1">
+                    <button type="button" class="text-[#DF0404] hover:text-[#FFC5C5] whitespace-nowrap">Not invited</button>
+                    </div>
+                </td>
+            </tr>
+        <tr class="border-b text-xs">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    Marvin McKinney
+                </th>
+                <td class="px-6 py-4">
+                    Tesla
+                </td>
+                <td class="px-6 py-4">
+                    (252) 555-0126
+                </td>
+            <td class="px-6 py-4">
+                marvin@tesla.com
+            </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#09FBC2] bg-[#3F768E] hover:bg-[#09FBC2] rounded-full text-center px-2 py-1">
+                    <button type="button" class="text-[#09FBC2] hover:text-[#3F768E]">Invited</button>
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+
+</div>
+{% endblock %}

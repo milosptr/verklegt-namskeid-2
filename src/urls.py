@@ -22,6 +22,7 @@ from .views.views import creating_business_account_info
 from .views.views import make_job_offer
 from .views.views import job_offer
 from .views.views import creating_account
+from .views.views import employer_dashboard
 # This will be our main urls file
 # We will include all the urls from the apps here
 # Look at it as the main router of the application
@@ -45,6 +46,7 @@ urlpatterns = [
     path('job-offer', job_offer, name='job_offer'),
     path('companies', companies, name='companies'),
     path('application/<int:id>/<int:step>', application, name='application'),
-    re_path(r'.*', not_found, name='not_found'),  # This is a catch-all url that leads to a 404 page
     path('creating-account', creating_account, name='creating_account'),
+    path('employer-dashboard', employer_dashboard, name='employer_dashboard'),
+    re_path(r'.*', not_found, name='not_found')  # This is a catch-all url that leads to a 404 page
 ]
