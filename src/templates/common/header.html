@@ -1,39 +1,46 @@
 <header class="mx-auto max-w-screen-xl">
-    <div class="mt-5 relative h-16 items-center flex justify-between">
-        {% load static %}
-        <a href="/">
-        <img src="{% static 'assets/logo.svg' %}">
-        </a>
-        <a href="/companies" class="text-white ml-10">Companies</a>
-        <a href="/about-us" class="text-white">About us</a>
-        <a href="/application-guide" class="text-white">Application guide</a>
-        <a href="#" class="text-2xl">🇮🇸</a>
-        <a href="#" hidden>🇬🇧</a>
+    <nav>
+            <div class="mt-5 relative h-16 items-center flex justify-between">
+                <div>
+                    {% load static %}
+                    <a href="/">
+                        <img src="{% static 'assets/logo.svg' %}">
+                    </a>
+                </div>
+                
+                <div class="flex items-center justify-end md:space-x-16">
+                    <a href="/companies" class="text-white">Companies</a>
+                    <a href="/about-us" class="text-white">About us</a>
+                    <a href="/application-guide" class="text-white">Application guide</a>
+                    <a href="#" class="text-2xl">🇮🇸</a>
+                    <a href="#" class="hidden">🇬🇧</a>
+    
+                    <!-- NOT LOGGED IN -->
+                    <a href="/log-in" class="" ><button class="rounded-full bg-[#6C37BD] px-8 pt-1 pb-1 text-white hover:bg-purple-900" >Log in</button></a>
+                    <!-- NOT LOGGED IN -->
+    
+                    <!-- LOGGED IN -->
+                    <div class="w-40 items-center hidden">
+                        <a href="#" class="bg-[#3D1F6A] flex gap-4 p-2 rounded-full border-2 border-[#703AC3]">
+                            <button class="rounded-full pl-3 text-xs ">Tinna María Þorleifsdóttir</button>
+                            <img src="{% static 'assets/img.png' %}" class="size-10 rounded-full">
+                        </a>
+                    </div>
+                    <!-- LOGGED IN -->
+                </div>
+                
+                <!-- COMPANY LOGGED IN -->
+                <div class="size-35% mr-2 hidden">
+                    <a  href="#" class="bg-[#3E2465] flex gap-4 p-2 rounded-full border border-full border-[#6C37BD]">
+                        <button class="rounded-full  px-1 pt-1 pb-1 text-xs ">
+                            <p class="font-bold whitespace-nowrap ">Bónus ehf. </p>
+                            <p class="text-2xs whitespace-nowrap">Tinna María Þorleifsdóttir</p>
 
-        <!-- NOT LOGGED IN -->
-        <a  href="/log-in" ><button class="rounded-full bg-[#3E2465] px-8 pt-1 pb-1 text-white" >Log in</button></a>
-        <!-- NOT LOGGED IN -->
-
-        <!-- LOGGED IN -->
-        <div hidden class="size-40 mt-auto items-center">
-            <a href="#" class="bg-[#3D1F6A] flex gap-4 p-2 rounded-full border-2 border-[#703AC3]">
-                <button class="rounded-full pl-3 text-xs ">Tinna María Þorleifsdóttir</button>
-                <img src="{% static 'assets/img.png' %}" class="size-10 rounded-full">
-            </a>
+                                </button>
+                        <img src="{% static 'assets/img.png' %}" class="size-10 rounded-full" >
+                    </a>
+                </div>
+              <!-- COMPANY LOGGED IN -->
         </div>
-        <!-- LOGGED IN -->
-
-        <!-- COMPANY LOGGED IN -->
-        <div hidden class="size-35% mr-2">
-        <a  href="#" class="bg-[#3E2465] flex gap-4 p-2 rounded-full border border-full border-[#6C37BD]">
-            <button class="rounded-full  px-1 pt-1 pb-1 text-xs ">
-                <p class="font-bold whitespace-nowrap ">Bónus ehf. </p>
-                <p class="text-2xs whitespace-nowrap">Tinna María Þorleifsdóttir</p>
-
-            </button>
-            <img src="{% static 'assets/img.png' %}" class="size-10 rounded-full" >
-        </a>
-            </div>
-        <!-- COMPANY LOGGED IN -->
-    </div>
+    </nav>
 </header>

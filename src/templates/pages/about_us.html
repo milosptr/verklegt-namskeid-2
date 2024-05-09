@@ -4,22 +4,23 @@
 
 {% block content %}
     
-{% include "components/title.html" with title="About us" %}
-    
-<p class="pt-5 text-justify" id="about_us_text">
+<h1 class="text-5xl pt-5 text-center">
+    About us
+</h1>
+<p class="pt-5 text-center" id="about_us_text">
     Jarvis was founded by four passionate computer science students at the University of Reykjavík. 
     They found a common challenge faced by job seekers worldwide, the task of going through countless platforms to 
     see if they are hiring people. Determined to fix this problem, they embarked on a journey to create a solution that 
     would make job seeking easier. 
 </p>
     
-<p>
+<p class="py-5 text-center text-xl">
     Welcome to Jarvis - Where your next career adventure begins.
 </p>
     
 {% load static %}
 <figure>
-    <img class="max-w-md" src="{% static "assets/about_us.webp" %}" alt="about us" />
+    <img class="max-w-md mx-auto" src="{% static "assets/about_us.webp" %}" alt="about us" />
     <figcaption class="mt-2 text-sm text-center text-gray-400 ">Alexía Margrét Axelssdóttir, Dagur Freyr Guðbrandsson, 
         Milos Petrovic and Tinna María Þorleifsdóttir
     </figcaption>
