@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 from src.business.application import ApplicationLogic
+from src.controllers.CountryController import CountryController
 from src.exceptions import ApplicationException
 from src.exceptions.ApplicationException import ApplicationSubmitted
 
@@ -44,7 +45,9 @@ def create_account(request):
 
 
 def create_account_info(request):
-    return render(request, 'pages/create_account_info.html')
+    countries = CountryController().get_countries()
+    print('Countries:', countries)
+    return render(request, 'pages/create_account_info.html', {'countries': countries})
 
 
 def profile(request):
@@ -124,3 +127,7 @@ def job_offer(request):
 
 def employer_dashboard(request):
     return render(request, 'pages/employer-dashboard.html')
+
+
+def account_created(request):
+    return render(request, 'pages/success/account_created.html')

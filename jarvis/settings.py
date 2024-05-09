@@ -16,6 +16,7 @@ import os
 from django.core.exceptions import ImproperlyConfigured
 
 
+
 def get_env_variable(var_name):
     try:
         return os.getenv(var_name)
@@ -41,22 +42,26 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
+    # 'django.contrib.auth',
+    # 'django.contrib.contenttypes',
+    # 'django.contrib.sessions',
+    # 'django.contrib.messages',
     'django.contrib.staticfiles',
     'src'
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.security.SecurityMiddleware',
+    # 'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
+    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
 ]
 
 ROOT_URLCONF = 'jarvis.urls'
@@ -72,8 +77,8 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                # 'django.contrib.auth.context_processors.auth',
+                # 'django.contrib.messages.context_processors.messages',
             ],
         },
     },
@@ -84,17 +89,17 @@ WSGI_APPLICATION = 'jarvis.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'postgres',
-    #     'USER': 'vln2_assignment_groups_20_user',
-    #     'PASSWORD': 'b3w1P2C1pz',
-    #     'HOST': 'verklegt-namskeid-ii.northeurope.cloudapp.azure.com',
-    #     'PORT': '5432',
-    #     'OPTIONS': {
-    #         'options': '-c search_path=vln2_assignment_groups_20'
-    #     }
-    # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'vln2_assignment_groups_20_user',
+        'PASSWORD': 'b3w1P2C1pz',
+        'HOST': 'verklegt-namskeid-ii.northeurope.cloudapp.azure.com',
+        'PORT': '5432',
+        'OPTIONS': {
+            'options': '-c search_path=vln2_assignment_groups_20'
+        }
+    }
 }
 
 # Password validation
@@ -139,3 +144,4 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+TEST_RUNNER = 'jarvis.test_runner.NoDBTestRunner.NoDBTestRunner'

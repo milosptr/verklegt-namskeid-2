@@ -20,5 +20,6 @@ from django.urls import include, path
 from jarvis import settings
 
 urlpatterns = [
+    path('', include('src.api_urls')),
     path('', include('src.urls'))
 ] + static(settings.STATIC_URL)

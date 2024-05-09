@@ -17,21 +17,21 @@ from .skill import Skill
 from .application import Application
 
 __all__ = [
-    'user.py',
-    'country.py',
-    'city.py',
-    'company.py',
-    'job.py',
-    'category.py',
-    'type.py',
-    'liked_job.py',
-    'user_recommendation.py',
-    'user_personality.py',
-    'user_skill.py',
-    'user_resume.py',
-    'user_experience.py',
-    'bug_report.py',
-    'notification.py',
-    'skill.py',
-    'application.py'
+    'User',
+    'Country',
+    'City',
+    'Company',
+    'Job',
+    'Category',
+    'Type',
+    'LikedJob',
+    'UserRecommendation',
+    'UserPersonality',
+    'UserSkill',
+    'UserResume',
+    'UserExperience',
+    'BugReport',
+    'Notification',
+    'Skill',
+    'Application'
 ]
