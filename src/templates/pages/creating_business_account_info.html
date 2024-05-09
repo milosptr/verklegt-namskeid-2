@@ -1,32 +1,47 @@
 {% extends "common/base.html" %}
 
-{% block title %}Log in{% endblock %}
+{% block title %}Create business account{% endblock %}
 
 {% block content %}
 
-    <div class="bg-[#6C37BD] rounded-lg p-5 p w-2/6 shadow-md mb-10">
-        <h1 class="text-3xl text-center">
-        Information
-        </h1>
-        <div>
-            <input type="text" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 
-            p-2.5 mt-5 w-full" 
-                   placeholder="Company title">
-        
-            <input type="text" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 
-            p-2.5 mt-5 w-full" 
-                   placeholder="Address">
+    <form>
+        <div class="bg-[#6C37BD] bg-opacity-30 rounded-lg p-5 p w-2/6 shadow-md mb-10">
+            <h1 class="text-3xl text-center">
+            Creating business account
+            </h1>
+                <input type="text" id="input-group-1" class="bg-[#6C37BD] bg-opacity-30 text-white text-sm rounded-full block ps-5 
+                p-2.5 mt-5 w-full" 
+                       placeholder="Enter email">
             
-            <textarea required cols="30" rows="10" class="border border-gray-300 text-gray-900 text-sm rounded-xl block ps-5 
-            p-2.5 mt-5 w-full" placeholder="Description of company"></textarea>
-        </div>
-    
-        <div class="w-64 mx-auto text-center">
-            <button type="button" class="text-white bg-[#6836B5] border-2 border-[#975EEE] hover:bg-[#411586] hover:border-[#9F68F3]
-            focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 m-4 mb-2">
-                Continue
-            </button>
-        </div>
-    </div>
+                <input type="text" id="input-group-1" class="bg-[#6C37BD] bg-opacity-30 text-white text-sm rounded-full block ps-5 
+                p-2.5 mt-5 w-full" 
+                       placeholder="Enter password">
+                    
+                <input type="text" id="input-group-1" class="bg-[#6C37BD] bg-opacity-30 text-white text-sm rounded-full block ps-5 
+                p-2.5 mt-5 w-full" 
+                       placeholder="Enter password again">
+            
+                <div class="mt-4 h-0.5 bg-[#6C37BD] bg-opacity-70"></div>
+
+                    
+                <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-white text-sm rounded-full block ps-5 
+                p-2.5 mt-5 w-full" 
+                       placeholder="Company title">
+            
+                <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-white text-sm rounded-full block ps-5 
+                p-2.5 mt-5 w-full" 
+                       placeholder="Address">
+                    
+                <textarea required cols="30" rows="10" class="bg-[#6C37BD] bg-opacity-30 text-white text-sm rounded-xl block ps-5 
+                p-2.5 mt-5 w-full" placeholder="Description of company"></textarea>
+        
+            <div class="w-64 mx-auto text-center">
+                <button type="submit" class="text-white bg-[#6836B5] hover:bg-[#411586] hover:border-[#9F68F3]
+                focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 m-4 mb-2">
+                    Create
+                </button>
+            </div>
+        </div>  
+    </form>
     
 {% endblock %}

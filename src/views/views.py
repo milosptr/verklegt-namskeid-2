@@ -110,9 +110,6 @@ def creating_business_account_info(request):
 def make_job_offer(request):
     return render(request, 'pages/make_job_offer.html')
 
-def creating_account(request):
-    return render(request, 'pages/creating_account.html')
-    return render(request, 'pages/company_profile.html')
-
 def job_offer(request):
     return render(request, 'pages/job_offer.html')
+
