@@ -85,29 +85,42 @@ def application(request, id: int, step: int):
         print(f'Error: {e}')
         return render(request, 'pages/404.html')
 
+
 def about_us(request):
     return render(request, 'pages/about_us.html')
+
 
 def application_guide(request):
     return render(request, 'pages/application_guide.html')
 
+
 def companies(request):
     return render(request, 'pages/companies.html')
+
 
 def company_profile(request):
     return render(request, 'pages/company_profile.html')
 
+
 def company_details(request):
     return render(request, 'pages/company_details.html')
+
 
 def creating_business_account_info(request):
     return render(request, 'pages/creating_business_account_info.html')
 
+
 def make_job_offer(request):
     return render(request, 'pages/make_job_offer.html')
 
+
+def creating_account(request):
+    return render(request, 'pages/creating_account.html')
+
+
 def job_offer(request):
     return render(request, 'pages/job_offer.html')
+
 
 def employer_dashboard(request):
     return render(request, 'pages/employer-dashboard.html')
