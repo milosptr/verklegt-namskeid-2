@@ -1,44 +1,65 @@
 {% extends "common/base.html" %}
 
-{% block title %}Create account info{% endblock %}
+{% block title %}Create personal account info{% endblock %}
 
 {% block content %}
-<div class="bg-[#6C37BD] bg-opacity-30 rounded-lg p-5 p w-2/6 shadow-md mb-10">
-    <h1 class="text-3xl text-center">
-    Contact and information
-    </h1>
-    <div>
-        <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full block ps-5 p-2.5 mt-5 w-full text-white" 
-               placeholder="Full name">
-    
-        <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full block ps-5 p-2.5 mt-5 w-full text-white" 
-               placeholder="Street name">
-            
-        <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full block ps-5 p-2.5 mt-5 w-full text-white" 
-               placeholder="House number">
-            
-        <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full block ps-5 p-2.5 mt-5 w-full text-white" 
-               placeholder="City">
-        
-        <label class="text-white">Country:</label>
-        <select class="bg-[#6C37BD] bg-opacity-30 rounded-full border border-solid border-[#6C37BD] appearance-none mt-5 px-5 pr-10 py-1.5">
-            <option>Iceland</option>
-            <option>Denmark</option>
-            <option>Spain</option>
-            <option>Serbia</option>
-        </select>
-     
-            
-        <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full block ps-5 p-2.5 mt-5 w-full text-white" 
-               placeholder="Postal code">
-    </div>
 
-    <div class="w-64 mx-auto text-center">
-        <button type="button" class="text-white bg-[#6836B5] hover:bg-[#411586] hover:border-[#9F68F3]
-        focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 m-4">
-            Continue
-        </button>
+<form>
+    <div class="bg-[#6C37BD] bg-opacity-30 rounded-lg p-5 p w-2/6 shadow-md mb-10">
+        <h1 class="text-3xl text-center">
+        Creating an account
+        </h1>
+        <div>
+            <input type="text" id="input-group-1" class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full px-5 p-2.5 mt-5 w-full text-white" 
+                   placeholder="Enter your email">
+        
+            <input type="text" id="input-group-1" class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full px-5 p-2.5 mt-5 w-full text-white" 
+                   placeholder="Enter password">
+                
+            <input type="text" id="input-group-1" class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full px-5 p-2.5 mt-5 w-full text-white" 
+                   placeholder="Enter password again">
+            
+            <div class="mt-4 h-0.5 bg-[#6C37BD] bg-opacity-70"></div>
+            
+            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full px-5 p-2.5 mt-5 w-full text-white"
+                   placeholder="Full name">
+
+            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full px-5 p-2.5 mt-5 w-full text-white"
+                   placeholder="Street name">
+
+            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full px-5 p-2.5 mt-5 w-full text-white"
+                   placeholder="House number">
+
+            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full px-5 p-2.5 mt-5 w-full text-white"
+                   placeholder="City">
+
+            <div class="relative mt-5">
+                <select class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full w-full text-gray-400 selected:white appearance-none px-5 pr-10 py-2.5">
+                    <option disabled selected >Country</option>
+                    <option value="1">Iceland</option>
+                    <option value="2">Denmark</option>
+                    <option value="3">Spain</option>
+                    <option value="4">Serbia</option>
+                </select>
+                <div class="absolute top-4 right-4">
+                {% include 'common/icons/accordion.html' %}
+                </div>
+            </div>
+
+
+            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full block ps-5 p-2.5 mt-5 w-full text-white"
+                   placeholder="Postal code">
+        </div>
+
+        <div class="w-64 mx-auto text-center">
+            <button type="submit" class="text-white bg-[#6836B5] hover:bg-[#411586] hover:border-[#9F68F3]
+            focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 m-4">
+                Create
+            </button>
+        </div>
     </div>
-</div>
+</form>
+
+
     
 {% endblock %}

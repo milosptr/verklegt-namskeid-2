@@ -88,14 +88,11 @@ def application(request, id: int, step: int):
 def about_us(request):
     return render(request, 'pages/about_us.html')
 
-
 def application_guide(request):
     return render(request, 'pages/application_guide.html')
 
-
 def companies(request):
     return render(request, 'pages/companies.html')
-
 
 def company_profile(request):
     return render(request, 'pages/company_profile.html')
@@ -108,10 +105,6 @@ def creating_business_account_info(request):
 
 def make_job_offer(request):
     return render(request, 'pages/make_job_offer.html')
-
-def creating_account(request):
-    return render(request, 'pages/creating_account.html')
-    return render(request, 'pages/company_profile.html')
 
 def job_offer(request):
     return render(request, 'pages/job_offer.html')
