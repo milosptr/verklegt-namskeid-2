@@ -9,12 +9,31 @@
         <a href="/application-guide" class="text-white">Application guide</a>
         <a href="#" class="text-2xl">🇮🇸</a>
         <a href="#" hidden>🇬🇧</a>
-        <a href="/log-in" ><button class="rounded-full bg-[#3E2465] px-8 pt-1 pb-1 text-white" >Log in</button></a>
+
+        <!-- NOT LOGGED IN -->
+        <a  href="/log-in" ><button class="rounded-full bg-[#3E2465] px-8 pt-1 pb-1 text-white" >Log in</button></a>
+        <!-- NOT LOGGED IN -->
+
+        <!-- LOGGED IN -->
         <div hidden class="size-40 mt-24 mr-5">
-        <a href="#" class="bg-[#3E2465] flex gap-4 p-2 rounded-full border border-full border-[#6C37BD]">
+        <a  href="#" class="bg-[#3E2465] flex gap-4 p-2 rounded-full border border-full border-[#6C37BD]">
             <button class="rounded-full  px-1 pt-1 pb-1 text-xs ">Tinna María Þorleifsdóttir</button>
             <img src="{% static 'assets/img.png' %}" class="size-10 rounded-full mr-5">
         </a>
             </div>
+        <!-- LOGGED IN -->
+
+        <!-- COMPANY LOGGED IN -->
+        <div hidden class="size-35% mr-2">
+        <a  href="#" class="bg-[#3E2465] flex gap-4 p-2 rounded-full border border-full border-[#6C37BD]">
+            <button class="rounded-full  px-1 pt-1 pb-1 text-xs ">
+                <p class="font-bold whitespace-nowrap ">Bónus ehf. </p>
+                <p class="text-2xs whitespace-nowrap">Tinna María Þorleifsdóttir</p>
+
+            </button>
+            <img src="{% static 'assets/img.png' %}" class="size-10 rounded-full" >
+        </a>
+            </div>
+        <!-- COMPANY LOGGED IN -->
     </div>
 </header>
