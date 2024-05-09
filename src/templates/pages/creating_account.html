@@ -1,0 +1,34 @@
+{% extends "common/base.html" %}
+
+{% block title %}Creating account{% endblock %}
+
+{% block content %}
+
+    <div class="bg-[#6C37BD] rounded-lg p-5 w-2/6 shadow-md mb-10">
+        <h1 class="text-3xl text-center">
+        Creating account
+        </h1>
+        <div>
+            <input type="text" id="input-group-1" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 
+            p-2.5 mt-5 w-full" 
+                   placeholder="Enter your email">
+        
+            <input type="text" id="input-group-1" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 
+            p-2.5 mt-5 w-full" 
+                   placeholder="Enter password">
+                
+            <input type="text" id="input-group-1" class="border border-gray-300 text-gray-900 text-sm rounded-full block ps-5 
+            p-2.5 mt-5 w-full" 
+                   placeholder="Enter password again">
+        </div>
+    
+         <div class="w-64 mx-auto text-center">
+            <button type="button" class="text-white bg-[#6836B5] border-2 border-[#975EEE] hover:bg-[#411586] hover:border-[#9F68F3]
+            focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 m-4">
+                Continue
+            </button>
+        </div>
+    </div>
+    
+    
+{% endblock %}
