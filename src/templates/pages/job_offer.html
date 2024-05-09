@@ -1,0 +1,79 @@
+{% extends "common/base.html" %}
+
+{% block title %}Job offer{% endblock %}
+
+{% block content %}
+    
+    {% load static %}
+    
+<div class="text-white font-sans">
+    <div class="container mx-auto px-4">
+        <div class="p-8 mt-5">
+            <!-- Adjusted layout for titles and logo -->
+            <div class="text-white font-sans mb-10">
+                <div class="flex items-center">
+                    <div class="flex flex-col">
+                        <h1 class="text-6xl pb-5">Advania</h1>
+                        <span class="text-4xl text-gray-400">Human resources</span>
+                    </div>
+                    <img src="https://placehold.co/600x400" alt="Advania Logo" class="h-32 ml-auto" style="order: 3;"> <!-- Added ml-auto -->
+                </div>
+            </div>
+
+            <div class="mb-10">
+                <div class="grid grid-cols-5 gap-4">
+                    <div class="text-sm">
+                        <p><strong>Address:</strong></p>
+                        <p>Reykjavík</p>
+                    </div>
+                    <div class="text-sm">
+                        <p><strong>Category:</strong></p>
+                        <p>Human Resources</p>
+                    </div>
+                    <div class="text-sm">
+                        <p><strong>Type:</strong></p>
+                        <p>Full time</p>
+                    </div>
+                    <div class="text-sm">
+                        <p><strong>Offer published:</strong></p>
+                        <p>April 1st, 2024</p>
+                    </div>
+                    <div class="text-sm">
+                        <p><strong>Due date:</strong></p>
+                        <p>May 10th, 2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex mb-10">
+                <a href="/application/1/1">
+                    <button class="bg-[#FFAA76] hover:bg-orange-500 text-white font-medium py-2 px-4 rounded-full ">
+                        Apply Now !
+                        <span class="ml-2">&#x2192;</span>
+                    </button>
+                </a>
+                <button class="bg-[#6C37BD] hover:bg-purple-900 text-white font-medium py-2 px-4 rounded-full ml-10">
+                    Company Page
+                    <span class="ml-2">&#x2192;</span>
+                </button>
+                <a href="/company-details">
+                    <button class="bg-[#6C37BD] hover:bg-purple-900 text-white font-medium py-2 px-4 rounded-full ml-10">
+                        More about company
+                        <span class="ml-2">&#x2192;</span>
+                    </button>
+                </a>
+            </div>
+
+            <div>
+                <h3 class="text-gray-400 text-lg">About job offer</h3>
+                <p>
+                    About the job offer About the job offer About the job offer<br>
+                    About the job offer About the job offer About the job offer<br>
+                    About the job offer About the job offer.<br>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
