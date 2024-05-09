@@ -5,7 +5,7 @@
   "fields": {
     "name": "Reykjavík",
     "zip": "101",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -16,7 +16,7 @@
   "fields": {
     "name": "Kópavogur",
     "zip": "200",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -27,7 +27,7 @@
   "fields": {
     "name": "Hafnarfjörður",
     "zip": "220",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -38,7 +38,7 @@
   "fields": {
     "name": "Akureyri",
     "zip": "600",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -49,7 +49,7 @@
   "fields": {
     "name": "Garðabær",
     "zip": "210",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -60,7 +60,7 @@
   "fields": {
     "name": "Selfoss",
     "zip": "800",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -71,7 +71,7 @@
   "fields": {
     "name": "Akranes",
     "zip": "300",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -82,7 +82,7 @@
   "fields": {
     "name": "Vestmannaeyjar",
     "zip": "900",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -93,7 +93,7 @@
   "fields": {
     "name": "Njarðvík",
     "zip": "260",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -104,7 +104,7 @@
   "fields": {
     "name": "Grindavík",
     "zip": "240",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -115,7 +115,7 @@
   "fields": {
     "name": "Ísafjörður",
     "zip": "400",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -126,7 +126,7 @@
   "fields": {
     "name": "Sauðárkrókur",
     "zip": "550",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -137,7 +137,7 @@
   "fields": {
     "name": "Hveragerði",
     "zip": "810",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -148,7 +148,7 @@
   "fields": {
     "name": "Höfn",
     "zip": "780",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -159,7 +159,7 @@
   "fields": {
     "name": "Egilsstaðir",
     "zip": "700",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -170,7 +170,7 @@
   "fields": {
     "name": "Húsavík",
     "zip": "640",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -181,7 +181,7 @@
   "fields": {
     "name": "Borgarnes",
     "zip": "310",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -192,7 +192,7 @@
   "fields": {
     "name": "Sandgerði",
     "zip": "245",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -203,7 +203,7 @@
   "fields": {
     "name": "Þorlákshöfn",
     "zip": "245",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -214,7 +214,7 @@
   "fields": {
     "name": "Garðar",
     "zip": "250",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -225,7 +225,7 @@
   "fields": {
     "name": "Neskaupstaður",
     "zip": "740",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -236,7 +236,7 @@
   "fields": {
     "name": "Dalvík",
     "zip": "620",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -247,7 +247,7 @@
   "fields": {
     "name": "Stykkishólmur",
     "zip": "340",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -258,7 +258,7 @@
   "fields": {
     "name": "Reyðarfjörður",
     "zip": "730",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -269,7 +269,7 @@
   "fields": {
     "name": "Siglufjörður",
     "zip": "580",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -280,7 +280,7 @@
   "fields": {
     "name": "Ólafsvík",
     "zip": "355",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -291,7 +291,7 @@
   "fields": {
     "name": "Bolungarvík",
     "zip": "415",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -302,7 +302,7 @@
   "fields": {
     "name": "Blönduós",
     "zip": "540",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -313,7 +313,7 @@
   "fields": {
     "name": "Hvolsvöllur",
     "zip": "861",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -324,7 +324,7 @@
   "fields": {
     "name": "Grundarfjörður",
     "zip": "350",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -335,7 +335,7 @@
   "fields": {
     "name": "Hella",
     "zip": "850",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -346,7 +346,7 @@
   "fields": {
     "name": "Vopnafjörður",
     "zip": "690",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -357,7 +357,7 @@
   "fields": {
     "name": "Patreksfjörður",
     "zip": "450",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -368,7 +368,7 @@
   "fields": {
     "name": "Seyðisfjörður",
     "zip": "710",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -379,7 +379,7 @@
   "fields": {
     "name": "Fáskrúðsfjörður",
     "zip": "750",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -390,7 +390,7 @@
   "fields": {
     "name": "Vogar",
     "zip": "190",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -401,7 +401,7 @@
   "fields": {
     "name": "Hvammstangi",
     "zip": "530",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -412,7 +412,7 @@
   "fields": {
     "name": "Stokkseyri",
     "zip": "825",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -423,7 +423,7 @@
   "fields": {
     "name": "Eyrarbakki",
     "zip": "820",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -434,7 +434,7 @@
   "fields": {
     "name": "Djúpivogur",
     "zip": "765",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -445,7 +445,7 @@
   "fields": {
     "name": "Skútustaðir",
     "zip": "660",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -456,7 +456,7 @@
   "fields": {
     "name": "Skagaströnd",
     "zip": "545",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -467,7 +467,7 @@
   "fields": {
     "name": "Þórshöfn",
     "zip": "670",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -478,7 +478,7 @@
   "fields": {
     "name": "Hellissandur",
     "zip": "360",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -489,7 +489,7 @@
   "fields": {
     "name": "Svalbarð",
     "zip": "305",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -500,7 +500,7 @@
   "fields": {
     "name": "Þingeyri",
     "zip": "465",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -511,7 +511,7 @@
   "fields": {
     "name": "Hólmavík",
     "zip": "510",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -522,7 +522,7 @@
   "fields": {
     "name": "Keflavík",
     "zip": "230",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -533,7 +533,7 @@
   "fields": {
     "name": "Suðureyri",
     "zip": "430",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -544,7 +544,7 @@
   "fields": {
     "name": "Búðardalur",
     "zip": "371",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -555,7 +555,7 @@
   "fields": {
     "name": "Flateyri",
     "zip": "425",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -566,7 +566,7 @@
   "fields": {
     "name": "Reykhólar",
     "zip": "380",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -577,7 +577,7 @@
   "fields": {
     "name": "Bíldudalur",
     "zip": "465",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -588,18 +588,18 @@
   "fields": {
     "name": "Hnífsdalur",
     "zip": "510",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
 },
 {
   "model": "src.city",
-  "pk": 103,
+  "pk": 1,
   "fields": {
     "name": "Reykjahlíð",
     "zip": "641",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -610,7 +610,7 @@
   "fields": {
     "name": "Ólafsfjörður",
     "zip": "625",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -621,7 +621,7 @@
   "fields": {
     "name": "Hofsós",
     "zip": "565",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -632,7 +632,7 @@
   "fields": {
     "name": "Raufarhöfn",
     "zip": "680",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -643,7 +643,7 @@
   "fields": {
     "name": "Stöðvarfjörður",
     "zip": "755",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -654,7 +654,7 @@
   "fields": {
     "name": "Kirkjubæjarklaustur",
     "zip": "880",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -665,7 +665,7 @@
   "fields": {
     "name": "Súðavík",
     "zip": "425",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -676,7 +676,7 @@
   "fields": {
     "name": "Breiðdalsvík",
     "zip": "760",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -687,7 +687,7 @@
   "fields": {
     "name": "Varmahlíð",
     "zip": "551",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -698,7 +698,7 @@
   "fields": {
     "name": "Kópasker",
     "zip": "671",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -709,7 +709,7 @@
   "fields": {
     "name": "Kaldrananes",
     "zip": "301",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -720,7 +720,7 @@
   "fields": {
     "name": "Hafnir",
     "zip": "233",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -731,7 +731,7 @@
   "fields": {
     "name": "Helgafell",
     "zip": "225",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -742,7 +742,7 @@
   "fields": {
     "name": "Eskifjörður",
     "zip": "735",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -753,7 +753,7 @@
   "fields": {
     "name": "Lambastaðir",
     "zip": "270",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -764,7 +764,7 @@
   "fields": {
     "name": "Sólmundarhöfði",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -775,7 +775,7 @@
   "fields": {
     "name": "Kleppur",
     "zip": "300",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -786,7 +786,7 @@
   "fields": {
     "name": "Brautarholt",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -797,7 +797,7 @@
   "fields": {
     "name": "Gufunes",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -808,7 +808,7 @@
   "fields": {
     "name": "Saurbær",
     "zip": "340",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -819,7 +819,7 @@
   "fields": {
     "name": "Silfurtún",
     "zip": "222",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -830,7 +830,7 @@
   "fields": {
     "name": "Bessastaðir",
     "zip": "220",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -841,7 +841,7 @@
   "fields": {
     "name": "Brekka",
     "zip": "370",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -852,7 +852,7 @@
   "fields": {
     "name": "Garðakauptún",
     "zip": "250",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -863,7 +863,7 @@
   "fields": {
     "name": "Hvaleyri",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -874,7 +874,7 @@
   "fields": {
     "name": "Ofanleiti",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -885,7 +885,7 @@
   "fields": {
     "name": "Hlíðarendi",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -896,7 +896,7 @@
   "fields": {
     "name": "Lögmannshlíð",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -907,7 +907,7 @@
   "fields": {
     "name": "Glerárþorp",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -918,7 +918,7 @@
   "fields": {
     "name": "Syðstibær",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -929,7 +929,7 @@
   "fields": {
     "name": "Miðgarðar",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -940,7 +940,7 @@
   "fields": {
     "name": "Ytri-Njarðvík",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -951,7 +951,7 @@
   "fields": {
     "name": "Útskálar",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -962,7 +962,7 @@
   "fields": {
     "name": "Garðskagi",
     "zip": "235",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -973,7 +973,7 @@
   "fields": {
     "name": "Flóagaflshverfi",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -984,7 +984,7 @@
   "fields": {
     "name": "Álafoss",
     "zip": "112",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -995,7 +995,7 @@
   "fields": {
     "name": "Lágafell",
     "zip": "113",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -1006,7 +1006,7 @@
   "fields": {
     "name": "Býjarsker",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -1017,7 +1017,7 @@
   "fields": {
     "name": "Kirkjuból",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -1028,7 +1028,7 @@
   "fields": {
     "name": "Hvalsnes",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -1039,7 +1039,7 @@
   "fields": {
     "name": "Kálfatjörn",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -1050,7 +1050,7 @@
   "fields": {
     "name": "Brunnastaðir",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -1061,7 +1061,7 @@
   "fields": {
     "name": "Ásláksstaðir",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -1072,7 +1072,7 @@
   "fields": {
     "name": "Stóra-Vatnsléysa",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -1083,7 +1083,7 @@
   "fields": {
     "name": "Möðruvellir",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }
@@ -1094,7 +1094,7 @@
   "fields": {
     "name": "Vatnsfjörður",
     "zip": "261",
-    "country": 103,
+    "country": 1,
     "created_at": "2024-05-05T15:36:03.974Z",
     "updated_at": "2024-05-05T15:36:03.974Z"
   }

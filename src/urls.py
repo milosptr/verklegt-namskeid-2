@@ -1,12 +1,7 @@
 from django.urls import path, re_path
-import profile
 
-from django.urls import path
-
-
-from .views.views import home, contact_us
-
-from .views.views import home
+from .controllers.UserController import UserController
+from .views.views import home, account_created
 from .views.views import about_us
 from .views.views import application_guide
 from .views.views import create_account
@@ -18,10 +13,12 @@ from .views.views import application
 from .views.views import not_found
 from .views.views import company_profile
 from .views.views import company_details
+from .views.views import contact_us
 from .views.views import creating_business_account_info
 from .views.views import make_job_offer
 from .views.views import job_offer
 from .views.views import employer_dashboard
+
 # This will be our main urls file
 # We will include all the urls from the apps here
 # Look at it as the main router of the application
@@ -36,7 +33,7 @@ urlpatterns = [
     path('company-profile', company_profile, name='company_profile'),
     path('log-in', log_in, name='log_in'),
     path('create-account', create_account, name='create_account'),
-    path('create-account-info', create_account_info, name='create_account_info'),
+    path('create-account-info', UserController.create_account_view, name='create_account_info'),
     path('profile', profile, name='profile'),
     path('companies', companies, name='companies'),
     path('company-details', company_details, name='company_details'),
@@ -46,5 +43,6 @@ urlpatterns = [
     path('companies', companies, name='companies'),
     path('application/<int:id>/<int:step>', application, name='application'),
     path('employer-dashboard', employer_dashboard, name='employer_dashboard'),
+    path('account-created', account_created, name='account_created'),
     re_path(r'.*', not_found, name='not_found')  # This is a catch-all url that leads to a 404 page
 ]

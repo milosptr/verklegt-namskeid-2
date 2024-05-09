@@ -1,0 +1,15 @@
+{% extends "common/base.html" %}
+
+{% block title %}Account created!{% endblock %}
+
+{% block content %}
+    <div class="text-center pt-32 pb-64">
+        <p class="text-base font-semibold text-[#6C37BD]">Hooray!</p>
+        <h1 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">Account has been created</h1>
+        <p class="mt-6 text-base leading-7 text-gray-400">Shortly you will receive an email with a link to verify your account. Please check your inbox and spam folder.</p>
+        <div class="mt-10 flex items-center justify-center gap-x-6">
+            <a href="/" class="bg-[#6C37BD] bg-opacity-50 hover:bg-opacity-100 rounded-full text-sm py-2 px-4 cursor-pointer duration-300">Go back home</a>
+            <a href="/log-in" class="border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300">Login <span aria-hidden="true">&rarr;</span></a>
+        </div>
+    </div>
+{% endblock %}

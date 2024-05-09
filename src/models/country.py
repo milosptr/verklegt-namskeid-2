@@ -12,9 +12,12 @@ class Country(models.Model):
     def __str__(self):
         return self.name
 
+    @classmethod
+    def get_all(cls):
+        return cls.objects.all()
+
     class Meta:
         db_table = 'countries'
         ordering = ['-created_at']
         verbose_name = 'Country'
         verbose_name_plural = 'Countries'
-

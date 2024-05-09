@@ -9,15 +9,18 @@ class Company(models.Model):
     address = models.CharField(max_length=150)
     city = models.ForeignKey('City', on_delete=models.CASCADE)
     country = models.ForeignKey('Country', on_delete=models.CASCADE)
-    logo = models.TextField()
-    cover_image = models.TextField()
-    website = models.CharField(max_length=150)
+    logo = models.TextField(null=True)
+    cover_image = models.TextField(null=True)
+    website = models.CharField(max_length=150, null=True)
     jobs = models.ManyToManyField('Job', related_name='companies')
     created_at = models.DateTimeField( default=datetime.now)
     updated_at = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
         return self.name
+
+    def get_all_companies(self):
+        return self.objects.all()
 
     class Meta:
         db_table = 'companies'
