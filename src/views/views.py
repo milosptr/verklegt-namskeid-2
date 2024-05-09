@@ -85,18 +85,14 @@ def application(request, id: int, step: int):
         print(f'Error: {e}')
         return render(request, 'pages/404.html')
 
-
 def about_us(request):
     return render(request, 'pages/about_us.html')
-
 
 def application_guide(request):
     return render(request, 'pages/application_guide.html')
 
-
 def companies(request):
     return render(request, 'pages/companies.html')
-
 
 def company_profile(request):
     return render(request, 'pages/company_profile.html')
@@ -113,3 +109,5 @@ def make_job_offer(request):
 def job_offer(request):
     return render(request, 'pages/job_offer.html')
 
+def employer_dashboard(request):
+    return render(request, 'pages/employer-dashboard.html')
