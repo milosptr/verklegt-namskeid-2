@@ -19,8 +19,9 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
-    def get_all_companies(self):
-        return self.objects.all()
+    @classmethod
+    def get_all(cls):
+        return cls.objects.all()
 
     class Meta:
         db_table = 'companies'

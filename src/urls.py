@@ -34,6 +34,7 @@ urlpatterns = [
     path('log-in', log_in, name='log_in'),
     path('create-account', create_account, name='create_account'),
     path('create-account-info', UserController.create_account_view, name='create_account_info'),
+    path('create-business-account', UserController.create_business_account_view, name='create_business_account'),
     path('profile', profile, name='profile'),
     path('companies', companies, name='companies'),
     path('company-details', company_details, name='company_details'),

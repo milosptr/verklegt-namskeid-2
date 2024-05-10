@@ -47,7 +47,7 @@ def create_account(request):
 def create_account_info(request):
     countries = CountryController().get_countries()
     print('Countries:', countries)
-    return render(request, 'pages/create_account_info.html', {'countries': countries})
+    return render(request, 'pages/account/create_account.html', {'countries': countries})
 
 
 def profile(request):
@@ -110,7 +110,7 @@ def company_details(request):
 
 
 def creating_business_account_info(request):
-    return render(request, 'pages/creating_business_account_info.html')
+    return render(request, 'pages/account/create_business_account.html')
 
 
 def make_job_offer(request):

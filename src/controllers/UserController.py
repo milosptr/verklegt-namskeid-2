@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from src.controllers.CityController import CityController
 from src.controllers.CountryController import CountryController
 from src.exceptions.UserExceptions import CreateAccountException
-from src.models import User
+from src.models import User, Company
 
 
 class UserController:
@@ -17,7 +17,7 @@ class UserController:
         cities = CityController().get_all()
 
         if request.method == 'GET':
-            return render(request, 'pages/create_account_info.html', {'countries': countries, 'cities': cities})
+            return render(request, 'pages/account/create_account.html', {'countries': countries, 'cities': cities})
 
         if request.method != 'POST':
             return render(request, 'pages/404.html')
@@ -27,12 +27,23 @@ class UserController:
         except CreateAccountException as e:
             errors = str(e).split(',')
             context = dict(request.POST.items())
-            return render(request, 'pages/create_account_info.html',
+            return render(request, 'pages/account/create_account.html',
                           {'countries': countries, 'cities': cities, 'errors': errors, 'context': context})
         except Exception as e:
-            return render(request, 'pages/create_account_info.html',
+            return render(request, 'pages/account/create_account.html',
                           {'countries': countries, 'cities': cities, 'errors': [str(e)]})
 
+        # If everything goes well, redirect to success page
+        return redirect('/account-created')
+
+    @staticmethod
+    def create_business_account_view(request):
+        companies = Company().get_all()
+        countries = CountryController().get_countries()
+        cities = CityController().get_all()
+
+        if request.method == 'GET':
+            return render(request, 'pages/account/create_business_account.html', {'companies': companies, 'countries': countries, 'cities': cities})
         # If everything goes well, redirect to success page
         return redirect('/account-created')
 
