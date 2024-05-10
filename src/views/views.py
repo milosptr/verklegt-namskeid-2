@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from src.business.application import ApplicationLogic
 from src.controllers.CountryController import CountryController
 from src.exceptions import ApplicationException
 from src.exceptions.ApplicationException import ApplicationSubmitted
 from src.controllers.CompanyController import CompanyController
+from src.models import Company
+
 
 # Views are the functions that handle the requests from the user
 # You can think of them as the controller in the MVC pattern
@@ -102,12 +104,14 @@ def companies(request):
     return render(request, 'pages/companies.html', {'companies_list': companies_list})
 
 
-def company_profile(request):
-    return render(request, 'pages/company_profile.html')
+def company_profile(request, company_name):
+    company = get_object_or_404(Company, name=company_name)
+    return render(request, 'pages/company_profile.html', {'company': company})
 
 
-def company_details(request):
-    return render(request, 'pages/company_details.html')
+def company_details(request, company_id):
+    company = get_object_or_404(Company, id=company_id)
+    return render(request, 'pages/company_details.html', {'company': company})
 
 
 def creating_business_account_info(request):
