@@ -20,7 +20,10 @@
             <div>
                 {% include 'components/dropdown.html' with classes='w-full bg-[#6C37BD] bg-opacity-30' %}
             </div>
-            <div class="mt-5">
+            <div>
+                <input type="text" name="address" id="address" class="w-full rounded-full py-2 px-6 bg-[#6C37BD] bg-opacity-30" placeholder="Postal code" />
+            </div>
+            <div class="mt-2">
                 <button type="submit" class="w-full bg-[#6C37BD] hover:bg-opacity-90 rounded-full py-2 px-6 text-white duration-300">Continue</button>
             </div>
         </div>
@@ -38,9 +41,11 @@
                 <input type="text" name="role" id="role" class="w-full rounded-full py-2 px-6 bg-[#6C37BD] bg-opacity-30" placeholder="Role" />
             </div>
             <div>
+                <label class="text-gray-400 ml-2">Start date:</label>
                 <input type="date" name="start_date" id="start_date" class="w-full rounded-full py-2 px-6 bg-[#6C37BD] bg-opacity-30" placeholder="Start date" />
             </div>
             <div>
+                <label class="text-gray-400 ml-2">End date:</label>
                 <input type="date" name="end_date" id="end_date" class="w-full rounded-full py-2 px-6 bg-[#6C37BD] bg-opacity-30" placeholder="End date" />
             </div>
             <div class="flex gap-2 items-center ml-1">
@@ -73,6 +78,10 @@
             </div>
             <div>
                 <input type="text" name="recommendation_role" id="recommendation_role" class="w-full rounded-full py-2 px-6 bg-[#6C37BD] bg-opacity-30" placeholder="Job role" />
+            </div>
+            <div class="flex gap-2 items-center ml-1">
+                <input type="checkbox" name="still_employed" id="still_employed" class="rounded-full py-2 px-6 bg-[#6C37BD] bg-opacity-30"/>
+                <label for="still_employed" class="opacity-70">Let me know before contacting them</label>
             </div>
 
             <div class="mt-4 flex justify-between gap-5">

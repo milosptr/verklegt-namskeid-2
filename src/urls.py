@@ -18,6 +18,8 @@ from .views.views import creating_business_account_info
 from .views.views import make_job_offer
 from .views.views import job_offer
 from .views.views import employer_dashboard
+from .views.views import edit_profile_info
+from .views.views import report_bug
 
 # This will be our main urls file
 # We will include all the urls from the apps here
@@ -44,5 +46,7 @@ urlpatterns = [
     path('application/<int:id>/<int:step>', application, name='application'),
     path('employer-dashboard', employer_dashboard, name='employer_dashboard'),
     path('account-created', account_created, name='account_created'),
+    path('edit-profile-info', edit_profile_info, name='edit_profile_info'),
+    path('report-bug', report_bug, name='report_bug'),
     re_path(r'.*', not_found, name='not_found')  # This is a catch-all url that leads to a 404 page
 ]

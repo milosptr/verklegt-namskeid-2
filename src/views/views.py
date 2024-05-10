@@ -131,3 +131,9 @@ def employer_dashboard(request):
 
 def account_created(request):
     return render(request, 'pages/success/account_created.html')
+
+def edit_profile_info(request):
+    return render(request, 'pages/edit_profile_info.html')
+
+def report_bug(request):
+    return render(request, 'pages/report_bug.html')

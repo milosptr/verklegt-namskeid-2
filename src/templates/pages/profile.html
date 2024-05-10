@@ -5,7 +5,12 @@
 {% block content %}
  
     <div class="flex">
-        <div class="w-2/3">
+        <div class="w-1/6">
+            {% load static %}
+            <img src="{% static "assets/profile_img.png" %}" alt="profile picture"/>
+        </div>
+        
+        <div class="pt-3">
             <h1 class="text-3xl">
             Users Name
             </h1>
@@ -18,49 +23,55 @@
             <h3>
             Country
             </h3>
-        
+        </div>
+    </div> 
+    
+    
+    <div class="flex">
+        <div class="w-1/6">
             <button type="button" class="border-2 border-[#6C37BD] rounded-full p-1 px-3 text-[#B188EF] text-sm 
-            hover:bg-purple-900 mt-3">
-            Edit information
-            </button>
-            
-            <h2 class="my-3">
-            About you
-            </h2>
-            
-            <textarea type="text" cols="50" rows="10" class="rounded-lg bg-[#6C37BD] shadow-2xl "></textarea>
-            
-        </div> 
-        
-        <div class="w-1/3">
-            {% load static %}
-            <img src="{% static "assets/profile_img.png" %}" alt="profile picture"/>
-            
-            <button type="button" class="border-2 border-[#6C37BD] rounded-full p-1 px-3 text-[#B188EF] text-sm 
-            hover:bg-purple-900 mt-3">
+            hover:bg-purple-900 mt-3 ml-8">
             Edit image
             </button>
-            
-            <div>
-                <button type="button" class="bg-[#6C37BD] text-white rounded-full p-2 px-10 text-xl hover:bg-[#380E77] mt-2">
-                Add CV
+        </div>
+        <div class="pt-3">
+            <a href="/edit-profile-info">
+                <button type="button" class="border-2 border-[#6C37BD] rounded-full p-1 px-3 text-[#B188EF] text-sm 
+                    hover:bg-purple-900">
+                    Edit information
                 </button>
-            </div>
-                
-            <div>
-                <button type="button" class="bg-[#6C37BD] text-white rounded-full p-2 px-10 text-xl hover:bg-[#380E77] mt-2">
-                Add experience
-                </button>
-            </div>
-            
-            <div>
-                <button type="button" class="bg-[#6C37BD] text-white rounded-full p-2 px-10 text-xl hover:bg-[#380E77] mt-2">
-                Add recommendation
-                </button>
-            </div>
+            </a>
+        </div>
+    </div> 
+        
+    <div>
+        <h2 class="mb-2 mt-7 text-xl">
+            About you
+        </h2>
+        <div>
+            <textarea type="text" cols="50" rows="10" class="rounded-lg bg-[#6C37BD] shadow-2xl "></textarea>
         </div>
     </div>
-    
+        
+    <div class="w-1/3">
+        <div>
+            <button type="button" class="bg-[#6C37BD] text-white rounded-full p-2 px-10 text-xl hover:bg-[#380E77] mt-2">
+            Add CV
+            </button>
+        </div>
+                
+        <div>
+            <button type="button" class="bg-[#6C37BD] text-white rounded-full p-2 px-10 text-xl hover:bg-[#380E77] mt-2">
+            Add experience
+            </button>
+        </div>
+            
+        <div>
+            <button type="button" class="bg-[#6C37BD] text-white rounded-full p-2 px-10 text-xl hover:bg-[#380E77] mt-2">
+            Add recommendation
+            </button>
+        </div>
+    </div>
     
     <div>
         <h2 class="text-xl mt-20">
