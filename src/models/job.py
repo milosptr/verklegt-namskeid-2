@@ -18,6 +18,9 @@ class Job(models.Model):
     def __str__(self):
         return self.title
 
+    def get_all_jobs(self):
+        return Job.objects.all()
+
     class Meta:
         db_table = 'jobs'
         ordering = ['-created_at']

@@ -5,7 +5,7 @@ from src.controllers.CountryController import CountryController
 from src.exceptions import ApplicationException
 from src.exceptions.ApplicationException import ApplicationSubmitted
 from src.controllers.CompanyController import CompanyController
-from src.models import Company
+from src.models import Company, Job
 
 
 # Views are the functions that handle the requests from the user
@@ -56,7 +56,7 @@ def profile(request):
     return render(request, 'pages/profile.html')
 
 
-def companies(request):
+def companies(request): # TODO: This is most likely useless
     return render(request, 'pages/companies.html')
 
 
@@ -104,7 +104,7 @@ def companies(request):
     return render(request, 'pages/companies.html', {'companies_list': companies_list})
 
 
-def company_profile(request, company_name):
+def company_profile(request, company_name): # TODO: Pretty Sure this is useless now
     company = get_object_or_404(Company, name=company_name)
     return render(request, 'pages/company_profile.html', {'company': company})
 
@@ -126,8 +126,9 @@ def creating_account(request):
     return render(request, 'pages/creating_account.html')
 
 
-def job_offer(request):
-    return render(request, 'pages/job_offer.html')
+def job_offer(request, job_id):
+    job = get_object_or_404(Job, id=job_id)
+    return render(request, 'pages/job_offer.html', {'job': job})
 
 
 def employer_dashboard(request):
