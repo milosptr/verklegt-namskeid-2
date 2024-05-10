@@ -20,7 +20,7 @@ class Company(models.Model):
         return self.name
 
     def get_all_companies(self):
-        return self.objects.all()
+        return Company.objects.all()
 
     class Meta:
         db_table = 'companies'

@@ -4,7 +4,7 @@ from src.business.application import ApplicationLogic
 from src.controllers.CountryController import CountryController
 from src.exceptions import ApplicationException
 from src.exceptions.ApplicationException import ApplicationSubmitted
-
+from src.controllers.CompanyController import CompanyController
 
 # Views are the functions that handle the requests from the user
 # You can think of them as the controller in the MVC pattern
@@ -98,7 +98,8 @@ def application_guide(request):
 
 
 def companies(request):
-    return render(request, 'pages/companies.html')
+    companies_list = CompanyController().get_all_companies()
+    return render(request, 'pages/companies.html', {'companies_list': companies_list})
 
 
 def company_profile(request):
