@@ -4,7 +4,8 @@
 
 {% block content %}
 
-    <form>
+    <form method="POST" action="/api/v1/create-business-account">
+        {% csrf_token %}
         <div class="bg-[#6C37BD] bg-opacity-30 rounded-lg p-5 w-2/5 mx-auto shadow-md mb-10">
             <h1 class="text-3xl text-center">
             Create business account
@@ -41,9 +42,18 @@
                         placeholder="Last name"
                         required
                 />
+                <input
+                        type="text"
+                        name="phone_number"
+                        class="bg-[#6C37BD] bg-opacity-30 text-white text-sm rounded-full block ps-5 p-2.5 mt-5 w-full"
+                        placeholder="Phone number"
+                        required
+                />
                 <div class="flex justify-between items-center my-5 gap-5">
-                    <div id="select-existing-company" class="bg-[#6C37BD] w-full cursor-pointer border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300">Existing company</div>
-                    <div id="select-custom-company" class="w-full cursor-pointer border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300">New company</div>
+                    <input hidden type="radio" id="label-existing-company" value="existing" name="company_type" checked />
+                    <input hidden type="radio" id="label-custom-company" value="custom" name="company_type" />
+                    <label id="select-existing-company" for="label-existing-company" class="bg-[#6C37BD] w-full cursor-pointer border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300">Existing company</label>
+                    <label id="select-custom-company" for="label-custom-company" class="w-full cursor-pointer border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300">New company</label>
                 </div>
                 <div id="existing-company">
                     <div class="relative mt-5">
@@ -125,6 +135,9 @@
                 </button>
             </div>
         </div>
+        {% if errors %}
+            {% include 'components/error_card.html' with title="Some fields are invalid or missing" errors=errors classes="mt-3 w-2/5 mx-auto p-5" %}
+        {% endif %}
     </form>
 
 {% endblock %}

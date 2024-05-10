@@ -17,6 +17,7 @@ class User(models.Model):
     address = models.CharField(max_length=255, null=True)
     city = models.ForeignKey('City', on_delete=models.CASCADE, null=True)
     country = models.ForeignKey('Country', on_delete=models.CASCADE, null=True)
+    company = models.ForeignKey('Company', on_delete=models.CASCADE, null=True)
     verified_at = models.DateTimeField(null=True)
     created_at = models.DateTimeField( default=datetime.now)
     updated_at = models.DateTimeField(default=datetime.now)
@@ -32,9 +33,10 @@ class User(models.Model):
         except Exception as e:
             raise CreateAccountException(str(e))
 
-    def validate_fields(self):
+    def validate_fields(self, role=0):
         """
         Validate the fields of the model
+        :param type: int - 0 for normal user, 1 for business user
         :return: str
         """
         errors = list()
@@ -49,9 +51,19 @@ class User(models.Model):
             errors.append('Password must be at least 8 characters long')
         if self.phone_number and (len(self.phone_number) < 7 or len(self.phone_number) > 15):
             errors.append('Phone number is invalid')
-        if not self.address:
+        if role == 0 and not self.address:
             errors.append('Address is required')
+        if role == 0 and not self.city_id:
+            errors.append('City is required')
+        if role == 0 and not self.country_id:
+            errors.append('Country is required')
 
+        return ','.join(errors)
+
+    def validate_business_fields(self, type=0):
+        errors = list()
+        if type == 0 and not self.company_id:
+            errors.append('Company is required')
         return ','.join(errors)
 
     @staticmethod
