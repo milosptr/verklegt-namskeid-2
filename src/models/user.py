@@ -4,6 +4,8 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.db import models
 
 from src.exceptions.UserExceptions import CreateAccountException
+from src.models.city import City
+from src.models.country import Country
 
 
 class User(models.Model):
@@ -98,8 +100,8 @@ class User(models.Model):
             'phone_number': self.phone_number,
             'role': self.role,
             'address': self.address,
-            'city': self.city,
-            'country': self.country,
+            'city': City.get_by_id(self.city_id),
+            'country': Country.get_by_id(self.country_id),
             'company': self.company,
             'avatar': self.avatar,
             'verified_at': self.verified_at
