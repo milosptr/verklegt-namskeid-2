@@ -17,12 +17,17 @@ class User(models.Model):
     address = models.CharField(max_length=255, null=True)
     city = models.ForeignKey('City', on_delete=models.CASCADE, null=True)
     country = models.ForeignKey('Country', on_delete=models.CASCADE, null=True)
+    company = models.ForeignKey('Company', on_delete=models.CASCADE, null=True)
     verified_at = models.DateTimeField(null=True)
     created_at = models.DateTimeField( default=datetime.now)
     updated_at = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+
+    @classmethod
+    def get_by_id(cls, id):
+        return cls.objects.get(id=id)
 
     def save(self, *args, **kwargs):
         try:
@@ -32,9 +37,10 @@ class User(models.Model):
         except Exception as e:
             raise CreateAccountException(str(e))
 
-    def validate_fields(self):
+    def validate_fields(self, role=0):
         """
         Validate the fields of the model
+        :param type: int - 0 for normal user, 1 for business user
         :return: str
         """
         errors = list()
@@ -49,9 +55,19 @@ class User(models.Model):
             errors.append('Password must be at least 8 characters long')
         if self.phone_number and (len(self.phone_number) < 7 or len(self.phone_number) > 15):
             errors.append('Phone number is invalid')
-        if not self.address:
+        if role == 0 and not self.address:
             errors.append('Address is required')
+        if role == 0 and not self.city_id:
+            errors.append('City is required')
+        if role == 0 and not self.country_id:
+            errors.append('Country is required')
 
+        return ','.join(errors)
+
+    def validate_business_fields(self, type=0):
+        errors = list()
+        if type == 0 and not self.company_id:
+            errors.append('Company is required')
         return ','.join(errors)
 
     @staticmethod
@@ -72,6 +88,22 @@ class User(models.Model):
         :return: bool
         """
         return check_password(password, hashed_password)
+
+    def parse_logged_in_user(self):
+        return {
+            'id': self.id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'email': self.email,
+            'phone_number': self.phone_number,
+            'role': self.role,
+            'address': self.address,
+            'city': self.city,
+            'country': self.country,
+            'company': self.company,
+            'avatar': self.avatar,
+            'verified_at': self.verified_at
+        }
 
     class Meta:
         db_table = 'users'
