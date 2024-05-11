@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 
 from src.controllers.CityController import CityController
 from src.controllers.CountryController import CountryController
+from src.controllers.ProtectedViewController import ProtectedViewController
 from src.exceptions.UserExceptions import CreateAccountException, LoginException
 from src.models import User, Company
 
@@ -179,3 +180,19 @@ class UserController:
             raise CreateAccountException('Something went wrong! Please try again')
         except Exception as e:
             raise CreateAccountException(str(e))
+
+    @staticmethod
+    def update_about(request, id: int):
+        user = User.get_by_id(id)
+        if not user:
+            return render(request, 'pages/404.html')
+        if request.method == 'GET':
+            return redirect('/profile')
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+        try:
+            user.about = request.POST.get('about')
+            user.save()
+        except Exception as e:
+            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+        return redirect('/profile')

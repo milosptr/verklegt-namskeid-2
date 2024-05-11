@@ -16,6 +16,7 @@ class User(models.Model):
     password = models.CharField(max_length=255)
     avatar = models.TextField(null=True)
     role = models.IntegerField(default=0)
+    about = models.TextField(null=True)
     address = models.CharField(max_length=255, null=True)
     city = models.ForeignKey('City', on_delete=models.CASCADE, null=True)
     country = models.ForeignKey('Country', on_delete=models.CASCADE, null=True)
@@ -99,6 +100,7 @@ class User(models.Model):
             'email': self.email,
             'phone_number': self.phone_number,
             'role': self.role,
+            'about': self.about,
             'address': self.address,
             'city': City.get_by_id(self.city_id),
             'country': Country.get_by_id(self.country_id),
