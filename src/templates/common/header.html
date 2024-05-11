@@ -20,13 +20,13 @@
                     <a href="/login" class="" ><button class="rounded-full bg-[#6C37BD] px-8 pt-1 pb-1 text-white hover:bg-purple-900" >Log in</button></a>
                     <!-- NOT LOGGED IN -->
                     {% endif %}
-                
+
                     {% if user and user.role == 0 %}
                     <!-- LOGGED IN -->
                     <div class="w-40 items-center">
                         <a href="/profile" class="bg-[#3D1F6A] flex gap-4 p-2 rounded-full border-2 border-[#703AC3]">
                             <button class="rounded-full pl-3 text-xs ">{{ user.first_name }} {{ user.last_name}}</button>
-                            <img src="{% static 'assets/img.png' %}" class="size-10 rounded-full">
+                            <img src="{% if user.avatar %}{{ user.avatar }}{% else %}{% static 'assets/user_avatar.jpg' %}{% endif %}" class="size-10 rounded-full">
                         </a>
                     </div>
                     <!-- LOGGED IN -->
