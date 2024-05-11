@@ -6,11 +6,10 @@ from src.controllers.CityController import CityController
 from src.controllers.CountryController import CountryController
 from src.controllers.ProtectedViewController import ProtectedViewController
 from src.exceptions.UserExceptions import CreateAccountException, LoginException
-from src.models import User, Company
+from src.models import User, Company, UserRecommendation, UserExperience, UserResume
 
 
 class UserController:
-
     @staticmethod
     def logout(request):
         # clear the user's session data
@@ -196,3 +195,77 @@ class UserController:
         except Exception as e:
             return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
         return redirect('/profile')
+
+    @staticmethod
+    def add_recommendation(request, id: int):
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+            recommendation = UserRecommendation(
+                user_id=user.id,
+                company=request.POST.get('company'),
+                name=request.POST.get('name'),
+                email=request.POST.get('email'),
+                phone=request.POST.get('phone'),
+                position=request.POST.get('position')
+            )
+            recommendation.save()
+            return redirect('/profile')
+        except Exception as e:
+            print('Error:', e)
+            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+
+    @staticmethod
+    def add_experience(request, id: int):
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+
+            still_working = request.POST.get('still_working')
+            end_date = request.POST.get('end_date')
+            if still_working:
+                end_date = None
+
+            experience = UserExperience(
+                user_id=user.id,
+                description=request.POST.get('description'),
+                company=request.POST.get('company'),
+                role=request.POST.get('role'),
+                start_date=request.POST.get('start_date'),
+                end_date=end_date
+            )
+            experience.save()
+            return redirect('/profile')
+        except Exception as e:
+            print('Error:', e)
+            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+
+    @staticmethod
+    def add_resume(request, id: int):
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+            resume = UserResume.objects.filter(user_id=user.id).first()
+            if resume:
+                resume.content = request.POST.get('resume')
+                resume.save()
+            else:
+                resume = UserResume(
+                    user_id=user.id,
+                    content=request.POST.get('resume')
+                )
+                resume.save()
+            return redirect('/profile')
+        except Exception as e:
+            print('Error:', e)
+            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})

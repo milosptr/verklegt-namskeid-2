@@ -4,6 +4,9 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.db import models
 
 from src.exceptions.UserExceptions import CreateAccountException
+from src.models.user_resume import UserResume
+from src.models.user_experience import UserExperience
+from src.models.user_recommendation import UserRecommendation
 from src.models.city import City
 from src.models.country import Country
 
@@ -103,6 +106,9 @@ class User(models.Model):
             'about': self.about,
             'address': self.address,
             'city': City.get_by_id(self.city_id),
+            'recommendations': UserRecommendation.objects.filter(user_id=self.id),
+            'experiences': UserExperience.objects.filter(user_id=self.id),
+            'resume': UserResume.objects.filter(user_id=self.id).first(),
             'country': Country.get_by_id(self.country_id),
             'company': self.company,
             'avatar': self.avatar,

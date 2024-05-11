@@ -94,7 +94,7 @@ def account_created(request):
 # Protected views
 ############################################################################################################
 def profile(request):
-    return ProtectedViewController(request).render('pages/profile.html')
+    return ProtectedViewController(request).render('pages/account/profile.html')
 
 
 def employer_dashboard(request):
