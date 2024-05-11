@@ -29,10 +29,6 @@ def log_out(request):
 def create_account(request):
     return render(request, 'pages/create_account.html')
 
-
-def creating_account(request):
-    return render(request, 'pages/creating_account.html')
-
 ############################################################################################################
 # General views
 ############################################################################################################
@@ -74,8 +70,8 @@ def application_guide(request):
 def company_profile(request, company_name):
     company = get_object_or_404(Company, name=company_name)
     return render(request, 'pages/company_profile.html', {'company': company})
-  
-  
+
+
 def company_details(request, company_id):
     company = get_object_or_404(Company, id=company_id)
     return render(request, 'pages/company_details.html', {'company': company})
@@ -129,10 +125,6 @@ def application(request, id: int, step: int):
     except ApplicationException as e:
         print(f'Error: {e}')
         return render(request, 'pages/404.html')
-      
-
-def creating_business_account_info(request):
-    return render(request, 'pages/creating_business_account_info.html')
 
 
 def make_job_offer(request):
