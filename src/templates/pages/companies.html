@@ -23,16 +23,16 @@
         <div class="text-center border-r border-gray-500">Address</div>
         <div class="text-center">Available Jobs</div>
     </div>
-        {% include 'components/companies_card.html' %}
-        {% include 'components/companies_card.html' %}
-        {% include 'components/companies_card.html' %}
-        {% include 'components/companies_card.html' %}
-        {% include 'components/companies_card.html' %}
-        {% include 'components/companies_card.html' %}
-        {% include 'components/companies_card.html' %}
-        {% include 'components/companies_card.html' %}
-        {% include 'components/companies_card.html' %}
-
+    {% for company in companies_list %}
+<a href="{% url 'company_details' company.id %}" class="block text-white grid grid-cols-3 gap-4 items-center bg-[#CDACFF] bg-opacity-30 rounded-lg p-4 hover:bg-opacity-50 duration-300 cursor-pointer my-10">          
+    <div class="flex items-center justify-start space-x-3 text-xl">
+                <img src="https://via.placeholder.com/40" alt="{{ company.name }} Logo" class="rounded-full bg-gray-200">
+                <span>{{ company.name }}</span>
+            </div>
+            <div class="text-center text-xl">{{ company.address }}</div>
+            <div class="text-center text-xl">{{ company.jobs_available }} jobs</div>
+        </a>
+    {% endfor %}
 </div>
 
 
