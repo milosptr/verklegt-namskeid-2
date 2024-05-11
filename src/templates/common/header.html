@@ -7,30 +7,34 @@
                         <img src="{% static 'assets/logo.svg' %}">
                     </a>
                 </div>
-                
+
                 <div class="flex items-center justify-end md:space-x-16">
                     <a href="/companies" class="text-white">Companies</a>
                     <a href="/about-us" class="text-white">About us</a>
                     <a href="/application-guide" class="text-white">Application guide</a>
                     <a href="#" class="text-2xl">🇮🇸</a>
                     <a href="#" class="hidden">🇬🇧</a>
-    
+
                     <!-- NOT LOGGED IN -->
-                    <a href="/log-in" class="" ><button class="rounded-full bg-[#6C37BD] px-8 pt-1 pb-1 text-white hover:bg-purple-900" >Log in</button></a>
+                    {% if not user %}
+                    <a href="/login" class="" ><button class="rounded-full bg-[#6C37BD] px-8 pt-1 pb-1 text-white hover:bg-purple-900" >Log in</button></a>
                     <!-- NOT LOGGED IN -->
-    
+                    {% endif %}
+                
+                    {% if user and user.role == 0 %}
                     <!-- LOGGED IN -->
-                    <div class="w-40 items-center hidden">
+                    <div class="w-40 items-center">
                         <a href="#" class="bg-[#3D1F6A] flex gap-4 p-2 rounded-full border-2 border-[#703AC3]">
-                            <button class="rounded-full pl-3 text-xs ">Tinna María Þorleifsdóttir</button>
+                            <button class="rounded-full pl-3 text-xs ">{{ user.first_name }} {{ user.last_name}}</button>
                             <img src="{% static 'assets/img.png' %}" class="size-10 rounded-full">
                         </a>
                     </div>
                     <!-- LOGGED IN -->
+                    {% endif %}
                 </div>
-                
+                {% if user and user.role == 1 %}
                 <!-- COMPANY LOGGED IN -->
-                <div class="size-35% mr-2 hidden">
+                <div class="size-35% mr-2">
                     <a  href="#" class="bg-[#3E2465] flex gap-4 p-2 rounded-full border border-full border-[#6C37BD]">
                         <button class="rounded-full  px-1 pt-1 pb-1 text-xs ">
                             <p class="font-bold whitespace-nowrap ">Bónus ehf. </p>
@@ -40,7 +44,8 @@
                         <img src="{% static 'assets/img.png' %}" class="size-10 rounded-full" >
                     </a>
                 </div>
-              <!-- COMPANY LOGGED IN -->
+                <!-- COMPANY LOGGED IN -->
+                {% endif %}
         </div>
     </nav>
 </header>

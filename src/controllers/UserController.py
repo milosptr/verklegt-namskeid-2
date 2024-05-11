@@ -1,13 +1,47 @@
+from django.contrib.sessions.models import Session
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
 
 from src.controllers.CityController import CityController
 from src.controllers.CountryController import CountryController
-from src.exceptions.UserExceptions import CreateAccountException
+from src.exceptions.UserExceptions import CreateAccountException, LoginException
 from src.models import User, Company
 
 
 class UserController:
+
+    @staticmethod
+    def logout(request):
+        # clear the user's session data
+        Session.objects.filter(session_key=request.session.session_key).delete()
+        return redirect('/')
+
+    @staticmethod
+    def login(request):
+        """
+        Handles incoming requests to login a user
+        """
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+
+        try:
+            user = User.objects.get(email=request.POST.get('email'))
+            if not user.verify_password(request.POST.get('password'), user.password):
+                raise LoginException('Invalid email or password')
+            request.session['is_authenticated'] = True
+            request.session['user_id'] = user.id
+            request.session.save()
+
+        except User.DoesNotExist:
+            return render(request, 'pages/account/login.html', {'errors': ['Invalid email or password']})
+        except LoginException as e:
+            return render(request, 'pages/account/login.html', {'errors': [str(e)]})
+        except Exception as e:
+            return render(request, 'pages/account/login.html', {'errors': [str(e)]})
+
+        # If everything goes well, redirect to profile page
+        return redirect('/profile')
+
     @staticmethod
     def create_account_view(request):
         """

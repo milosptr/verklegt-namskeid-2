@@ -44,7 +44,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # 'django.contrib.auth',
     # 'django.contrib.contenttypes',
-    # 'django.contrib.sessions',
+    'django.contrib.sessions',
     # 'django.contrib.messages',
     'django.contrib.staticfiles',
     'src'
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     # 'django.middleware.security.SecurityMiddleware',
-    # 'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     # 'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     # 'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -145,3 +145,4 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 TEST_RUNNER = 'jarvis.test_runner.NoDBTestRunner.NoDBTestRunner'
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
