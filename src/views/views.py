@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from src.business.application import ApplicationLogic
 from src.controllers.CountryController import CountryController
 from src.controllers.ProtectedViewController import ProtectedViewController
 from src.exceptions import ApplicationException
 from src.exceptions.ApplicationException import ApplicationSubmitted
+from src.controllers.CompanyController import CompanyController
+from src.models import Company
 
 
 # Views are the functions that handle the requests from the user
@@ -57,31 +59,26 @@ def application_guide(request):
 
 
 def companies(request):
-    return render(request, 'pages/companies.html')
+    companies_list = CompanyController().get_all_companies()
+    return render(request, 'pages/companies.html', {'companies_list': companies_list})
 
 
 def not_found(request):
     return render(request, 'pages/404.html')
 
 
-def about_us(request):
-    return render(request, 'pages/about_us.html')
-
-
 def application_guide(request):
     return render(request, 'pages/application_guide.html')
 
 
-def companies(request):
-    return render(request, 'pages/companies.html')
-
-
-def company_profile(request):
-    return render(request, 'pages/company_profile.html')
-
-
-def company_details(request):
-    return render(request, 'pages/company_details.html')
+def company_profile(request, company_name):
+    company = get_object_or_404(Company, name=company_name)
+    return render(request, 'pages/company_profile.html', {'company': company})
+  
+  
+def company_details(request, company_id):
+    company = get_object_or_404(Company, id=company_id)
+    return render(request, 'pages/company_details.html', {'company': company})
 
 
 def job_offer(request):
@@ -132,3 +129,28 @@ def application(request, id: int, step: int):
     except ApplicationException as e:
         print(f'Error: {e}')
         return render(request, 'pages/404.html')
+      
+
+def creating_business_account_info(request):
+    return render(request, 'pages/creating_business_account_info.html')
+
+
+def make_job_offer(request):
+    return render(request, 'pages/make_job_offer.html')
+
+
+def creating_account(request):
+    return render(request, 'pages/creating_account.html')
+
+
+def job_offer(request):
+    return render(request, 'pages/job_offer.html')
+
+
+def employer_dashboard(request):
+    return render(request, 'pages/employer-dashboard.html')
+
+
+def account_created(request):
+    return render(request, 'pages/success/account_created.html')
+

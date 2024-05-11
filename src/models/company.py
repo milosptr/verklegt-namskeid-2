@@ -19,6 +19,10 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
+
+    def get_all_companies(self):
+        return Company.objects.all()
+      
     @classmethod
     def get_all(cls):
         return cls.objects.all()
