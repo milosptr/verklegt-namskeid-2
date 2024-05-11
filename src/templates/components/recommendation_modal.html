@@ -1,0 +1,32 @@
+{% extends 'common/modal.html' %}
+
+{% block id %}recommendation-modal{% endblock %}
+{% block title %}Add your recommendation{% endblock %}
+
+{% block content %}
+    <form method="post" action="/api/v1/user/{{ user.id }}/recommendation">
+        {% csrf_token %}
+        <div class="grid grid-cols-1 gap-4 mt-5">
+            <div>
+                <input type="text" required name="name" id="recommendation_name" class="w-full rounded-full py-2 px-6 bg-[#6C37BD] bg-opacity-30" placeholder="Contact person name">
+            </div>
+            <div>
+                <input type="email" required name="email" id="recommendation_email" class="w-full rounded-full py-2 px-6 bg-[#6C37BD] bg-opacity-30" placeholder="Contact person email">
+            </div>
+            <div>
+                <input type="text" required name="phone" id="recommendation_phone" class="w-full rounded-full py-2 px-6 bg-[#6C37BD] bg-opacity-30" placeholder="Contact person phone">
+            </div>
+            <div>
+                <input type="text" required name="company" id="recommendation_company" class="w-full rounded-full py-2 px-6 bg-[#6C37BD] bg-opacity-30" placeholder="Company">
+            </div>
+            <div>
+                <input type="text" required name="position" id="recommendation_role" class="w-full rounded-full py-2 px-6 bg-[#6C37BD] bg-opacity-30" placeholder="Job role">
+            </div>
+
+            <div class="mt-4 flex justify-between gap-5">
+                <button type="button" id="close-recommendation-modal" class="w-full border border-white hover:bg-white hover:text-gray-800 rounded-full py-2 px-6 text-white duration-300">Close</button>
+                <button type="submit" class="w-full bg-[#6C37BD] hover:bg-opacity-90 rounded-full py-2 px-6 text-white duration-300">Save</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

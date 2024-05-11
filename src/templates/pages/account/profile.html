@@ -4,6 +4,9 @@
 
 {% block content %}
     <section class="relative">
+        {% if errors %}
+            {% include 'components/error_card.html' with title="Some fields are invalid or missing" errors=errors classes="w-full mb-5 p-5" %}
+        {% endif %}
         <div class="relative w-full h-64 bg-white rounded-lg primary-gradient">
             <div class="absolute bottom-3 right-5 duration-300 border border-solid border-white rounded-lg py-1 px-4 text-sm cursor-pointer hover:bg-white hover:text-gray-800">
                 Upload cover photo
@@ -20,9 +23,9 @@
                 </div>
                 {% load static %}
                 {% if user and user.avatar %}
-                <img src="{{user.avatar}}" width="100%" height="100%" />
+                    <img src="{{user.avatar}}" width="100%" height="100%" />
                 {% else %}
-                <img src="{% static 'assets/user_avatar.jpg' %}" width="100%" height="100%" />
+                    <img src="{% static 'assets/user_avatar.jpg' %}" width="100%" height="100%" />
                 {% endif %}
             </div>
         </div>
@@ -75,25 +78,71 @@
         </div>
         <div class="px-8 mt-10">
             <h2 class="my-3 text-xl">
-                Your CV
+                Your resume
             </h2>
-            <a href="#"
+            {% if user.resume %}
+                <div class="bg-[#6C37BD] mt-4 p-4 rounded-lg">
+                    {{ user.resume.content }}
+                </div>
+            {% endif %}
+            {% include 'components/cv_modal.html' %}
+            <div
+                id="add-cv"
                class="w-64 inline-block text-center border-2 border-[#6C37BD] rounded-full p-1 px-3 text-[#B188EF] text-sm hover:bg-purple-900 mt-3
                     cursor-pointer mt-2"
             >
-                Add CV
-            </a>
+                {% if user.resume %}
+                    Update resume
+                {% else %}
+                    Add resume
+                {% endif %}
+            </div>
         </div>
         <div class="px-8 mt-10">
             <h2 class="my-3 text-xl">
                 Your experience
             </h2>
-            <a href="#"
-               class="w-64 inline-block text-center border-2 border-[#6C37BD] rounded-full p-1 px-3 text-[#B188EF] text-sm hover:bg-purple-900 mt-3
+            <div class="grid grid-cols-3 gap-5">
+                {% if user and user.experiences %}
+                    {% for experience in user.experiences %}
+                        <div class="bg-[#6C37BD] mt-4 p-4 rounded-lg">
+                            <div class="grid grid-cols-2 mb-1">
+                                <div class="font-medium">Company:</div>
+                                <div class="text-right">{{ experience.company }}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="font-medium">Start date:</div>
+                                <div class="text-right">{{ experience.start_date }}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="font-medium">End date:</div>
+                                {% if experience.end_date %}
+                                    <div class="text-right">{{ experience.end_date }}</div>
+                                {% else %}
+                                    <div class="text-right">Still working here</div>
+                                {% endif %}
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="font-medium">Role:</div>
+                                <div class="text-right">{{ experience.role }}</div>
+                            </div>
+                            <div class="grid grid-cols-1 mb-1">
+                                <div class="font-medium">Job description:</div>
+                                <div class="text-left">{{ experience.description }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                {% endif %}
+            </div>
+            {% include 'components/experience_modal.html' %}
+            <div
+                id="add-experience"
+                class="w-64 inline-block text-center border-2 border-[#6C37BD] rounded-full p-1 px-3 text-[#B188EF] text-sm hover:bg-purple-900 mt-3
                     cursor-pointer mt-2"
             >
                 Add experience
-            </a>
+            </div>
         </div>
         <div class="px-8 mt-10">
             <h2 class="my-3 text-xl">
@@ -110,12 +159,38 @@
             <h2 class="my-3 text-xl">
                 Your recommendations
             </h2>
-            <a href="#"
+            <div class="grid grid-cols-3 gap-5">
+                {% if user and user.recommendations %}
+                    {% for recommendation in user.recommendations %}
+                        <div class="bg-[#6C37BD] mt-4 p-4 rounded-lg">
+                            <div class="grid grid-cols-2 mb-1">
+                                <div class="font-medium">Contact name:</div>
+                                <div class="text-right">{{ recommendation.name }}</div>
+                            </div>
+                            <div class="grid grid-cols-2 mb-1">
+                                <div class="font-medium">Contact email:</div>
+                                <div class="text-right">{{ recommendation.email }}</div>
+                            </div>
+                            <div class="grid grid-cols-2 mb-1">
+                                <div class="font-medium">Contact phone:</div>
+                                <div class="text-right">{{ recommendation.phone }}</div>
+                            </div>
+                            <div class="grid grid-cols-2">
+                                <div class="font-medium">Position:</div>
+                                <div class="text-right">{{ recommendation.position }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                {% endif %}
+            </div>
+            {% include 'components/recommendation_modal.html' %}
+            <div id="add-recommendation"
                class="w-64 inline-block text-center border-2 border-[#6C37BD] rounded-full p-1 px-3 text-[#B188EF] text-sm hover:bg-purple-900 mt-3
                     cursor-pointer mt-2"
             >
                 Add recommendation
-            </a>
+            </div>
         </div>
     </section>
 
