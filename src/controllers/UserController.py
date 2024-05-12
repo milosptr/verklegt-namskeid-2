@@ -1,3 +1,5 @@
+import base64
+
 from django.contrib.sessions.models import Session
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
@@ -306,6 +308,61 @@ class UserController:
             user_skill = UserSkill.objects.filter(user_id=user.id, skill_id=skill).first()
             if user_skill:
                 user_skill.delete()
+            return redirect('/profile')
+        except Exception as e:
+            print('Error:', e)
+            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+
+    @staticmethod
+    def upload_avatar(request, id: int):
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+            avatar = request.FILES['avatar']
+            if not avatar:
+                return ProtectedViewController(request).render('pages/account/profile.html', {'errors': ['Avatar image is required']})
+
+            # Read the binary data from the image
+            image_data = avatar.read()
+
+            # Encode the binary data to base64
+            encoded_image = base64.b64encode(image_data)
+
+            # Store the base64-encoded data as a string in the database
+            user.avatar = 'data:image/png;base64,' + encoded_image.decode('utf-8')
+            user.save()
+            return redirect('/profile')
+        except Exception as e:
+            print('Error:', e)
+            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+
+    @staticmethod
+    def remove_experience(request, id: int, experience: int):
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+            user_experience = UserExperience.objects.filter(user_id=user.id, id=experience).first()
+            if user_experience:
+                user_experience.delete()
+            return redirect('/profile')
+        except Exception as e:
+            print('Error:', e)
+            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+
+    @staticmethod
+    def remove_recommendation(request, id: int, recommendation: int):
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+            user_recommendation = UserRecommendation.objects.filter(user_id=user.id, id=recommendation).first()
+            if user_recommendation:
+                user_recommendation.delete()
             return redirect('/profile')
         except Exception as e:
             print('Error:', e)
