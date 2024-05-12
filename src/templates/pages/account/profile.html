@@ -4,6 +4,9 @@
 
 {% block content %}
     <section class="relative">
+        {% if messages %}
+            {% include 'components/error_card.html' with title="Some fields are invalid or missing" errors=messages classes="w-full mb-5 p-5" %}
+        {% endif %}
         {% if errors %}
             {% include 'components/error_card.html' with title="Some fields are invalid or missing" errors=errors classes="w-full mb-5 p-5" %}
         {% endif %}
@@ -30,6 +33,7 @@
             </div>
         </div>
         <div class="px-8 mt-4 flex justify-between items-start gap-8">
+            {% include 'components/edit_profile_modal.html' %}
             <div>
                 <h2 class="text-2xl">{{ user.first_name }} {{ user.last_name }}</h2>
                 <div>{{ user.email }}</div>
@@ -47,12 +51,12 @@
                 </div>
             </div>
             <div class="flex items-center gap-5">
-                <a href="#"
+                <div id="update-profile-info"
                    class="block text-center border-2 border-[#6C37BD] rounded-full p-1 px-3 text-[#B188EF] text-sm hover:bg-purple-900 mt-3
                     cursor-pointer mt-2"
                 >
                     Edit information
-                </a>
+                </div>
                 <a href="/logout"
                    class="block text-center border-2 border-[#6C37BD] rounded-full p-1 px-3 text-[#B188EF] text-sm hover:bg-purple-900 mt-3
                     cursor-pointer mt-2"
@@ -61,7 +65,7 @@
                 </a>
             </div>
         </div>
-        <div class="px-8 mt-10">
+        <div class="px-8 mt-8 pt-8 border-t border-gray-500 border-opacity-30">
             <h2 class="my-3 text-xl">
                 About you
             </h2>

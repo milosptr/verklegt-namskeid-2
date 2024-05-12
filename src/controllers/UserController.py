@@ -1,5 +1,6 @@
 import base64
 
+from django.contrib import messages
 from django.contrib.sessions.models import Session
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
@@ -183,6 +184,27 @@ class UserController:
             raise CreateAccountException(str(e))
 
     @staticmethod
+    def update_info(request, id: int):
+        user = User.get_by_id(id)
+        if not user:
+            return render(request, 'pages/404.html')
+        if request.method == 'GET':
+            return redirect('/profile')
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+        try:
+            user.first_name = request.POST.get('first_name')
+            user.last_name = request.POST.get('last_name')
+            user.address = request.POST.get('address')
+            user.city_id = request.POST.get('city_id')
+            user.country_id = request.POST.get('country_id')
+            user.save()
+        except Exception as e:
+            messages.error(request, str(e))
+            return redirect('profile')
+        return redirect('/profile')
+
+    @staticmethod
     def update_about(request, id: int):
         user = User.get_by_id(id)
         if not user:
@@ -195,7 +217,8 @@ class UserController:
             user.about = request.POST.get('about')
             user.save()
         except Exception as e:
-            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+            messages.error(request, str(e))
+            return redirect('profile')
         return redirect('/profile')
 
     @staticmethod
@@ -218,8 +241,8 @@ class UserController:
             recommendation.save()
             return redirect('/profile')
         except Exception as e:
-            print('Error:', e)
-            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+            messages.error(request, str(e))
+            return redirect('profile')
 
     @staticmethod
     def add_experience(request, id: int):
@@ -246,8 +269,8 @@ class UserController:
             experience.save()
             return redirect('/profile')
         except Exception as e:
-            print('Error:', e)
-            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+            messages.error(request, str(e))
+            return redirect('profile')
 
     @staticmethod
     def add_resume(request, id: int):
@@ -269,8 +292,8 @@ class UserController:
                 resume.save()
             return redirect('/profile')
         except Exception as e:
-            print('Error:', e)
-            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+            messages.error(request, str(e))
+            return redirect('profile')
 
     @staticmethod
     def add_skill(request, id: int):
@@ -296,8 +319,8 @@ class UserController:
                     user_skill.save()
             return redirect('/profile')
         except Exception as e:
-            print('Error:', e)
-            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+            messages.error(request, str(e))
+            return redirect('profile')
 
     @staticmethod
     def remove_skill(request, id: int, skill: int):
@@ -310,8 +333,8 @@ class UserController:
                 user_skill.delete()
             return redirect('/profile')
         except Exception as e:
-            print('Error:', e)
-            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+            messages.error(request, str(e))
+            return redirect('profile')
 
     @staticmethod
     def upload_avatar(request, id: int):
@@ -337,8 +360,8 @@ class UserController:
             user.save()
             return redirect('/profile')
         except Exception as e:
-            print('Error:', e)
-            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+            messages.error(request, str(e))
+            return redirect('profile')
 
     @staticmethod
     def remove_experience(request, id: int, experience: int):
@@ -351,8 +374,8 @@ class UserController:
                 user_experience.delete()
             return redirect('/profile')
         except Exception as e:
-            print('Error:', e)
-            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+            messages.error(request, str(e))
+            return redirect('profile')
 
     @staticmethod
     def remove_recommendation(request, id: int, recommendation: int):
@@ -365,5 +388,5 @@ class UserController:
                 user_recommendation.delete()
             return redirect('/profile')
         except Exception as e:
-            print('Error:', e)
-            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+            messages.error(request, str(e))
+            return redirect('profile')

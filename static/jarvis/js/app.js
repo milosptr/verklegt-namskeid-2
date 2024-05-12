@@ -1,6 +1,18 @@
 const main = () => {
 
     // Profile page
+    // Profile info
+    const updateProfileButton = document.getElementById('update-profile-info')
+    const updateProfileModal = document.getElementById('user-profile-modal')
+    const closeUpdateProfileModal = document.getElementById('close-user-profile-modal')
+    if(updateProfileButton) {
+        updateProfileButton.addEventListener('click', () => {
+            updateProfileModal.classList.remove('hidden')
+        })
+        closeUpdateProfileModal.addEventListener('click', () => {
+            updateProfileModal.classList.add('hidden')
+        })
+    }
     // Skills
     const addSkillsButton = document.getElementById('add-skill')
     const skillsModal = document.getElementById('skill-modal')

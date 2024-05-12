@@ -16,6 +16,7 @@ urlpatterns = [
     path(f'{prefix}/user/<int:id>/resume', UserController.add_resume, name='add_cv'),
     path(f'{prefix}/user/<int:id>/skills', UserController.add_skill, name='add_skill'),
     path(f'{prefix}/user/<int:id>/avatar', UserController.upload_avatar, name='upload_avatar'),
+    path(f'{prefix}/user/<int:id>/update-info', UserController.update_info, name='update_info'),
     path(f'{prefix}/user/<int:id>/remove-skill/<int:skill>', UserController.remove_skill, name='remove_skill'),
     path(f'{prefix}/user/<int:id>/remove-experience/<int:experience>', UserController.remove_experience, name='remove_experience'),
     path(f'{prefix}/user/<int:id>/remove-recommendation/<int:recommendation>', UserController.remove_recommendation, name='remove_recommendation'),
