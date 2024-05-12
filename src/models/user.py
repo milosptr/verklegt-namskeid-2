@@ -4,6 +4,7 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.db import models
 
 from src.exceptions.UserExceptions import CreateAccountException
+from src.models.application import Application
 from src.models.user_skill import UserSkill
 from src.models.skill import Skill
 from src.models.user_resume import UserResume
@@ -119,6 +120,7 @@ class User(models.Model):
             'resume': UserResume.objects.filter(user_id=self.id).first(),
             'skills': skills,
             'country': Country.get_by_id(self.country_id),
+            'applications': Application.objects.filter(user_id=self.id),
             'company': self.company,
             'avatar': self.avatar,
             'verified_at': self.verified_at

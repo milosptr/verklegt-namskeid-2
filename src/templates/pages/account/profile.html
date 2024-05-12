@@ -230,25 +230,32 @@
 
     <section class="mt-10 px-8">
         <h2 class="text-xl mt-20">
-            Already applied jobs
+            Submitted applications
         </h2>
-
-        <div class="bg-[#6C37BD] mt-4 p-4 rounded-lg hover:bg-[#380E77]">
-            <div class="flex justify-between items-center">
-                <span class="font-medium">Manager</span>
-                <span class="font-medium">Sidekick Health ehf</span>
-                <span>111 Reykjavik</span>
-                <span class="bg-purple-800 text-purple-300 px-3 py-1 rounded">Full time</span>
-            </div>
+        <div class="grid grid-cols-5 gap-4 mt-5 pb-1.5 border-b border-gray-100 border-opacity-20 text-gray-300">
+            <div class="col-span-2 pl-4">Position and company</div>
+            <div>Submission date</div>
+            <div>Company address</div>
+            <div class="text-center">Job types</div>
         </div>
+        <div class="grid grid-cols-1 gap-4 mt-4">
+            {% if user and user.applications %}
+                {% for application in user.applications %}
+                    <div class="bg-[#6C37BD] p-4 rounded-lg hover:bg-[#380E77] text-sm">
+                        <div class="grid grid-cols-5 items-center">
+                            <div class="font-medium col-span-2">{{ application.job.title }} at {{ application.job.company.name }}</div>
+                            <div class="font-medium">{{ application.submission_date }}</div>
+                            <div>{{ application.job.company.full_address }}</div>
+                            <div class="flex justify-end gap-2">
+                                {% for type in application.job.get_job_types %}
+                                    <span class="bg-purple-800 text-purple-300 px-3 py-1 rounded">{{ type.name }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="bg-[#6C37BD] mt-4 p-4 rounded-lg hover:bg-[#380E77]">
-            <div class="flex justify-between items-center">
-                <span class="font-medium">Manager</span>
-                <span class="font-medium">Sidekick Health ehf</span>
-                <span>111 Reykjavik</span>
-                <span class="bg-purple-800 text-purple-300 px-3 py-1 rounded">Full time</span>
-            </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </section>
 
