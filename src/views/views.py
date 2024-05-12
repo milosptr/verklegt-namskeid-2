@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from src.business.application import ApplicationLogic
+from src.controllers.CityController import CityController
 from src.controllers.CountryController import CountryController
 from src.controllers.GeneralViewController import GeneralViewController
 from src.controllers.ProtectedViewController import ProtectedViewController
@@ -94,7 +95,9 @@ def account_created(request):
 # Protected views
 ############################################################################################################
 def profile(request):
-    return ProtectedViewController(request).render('pages/account/profile.html')
+    countries = CountryController().get_countries()
+    cities = CityController().get_all()
+    return ProtectedViewController(request).render('pages/account/profile.html', {'countries': countries, 'cities': cities})
 
 
 def employer_dashboard(request):
