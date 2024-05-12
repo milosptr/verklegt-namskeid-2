@@ -1,6 +1,18 @@
 const main = () => {
 
     // Profile page
+    // Skills
+    const addSkillsButton = document.getElementById('add-skill')
+    const skillsModal = document.getElementById('skill-modal')
+    const skillsModalClose = document.getElementById('close-skill-modal')
+    if(addSkillsButton) {
+        addSkillsButton.addEventListener('click', () => {
+            skillsModal.classList.remove('hidden')
+        })
+        skillsModalClose.addEventListener('click', () => {
+            skillsModal.classList.add('hidden')
+        })
+    }
     // Experience
     const addExperienceButton = document.getElementById('add-experience')
     const experienceModal = document.getElementById('experience-modal')

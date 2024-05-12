@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from src.models import User
+from src.models import User, Skill, UserSkill
 
 
 class ProtectedViewController:
@@ -8,6 +8,7 @@ class ProtectedViewController:
         self.request = request
         self.is_authenticated = request.session.get('is_authenticated')
         self.user_id = request.session.get('user_id')
+        self.skills = Skill.objects.all()
 
     def render(self, template, context=None):
         if context is None:
@@ -18,4 +19,9 @@ class ProtectedViewController:
         if user is None:
             return redirect('/login')
         context['user'] = user.parse_logged_in_user()
+
+        # Get the skills that the user does not have
+        user_skills = UserSkill.objects.filter(user_id=self.user_id)
+        context['skills'] = filter(lambda x: x.id not in [s.skill_id for s in user_skills], self.skills)
+
         return render(self.request, template, context)

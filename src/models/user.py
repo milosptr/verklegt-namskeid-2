@@ -4,6 +4,8 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.db import models
 
 from src.exceptions.UserExceptions import CreateAccountException
+from src.models.user_skill import UserSkill
+from src.models.skill import Skill
 from src.models.user_resume import UserResume
 from src.models.user_experience import UserExperience
 from src.models.user_recommendation import UserRecommendation
@@ -96,6 +98,12 @@ class User(models.Model):
         return check_password(password, hashed_password)
 
     def parse_logged_in_user(self):
+        user_skills = UserSkill.objects.filter(user_id=self.id)
+        skills = list()
+        for s in user_skills:
+            skill = Skill.objects.get(id=s.skill_id)
+            skills.append({"id": skill.id, "name": skill.name})
+
         return {
             'id': self.id,
             'first_name': self.first_name,
@@ -109,6 +117,7 @@ class User(models.Model):
             'recommendations': UserRecommendation.objects.filter(user_id=self.id),
             'experiences': UserExperience.objects.filter(user_id=self.id),
             'resume': UserResume.objects.filter(user_id=self.id).first(),
+            'skills': skills,
             'country': Country.get_by_id(self.country_id),
             'company': self.company,
             'avatar': self.avatar,
