@@ -1,0 +1,1163 @@
+[
+{
+  "model": "src.skill",
+  "pk": 1,
+  "fields": {
+    "name": "HTML",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 2,
+  "fields": {
+    "name": "CSS",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 3,
+  "fields": {
+    "name": "JavaScript",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 4,
+  "fields": {
+    "name": "React",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 5,
+  "fields": {
+    "name": "Angular",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 6,
+  "fields": {
+    "name": "Vue.js",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 7,
+  "fields": {
+    "name": "Node.js",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 8,
+  "fields": {
+    "name": "Python",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 9,
+  "fields": {
+    "name": "Java",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 10,
+  "fields": {
+    "name": "C#",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 11,
+  "fields": {
+    "name": "C++",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 12,
+  "fields": {
+    "name": "PHP",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 13,
+  "fields": {
+    "name": "Ruby",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 14,
+  "fields": {
+    "name": "Swift",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 15,
+  "fields": {
+    "name": "Kotlin",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 16,
+  "fields": {
+    "name": "SQL",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 17,
+  "fields": {
+    "name": "MongoDB",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 18,
+  "fields": {
+    "name": "MySQL",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 19,
+  "fields": {
+    "name": "PostgreSQL",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 20,
+  "fields": {
+    "name": "Firebase",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 21,
+  "fields": {
+    "name": "AWS",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 22,
+  "fields": {
+    "name": "Azure",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 23,
+  "fields": {
+    "name": "Google Cloud Platform",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 24,
+  "fields": {
+    "name": "Docker",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 25,
+  "fields": {
+    "name": "Kubernetes",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 26,
+  "fields": {
+    "name": "Git",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 27,
+  "fields": {
+    "name": "GitHub",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 28,
+  "fields": {
+    "name": "Bitbucket",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 29,
+  "fields": {
+    "name": "Jenkins",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 30,
+  "fields": {
+    "name": "Travis CI",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 31,
+  "fields": {
+    "name": "CircleCI",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 32,
+  "fields": {
+    "name": "Heroku",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 33,
+  "fields": {
+    "name": "RESTful APIs",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 34,
+  "fields": {
+    "name": "GraphQL",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 35,
+  "fields": {
+    "name": "Microservices",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 36,
+  "fields": {
+    "name": "Agile Methodologies",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 37,
+  "fields": {
+    "name": "Scrum",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 38,
+  "fields": {
+    "name": "Kanban",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 39,
+  "fields": {
+    "name": "JIRA",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 40,
+  "fields": {
+    "name": "Confluence",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 41,
+  "fields": {
+    "name": "Trello",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 42,
+  "fields": {
+    "name": "Asana",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 43,
+  "fields": {
+    "name": "Microsoft Office",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 44,
+  "fields": {
+    "name": "Google Workspace",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 45,
+  "fields": {
+    "name": "Adobe Creative Suite",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 46,
+  "fields": {
+    "name": "Photoshop",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 47,
+  "fields": {
+    "name": "Illustrator",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 48,
+  "fields": {
+    "name": "InDesign",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 49,
+  "fields": {
+    "name": "Premiere Pro",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 50,
+  "fields": {
+    "name": "After Effects",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 51,
+  "fields": {
+    "name": "Sketch",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 52,
+  "fields": {
+    "name": "Figma",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 53,
+  "fields": {
+    "name": "InVision",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 54,
+  "fields": {
+    "name": "Zeplin",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 55,
+  "fields": {
+    "name": "UI/UX Design",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 56,
+  "fields": {
+    "name": "Responsive Web Design",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 57,
+  "fields": {
+    "name": "Wireframing",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 58,
+  "fields": {
+    "name": "Prototyping",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 59,
+  "fields": {
+    "name": "User Research",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 60,
+  "fields": {
+    "name": "User Testing",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 61,
+  "fields": {
+    "name": "SEO",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 62,
+  "fields": {
+    "name": "SEM",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 63,
+  "fields": {
+    "name": "Google Analytics",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 64,
+  "fields": {
+    "name": "Google Ads",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 65,
+  "fields": {
+    "name": "Facebook Ads",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 66,
+  "fields": {
+    "name": "LinkedIn Ads",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 67,
+  "fields": {
+    "name": "Content Marketing",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 68,
+  "fields": {
+    "name": "Email Marketing",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 69,
+  "fields": {
+    "name": "Social Media Marketing",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 70,
+  "fields": {
+    "name": "Copywriting",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 71,
+  "fields": {
+    "name": "Blogging",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 72,
+  "fields": {
+    "name": "Video Production",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 73,
+  "fields": {
+    "name": "Photography",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 74,
+  "fields": {
+    "name": "Product Management",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 75,
+  "fields": {
+    "name": "Project Management",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 76,
+  "fields": {
+    "name": "Business Analysis",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 77,
+  "fields": {
+    "name": "Data Analysis",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 78,
+  "fields": {
+    "name": "Data Visualization",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 79,
+  "fields": {
+    "name": "Machine Learning",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 80,
+  "fields": {
+    "name": "Deep Learning",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 81,
+  "fields": {
+    "name": "Artificial Intelligence",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 82,
+  "fields": {
+    "name": "Natural Language Processing",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 83,
+  "fields": {
+    "name": "Big Data",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 84,
+  "fields": {
+    "name": "Data Engineering",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 85,
+  "fields": {
+    "name": "Blockchain",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 86,
+  "fields": {
+    "name": "Cryptocurrency",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 87,
+  "fields": {
+    "name": "Smart Contracts",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 88,
+  "fields": {
+    "name": "Web Development",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 89,
+  "fields": {
+    "name": "Mobile App Development",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 90,
+  "fields": {
+    "name": "Game Development",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 91,
+  "fields": {
+    "name": "AR/VR Development",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 92,
+  "fields": {
+    "name": "IoT Development",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 93,
+  "fields": {
+    "name": "Quality Assurance",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 94,
+  "fields": {
+    "name": "Software Testing",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 95,
+  "fields": {
+    "name": "Test Automation",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 96,
+  "fields": {
+    "name": "DevOps",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 97,
+  "fields": {
+    "name": "Site Reliability Engineering",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 98,
+  "fields": {
+    "name": "Cybersecurity",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 99,
+  "fields": {
+    "name": "Information Security",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 100,
+  "fields": {
+    "name": "Network Security",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 101,
+  "fields": {
+    "name": "Penetration Testing",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 102,
+  "fields": {
+    "name": "Ethical Hacking",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 103,
+  "fields": {
+    "name": "IT Support",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 104,
+  "fields": {
+    "name": "Technical Writing",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 105,
+  "fields": {
+    "name": "Technical Support",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 106,
+  "fields": {
+    "name": "Customer Support",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 107,
+  "fields": {
+    "name": "Customer Success",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 108,
+  "fields": {
+    "name": "Sales",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 109,
+  "fields": {
+    "name": "Account Management",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 110,
+  "fields": {
+    "name": "Human Resources",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 111,
+  "fields": {
+    "name": "Recruiting",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 112,
+  "fields": {
+    "name": "Talent Acquisition",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 113,
+  "fields": {
+    "name": "Employee Training",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 114,
+  "fields": {
+    "name": "Leadership Development",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 115,
+  "fields": {
+    "name": "Change Management",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 116,
+  "fields": {
+    "name": "Conflict Resolution",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 117,
+  "fields": {
+    "name": "Emotional Intelligence",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 118,
+  "fields": {
+    "name": "Time Management",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 119,
+  "fields": {
+    "name": "Stress Management",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 120,
+  "fields": {
+    "name": "Communication Skills",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 121,
+  "fields": {
+    "name": "Presentation Skills",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 122,
+  "fields": {
+    "name": "Negotiation Skills",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 123,
+  "fields": {
+    "name": "Problem-Solving Skills",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 124,
+  "fields": {
+    "name": "Decision-Making Skills",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 125,
+  "fields": {
+    "name": "Critical Thinking",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 126,
+  "fields": {
+    "name": "Creativity",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 127,
+  "fields": {
+    "name": "Adaptability",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 128,
+  "fields": {
+    "name": "Teamwork",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+},
+{
+  "model": "src.skill",
+  "pk": 129,
+  "fields": {
+    "name": "Collaboration",
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+  }
+}
+]

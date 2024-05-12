@@ -12,4 +12,6 @@ urlpatterns = [
     path(f'{prefix}/user/<int:id>/recommendation', UserController.add_recommendation, name='add_recommendation'),
     path(f'{prefix}/user/<int:id>/experience', UserController.add_experience, name='add_experience'),
     path(f'{prefix}/user/<int:id>/resume', UserController.add_resume, name='add_cv'),
+    path(f'{prefix}/user/<int:id>/skills', UserController.add_skill, name='add_skill'),
+    path(f'{prefix}/user/<int:id>/remove-skill/<int:skill>', UserController.remove_skill, name='remove_skill'),
 ]

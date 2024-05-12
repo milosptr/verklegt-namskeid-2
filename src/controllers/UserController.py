@@ -6,7 +6,7 @@ from src.controllers.CityController import CityController
 from src.controllers.CountryController import CountryController
 from src.controllers.ProtectedViewController import ProtectedViewController
 from src.exceptions.UserExceptions import CreateAccountException, LoginException
-from src.models import User, Company, UserRecommendation, UserExperience, UserResume
+from src.models import User, Company, UserRecommendation, UserExperience, UserResume, Skill, UserSkill
 
 
 class UserController:
@@ -265,6 +265,47 @@ class UserController:
                     content=request.POST.get('resume')
                 )
                 resume.save()
+            return redirect('/profile')
+        except Exception as e:
+            print('Error:', e)
+            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+
+    @staticmethod
+    def add_skill(request, id: int):
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+            data = dict(request.POST.items())
+            for key in data.keys():
+                if key.startswith('skill_'):
+                    skill_id = key.replace('skill_', '')
+                    skill = Skill.objects.get(id=skill_id)
+                    if not skill:
+                        continue
+
+                    user_skill = UserSkill(
+                        user_id=user.id,
+                        skill=skill,
+                        level=5  # for now hardcode the level to 5
+                    )
+                    user_skill.save()
+            return redirect('/profile')
+        except Exception as e:
+            print('Error:', e)
+            return ProtectedViewController(request).render('pages/account/profile.html', {'errors': [str(e)]})
+
+    @staticmethod
+    def remove_skill(request, id: int, skill: int):
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+            user_skill = UserSkill.objects.filter(user_id=user.id, skill_id=skill).first()
+            if user_skill:
+                user_skill.delete()
             return redirect('/profile')
         except Exception as e:
             print('Error:', e)
