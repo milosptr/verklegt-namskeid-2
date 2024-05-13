@@ -162,5 +162,8 @@ def view_candidate(request):
     return render(request, 'pages/view_candidate.html')
 
 
+def report_bug(request):
+    return render(request, 'pages/report_bug.html')
+  
 def edit_job_offer(request):
     return render(request, 'pages/edit_job_offer.html')
