@@ -6,50 +6,56 @@
 {% block content %}
 <h1 class="text-xl">Employer Dashboard</h1>
 <div class="gap-14 flex mt-5">
-    <div class="w-1/6 px-5 py-4 bg-[#5C477F] rounded-lg">
+    <div class="w-1/6 px-5 py-4 bg-[#CDACFF] bg-opacity-30 rounded-lg">
         <p class="font-bold">Jobs</p>
         <p class="text-xs mt-2">2 active job offers</p>
         <p class="text-xs">1 finished job offer</p>
     </div>
-    <div class=" w-1/6 px-5 py-4 gap-5 bg-[#5C477F] rounded-lg">
+    <div class=" w-1/6 px-5 py-4 gap-5 bg-[#CDACFF] bg-opacity-30 rounded-lg">
         <p class=" font-bold">Candidates</p>
         <p class="text-xs mt-2">3 new applications</p>
         <p class="text-xs">21 reviewed applications</p>
     </div>
-    <div class=" w-1/6 px-5 py-4 bg-[#5C477F] rounded-lg">
+    <div class=" w-1/6 px-5 py-4 bg-[#CDACFF] bg-opacity-30 rounded-lg">
         <p class="font-bold">Employer Profile</p>
         <div class="mt-6">
-        <button type="button" class="block text-white bg-[#4E288F] rounded-full pl-5 pt-2 pr-5 mt-2 pb-2 hover:bg-purple-500 text-xs">Edit Profile →</button>
-            </div>
+        <a href="/company-profile">
+            <button type="button" class="block text-white bg-[#4E288F] rounded-full pl-5 pt-2 pr-5 mt-2 pb-2 hover:bg-purple-500 text-xs">Edit Profile →</button>
+        </a>  
+        </div>
     </div>
 
+{#Jobs#}
 </div>
 <h1 class="mt-10 text-xl mb-4">Jobs</h1>
-<div class="px-5 w-3/5 bg-[#5C477F] rounded-lg">
+<div class="px-5 w-4/5 bg-[#CDACFF] bg-opacity-30 rounded-lg">
 <p class="pt-5 text-lg font-bold">List of jobs you offer</p>
 
 <div class="relative overflow-x-auto">
     <table class="mb-5 w-full text-sm text-left">
         <thead class="text-xs">
             <tr class="border-b">
-                <th scope="col" class="px-6 py-3 ">
+                <th scope="col" class="px-6 py-3 text-gray-300">
                     Job
                 </th>
-                <th scope="col" class="px-6 py-3 ">
+                <th scope="col" class="px-6 py-3 text-gray-300">
                     Due date
                 </th>
-                <th scope="col" class="px-6 py-3 ">
+                <th scope="col" class="px-6 py-3 text-gray-300">
                     Created date
                 </th>
-                <th scope="col" class="px-6 py-3 text-center">
+                <th scope="col" class="px-6 py-3 text-gray-300">
                     Status
+                </th>
+                <th scope="col" class="px-6 py-3 text-gray-300">
+                    Edit job offer
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr class="border-b text-xs">
                 <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ">
-                    Microsoft
+                    Backend developer
                 </th>
                 <td class="px-6 py-4">
                     2021-05-22 22:01:59
@@ -58,14 +64,19 @@
                     2021-05-22 22:01:59
                 </td>
                 <td class="px-6 py-4">
-                    <div class="border border-[#09FBC2] bg-[#3F768E] hover:bg-[#09FBC2] rounded-full text-center px-2 py-1">
-                    <button type="button" class="text-[#09FBC2] hover:text-[#3F768E]">Active</button>
+                    <div class="border border-[#09FBC2] bg-[#3F768E] rounded-full text-center px-2 py-1">
+                        <button type="button" class="text-[#09FBC2]">Active</button>
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
+                        <button type="button" class="text-[#6C37BD] whitespace-nowrap">Edit</button>
                     </div>
                 </td>
             </tr>
             <tr class="border-b text-xs">
                 <th scope="row" class=" px-6 py-4 font-medium whitespace-nowrap">
-                    Yahoo
+                    Human resources
                 </th>
                 <td class="px-6 py-4">
                     2021-05-22 22:01:59
@@ -74,14 +85,19 @@
                     2021-05-22 22:01:59
                 </td>
                 <td class="px-6 py-4">
-                    <div class="border border-[#DF0404] bg-[#FFC5C5] hover:bg-[#DF0404] rounded-full text-center px-2 py-1">
-                    <button type="button" class="text-[#DF0404] hover:text-[#FFC5C5]">Finished</button>
+                    <div class="border border-[#DF0404] bg-[#FFC5C5] rounded-full text-center px-2 py-1">
+                        <button type="button" class="text-[#DF0404]">Finished</button>
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
+                        <button type="button" class="text-[#6C37BD] whitespace-nowrap">Edit</button>
                     </div>
                 </td>
             </tr>
             <tr class="border-b text-xs">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Adobe
+                <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
+                    Manager
                 </th>
                 <td class="px-6 py-4">
                     2021-05-22 22:01:59
@@ -90,14 +106,19 @@
                     2021-05-22 22:01:59
                 </td>
                 <td class="px-6 py-4 hover:text-[#FFC5C5]">
-                    <div class="border border-[#DF0404] bg-[#FFC5C5] hover:bg-[#DF0404] rounded-full text-center px-2 py-1">
-                    <button type="button" class="text-[#DF0404] hover:text-[#FFC5C5]">Finished</button>
+                    <div class="border border-[#DF0404] bg-[#FFC5C5] rounded-full text-center px-2 py-1">
+                        <button type="button" class="text-[#DF0404]">Finished</button>
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
+                        <button type="button" class="text-[#6C37BD] whitespace-nowrap">Edit</button>
                     </div>
                 </td>
             </tr>
         <tr class="border-b text-xs">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Tesla
+                <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
+                    Frontend developer
                 </th>
                 <td class="px-6 py-4">
                     2021-05-22 22:01:59
@@ -106,8 +127,13 @@
                     2021-05-22 22:01:59
                 </td>
                 <td class="px-6 py-4">
-                    <div class="border border-[#09FBC2] bg-[#3F768E] hover:bg-[#09FBC2] rounded-full text-center px-2 py-1">
-                    <button type="button" class="text-[#09FBC2] hover:text-[#3F768E]">Active</button>
+                    <div class="border border-[#09FBC2] bg-[#3F768E] rounded-full text-center px-2 py-1">
+                        <button type="button" class="text-[#09FBC2]">Active</button>
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
+                        <button type="button" class="text-[#6C37BD] whitespace-nowrap">Edit</button>
                     </div>
                 </td>
             </tr>
@@ -116,37 +142,43 @@
     </table>
     <a href="/make-job-offer">
     <div class="flex justify-center mb-4">
-    <div class="bg-purple-500 rounded-full text-center px-1 py-1 w-48 hover:bg-[#4E288F]">
-    <button type="button">Add a new job offer</button>
+    <div class="bg-[#CAA8FF] rounded-full text-[#6C37BD] text-center px-1 py-1 w-48 hover:bg-[#A062FF]">
+        <button type="button">Add a new job offer</button>
     </div>
         </div>
         </a>
 </div>
 </div>
 
+{#Candidates#}
 <h1 class="mt-10 text-xl mb-4">Candidates</h1>
-<div class="px-5 w-3/5 bg-[#5C477F] rounded-lg">
+<div class="px-5 w-full bg-[#CDACFF] bg-opacity-30 rounded-lg">
 <p class="pt-5 text-lg font-bold">List of candidates</p>
 
 <div class="relative overflow-x-auto">
     <table class="mb-5 w-full text-sm text-left">
         <thead class="text-xs">
             <tr class="border-b">
-                <th scope="col" class="px-6 py-3 ">
+                <th scope="col" class="px-6 py-3 text-gray-300">
                     Name
                 </th>
-                <th scope="col" class="px-6 py-3 ">
+                <th scope="col" class="px-6 py-3 text-gray-300">
                     Job
                 </th>
-                <th scope="col" class="px-6 py-3 ">
+                <th scope="col" class="px-6 py-3 text-gray-300">
                     Phone Number
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 text-gray-300">
                     Email
                 </th>
-                <th scope="col" class="px-6 py-3 text-center">
+                <th scope="col" class="px-6 py-3 text-gray-300">
                     Status
-
+                </th>
+                <th scope="col" class="px-6 py-3 text-gray-300">
+                    Invite for interview
+                </th>
+                <th scope="col" class="px-6 py-3 text-gray-300">
+                    View application
                 </th>
             </tr>
         </thead>
@@ -165,8 +197,18 @@
                     jane@microsoft.com
                 </td>
                 <td class="px-6 py-4">
-                    <div class="border border-[#09FBC2] bg-[#3F768E] hover:bg-[#09FBC2] rounded-full text-center px-2 py-1">
-                    <button type="button" class="text-[#09FBC2] hover:text-[#3F768E]">Invited</button>
+                    <div class="border border-[#09FBC2] bg-[#3F768E] rounded-full text-center px-2 py-1">
+                    <button type="button" class="text-[#09FBC2]">Invited</button>
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <div>
+                        <div class="h-0.5 bg-[#CAA8FF] w-1/3 mx-auto"></div>
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
+                        <button type="button" class="text-[#6C37BD] whitespace-nowrap">View</button>
                     </div>
                 </td>
             </tr>
@@ -184,13 +226,23 @@
                     floyd@yahoo.com
                 </td>
                 <td class="px-6 py-4">
-                    <div class="border border-[#DF0404] bg-[#FFC5C5] hover:bg-[#DF0404] rounded-full text-center px-3 py-1">
-                    <button type="button" class="text-[#DF0404] hover:text-[#FFC5C5] whitespace-nowrap">Not invited</button>
+                    <div class="border border-[#DF0404] bg-[#FFC5C5] rounded-full text-center px-3 py-1">
+                    <button type="button" class="text-[#DF0404] whitespace-nowrap">Not invited</button>
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-2 py-1 hover:bg-[#A062FF]">
+                        <button type="button" class="text-[#6C37BD]">Invite</button>
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
+                        <button type="button" class="text-[#6C37BD] whitespace-nowrap">View</button>
                     </div>
                 </td>
             </tr>
             <tr class="border-b text-xs">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
                     Ronald Richards
                 </th>
                 <td class="px-6 py-4">
@@ -203,13 +255,23 @@
                     ronald@adobe.com
                 </td>
                 <td class="px-6 py-4 hover:text-[#FFC5C5]">
-                    <div class="border border-[#DF0404] bg-[#FFC5C5] hover:bg-[#DF0404] rounded-full text-center px-2 py-1">
-                    <button type="button" class="text-[#DF0404] hover:text-[#FFC5C5] whitespace-nowrap">Not invited</button>
+                    <div class="border border-[#DF0404] bg-[#FFC5C5] rounded-full text-center px-2 py-1">
+                    <button type="button" class="text-[#DF0404] whitespace-nowrap">Not invited</button>
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-2 py-1 hover:bg-[#A062FF]">
+                        <button type="button" class="text-[#6C37BD]">Invite</button>
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
+                        <button type="button" class="text-[#6C37BD] whitespace-nowrap">View</button>
                     </div>
                 </td>
             </tr>
-        <tr class="border-b text-xs">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <tr class="border-b text-xs">
+                <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
                     Marvin McKinney
                 </th>
                 <td class="px-6 py-4">
@@ -218,12 +280,22 @@
                 <td class="px-6 py-4">
                     (252) 555-0126
                 </td>
-            <td class="px-6 py-4">
-                marvin@tesla.com
-            </td>
                 <td class="px-6 py-4">
-                    <div class="border border-[#09FBC2] bg-[#3F768E] hover:bg-[#09FBC2] rounded-full text-center px-2 py-1">
-                    <button type="button" class="text-[#09FBC2] hover:text-[#3F768E]">Invited</button>
+                    marvin@tesla.com
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#09FBC2] bg-[#3F768E] rounded-full text-center px-2 py-1">
+                        <button type="button" class="text-[#09FBC2]">Invited</button>
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <div>
+                        <div class="h-0.5 bg-[#CAA8FF] w-1/3 mx-auto"></div>
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
+                        <button type="button" class="text-[#6C37BD] whitespace-nowrap">View</button>
                     </div>
                 </td>
             </tr>
