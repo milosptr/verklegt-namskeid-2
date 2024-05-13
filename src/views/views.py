@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from src.business.application import ApplicationLogic
+from src.controllers.CityController import CityController
 from src.controllers.CountryController import CountryController
+from src.controllers.GeneralViewController import GeneralViewController
 from src.controllers.ProtectedViewController import ProtectedViewController
 from src.exceptions import ApplicationException
 from src.exceptions.ApplicationException import ApplicationSubmitted
@@ -18,6 +20,8 @@ from src.models import Company, Job
 # Account views
 ############################################################################################################
 def log_in(request):
+    if request.session.get('is_authenticated'):
+        return redirect('/profile')
     return render(request, 'pages/account/login.html')
 
 
@@ -27,11 +31,9 @@ def log_out(request):
 
 
 def create_account(request):
+    if request.session.get('is_authenticated'):
+        return redirect('/profile')
     return render(request, 'pages/create_account.html')
-
-
-def creating_account(request):
-    return render(request, 'pages/creating_account.html')
 
 ############################################################################################################
 # General views
@@ -40,60 +42,62 @@ def home(request):
     """
     This is the home view or the index page of the application
     """
-    return render(request, 'pages/home.html')
+    return GeneralViewController(request).render('pages/home.html')
 
 
 def contact_us(request):
     """
     This is the contact us view
     """
-    return render(request, 'pages/contact_us.html')
+    return GeneralViewController(request).render('pages/contact_us.html')
 
 
 def about_us(request):
-    return render(request, 'pages/about_us.html')
+    return GeneralViewController(request).render('pages/about_us.html')
 
 
 def application_guide(request):
-    return render(request, 'pages/application_guide.html')
+    return GeneralViewController(request).render('pages/application_guide.html')
 
 
 def companies(request):
     companies_list = CompanyController().get_all_companies()
-    return render(request, 'pages/companies.html', {'companies_list': companies_list})
+    return GeneralViewController(request).render('pages/companies.html', {'companies_list': companies_list})
 
 
 def not_found(request):
-    return render(request, 'pages/404.html')
+    return GeneralViewController(request).render('pages/404.html')
 
 
 def application_guide(request):
-    return render(request, 'pages/application_guide.html')
+    return GeneralViewController(request).render('pages/application_guide.html')
 
 
 def company_profile(request, company_name):
     company = get_object_or_404(Company, name=company_name)
-    return render(request, 'pages/company_profile.html', {'company': company})
-  
-  
+    return GeneralViewController(request).render('pages/company_profile.html', {'company': company})
+
+
 def company_details(request, company_id):
     company = get_object_or_404(Company, id=company_id)
-    return render(request, 'pages/company_details.html', {'company': company})
+    return GeneralViewController(request).render('pages/company_details.html', {'company': company})
 
 
 def job_offer(request):
-    return render(request, 'pages/job_offer.html')
+    return GeneralViewController(request).render('pages/job_offer.html')
 
 
 def account_created(request):
-    return render(request, 'pages/success/account_created.html')
+    return GeneralViewController(request).render('pages/success/account_created.html')
 
 
 ############################################################################################################
 # Protected views
 ############################################################################################################
 def profile(request):
-    return ProtectedViewController(request).render('pages/profile.html')
+    countries = CountryController().get_countries()
+    cities = CityController().get_all()
+    return ProtectedViewController(request).render('pages/account/profile.html', {'countries': countries, 'cities': cities})
 
 
 def employer_dashboard(request):
@@ -129,10 +133,6 @@ def application(request, id: int, step: int):
     except ApplicationException as e:
         print(f'Error: {e}')
         return render(request, 'pages/404.html')
-      
-
-def creating_business_account_info(request):
-    return render(request, 'pages/creating_business_account_info.html')
 
 
 def make_job_offer(request):

@@ -1,0 +1,20 @@
+{% extends 'common/modal.html' %}
+
+{% block id %}cv-modal{% endblock %}
+{% block title %}Add your CV{% endblock %}
+
+{% block content %}
+    <form method="post" action="/api/v1/user/{{ user.id }}/resume">
+        {% csrf_token %}
+        <div class="grid grid-cols-1 gap-4 mt-5">
+            <div>
+                <textarea type="text" name="resume" id="resume" class="w-full rounded-xl py-2 px-6 bg-[#6C37BD] bg-opacity-30 whitespace-pre-line" placeholder="Your resume">{% if user and user.resume %}{{ user.resume }}{% endif %}</textarea>
+            </div>
+
+            <div class="mt-4 flex justify-between gap-5">
+                <button type="button" id="close-cv-modal" class="w-full border border-white hover:bg-white hover:text-gray-800 rounded-full py-2 px-6 text-white duration-300">Close</button>
+                <button type="submit" class="w-full bg-[#6C37BD] hover:bg-opacity-90 rounded-full py-2 px-6 text-white duration-300">Save</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'common/modal.html' %}
+
+{% block id %}user-profile-modal{% endblock %}
+{% block title %}Update your profile info{% endblock %}
+
+{% block content %}
+    <form method="post" action="/api/v1/user/{{ user.id }}/update-info">
+        {% csrf_token %}
+        <div class="grid grid-cols-1 gap-4 mt-5">
+            <div>
+                <input type="text" required name="first_name" id="first_name" class="w-full rounded-full py-2 px-6 bg-[#6C37BD] bg-opacity-30" placeholder="First name" value="{{ user.first_name }}">
+            </div>
+            <div>
+                <input type="text" required name="last_name" id="last_name" class="w-full rounded-full py-2 px-6 bg-[#6C37BD] bg-opacity-30" placeholder="Last name" value="{{ user.last_name }}">
+            </div>
+            <div>
+                <input type="text" required name="address" id="address" class="w-full text-white rounded-full py-2 px-6 bg-[#6C37BD] bg-opacity-30" placeholder="Address" value="{{ user.address }}">
+            </div>
+            <div class="relative">
+                <select
+                        name="city_id"
+                        class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full w-full text-gray-400 selected:white appearance-none px-5 pr-10 py-2.5"
+                        required
+                >
+                    <option hidden>
+                        City
+                    </option>
+                    {% for city in cities %}
+                        <option value="{{ city.id }}" {% if city.id|floatformat:0 == user.city.id|floatformat:0 %}selected="selected"{% endif %}>{{ city.name }} ({{ city.zip }})</option>
+                    {% endfor %}
+                </select>
+                <div class="absolute top-4 right-4">
+                    {% include 'common/icons/accordion.html' %}
+                </div>
+            </div>
+            <div class="relative">
+                <select
+                        name="country_id"
+                        class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full w-full text-gray-400 selected:white appearance-none px-5 pr-10 py-2.5"
+                        required
+                >
+                    <option hidden>
+                        Country
+                    </option>
+                    {% for country in countries %}
+                        <option value="{{ country.id }}" {% if country.id|floatformat:0 == user.country.id|floatformat:0 %}selected="selected"{% endif %}>{{ country.name }} ({{ country.code }})</option>
+                    {% endfor %}
+                </select>
+                <div class="absolute top-4 right-4">
+                    {% include 'common/icons/accordion.html' %}
+                </div>
+            </div>
+            <div class="mt-4 flex justify-between gap-5">
+                <button type="button" id="close-user-profile-modal" class="w-full border border-white hover:bg-white hover:text-gray-800 rounded-full py-2 px-6 text-white duration-300">Close</button>
+                <button type="submit" class="w-full bg-[#6C37BD] hover:bg-opacity-90 rounded-full py-2 px-6 text-white duration-300">Save</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

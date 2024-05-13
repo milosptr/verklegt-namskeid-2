@@ -1,5 +1,67 @@
 const main = () => {
 
+    // Profile page
+    // Profile info
+    const updateProfileButton = document.getElementById('update-profile-info')
+    const updateProfileModal = document.getElementById('user-profile-modal')
+    const closeUpdateProfileModal = document.getElementById('close-user-profile-modal')
+    if(updateProfileButton) {
+        updateProfileButton.addEventListener('click', () => {
+            updateProfileModal.classList.remove('hidden')
+        })
+        closeUpdateProfileModal.addEventListener('click', () => {
+            updateProfileModal.classList.add('hidden')
+        })
+    }
+    // Skills
+    const addSkillsButton = document.getElementById('add-skill')
+    const skillsModal = document.getElementById('skill-modal')
+    const skillsModalClose = document.getElementById('close-skill-modal')
+    if(addSkillsButton) {
+        addSkillsButton.addEventListener('click', () => {
+            skillsModal.classList.remove('hidden')
+        })
+        skillsModalClose.addEventListener('click', () => {
+            skillsModal.classList.add('hidden')
+        })
+    }
+    // Experience
+    const addExperienceButton = document.getElementById('add-experience')
+    const experienceModal = document.getElementById('experience-modal')
+    const experienceModalClose = document.getElementById('close-experience-modal')
+    if(addExperienceButton) {
+        addExperienceButton.addEventListener('click', () => {
+            experienceModal.classList.remove('hidden')
+        })
+        experienceModalClose.addEventListener('click', () => {
+            experienceModal.classList.add('hidden')
+        })
+    }
+    // Recommendation
+    const addRecommendationButton = document.getElementById('add-recommendation')
+    const recommendationModal = document.getElementById('recommendation-modal')
+    const recommendationModalClose = document.getElementById('close-recommendation-modal')
+    if(addRecommendationButton) {
+        addRecommendationButton.addEventListener('click', () => {
+            recommendationModal.classList.remove('hidden')
+        })
+        recommendationModalClose.addEventListener('click', () => {
+            recommendationModal.classList.add('hidden')
+        })
+    }
+    // CV
+    const addCVButton = document.getElementById('add-cv')
+    const cvModal = document.getElementById('cv-modal')
+    const cvModalClose = document.getElementById('close-cv-modal')
+    if(addCVButton) {
+        addCVButton.addEventListener('click', () => {
+            cvModal.classList.remove('hidden')
+        })
+        cvModalClose.addEventListener('click', () => {
+            cvModal.classList.add('hidden')
+        })
+    }
+
     // Create business account
     const selectExistingCompany = document.getElementById('select-existing-company')
     const selectCustomCompany = document.getElementById('select-custom-company')

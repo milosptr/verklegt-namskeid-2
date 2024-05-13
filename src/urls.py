@@ -38,8 +38,9 @@ urlpatterns = [
     path('contact-us', contact_us, name='contact_us'),
     path('companies', companies, name='companies'),
     path('company-details/<int:company_id>/', company_details, name='company_details'),
-    path('creating-business-account-info',creating_business_account_info, name="creating_business_account_info"),
-    path('make-job-offer', make_job_offer, name='make_job_offer'),
+    path('make-job-offer', make_job_offer, name='ma'
+                                                'ke_job_offer'),
+    path('job-offer', job_offer, name='job_offer'),
 
     # Protected views
     path('profile', profile, name='profile'),

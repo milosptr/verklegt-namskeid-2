@@ -21,6 +21,9 @@ class Job(models.Model):
     def get_all_jobs(self):
         return Job.objects.all()
 
+    def get_job_types(self):
+        return Job.types.all()
+
     class Meta:
         db_table = 'jobs'
         ordering = ['-created_at']
