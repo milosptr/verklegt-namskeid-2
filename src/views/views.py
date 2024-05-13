@@ -157,3 +157,6 @@ def account_created(request):
 def view_candidate(request):
     return render(request, 'pages/view_candidate.html')
 
+
+def report_bug(request):
+    return render(request, 'pages/report_bug.html')

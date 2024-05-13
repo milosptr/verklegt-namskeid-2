@@ -17,6 +17,7 @@ from .views.views import make_job_offer
 from .views.views import job_offer
 from .views.views import employer_dashboard
 from .views.views import view_candidate
+from .views.views import report_bug
 
 # This will be our main urls file
 # We will include all the urls from the apps here
@@ -42,6 +43,7 @@ urlpatterns = [
     path('make-job-offer', make_job_offer, name='ma'
                                                 'ke_job_offer'),
     path('job-offer', job_offer, name='job_offer'),
+    path('report-bug', report_bug, name='report_bug'),
 
     # Protected views
     path('profile', profile, name='profile'),
