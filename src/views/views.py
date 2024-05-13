@@ -156,3 +156,6 @@ def account_created(request):
 
 def forgot_password(request):
     return render(request, 'pages/forgot-password.html')
+
+def edit_job_offer(request):
+    return render(request, 'pages/edit-job-offer.html')

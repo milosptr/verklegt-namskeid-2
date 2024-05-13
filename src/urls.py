@@ -17,6 +17,7 @@ from .views.views import make_job_offer
 from .views.views import job_offer
 from .views.views import employer_dashboard
 from .views.views import forgot_password
+from .views.views import edit_job_offer
 
 # This will be our main urls file
 # We will include all the urls from the apps here
@@ -50,5 +51,6 @@ urlpatterns = [
     path('make-job-offer', make_job_offer, name='make_job_offer'),
     path('application/<int:id>/<int:step>', application, name='application'),
     path('forgot-password', forgot_password, name='forgot-password'),
+    path('edit-job-offer', edit_job_offer, name='edit-job-offer'),
     re_path(r'.*', not_found, name='not_found')  # This is a catch-all url that leads to a 404 page
 ]
