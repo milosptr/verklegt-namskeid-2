@@ -9,12 +9,11 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+from sshtunnel import SSHTunnelForwarder
 from pathlib import Path
 import os
 
 from django.core.exceptions import ImproperlyConfigured
-
 
 
 def get_env_variable(var_name):
@@ -88,17 +87,28 @@ WSGI_APPLICATION = 'jarvis.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
+# Connect to a server using the ssh keys. See the sshtunnel documentation for using password authentication
+ssh_tunnel = SSHTunnelForwarder(
+    "37.205.38.104",
+    ssh_username="dagur",
+    ssh_password="Castle2820",
+    remote_bind_address=('localhost', 5432),
+)
+ssh_tunnel.start()
+print('--------------------------------', ssh_tunnel.is_active, '--------------------------------')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'vln2_assignment_groups_20_user',
-        'PASSWORD': 'b3w1P2C1pz',
-        'HOST': 'verklegt-namskeid-ii.northeurope.cloudapp.azure.com',
-        'PORT': '5432',
-        'OPTIONS': {
-            'options': '-c search_path=vln2_assignment_groups_20'
-        }
+        'HOST': 'localhost',
+        'PORT': ssh_tunnel.local_bind_port,
+        'NAME': 'v2db',
+        'USER': 'postgres',
+        'PASSWORD': 'verklegt2',
+        # 'OPTIONS': {
+        #     'options': '-c search_path=vln2_assignment_groups_20'
+        # }
     }
 }
 
