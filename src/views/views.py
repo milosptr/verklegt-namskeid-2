@@ -154,3 +154,5 @@ def employer_dashboard(request):
 def account_created(request):
     return render(request, 'pages/success/account_created.html')
 
+def forgot_password(request):
+    return render(request, 'pages/forgot-password.html')
