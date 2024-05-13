@@ -20,6 +20,22 @@ class Job(models.Model):
 
     def get_all_jobs(self):
         return Job.objects.all()
+    
+    def validate_fields(self):
+        errors = list()
+
+        if not self.title:
+            errors.append("Job title is required")
+        if not self.description:
+            errors.append("Job decription is required")
+        if not self.category:
+            errors.append("Job category is required")
+        if not self.company:
+            errors.append("Job is required to belong to company")
+        if not self.status:
+            errors.append("Job status is required")
+        if not self.types:
+            errors.append("Job has to have a type")
 
     def get_job_types(self):
         return Job.types.all()
