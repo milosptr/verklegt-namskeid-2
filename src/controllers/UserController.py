@@ -112,6 +112,9 @@ class UserController:
                 email=data.get('email'),
                 password=hashed_password,
                 phone_number=data.get('phone_number'),
+                address=data.get('address'),
+                city_id=data.get('city_id'),
+                country_id=data.get('country_id')
             )
 
             if user.validate_fields():

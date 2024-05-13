@@ -1,0 +1,66 @@
+{% extends "common/base.html" %}
+
+{% block title %}Edit job offer{% endblock %}
+
+{% block content %}
+<form>
+    <div class="bg-[#6C37BD] bg-opacity-10 rounded-lg p-5 p w-2/6 shadow-md mb-10">
+        <h1 class="text-3xl text-center">
+        Edit job offer
+        </h1>
+
+        <div class="mt-5 mb-6">
+            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
+                ps-5 p-2.5 w-full text-white" placeholder="Job title">
+        </div>
+
+        <div class="relative mt-5">
+            <select
+                name="job_type"
+                class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full w-full text-gray-400 selected:white
+                appearance-none px-5 pr-10 py-2.5" required>
+                    <option selected disabled hidden>Job type</option>
+                    <option>Teacher</option>
+                    <option>Data science</option>
+                    <option>Sales</option>
+                    <option>Software Engineering</option>
+            </select>
+            <div class="absolute top-4 right-4">
+                {% include 'common/icons/accordion.html' %}
+            </div>
+        </div>
+
+
+        <div class="mt-5 mb-5">
+            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
+                ps-5 p-2.5 w-full text-white" placeholder="Job address">
+        </div>
+
+        <div class="">
+            <label class="text-gray-400">Enter publishing date:</label>
+            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
+                px-5 p-2.5 w-full text-white mt-2" placeholder="dd/mm/yyyy">
+        </div>
+
+        <div class="mt-5 mb-6">
+            <label class="text-gray-400">Enter end date:</label>
+            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
+                ps-5 p-2.5 w-full text-white mt-2" placeholder="dd/mm/yyyy">
+        </div>
+
+
+        <textarea required cols="38" rows="10" class="bg-[#4E288F] rounded-xl text-white text:p-4
+         mt-2 placeholder:p-4" placeholder="Description of job offering" ></textarea>
+
+        <div class="w-64 mx-auto text-center">
+            <button
+                type="submit"
+                class="text-white bg-[#6836B5] hover:bg-[#411586] hover:border-[#9F68F3] focus:ring-4 font-medium
+                rounded-full text-sm px-5 py-2.5 m-4">
+                Save changes
+            </button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
