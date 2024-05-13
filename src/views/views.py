@@ -154,3 +154,6 @@ def employer_dashboard(request):
 def account_created(request):
     return render(request, 'pages/success/account_created.html')
 
+def view_candidate(request):
+    return render(request, 'pages/view_candidate.html')
+

@@ -16,6 +16,7 @@ from .views.views import contact_us
 from .views.views import make_job_offer
 from .views.views import job_offer
 from .views.views import employer_dashboard
+from .views.views import view_candidate
 
 # This will be our main urls file
 # We will include all the urls from the apps here
@@ -48,6 +49,7 @@ urlpatterns = [
     path('company-profile', company_profile, name='company_profile'),
     path('make-job-offer', make_job_offer, name='make_job_offer'),
     path('application/<int:id>/<int:step>', application, name='application'),
+    path('view-candidate', view_candidate, name='view_candidate'),
 
     re_path(r'.*', not_found, name='not_found')  # This is a catch-all url that leads to a 404 page
 ]
