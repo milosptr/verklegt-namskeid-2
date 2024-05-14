@@ -4,7 +4,7 @@
 {% block title %}Employer Dashboard{% endblock %}
 
 {% block content %}
-<div>
+<div class="mx-auto">
     <div>
         <h1 class="text-xl">Employer Dashboard</h1>
         <div class="gap-14 flex mt-5">
@@ -22,7 +22,8 @@
                 <p class="font-bold">Employer Profile</p>
                 <div class="mt-6">
                 <a href="/company-profile">
-                    <button type="button" class="block text-white bg-[#4E288F] rounded-full pl-5 pt-2 pr-5 mt-2 pb-2 hover:bg-purple-500 text-xs">Edit Profile →</button>
+                    <button type="button" class="bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5] 
+                    text-xs">Edit Profile →</button>
                 </a>  
                 </div>
             </div>
@@ -74,10 +75,10 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="/edit-job-offer">
-                            <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
-                                <button type="button" class="text-[#6C37BD] whitespace-nowrap">Edit</button>
+                            <div class="bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5]">
+                                <button type="button" class="whitespace-nowrap">Edit</button>
                             </div>
-                                </a>
+                            </a>
                         </td>
                     </tr>
                     <tr class="border-b text-xs">
@@ -97,8 +98,8 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="/edit-job-offer">
-                            <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
-                                <button type="button" class="text-[#6C37BD] whitespace-nowrap">Edit</button>
+                            <div class="bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5]">
+                                <button type="button" class="whitespace-nowrap">Edit</button>
                             </div>
                             </a>
                         </td>
@@ -120,13 +121,13 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="/edit-job-offer">
-                            <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
-                                <button type="button" class="text-[#6C37BD] whitespace-nowrap">Edit</button>
+                            <div class="bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5]">
+                                <button type="button" class="whitespace-nowrap">Edit</button>
                             </div>
                             </a>
                         </td>
                     </tr>
-                <tr class="border-b text-xs">
+                    <tr class="border-b text-xs">
                         <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
                             Frontend developer
                         </th>
@@ -143,22 +144,21 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="/edit-job-offer">
-                            <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
-                                <button type="button" class="text-[#6C37BD] whitespace-nowrap">Edit</button>
+                            <div class="bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5]">
+                                <button type="button" class="whitespace-nowrap">Edit</button>
                             </div>
                             </a>
                         </td>
                     </tr>
-        
                 </tbody>
             </table>
             <a href="/make-job-offer">
-            <div class="flex justify-center mb-4">
-            <div class="bg-[#CAA8FF] rounded-full text-[#6C37BD] text-center px-1 py-1 w-48 hover:bg-[#A062FF]">
-                <button type="button">Add a new job offer</button>
-            </div>
+                <div class="flex justify-center mb-4">
+                    <div class="block bg-[#A062FF] text-white rounded-full text-center px-5 py-1 hover:bg-[#6B36C5]">
+                        <button type="button">Add a new job offer</button>
+                    </div>
                 </div>
-                </a>
+            </a>
         </div>
     </div>
     
@@ -228,11 +228,8 @@
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
-                                <a href="/view-candidate">
-                                    <button type="button" class="text-[#6C37BD] whitespace-nowrap">View</button>
-                                </a>
-                            </div>
+                            <a href="/view-candidate" class="block bg-[#A062FF] text-white rounded-full text-center px-3 
+                            py-1 hover:bg-[#6B36C5]">View</a>
                         </td>
                     </tr>
                     <tr class="border-b text-xs">
@@ -254,21 +251,19 @@
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-2 py-1 hover:bg-[#A062FF]">
-                                <button type="button" class="text-[#6C37BD] whitespace-nowrap">Invite</button>
+                            <div class="block bg-[#A062FF] text-white rounded-full text-center 
+                                px-3 py-1 hover:bg-[#6B36C5]">
+                                <button type="button">Invite</button>
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            <div class="border border-[#09FBC2] bg-[#3F768E] rounded-full text-center px-2 py-1">
+                            <div class="block border border-[#09FBC2] bg-[#3F768E] rounded-full text-center px-2 py-1">
                                 <button type="button" class="text-[#09FBC2] whitespace-nowrap">Reviewed</button>
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
-                                <a href="/view-candidate">
-                                    <button type="button" class="text-[#6C37BD] whitespace-nowrap">View</button>
-                                </a>                    
-                            </div>
+                            <a href="/view-candidate" class="block bg-[#A062FF] text-white rounded-full text-center px-3 
+                            py-1 hover:bg-[#6B36C5]">View</a>
                         </td>
                     </tr>
                     <tr class="border-b text-xs">
@@ -290,8 +285,8 @@
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-2 py-1 hover:bg-[#A062FF]">
-                                <button type="button" class="text-[#6C37BD] whitespace-nowrap">Invite</button>
+                            <div class="block bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5]">
+                                <button type="button">Invite</button>
                             </div>
                         </td>
                         <td class="px-6 py-4">
@@ -300,11 +295,8 @@
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
-                                <a href="/view-candidate">
-                                    <button type="button" class="text-[#6C37BD] whitespace-nowrap">View</button>
-                                </a>
-                            </div>
+                            <a href="/view-candidate" class="block bg-[#A062FF] text-white rounded-full text-center px-3 
+                            py-1 hover:bg-[#6B36C5]">View</a>
                         </td>
                     </tr>
                     <tr class="border-b text-xs">
@@ -336,11 +328,8 @@
                             </div>
                         </td>
                         <td class="px-6 py-4">
-                            <div class="border border-[#6C37BD] bg-[#CAA8FF] rounded-full text-center px-3 py-1 hover:bg-[#A062FF]">
-                                <a href="/view-candidate">
-                                    <button type="button" class="text-[#6C37BD] whitespace-nowrap">View</button>
-                                </a>
-                            </div>
+                            <a href="/view-candidate" class="block bg-[#A062FF] text-white rounded-full text-center px-3 
+                            py-1 hover:bg-[#6B36C5]">View</a>
                         </td>
                     </tr>
                 </tbody>
@@ -349,7 +338,6 @@
     </div>
 </div>
 
-
-
+    
 </div>
 {% endblock %}
