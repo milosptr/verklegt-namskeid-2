@@ -41,10 +41,9 @@ urlpatterns = [
     path('application-guide', application_guide, name='application_guide'),
     path('contact-us', contact_us, name='contact_us'),
     path('companies', companies, name='company_list'),
-    path('company-details/<int:company_id>/', company_details, name='company_details'),
-    path('make-job-offer', make_job_offer, name='ma'
-                                                'ke_job_offer'),
-    path('job-offer', job_offer, name='job_offer'),
+    path('company-details/<int:company_id>', company_details, name='company_details'),
+    path('make-job-offer', make_job_offer, name='make_job_offer'),
+    path('job-offer/<int:id>', job_offer, name='job_offer'),
     path('report-bug', report_bug, name='report_bug'),
 
     # Protected views
@@ -57,5 +56,6 @@ urlpatterns = [
     path('edit-job-offer', edit_job_offer, name='edit-job-offer'),
     path('view-candidate', view_candidate, name='view_candidate'),
 
+    re_path(r'not-found', not_found, name='not_found'),
     re_path(r'.*', not_found, name='not_found')  # This is a catch-all url that leads to a 404 page
 ]
