@@ -20,7 +20,7 @@ class Company(models.Model):
         return self.name
 
     def get_all_companies(self):
-        return Company.objects.all()
+        return Company.objects.all().order_by('name')
 
     def full_address(self):
         return f'{self.address}, {self.city.name} {self.city.zip}, {self.country.name}'
