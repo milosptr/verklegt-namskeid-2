@@ -61,7 +61,11 @@ def application_guide(request):
 
 
 def companies(request):
-    companies_list = CompanyController().get_all_companies()
+    query = request.GET.get('q')
+    if query:
+        companies_list = Company.objects.filter(name__icontains=query).order_by('name')
+    else:
+        companies_list = CompanyController().get_all_companies()
     return GeneralViewController(request).render('pages/companies.html', {'companies_list': companies_list})
 
 

@@ -40,7 +40,7 @@ urlpatterns = [
     path('about-us', about_us, name='about_us'),
     path('application-guide', application_guide, name='application_guide'),
     path('contact-us', contact_us, name='contact_us'),
-    path('companies', companies, name='companies'),
+    path('companies', companies, name='company_list'),
     path('company-details/<int:company_id>/', company_details, name='company_details'),
     path('make-job-offer', make_job_offer, name='ma'
                                                 'ke_job_offer'),
