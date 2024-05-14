@@ -4,14 +4,14 @@
 
 {% block content %}
 <form>
-    <div class="bg-[#6C37BD] bg-opacity-10 rounded-lg p-5 p w-2/6 shadow-md mb-10">
+    <div class="bg-[#6C37BD] bg-opacity-10 rounded-lg p-5 p w-2/6 shadow-md mb-10 mx-auto">
         <h1 class="text-3xl text-center">
         Make new job offer
         </h1>
         
         <div class="mt-5 mb-6">
             <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block 
-                ps-5 p-2.5 w-full text-white" placeholder="Job title">
+                px-5 p-2.5 w-full text-white" placeholder="Job title">
         </div>
         
         <div class="relative mt-5">
@@ -33,19 +33,20 @@
         
         <div class="mt-5 mb-5">
             <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block 
-                ps-5 p-2.5 w-full text-white" placeholder="Job address">
+                px-5 p-2.5 w-full text-white" placeholder="Job address">
         </div>
         
         <div class="">
-            <label class="text-gray-400">Enter publishing date:</label>
-            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block 
-                px-5 p-2.5 w-full text-white mt-2" placeholder="dd/mm/yyyy">
+            <label class="pl-2 text-gray-400">Publishing date:</label>
+            <input type="date" name="start_date" id="start_date" class="text-sm w-full rounded-full p-2 px-6 bg-[#6C37BD] 
+            bg-opacity-30" placeholder="Start date" />
+
         </div>
         
         <div class="mt-5 mb-6">
-            <label class="text-gray-400">Enter end date:</label>
-            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block 
-                ps-5 p-2.5 w-full text-white mt-2" placeholder="dd/mm/yyyy">
+            <label class="pl-2 text-gray-400">End date:</label>
+            <input type="date" name="start_date" id="start_date" class="text-sm w-full rounded-full p-2 px-6 bg-[#6C37BD] 
+            bg-opacity-30" placeholder="Start date" />
         </div>
         
     

@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="relative w-full h-64 bg-white rounded-lg primary-gradient"></div>
-        <div class="-mt-32 mr-8 flex justify-end">
+        <div class="-mt-24 mr-8 flex justify-end">
             <div class="relative w-48 h-48 rounded-full bg-white border-4 border-[#000019] overflow-hidden group">
                 {% load static %}
                 {% if user and user.avatar %}
@@ -15,7 +15,7 @@
             </div>
         </div>
     
-    <div class="grid grid-cols-2 gap-4 items-start -mt-10">
+    <div class="grid grid-cols-2 gap-4 items-start -mt-16">
         <div>
             <h3 class="text-xl text-[#9E6DE9]">Contact information</h3>
             <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6 mt-2">
@@ -85,8 +85,6 @@
         </div>
     </div>
     
-    
-    
     <h3 class="text-xl text-[#9E6DE9] mt-10">Cover letter</h3>
         <div class="grid grid-cols-1 gap-4 mt-2">
             <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6">
@@ -97,9 +95,25 @@
                 </p>
             </div>
         </div>
-   
-
-
-
+    
+    <div class="flex justify-center">
+        <div class="m-5">
+            <button class="bg-[#FFAA76] hover:bg-[#FF8438] shadow-md text-white font-medium py-3 px-7 rounded-full">
+                Invite for interview
+            </button>
+        </div>
+        <div class="m-5">
+            <button class="bg-[#FFAA76] hover:bg-[#FF8438] shadow-md text-white font-medium py-3 px-7 rounded-full">
+                Download application
+            </button>
+        </div>
+        <div class="m-5">
+            <button class="bg-[#FFAA76] hover:bg-[#FF8438] shadow-md text-white font-medium py-3 px-7 rounded-full">
+                Mark as reviewed
+            </button>
+        </div>
+    </div>
+    
+    
 
 {% endblock %}
