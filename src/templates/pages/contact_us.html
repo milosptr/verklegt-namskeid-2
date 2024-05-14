@@ -22,7 +22,8 @@
         Phone number: 999 1111
     </p>
     
-    <form>
+    <form method="post" action="/api/v1/contact-us">
+        {% csrf_token %}
         <label for="message" class="mt-10 block text-lg text-white ">Message</label>
         <textarea required id="message" name="message" cols="50" rows="10" class="bg-[#4E288F] rounded-xl text-white
         pl-2 pt-2 mt-2 placeholder:text-[#9889AF]" placeholder="Write your text here" ></textarea>
@@ -42,7 +43,7 @@
             placeholder:text-[#9889AF]" size="30" id="email" name="email" placeholder="Email" type="text"></input>
         </div>
     
-        <button type="submit" class="block text-white bg-[#6C37BD] rounded-full px-10 py-2 mt-2 hover:bg-[#9365DA]">Send</button>
+        <button id="contact-us-submit" type="submit" class="block text-white bg-[#6C37BD] rounded-full px-10 py-2 mt-2 hover:bg-[#9365DA]">Send</button>
     </form>
 </div>
 {% endblock %}

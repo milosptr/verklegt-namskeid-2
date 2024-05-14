@@ -1,6 +1,7 @@
 from django.urls import path
 
 from src.controllers.UserController import UserController
+from src.controllers.EmailController import EmailController
 
 prefix = 'api/v1'
 
@@ -20,4 +21,7 @@ urlpatterns = [
     path(f'{prefix}/user/<int:id>/remove-skill/<int:skill>', UserController.remove_skill, name='remove_skill'),
     path(f'{prefix}/user/<int:id>/remove-experience/<int:experience>', UserController.remove_experience, name='remove_experience'),
     path(f'{prefix}/user/<int:id>/remove-recommendation/<int:recommendation>', UserController.remove_recommendation, name='remove_recommendation'),
+
+    # Contact us
+     path(f'{prefix}/contact-us', EmailController.contact_us, name="contact_us")
 ]

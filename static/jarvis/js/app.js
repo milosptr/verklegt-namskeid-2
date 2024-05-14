@@ -117,7 +117,7 @@ const main = () => {
         })
     }
 
-    //report bug
+    // Remove bug
     const report_bug_button = document.getElementById('report-bug-button')
     const report_bug = document.getElementById('report-bug')
     const close_button = document.getElementById('close-report-bug')
