@@ -19,17 +19,6 @@
     </div>
 
     <!-- Address Section -->
-    <div class="mt-6 text-md flex">
-        <div>
-            <h2 class="font-semibold text-gray-400">Address</h2>
-            <p>110 Reykjavik, 110 Reykjavik, 110 Reykjavik</p>
-        </div>
-        <div>
-            <button class="bg-[#6C37BD] hover:bg-purple-900 text-white font-medium mt-2 py-2 px-4 rounded-full ml-10">
-                Company Page
-                <span class="ml-2">&#x2192;</span>
-            </button>
-        </div>
     <div class="mt-6 text-md">
         <h2 class="font-semibold text-gray-400">Address</h2>
         <p>{{ company.address }}</p>
@@ -45,7 +34,7 @@
     <div class="mt-6">
         <h2 class="text-xl font-semibold">Job offers</h2>
 
-        {% for job_offer in company.job_offers.all %}
+        {% for job_offer in company.jobs.all %}
             {% include 'components/job_offer_company_profile_card.html' with job_offer=job_offer %}
         {% empty %}
             <p>No job offers available.</p>

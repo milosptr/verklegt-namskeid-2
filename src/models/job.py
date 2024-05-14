@@ -27,7 +27,7 @@ class Job(models.Model):
         if not self.title:
             errors.append("Job title is required")
         if not self.description:
-            errors.append("Job decription is required")
+            errors.append("Job description is required")
         if not self.category:
             errors.append("Job category is required")
         if not self.company:
