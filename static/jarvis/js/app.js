@@ -117,6 +117,23 @@ const main = () => {
         })
     }
 
+    // Remove bug
+    const report_bug_button = document.getElementById('report-bug-button')
+    const report_bug = document.getElementById('report-bug')
+    const close_button = document.getElementById('close-report-bug')
+    const report_button = document.getElementById('report-the-bug')
+    if (report_bug_button) {
+        report_bug_button.addEventListener('click', () => {
+            report_bug.classList.remove('hidden')
+        })
+        report_button.addEventListener('click', () => {
+            report_bug.classList.add('hidden')
+        })
+        close_button.addEventListener('click', () => {
+            report_bug.classList.add('hidden')
+        })
+    }
+
 
 
 
