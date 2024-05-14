@@ -133,13 +133,7 @@ const main = () => {
             report_bug.classList.add('hidden')
         })
     }
-
-
-
-
-
 }
-
 
 window.addEventListener('load', main)
 
