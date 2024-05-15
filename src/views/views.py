@@ -117,6 +117,8 @@ def profile(request):
 
 
 def employer_dashboard(request):
+    countries = CountryController().get_countries()
+    cities = CityController().get_all()
     return ProtectedViewController(request).render('pages/employer-dashboard.html')
 
 
