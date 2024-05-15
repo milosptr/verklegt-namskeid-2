@@ -15,11 +15,13 @@ from .views.views import company_details
 from .views.views import contact_us
 from .views.views import make_job_offer
 from .views.views import job_offer
+from .views.views import job_list
 from .views.views import employer_dashboard
 from .views.views import forgot_password
 from .views.views import edit_job_offer
 from .views.views import view_candidate
 from .views.views import report_bug
+from . import views
 
 # Import controllers
 from .controllers.EmailController import EmailController
@@ -47,6 +49,8 @@ urlpatterns = [
     path('company-details/<int:company_id>', company_details, name='company_details'),
     path('make-job-offer', make_job_offer, name='make_job_offer'),
     path('job-offer/<int:id>', job_offer, name='job_offer'),
+    path('jobs/', job_list, name='job_list'),
+
     path('report-bug', report_bug, name='report_bug'),
 
     # Protected views

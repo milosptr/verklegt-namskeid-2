@@ -12,6 +12,10 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    @classmethod
+    def get_all(cls):
+        return cls.objects.all()
+
     class Meta:
         db_table = 'category'
         ordering = ['-created_at']

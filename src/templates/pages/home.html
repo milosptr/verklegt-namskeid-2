@@ -10,14 +10,39 @@
 
     <section class="py-10">
         <div class="flex gap-6 h-screen">
-            <div class="w-1/5">
-                {% include 'components/jobs_nav_sidebar.html' %}
-            </div>
+            <form id='homePageFilterSide' method="GET" class="w-1/5">
+                {% include 'components/jobs_nav_sidebar.html' %} <!-- input radio buttons-->
+            </form>
             <div class="w-4/5">
-                <div class="w-full flex items-center gap-10 pb-3 border-b border-solid border-[#1F2B62]">
-                    {% include 'components/dropdown.html' %}
-                    {% include 'components/dropdown.html' %}
-                    {% include 'components/dropdown.html' %}
+                <form id="homePageFiltersTop" method="GET" class="w-full flex items-center gap-10 pb-3 border-b border-solid border-[#1F2B62]">
+                    <!-- Dropdown menus -->
+                    <!-- Job Category -->
+                    <div class="relative">
+                        <select name="category" onchange="this.form.submit()" class="bg-[#04031F] rounded-full border border-solid border-[#6C37BD] appearance-none px-5 pr-10 py-1.5">
+                            <option value="1">Job category</option>
+                            {% for category in category_list %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="absolute top-4 right-3.5">
+                            {% include 'common/icons/accordion.html' %}
+                        </div>
+                    </div>
+
+                    <!-- Company Filter -->
+                    <div class="relative">
+                        <select name="company_filter" onchange="this.form.submit()" class="bg-[#04031F] rounded-full border border-solid border-[#6C37BD] appearance-none px-5 pr-10 py-1.5">
+                            <option value="1">Company</option>
+                            {% for company in companies_list %}
+                                <option value="{{ company.id }}">{{ company.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="absolute top-4 right-3.5">
+                            {% include 'common/icons/accordion.html' %}
+                        </div>
+                    </div>          
+
+                    <!-- Search bar-->
                     <div class="relative w-full">
                         {% include 'common/icons/search.html' with classes="w-6 h-6 absolute right-3 top-1.5 text-[#6C37BD]" %}
                         <input
@@ -27,7 +52,7 @@
                             class="w-full px-6 pr-10 py-1.5 bg-[#04031F] rounded-full border border-solid border-[#6C37BD]"
                         />
                     </div>
-                </div>
+                </form>
                 <div class="grid grid-cols-3 gap-10 mt-6">
                     {% if job_offers %}
                         {% for job in job_offers %}
