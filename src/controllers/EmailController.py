@@ -13,7 +13,7 @@ class EmailController:
       recipient_list = ['jarvisvk2@gmail.com']
 
       send_mail(subject, message, email_from, recipient_list)
-      messages.success(request, 'Successfully sent')
+      messages.success(request, 'Successfully nonono')
       return redirect('/contact-us')
     else:
         return GeneralViewController(request).render('pages/contact_us.html')
