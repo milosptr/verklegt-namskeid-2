@@ -291,7 +291,7 @@
         <div class="grid grid-cols-1 gap-4 mt-4"></div>
     </section>
 
-    <form action="/api/user/add-link/" method="post">
+    <form action="/profile" method="post">
     {% csrf_token %}
     <input class="text-black" type="url" name="link" placeholder="Enter URL">
     <button type="submit">Add Link</button>
