@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import validators
 
 class UserLink(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -9,4 +10,9 @@ class UserLink(models.Model):
         return f"{self.user.username}: {self.link}"
 
     def validate(self):
-        if self.link
+        if validators.url(self.link):
+            return true
+
+        else:
+            return false
+
