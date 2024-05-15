@@ -20,6 +20,7 @@ from .views.views import forgot_password
 from .views.views import edit_job_offer
 from .views.views import view_candidate
 from .views.views import report_bug
+from .views.views import add_link
 
 # Import controllers
 from .controllers.EmailController import EmailController

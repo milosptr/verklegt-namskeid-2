@@ -293,7 +293,7 @@
 
     <form action="/api/user/add-link/" method="post">
     {% csrf_token %}
-    <input type="url" name="link" placeholder="Enter URL" required>
+    <input class="text-black" type="url" name="link" placeholder="Enter URL">
     <button type="submit">Add Link</button>
 </form>
 
