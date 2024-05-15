@@ -51,6 +51,9 @@ urlpatterns = [
 
     # Protected views
     path('profile', profile, name='profile'),
+    path('job-offer/<int:job_id>', job_offer, name='job_offer'),
+    path('companies', companies, name='companies'),
+    path('application/<int:id>/<int:step>', application, name='application'),
     path('employer-dashboard', employer_dashboard, name='employer_dashboard'),
     path('company-profile', company_profile, name='company_profile'),
     path('make-job-offer', make_job_offer, name='make_job_offer'),
