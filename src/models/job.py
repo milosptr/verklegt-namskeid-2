@@ -29,7 +29,7 @@ class Job(models.Model):
 
     def get_all_jobs(self):
         return Job.objects.all()
-    
+
     def validate_fields(self):
         errors = list()
 
@@ -47,7 +47,10 @@ class Job(models.Model):
             errors.append("Job has to have a type")
 
     def get_job_types(self):
-        return Job.types.all()
+        try:
+            return self.types.all()
+        except:
+            return []
 
     def get_status(self):
         if self.status == 0:
