@@ -26,6 +26,7 @@ class Company(models.Model):
     def full_address(self):
         return f'{self.address}, {self.city.name} {self.city.zip}, {self.country.name}'
 
+
     @classmethod
     def get_all(cls):
         return cls.objects.all()

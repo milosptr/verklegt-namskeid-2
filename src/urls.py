@@ -22,6 +22,9 @@ from .views.views import view_candidate
 from .views.views import report_bug
 from .views.views import application_submitted
 
+# Import controllers
+from .controllers.EmailController import EmailController
+
 # This will be our main urls file
 # We will include all the urls from the apps here
 # Look at it as the main router of the application
@@ -40,7 +43,7 @@ urlpatterns = [
     path('', home, name='home'),
     path('about-us', about_us, name='about_us'),
     path('application-guide', application_guide, name='application_guide'),
-    path('contact-us', contact_us, name='contact_us'),
+    path('contact-us', EmailController.contact_us, name='contact_us'),
     path('companies', companies, name='company_list'),
     path('company-details/<int:company_id>', company_details, name='company_details'),
     path('make-job-offer', make_job_offer, name='make_job_offer'),
@@ -50,6 +53,9 @@ urlpatterns = [
 
     # Protected views
     path('profile', profile, name='profile'),
+    path('job-offer/<int:job_id>', job_offer, name='job_offer'),
+    path('companies', companies, name='companies'),
+    path('application/<int:id>/<int:step>', application, name='application'),
     path('employer-dashboard', employer_dashboard, name='employer_dashboard'),
     path('company-profile', company_profile, name='company_profile'),
     path('make-job-offer', make_job_offer, name='make_job_offer'),
