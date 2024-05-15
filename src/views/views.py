@@ -22,29 +22,20 @@ from src.controllers.EmailController import *
 ############################################################################################################
 # Account views
 ############################################################################################################
+from django.views import View
 from django.shortcuts import redirect, render
-from django.http import JsonResponse
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-@login_required
-def add_link(request):
-    if request.method == 'POST':
-        if request.user.is_authenticated:
-            link = request.POST.get('link')
-            if link:  # Check if the link is not empty
-                UserLink.objects.create(user=request.user, link=link)
-                messages.success(request, 'Link added successfully!')
-                return redirect('/profile')  # Redirect to profile or another appropriate page
-            else:
-                messages.error(request, 'No link provided.')
-                return redirect('/profile')  # Redirect back to the form if no link is provided
-        else:
-            messages.error(request, 'You must be logged in to add a link.')
-            return redirect('/login')  # Redirect to login page if not authenticated
-    else:
-        # If it's not a POST request, just render the form page
-        return render(request, '/profile')
+class add_link(LoginRequiredMixin, View):
+    def post(self, request):
+        link = request.POST.get('link')
+        if link:
+            UserLink.objects.create(user=request.user, link=link)
+            return redirect('/profile')  # Redirect to a profile page after successful addition
+        return render(request, 'add_link_form.html', {'error': 'Please provide a valid link.'})
+
+    def get(self, request):
+        return render(request, 'add_link_form.html')
 
 
 

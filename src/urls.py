@@ -61,7 +61,7 @@ urlpatterns = [
     path('forgot-password', forgot_password, name='forgot-password'),
     path('edit-job-offer', edit_job_offer, name='edit-job-offer'),
     path('view-candidate', view_candidate, name='view_candidate'),
-
+    path('add-link/', add_link.as_view(), name="add_link"),
     re_path(r'not-found', not_found, name='not_found'),
     re_path(r'.*', not_found, name='not_found')  # This is a catch-all url that leads to a 404 page
 ]

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class UserLink(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    link = models.URLField()
+    link = models.URLField(max_length=200)
 
     def __str__(self):
-        return self.link
+        return f"{self.user.username}: {self.link}"

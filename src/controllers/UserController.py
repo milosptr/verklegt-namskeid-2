@@ -44,7 +44,13 @@ class UserController:
 
         # If everything goes well, redirect to profile page
         return redirect('/profile')
-
+    @staticmethod
+    def handle_add_link(request):
+        if request.method == 'POST':
+            link = request.POST.get('link')
+            UserLink.objects.create(user=request.user, link=link)
+            # Assuming JSON response is appropriate here
+            return JsonResponse({'message': 'Link added successfully!'})
     @staticmethod
     def create_account_view(request):
         """
