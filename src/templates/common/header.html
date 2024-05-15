@@ -9,9 +9,35 @@
                 </div>
 
                 <div class="flex items-center justify-end md:space-x-16">
-                    <a href="/companies" class="text-white">Companies</a>
-                    <a href="/about-us" class="text-white">About us</a>
-                    <a href="/application-guide" class="text-white">Application guide</a>
+                    <a
+                        href="/companies"
+                        class="hover:underline underline-offset-8 decoration-[#6C37BD]
+                        {% if request.path_info == '/companies' %} underline underline-offset-8 decoration-[#6C37BD]
+                        {% endif %}"
+                    >
+                        Companies
+                    </a>
+                
+                
+                    <a 
+                        href="/about-us" 
+                        class="hover:underline underline-offset-8 decoration-[#6C37BD]
+                        {% if request.path_info == '/about-us' %} underline underline-offset-8 decoration-[#6C37BD]
+                        {% endif %}"
+                    >
+                        About us
+                    </a>
+                
+                    <a 
+                        href="/application-guide" 
+                        class="hover:underline underline-offset-8 decoration-[#6C37BD]
+                        {% if request.path_info == '/application-guide' %} underline underline-offset-8 decoration-[#6C37BD]
+                        {% endif %}"
+                    >
+                        Application guide
+                    </a>
+                
+                
                     {% if user and user.role == 1 %}
                     <a href="/employer-dashboard" class="text-white">Dashboard</a>
                     {% endif %}
