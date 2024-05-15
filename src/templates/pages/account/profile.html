@@ -241,9 +241,28 @@
         <div class="grid grid-cols-1 gap-4 mt-4">
             {% if user and user.applications %}
                 {% for application in user.applications %}
-                    <div class="bg-[#6C37BD] p-4 rounded-lg hover:bg-[#380E77] text-sm">
+                    <div class="bg-[#6C37BD] p-4 rounded-lg text-sm">
                         <div class="grid grid-cols-5 items-center">
-                            <div class="font-medium col-span-2">{{ application.job.title }} at {{ application.job.company.name }}</div>
+                            <div class="font-medium col-span-2">
+                                <div class="flex items-center gap-3">
+                                    <div>{{ application.job.title }} at {{ application.job.company.name }}</div>
+                                    <dialog id="coverletterdialog" class="fixed z-10 left-0 top-[25vh] w-full md:w-1/2 p-8 rounded-lg">
+                                        <div class="mb-4 text-xl font-semibold">Your cover letter</div>
+                                        <div class="font-normal h-[300px] overflow-scroll">
+                                            {{ application.cover_letter }}
+                                        </div>
+                                        <div class="mt-10">
+                                            <button class="bg-[#6C37BD] text-white px-4 py-2 rounded-lg w-32 text-center" onclick="coverletterdialog.close()">Close</button>
+                                        </div>
+                                    </dialog>
+                                    <div class="cursor-pointer relative group" onclick="coverletterdialog.show()">
+                                        <div class="hidden group-hover:block absolute -top-9 -left-10 w-48 text-center bg-black bg-opacity-80 py-1 px-3 rounded-lg">
+                                            View cover letter
+                                        </div>
+                                        {% include 'common/icons/letter.html' with classes='w-4 h-4' %}
+                                    </div>
+                                </div>
+                            </div>
                             <div class="font-medium">{{ application.submission_date }}</div>
                             <div>{{ application.job.company.full_address }}</div>
                             <div class="flex justify-end gap-2">
@@ -257,6 +276,19 @@
                 {% endfor %}
             {% endif %}
         </div>
+    </section>
+
+    <section class="mt-10 px-8">
+        <h2 class="text-xl mt-20">
+            Interview invitations
+        </h2>
+        <div class="grid grid-cols-5 gap-4 mt-5 pb-1.5 border-b border-gray-100 border-opacity-20 text-gray-300">
+            <div class="col-span-2 pl-4">Position and company</div>
+            <div>Submission date</div>
+            <div>Company address</div>
+            <div class="text-center">Job types</div>
+        </div>
+        <div class="grid grid-cols-1 gap-4 mt-4"></div>
     </section>
 
 

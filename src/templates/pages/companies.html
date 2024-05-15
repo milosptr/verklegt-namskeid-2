@@ -4,14 +4,16 @@
 
 {% block content %}
 
-<form class="mt-10 max-w-md mx-auto mb-10 text-xl">
+<form method="GET" action="{% url 'company_list' %}" class="mt-10 max-w-md mx-auto mb-10 text-xl">
     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
     <div class="relative w-full">
         {% include 'common/icons/search.html' with classes="w-6 h-6 absolute right-3 top-1.5 text-[#6C37BD]" %}
         <input
             id="home-search"
+            name="q"
             type="text"
             placeholder="Search..."
+            value="{{ query }}"
             class="w-full px-6 pr-10 py-1.5 bg-[#04031F] rounded-full border border-solid border-[#6C37BD]"
         />
     </div>
@@ -24,18 +26,15 @@
         <div class="text-center">Available Jobs</div>
     </div>
     {% for company in companies_list %}
-<a href="{% url 'company_details' company.id %}" class="block text-white grid grid-cols-3 gap-4 items-center bg-[#CDACFF] bg-opacity-30 rounded-lg p-4 hover:bg-opacity-50 duration-300 cursor-pointer my-10">          
-    <div class="flex items-center justify-start space-x-3 text-xl">
-                <img src="https://via.placeholder.com/40" alt="{{ company.name }} Logo" class="rounded-full bg-gray-200">
-                <span>{{ company.name }}</span>
-            </div>
-            <div class="text-center text-xl">{{ company.address }}</div>
-            <div class="text-center text-xl">{{ company.jobs_available }} jobs</div>
-        </a>
+    <a href="{% url 'company_details' company.id %}" class="block text-white grid grid-cols-3 gap-4 items-center bg-[#CDACFF] bg-opacity-30 rounded-lg p-4 hover:bg-opacity-50 duration-300 cursor-pointer my-10">          
+        <div class="flex items-center justify-start space-x-3 text-xl">
+            <img src="https://via.placeholder.com/40" alt="{{ company.name }} Logo" class="rounded-full bg-gray-200">
+            <span>{{ company.name }}</span>
+        </div>
+        <div class="text-center text-xl">{{ company.address }}</div>
+        <div class="text-center text-xl">{{ company.jobs_available }} jobs</div>
+    </a>
     {% endfor %}
 </div>
 
-
-
 {% endblock %}
-

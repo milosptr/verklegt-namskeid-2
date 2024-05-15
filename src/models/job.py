@@ -18,6 +18,14 @@ class Job(models.Model):
     def __str__(self):
         return self.title
 
+    @classmethod
+    def get_by_id(cls, job_id):
+        return cls.objects.get(id=job_id)
+
+    @classmethod
+    def get_all(cls):
+        return cls.objects.all()
+
     def get_all_jobs(self):
         return Job.objects.all()
     
@@ -39,6 +47,14 @@ class Job(models.Model):
 
     def get_job_types(self):
         return Job.types.all()
+
+    def get_status(self):
+        if self.status == 0:
+            return 'Active'
+        elif self.status == 1:
+            return 'Interviewing'
+        elif self.status == 2:
+            return 'Closed'
 
     class Meta:
         db_table = 'jobs'

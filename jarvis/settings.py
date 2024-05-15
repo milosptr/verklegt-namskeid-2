@@ -147,7 +147,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
-    BASE_DIR / 'static/jarvis',
 ]
 
 # Default primary key field type
@@ -156,3 +155,10 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 TEST_RUNNER = 'jarvis.test_runner.NoDBTestRunner.NoDBTestRunner'
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'mail.live.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'alexia22@ru.is'
+EMAIL_HOST_PASSWORD = ''

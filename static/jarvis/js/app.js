@@ -5,7 +5,7 @@ const main = () => {
     const updateProfileButton = document.getElementById('update-profile-info')
     const updateProfileModal = document.getElementById('user-profile-modal')
     const closeUpdateProfileModal = document.getElementById('close-user-profile-modal')
-    if(updateProfileButton) {
+    if (updateProfileButton) {
         updateProfileButton.addEventListener('click', () => {
             updateProfileModal.classList.remove('hidden')
         })
@@ -17,7 +17,7 @@ const main = () => {
     const addSkillsButton = document.getElementById('add-skill')
     const skillsModal = document.getElementById('skill-modal')
     const skillsModalClose = document.getElementById('close-skill-modal')
-    if(addSkillsButton) {
+    if (addSkillsButton) {
         addSkillsButton.addEventListener('click', () => {
             skillsModal.classList.remove('hidden')
         })
@@ -29,7 +29,7 @@ const main = () => {
     const addExperienceButton = document.getElementById('add-experience')
     const experienceModal = document.getElementById('experience-modal')
     const experienceModalClose = document.getElementById('close-experience-modal')
-    if(addExperienceButton) {
+    if (addExperienceButton) {
         addExperienceButton.addEventListener('click', () => {
             experienceModal.classList.remove('hidden')
         })
@@ -41,7 +41,7 @@ const main = () => {
     const addRecommendationButton = document.getElementById('add-recommendation')
     const recommendationModal = document.getElementById('recommendation-modal')
     const recommendationModalClose = document.getElementById('close-recommendation-modal')
-    if(addRecommendationButton) {
+    if (addRecommendationButton) {
         addRecommendationButton.addEventListener('click', () => {
             recommendationModal.classList.remove('hidden')
         })
@@ -53,7 +53,7 @@ const main = () => {
     const addCVButton = document.getElementById('add-cv')
     const cvModal = document.getElementById('cv-modal')
     const cvModalClose = document.getElementById('close-cv-modal')
-    if(addCVButton) {
+    if (addCVButton) {
         addCVButton.addEventListener('click', () => {
             cvModal.classList.remove('hidden')
         })
@@ -116,6 +116,24 @@ const main = () => {
             })
         })
     }
+
+    // Remove bug
+    const report_bug_button = document.getElementById('report-bug-button')
+    const report_bug = document.getElementById('report-bug')
+    const close_button = document.getElementById('close-report-bug')
+    const report_button = document.getElementById('report-the-bug')
+    if (report_bug_button) {
+        report_bug_button.addEventListener('click', () => {
+            report_bug.classList.remove('hidden')
+        })
+        report_button.addEventListener('click', () => {
+            report_bug.classList.add('hidden')
+        })
+        close_button.addEventListener('click', () => {
+            report_bug.classList.add('hidden')
+        })
+    }
 }
 
 window.addEventListener('load', main)
+

@@ -5,7 +5,7 @@
 {% block content %}
 
 <h1 class="text-3xl font-bold underline center">
-    
+
 </h1>
 
     <section class="py-10">
@@ -29,11 +29,11 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-3 gap-10 mt-6">
-                    {% include 'components/job_offer_card.html' %}
-                    {% include 'components/job_offer_card.html' %}
-                    {% include 'components/job_offer_card.html' %}
-                    {% include 'components/job_offer_card.html' %}
-                    {% include 'components/job_offer_card.html' %}
+                    {% if job_offers %}
+                        {% for job in job_offers %}
+                            {% include 'components/job_offer_card.html' with job=job %}
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
