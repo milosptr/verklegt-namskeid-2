@@ -1,5 +1,6 @@
+import string
+import random
 from datetime import datetime
-
 from django.contrib.auth.hashers import make_password, check_password
 from django.db import models
 
@@ -129,9 +130,26 @@ class User(models.Model):
             'verified_at': self.verified_at
         }
 
+    @staticmethod
+    def generate_password():
+        return ''.join(random.choice(string.ascii_letters + string.digits) for i in range(8))
+
+    def reset_password(self):
+        password = self.generate_password()
+        self.password = self.hash_password(password)
+        self.save()
+        return password
+
     class Meta:
         db_table = 'users'
         ordering = ['-created_at']
         verbose_name = 'User'
         verbose_name_plural = 'Users'
+
+    @classmethod
+    def get_by_email(cls, email):
+        try:
+            return cls.objects.get(email=email)
+        except:
+            return None
 
