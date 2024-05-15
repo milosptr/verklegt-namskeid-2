@@ -16,6 +16,26 @@ class Application(models.Model):
     def __str__(self):
         return str(self.job) + ' - ' + str(self.user)
 
+    def get_status(self):
+        if self.status == 0:
+            return 'Pending'
+        elif self.status == 1:
+            return 'Reviewed'
+        elif self.status == 2:
+            return 'Rejected'
+        else:
+            return 'Accepted'
+
+    def get_status_class(self):
+        if self.status == 0:
+            return 'bg-blue-500'
+        elif self.status == 1:
+            return 'bg-yellow-500'
+        elif self.status == 2:
+            return 'bg-red-500'
+        else:
+            return 'bg-green-500'
+
     class Meta:
         db_table = 'applications'
         ordering = ['-created_at']
