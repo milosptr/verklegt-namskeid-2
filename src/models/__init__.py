@@ -15,6 +15,7 @@ from .bug_report import BugReport
 from .notification import Notification
 from .skill import Skill
 from .application import Application
+from .interview import Interview
 
 __all__ = [
     'User',
@@ -33,5 +34,6 @@ __all__ = [
     'BugReport',
     'Notification',
     'Skill',
-    'Application'
+    'Application',
+    'Interview'
 ]

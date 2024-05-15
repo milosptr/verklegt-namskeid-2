@@ -118,7 +118,7 @@ class User(models.Model):
             'about': self.about,
             'address': self.address,
             'city': City.get_by_id(self.city_id),
-            'full_address': self.address + ', ' + self.city.name + ' ' + self.city.zip + ', ' + self.country.name,
+            'full_address': self.full_address(),
             'recommendations': UserRecommendation.objects.filter(user_id=self.id),
             'experiences': UserExperience.objects.filter(user_id=self.id),
             'resume': UserResume.objects.filter(user_id=self.id).first(),
@@ -129,6 +129,16 @@ class User(models.Model):
             'avatar': self.avatar,
             'verified_at': self.verified_at
         }
+
+    def full_address(self):
+        address = self.address
+        if self.city:
+            address += ', ' + self.city.name + ' ' + self.city.zip
+        if self.country:
+            address += ', ' + self.country.name
+        if not address:
+            return 'No address provided'
+        return address
 
     @staticmethod
     def generate_password():

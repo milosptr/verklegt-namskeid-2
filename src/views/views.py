@@ -68,8 +68,8 @@ def home(request):
     print(filters.get('company_filter'))
 
     return GeneralViewController(request).render('pages/home.html', {
-        'job_offers': job_offers, 
-        'companies_list': companies_list, 
+        'job_offers': job_offers,
+        'companies_list': companies_list,
         'category_list': category_list
     })
 
@@ -181,6 +181,14 @@ def job_list(request):
     job_filter = JobFilter(request.GET, queryset=job_list)
     return render(request, 'pages/job_list.html', {'filter': job_filter})
 
+
 def employer_dashboard(request):
+    user_id = request.session.get('user_id')
+    if not user_id:
+        return redirect('/login')
+
+    user = User.get_by_id(user_id)
+    if not user or user.role == 0:
+        return redirect('/profile')
     return ProtectedViewController(request).render('pages/employer-dashboard.html')
 

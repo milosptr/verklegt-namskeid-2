@@ -4,11 +4,18 @@ from django.db import models
 
 
 class Application(models.Model):
+    STATUS_CHOICES = [
+        (0, 'Pending'),
+        (1, 'Reviewed'),
+        (2, 'Rejected'),
+        (3, 'Accepted')
+    ]
+
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey('User', on_delete=models.CASCADE)
     job = models.ForeignKey('Job', on_delete=models.CASCADE)
     cover_letter = models.TextField()
-    status = models.IntegerField(default=0)
+    status = models.IntegerField(default=0, choices=STATUS_CHOICES)
     submission_date = models.DateTimeField( default=datetime.now)
     created_at = models.DateTimeField( default=datetime.now)
     updated_at = models.DateTimeField(default=datetime.now)

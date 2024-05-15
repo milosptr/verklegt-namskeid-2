@@ -4,11 +4,17 @@ from django.db import models
 
 
 class Job(models.Model):
+    STATUS = [
+        (0, 'Active'),
+        (1, 'Interviewing'),
+        (2, 'Closed')
+    ]
+
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=150)
     description = models.TextField()
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
-    status = models.IntegerField()
+    status = models.IntegerField(default=0, choices=STATUS)
     company = models.ForeignKey('Company', on_delete=models.CASCADE)
     types = models.ManyToManyField('Type', related_name='jobs')
     start_date = models.DateTimeField()
@@ -22,7 +28,7 @@ class Job(models.Model):
     @classmethod
     def get_by_id(cls, job_id):
         return cls.objects.get(id=job_id)
-    
+
     @classmethod
     def get_by_category(cls, job_category_id):
         return cls.objects.filter(category_id=job_category_id)  # Return a queryset
@@ -30,12 +36,12 @@ class Job(models.Model):
     @classmethod
     def get_all(cls):
         return cls.objects.all()
-      
+
 
     def get_all_jobs(self):
         return self.objects.all()
-      
-      
+
+
     def validate_fields(self):
         errors = list()
 
