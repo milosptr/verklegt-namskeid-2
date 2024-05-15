@@ -15,6 +15,7 @@ from src.models.country import Country
 
 
 class User(models.Model):
+    id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
@@ -109,12 +110,14 @@ class User(models.Model):
             'id': self.id,
             'first_name': self.first_name,
             'last_name': self.last_name,
+            'full_name': self.first_name + ' ' + self.last_name,
             'email': self.email,
             'phone_number': self.phone_number,
             'role': self.role,
             'about': self.about,
             'address': self.address,
             'city': City.get_by_id(self.city_id),
+            'full_address': self.address + ', ' + self.city.name + ' ' + self.city.zip + ', ' + self.country.name,
             'recommendations': UserRecommendation.objects.filter(user_id=self.id),
             'experiences': UserExperience.objects.filter(user_id=self.id),
             'resume': UserResume.objects.filter(user_id=self.id).first(),
