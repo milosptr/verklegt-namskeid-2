@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'src'
+    'src',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -147,6 +148,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
+    BASE_DIR / 'static/jarvis',
 ]
 
 # Default primary key field type
@@ -156,9 +158,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 TEST_RUNNER = 'jarvis.test_runner.NoDBTestRunner.NoDBTestRunner'
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
+# Email configuration
+CSRF_TRUSTED_ORIGINS = ['https://localhost:8000', 'http://localhost:8000']
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = 'mail.live.com'
-EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'alexia22@ru.is'
-EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'jarvisvk2@gmail.com'
+EMAIL_HOST_PASSWORD = 'lrds ftrx gflu nbmp'

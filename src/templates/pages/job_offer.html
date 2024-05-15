@@ -1,6 +1,6 @@
 {% extends "common/base.html" %}
 
-{% block title %}Job offer{% endblock %}
+{% block title %}{{ job.name }}{% endblock %}
 
 {% block content %}
 
@@ -80,7 +80,7 @@
 
 
             <div class="flex mb-10">
-                <a href="/application/{{ job.id }}/1" class="bg-[#FFAA76] hover:bg-[#FF8438] text-white font-medium py-1 px-4 rounded-full">
+                <a href="/application/{{ job.id }}" class="bg-[#FFAA76] hover:bg-[#FF8438] text-white font-medium py-1 px-4 rounded-full">
                     Apply Now !
                     <span class="ml-2">&#x2192;</span>
                 </a>

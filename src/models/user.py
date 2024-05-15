@@ -1,5 +1,6 @@
+import string
+import random
 from datetime import datetime
-
 from django.contrib.auth.hashers import make_password, check_password
 from django.db import models
 
@@ -15,6 +16,7 @@ from src.models.country import Country
 
 
 class User(models.Model):
+    id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
@@ -109,12 +111,14 @@ class User(models.Model):
             'id': self.id,
             'first_name': self.first_name,
             'last_name': self.last_name,
+            'full_name': self.first_name + ' ' + self.last_name,
             'email': self.email,
             'phone_number': self.phone_number,
             'role': self.role,
             'about': self.about,
             'address': self.address,
             'city': City.get_by_id(self.city_id),
+            'full_address': self.full_address(),
             'recommendations': UserRecommendation.objects.filter(user_id=self.id),
             'experiences': UserExperience.objects.filter(user_id=self.id),
             'resume': UserResume.objects.filter(user_id=self.id).first(),
@@ -126,9 +130,36 @@ class User(models.Model):
             'verified_at': self.verified_at
         }
 
+    def full_address(self):
+        address = self.address
+        if self.city:
+            address += ', ' + self.city.name + ' ' + self.city.zip
+        if self.country:
+            address += ', ' + self.country.name
+        if not address:
+            return 'No address provided'
+        return address
+
+    @staticmethod
+    def generate_password():
+        return ''.join(random.choice(string.ascii_letters + string.digits) for i in range(8))
+
+    def reset_password(self):
+        password = self.generate_password()
+        self.password = self.hash_password(password)
+        self.save()
+        return password
+
     class Meta:
         db_table = 'users'
         ordering = ['-created_at']
         verbose_name = 'User'
         verbose_name_plural = 'Users'
+
+    @classmethod
+    def get_by_email(cls, email):
+        try:
+            return cls.objects.get(email=email)
+        except:
+            return None
 
