@@ -4,6 +4,7 @@
 {% block title %}Employer Dashboard{% endblock %}
 
 {% block content %}
+    
 <div>
     <div class="flex justify-center my-5">
         <h1 class="text-2xl">Employer Dashboard</h1>
@@ -30,11 +31,11 @@
                 {% include 'common/icons/profile.html' with classes="w-6 h-6" %}
             </div>
             <p class="font-bold mb-4">Employer Profile</p>
-            <a href="/company-profile" class="bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5] 
-                text-xs">Edit Profile →</a>  
+            <a href="/profile" class="bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5] 
+            text-xs duration-100">Edit Profile →</a>  
         </div>
     </div>
-    
+
     {#Jobs#}
     <div id="jobs-overview">
         <h1 class="mt-10 text-xl mb-4">Jobs</h1>
@@ -62,103 +63,51 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border-b text-xs">
-                            <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ">
-                                Backend developer
-                            </th>
-                            <td class="px-6 py-4">
-                                2021-05-22 22:01:59
-                            </td>
-                            <td class="px-6 py-4">
-                                2021-05-22 22:01:59
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="border border-[#09FBC2] bg-[#3F768E] rounded-full text-center px-2 py-1 text-[#09FBC2]">
-                                    Active
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="/edit-job-offer">
-                                <div class="bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5] whitespace-nowrap">
-                                    Edit
-                                </div>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b text-xs">
-                            <th scope="row" class=" px-6 py-4 font-medium whitespace-nowrap">
-                                Human resources
-                            </th>
-                            <td class="px-6 py-4">
-                                2021-05-22 22:01:59
-                            </td>
-                            <td class="px-6 py-4">
-                                2021-05-22 22:01:59
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="border border-[#DF0404] bg-[#FF9C9C] rounded-full text-center px-2 py-1 text-[#DF0404]">
-                                    Finished
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="/edit-job-offer">
-                                <div class="bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5] whitespace-nowrap">
-                                    Edit
-                                </div>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b text-xs">
-                            <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
-                                Manager
-                            </th>
-                            <td class="px-6 py-4">
-                                2021-05-22 22:01:59
-                            </td>
-                            <td class="px-6 py-4">
-                                2021-05-22 22:01:59
-                            </td>
-                            <td class="px-6 py-4 hover:text-[#FFC5C5]">
-                                <div class="border border-[#DF0404] bg-[#FF9C9C] rounded-full text-center px-2 py-1 text-[#DF0404]">
-                                    Finished
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="/edit-job-offer">
-                                    <div class="bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5]">
-                                        Edit
-                                    </div>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b text-xs">
-                            <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
-                                Frontend developer
-                            </th>
-                            <td class="px-6 py-4">
-                                2021-05-22 22:01:59
-                            </td>
-                            <td class="px-6 py-4">
-                                2021-05-22 22:01:59
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="border border-[#09FBC2] bg-[#3F768E] rounded-full text-center px-2 py-1 text-[#09FBC2]">
-                                    Active
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="/edit-job-offer">
-                                <div class="bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5]">
-                                    Edit
-                                </div>
-                                </a>
-                            </td>
-                        </tr>
+                    
+                    {% if user and user.applications %}
+                        {% for application in user.applications %}
+                            <tr class="border-b text-xs">
+                                <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ">
+                                    {{ application.job.title }}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ application.job.due_date }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ application.job.created_at }}
+                                </td>
+                                {% if application.job %}
+                                    {% if application.job.status == 0 %}
+                                        <td class="px-6 py-4">
+                                            <div class="bg-[#69C683] rounded-full text-center px-2 py-1 text-[#1F7532]">
+                                                Active
+                                            </div>
+                                        </td>
+                                    {% endif %}
+                                    {% if application.job.status == 1 %}
+                                        <td class="px-6 py-4">
+                                            <div class="bg-[#FF9C9C] rounded-full text-center px-2 py-1 text-[#DF0404]">
+                                                Finished
+                                            </div>
+                                        </td>
+                                    {% endif %}
+                                {% endif %}
+                                <td class="px-6 py-4">
+                                    <a href="/edit-job-offer">
+                                        <div class="bg-[#A062FF] border border-[#6B36C5] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5] whitespace-nowrap duration-100">
+                                            Edit
+                                        </div>
+                                    </a>
+                                </td>
+                            </tr>
+                        
+                        {% endfor %}
+                    {% endif %}
                     </tbody>
                 </table>
                 <a href="/make-job-offer">
                     <div class="flex justify-center mb-4">
-                        <div class="block bg-[#A062FF] text-white rounded-full text-center px-5 py-1 hover:bg-[#6B36C5]">
+                        <div class="block bg-[#A062FF] text-white rounded-full text-center px-5 py-1 hover:bg-[#6B36C5] duration-100">
                             Add a new job offer
                         </div>
                     </div>
@@ -166,7 +115,8 @@
             </div>
         </div>  
     </div>
-    
+
+
     {#Candidates#}
     <div id="candidates-overview">
         <h1 class="mt-10 text-xl mb-4">Candidates</h1>
@@ -204,146 +154,71 @@
                         </tr>
                     </thead>
                     <tbody>
+                    {% if user and user.applications %}
+                        {% for application in user.applications %}
                         <tr class="border-b text-xs">
                             <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ">
-                                Jane Cooper
+                                {{ application.user.first_name }} {{ application.user.last_name }}
                             </th>
                             <td class="px-6 py-4">
-                                Microsoft
+                                {{ application.job.title }}
                             </td>
                             <td class="px-6 py-4">
-                                (225) 555-0118
+                                {{ application.user.phone_number }}
                             </td>
                             <td class="px-6 py-4">
-                                jane@microsoft.com
+                                {{ application.user.email }}
                             </td>
+                            {% if application.job %}
+                                {% if application.job.status == 0 %}
+                                    <td class="px-6 py-4">
+                                        <div class="bg-[#FF9C9C] rounded-full text-center px-2 py-1 text-[#DF0404]">
+                                            Not invited
+                                        </div>
+                                    </td>
+                                {% endif %}
+                                {% if application.job.status == 1 %}
+                                    <td class="px-6 py-4">
+                                        <div class="bg-[#69C683] rounded-full text-center px-2 py-1 text-[#1F7532]">
+                                            Invited
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            {% endif %}
+                            {% if application.job %}
+                                {% if application.job.status == 0 %}
+                                    <td class="px-6 py-4">
+                                        <div class="bg-[#A062FF] h-1 w-10 mx-auto">
+                                        </div>
+                                    </td>
+                                {% endif %}
+                                {% if application.job.status == 1 %}
+                                    <td class="px-6 py-4">
+                                        <div class="block bg-[#A062FF] border border-[#6B36C5] text-white rounded-full 
+                                        text-center px-3 py-1 hover:bg-[#6B36C5] duration-100">
+                                            Invite
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            {% endif %}
                             <td class="px-6 py-4">
-                                <div class="border border-[#09FBC2] bg-[#3F768E] rounded-full text-center px-2 py-1 text-[#09FBC2] ">
-                                Invited
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div>
-                                    <div class="h-0.5 bg-[#CAA8FF] w-1/3 mx-auto"></div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="border border-[#09FBC2] bg-[#3F768E] rounded-full text-center px-2 py-1 text-[#09FBC2] ">
+                                <div class="bg-[#69C683] rounded-full text-center px-2 py-1 text-[#1F7532]">
                                     Reviewed
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                <a href="/view-candidate" class="block bg-[#A062FF] text-white rounded-full text-center px-3 
-                                py-1 hover:bg-[#6B36C5]">View</a>
+                                <a href="/view-candidate" class="block bg-[#A062FF] border border-[#6B36C5] text-white 
+                                rounded-full text-center px-3 py-1 hover:bg-[#6B36C5] duration-100">
+                                    View
+                                </a>
                             </td>
                         </tr>
-                        <tr class="border-b text-xs">
-                            <th scope="row" class=" px-6 py-4 font-medium whitespace-nowrap">
-                                Floyd Miles
-                            </th>
-                            <td class="px-6 py-4">
-                                Yahoo
-                            </td>
-                            <td class="px-6 py-4">
-                                (205) 555-0100
-                            </td>
-                            <td class="px-6 py-4">
-                                floyd@yahoo.com
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="border border-[#DF0404] bg-[#FF9C9C] rounded-full text-center px-3 py-1 text-[#DF0404]">
-                                Not invited
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="block bg-[#A062FF] text-white rounded-full text-center 
-                                    px-3 py-1 hover:bg-[#6B36C5]">
-                                    Invite
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="block border border-[#09FBC2] bg-[#3F768E] rounded-full text-center px-2 py-1 text-[#09FBC2]">
-                                    Reviewed
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="/view-candidate" class="block bg-[#A062FF] text-white rounded-full text-center px-3 
-                                py-1 hover:bg-[#6B36C5]">View</a>
-                            </td>
-                        </tr>
-                        <tr class="border-b text-xs">
-                            <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
-                                Ronald Richards
-                            </th>
-                            <td class="px-6 py-4">
-                                Adobe
-                            </td>
-                            <td class="px-6 py-4">
-                                (302) 555-0107
-                            </td>
-                            <td class="px-6 py-4">
-                                ronald@adobe.com
-                            </td>
-                            <td class="px-6 py-4 hover:text-[#FFC5C5]">
-                                <div class="border border-[#DF0404] bg-[#FF9C9C] rounded-full text-center px-2 py-1 text-[#DF0404]">
-                                Not invited
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="block bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5]">
-                                    Invite
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="border border-[#DF0404] bg-[#FF9C9C] rounded-full text-center px-3 py-1 text-[#DF0404]">
-                                    Not reviewed
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="/view-candidate" class="block bg-[#A062FF] text-white rounded-full text-center px-3 
-                                py-1 hover:bg-[#6B36C5]">View</a>
-                            </td>
-                        </tr>
-                        <tr class="border-b text-xs">
-                            <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
-                                Marvin McKinney
-                            </th>
-                            <td class="px-6 py-4">
-                                Tesla
-                            </td>
-                            <td class="px-6 py-4">
-                                (252) 555-0126
-                            </td>
-                            <td class="px-6 py-4">
-                                marvin@tesla.com
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="border border-[#09FBC2] bg-[#3F768E] rounded-full text-center px-2 py-1 text-[#09FBC2]">
-                                    Invited
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div>
-                                    <div class="h-0.5 bg-[#CAA8FF] w-1/3 mx-auto"></div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="border border-[#09FBC2] bg-[#3F768E] rounded-full text-center px-2 py-1 text-[#09FBC2]">
-                                    Reviewed
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="/view-candidate" class="block bg-[#A062FF] text-white rounded-full text-center px-3 
-                                py-1 hover:bg-[#6B36C5]">View</a>
-                            </td>
-                        </tr>
+                    {% endfor %}
+                    {% endif %}
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-</div>
-
-    
 </div>
 {% endblock %}

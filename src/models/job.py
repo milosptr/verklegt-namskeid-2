@@ -4,6 +4,7 @@ from django.db import models
 
 
 class Job(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=150)
     description = models.TextField()
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
@@ -29,10 +30,12 @@ class Job(models.Model):
     @classmethod
     def get_all(cls):
         return cls.objects.all()
+      
 
     def get_all_jobs(self):
         return self.objects.all()
-    
+      
+      
     def validate_fields(self):
         errors = list()
 
@@ -50,7 +53,10 @@ class Job(models.Model):
             errors.append("Job has to have a type")
 
     def get_job_types(self):
-        return self.types.all()
+        try:
+            return self.types.all()
+        except:
+            return []
 
     def get_status(self):
         if self.status == 0:

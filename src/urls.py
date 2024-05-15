@@ -21,7 +21,7 @@ from .views.views import forgot_password
 from .views.views import edit_job_offer
 from .views.views import view_candidate
 from .views.views import report_bug
-from . import views
+from .views.views import application_submitted
 
 # Import controllers
 from .controllers.EmailController import EmailController
@@ -52,6 +52,7 @@ urlpatterns = [
     path('jobs/', job_list, name='job_list'),
 
     path('report-bug', report_bug, name='report_bug'),
+    path('application-submitted', application_submitted, name='application_submitted'),
 
     # Protected views
     path('profile', profile, name='profile'),
@@ -61,7 +62,7 @@ urlpatterns = [
     path('employer-dashboard', employer_dashboard, name='employer_dashboard'),
     path('company-profile', company_profile, name='company_profile'),
     path('make-job-offer', make_job_offer, name='make_job_offer'),
-    path('application/<int:id>/<int:step>', application, name='application'),
+    path('application/<int:id>', application, name='application'),
     path('forgot-password', forgot_password, name='forgot-password'),
     path('edit-job-offer', edit_job_offer, name='edit-job-offer'),
     path('view-candidate', view_candidate, name='view_candidate'),

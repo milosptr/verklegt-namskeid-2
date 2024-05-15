@@ -4,6 +4,7 @@ from django.db import models
 
 
 class Application(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey('User', on_delete=models.CASCADE)
     job = models.ForeignKey('Job', on_delete=models.CASCADE)
     cover_letter = models.TextField()
