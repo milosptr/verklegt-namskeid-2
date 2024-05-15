@@ -22,14 +22,20 @@ class Job(models.Model):
     @classmethod
     def get_by_id(cls, job_id):
         return cls.objects.get(id=job_id)
+    
+    @classmethod
+    def get_by_category(cls, job_category_id):
+        return cls.objects.filter(category_id=job_category_id)  # Return a queryset
 
     @classmethod
     def get_all(cls):
         return cls.objects.all()
+      
 
     def get_all_jobs(self):
         return self.objects.all()
-
+      
+      
     def validate_fields(self):
         errors = list()
 
