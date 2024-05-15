@@ -28,7 +28,7 @@ class Job(models.Model):
         return cls.objects.all()
 
     def get_all_jobs(self):
-        return Job.objects.all()
+        return self.objects.all()
 
     def validate_fields(self):
         errors = list()
