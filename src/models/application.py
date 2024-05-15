@@ -23,6 +23,10 @@ class Application(models.Model):
     def __str__(self):
         return str(self.job) + ' - ' + str(self.user)
 
+    @classmethod
+    def get_by_company(cls, company_id):
+        return cls.objects.filter(job__company_id=company_id)
+
     def get_status(self):
         if self.status == 0:
             return 'Pending'

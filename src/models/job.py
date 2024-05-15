@@ -31,7 +31,11 @@ class Job(models.Model):
 
     @classmethod
     def get_by_category(cls, job_category_id):
-        return cls.objects.filter(category_id=job_category_id)  # Return a queryset
+        return cls.objects.filter(category_id=job_category_id)
+
+    @classmethod
+    def get_by_company(cls, company_id):
+        return cls.objects.filter(company_id=company_id)
 
     @classmethod
     def get_all(cls):

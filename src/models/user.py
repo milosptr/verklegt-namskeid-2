@@ -5,14 +5,13 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.db import models
 
 from src.exceptions.UserExceptions import CreateAccountException
+from src.models.job import Job
 from src.models.application import Application
 from src.models.user_skill import UserSkill
 from src.models.skill import Skill
 from src.models.user_resume import UserResume
 from src.models.user_experience import UserExperience
 from src.models.user_recommendation import UserRecommendation
-from src.models.city import City
-from src.models.country import Country
 
 
 class User(models.Model):
@@ -30,7 +29,7 @@ class User(models.Model):
     country = models.ForeignKey('Country', on_delete=models.CASCADE, null=True)
     company = models.ForeignKey('Company', on_delete=models.CASCADE, null=True)
     verified_at = models.DateTimeField(null=True)
-    created_at = models.DateTimeField( default=datetime.now)
+    created_at = models.DateTimeField(default=datetime.now)
     updated_at = models.DateTimeField(default=datetime.now)
 
     def __str__(self):
@@ -39,6 +38,66 @@ class User(models.Model):
     @classmethod
     def get_by_id(cls, id):
         return cls.objects.get(id=id)
+
+    def get_recommendations(self):
+        if self.role == 1:
+            return list()
+        return UserRecommendation.objects.filter(user_id=self.id)
+
+    def get_experience(self):
+        if self.role == 1:
+            return list()
+        return UserExperience.objects.filter(user_id=self.id)
+
+    def get_resume(self):
+        if self.role == 1:
+            return None
+        return UserResume.objects.filter(user_id=self.id).first()
+
+    def get_applications(self):
+        if self.role == 1:
+            return list()
+        return Application.objects.filter(user_id=self.id)
+
+    def get_skills(self):
+        if self.role == 1:
+            return list()
+        skills = list()
+        user_skills = UserSkill.objects.filter(user_id=self.id)
+        for s in user_skills:
+            skill = Skill.objects.get(id=s.skill_id)
+            skills.append({"id": skill.id, "name": skill.name})
+        return skills
+
+    def get_job_offers(self):
+        if self.role == 0:
+            return list()
+        if not self.company:
+            return list()
+        return Job.get_by_company(self.company.id)
+
+    def get_job_offers_by_status(self, status):
+        if self.role == 0:
+            return list()
+        if not self.company:
+            return list()
+        return Job.get_by_company(self.company.id).filter(status=status).all()
+
+    def get_active_job_offers(self):
+        return self.get_job_offers_by_status(0)
+
+    def get_pending_job_offers(self):
+        return self.get_job_offers_by_status(1)
+
+    def get_closed_job_offers(self):
+        return self.get_job_offers_by_status(2)
+
+    def get_list_of_candidates(self):
+        if self.role == 0:
+            return list()
+        if not self.company:
+            return list()
+        return Application.get_by_company(self.company.id)
 
     def save(self, *args, **kwargs):
         try:
@@ -101,12 +160,6 @@ class User(models.Model):
         return check_password(password, hashed_password)
 
     def parse_logged_in_user(self):
-        user_skills = UserSkill.objects.filter(user_id=self.id)
-        skills = list()
-        for s in user_skills:
-            skill = Skill.objects.get(id=s.skill_id)
-            skills.append({"id": skill.id, "name": skill.name})
-
         return {
             'id': self.id,
             'first_name': self.first_name,
@@ -117,14 +170,19 @@ class User(models.Model):
             'role': self.role,
             'about': self.about,
             'address': self.address,
-            'city': City.get_by_id(self.city_id),
+            'city': self.city,
             'full_address': self.full_address(),
-            'recommendations': UserRecommendation.objects.filter(user_id=self.id),
-            'experiences': UserExperience.objects.filter(user_id=self.id),
-            'resume': UserResume.objects.filter(user_id=self.id).first(),
-            'skills': skills,
-            'country': Country.get_by_id(self.country_id),
-            'applications': Application.objects.filter(user_id=self.id),
+            'recommendations': self.get_recommendations(),
+            'experiences': self.get_experience(),
+            'job_offers': self.get_job_offers(),
+            'active_job_offers': self.get_active_job_offers(),
+            'pending_job_offers': self.get_pending_job_offers(),
+            'closed_job_offers': self.get_closed_job_offers(),
+            'candidates': self.get_list_of_candidates(),
+            'resume': self.get_resume(),
+            'skills': self.get_skills(),
+            'country': self.country,
+            'applications': self.get_applications(),
             'company': self.company,
             'avatar': self.avatar,
             'verified_at': self.verified_at
@@ -162,4 +220,3 @@ class User(models.Model):
             return cls.objects.get(email=email)
         except:
             return None
-

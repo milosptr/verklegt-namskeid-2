@@ -4,7 +4,7 @@
 {% block title %}Employer Dashboard{% endblock %}
 
 {% block content %}
-    
+
 <div>
     <div class="flex justify-center my-5">
         <h1 class="text-2xl">Employer Dashboard</h1>
@@ -15,8 +15,9 @@
                 {% include 'common/icons/suitcase.html' with classes="w-6 h-6" %}
             </div>
             <p class="font-bold">Jobs</p>
-            <p class="text-xs mt-2">2 active job offers</p>
-            <p class="text-xs">1 finished job offer</p>
+            <p class="text-xs mt-2">{{ user.active_job_offers.count }} active job offers</p>
+            <p class="text-xs">{{ user.pending_job_offers.count }} pending job offer</p>
+            <p class="text-xs">{{ user.closed_job_offers.count }} finished job offer</p>
         </a>
         <a href="#candidates-overview" class="px-5 py-4 bg-[#CDACFF] bg-opacity-30 rounded-lg flex-initial w-48">
             <div class="mb-2">
@@ -31,8 +32,8 @@
                 {% include 'common/icons/profile.html' with classes="w-6 h-6" %}
             </div>
             <p class="font-bold mb-4">Employer Profile</p>
-            <a href="/profile" class="bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5] 
-            text-xs duration-100">Edit Profile →</a>  
+            <a href="/profile" class="bg-[#A062FF] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5]
+            text-xs duration-100">Edit Profile →</a>
         </div>
     </div>
 
@@ -63,28 +64,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                    
-                    {% if user and user.applications %}
-                        {% for application in user.applications %}
+
+                    {% if user and user.job_offers %}
+                        {% for job in user.job_offers %}
                             <tr class="border-b text-xs">
                                 <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ">
-                                    {{ application.job.title }}
+                                    {{ job.title }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ application.job.due_date }}
+                                    {{ job.due_date }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ application.job.created_at }}
+                                    {{ job.created_at }}
                                 </td>
-                                {% if application.job %}
-                                    {% if application.job.status == 0 %}
+                                {% if job %}
+                                    {% if job.status == 0 %}
                                         <td class="px-6 py-4">
                                             <div class="bg-[#69C683] rounded-full text-center px-2 py-1 text-[#1F7532]">
                                                 Active
                                             </div>
                                         </td>
                                     {% endif %}
-                                    {% if application.job.status == 1 %}
+                                    {% if job.status == 1 %}
+                                        <td class="px-6 py-4">
+                                            <div class="bg-blue-400 rounded-full text-center px-2 py-1 text-blue-800">
+                                                Interviewing
+                                            </div>
+                                        </td>
+                                    {% endif %}
+                                    {% if job.status == 2 %}
                                         <td class="px-6 py-4">
                                             <div class="bg-[#FF9C9C] rounded-full text-center px-2 py-1 text-[#DF0404]">
                                                 Finished
@@ -100,7 +108,7 @@
                                     </a>
                                 </td>
                             </tr>
-                        
+
                         {% endfor %}
                     {% endif %}
                     </tbody>
@@ -113,7 +121,7 @@
                     </div>
                 </a>
             </div>
-        </div>  
+        </div>
     </div>
 
 
@@ -122,7 +130,7 @@
         <h1 class="mt-10 text-xl mb-4">Candidates</h1>
         <div class="px-5 w-full bg-[#CDACFF] bg-opacity-30 rounded-lg">
             <p class="pt-5 text-lg font-bold">List of candidates</p>
-            
+
             <div class="relative overflow-x-auto">
                 <table class="mb-5 w-full text-sm text-left">
                     <thead class="text-xs">
@@ -132,9 +140,6 @@
                             </th>
                             <th scope="col" class="px-6 py-3 text-gray-300">
                                 Job
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-gray-300">
-                                Phone Number
                             </th>
                             <th scope="col" class="px-6 py-3 text-gray-300">
                                 Email
@@ -154,30 +159,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {% if user and user.applications %}
-                        {% for application in user.applications %}
+                    {% if user and user.candidates %}
+                        {% for c in user.candidates %}
                         <tr class="border-b text-xs">
                             <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ">
-                                {{ application.user.first_name }} {{ application.user.last_name }}
+                                {{ c.user.first_name }} {{ c.user.last_name }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ application.job.title }}
+                                {{ c.job.title }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ application.user.phone_number }}
+                                {{ c.user.email }}
                             </td>
-                            <td class="px-6 py-4">
-                                {{ application.user.email }}
-                            </td>
-                            {% if application.job %}
-                                {% if application.job.status == 0 %}
+                            {% if c.job %}
+                                {% if c.job.status == 0 %}
                                     <td class="px-6 py-4">
                                         <div class="bg-[#FF9C9C] rounded-full text-center px-2 py-1 text-[#DF0404]">
                                             Not invited
                                         </div>
                                     </td>
                                 {% endif %}
-                                {% if application.job.status == 1 %}
+                                {% if c.job.status == 1 %}
                                     <td class="px-6 py-4">
                                         <div class="bg-[#69C683] rounded-full text-center px-2 py-1 text-[#1F7532]">
                                             Invited
@@ -185,16 +187,16 @@
                                     </td>
                                 {% endif %}
                             {% endif %}
-                            {% if application.job %}
-                                {% if application.job.status == 0 %}
+                            {% if c.job %}
+                                {% if c.job.status == 0 %}
                                     <td class="px-6 py-4">
                                         <div class="bg-[#A062FF] h-1 w-10 mx-auto">
                                         </div>
                                     </td>
                                 {% endif %}
-                                {% if application.job.status == 1 %}
+                                {% if c.job.status == 1 %}
                                     <td class="px-6 py-4">
-                                        <div class="block bg-[#A062FF] border border-[#6B36C5] text-white rounded-full 
+                                        <div class="block bg-[#A062FF] border border-[#6B36C5] text-white rounded-full
                                         text-center px-3 py-1 hover:bg-[#6B36C5] duration-100">
                                             Invite
                                         </div>
@@ -207,7 +209,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                <a href="/view-candidate" class="block bg-[#A062FF] border border-[#6B36C5] text-white 
+                                <a href="/view-candidate" class="block bg-[#A062FF] border border-[#6B36C5] text-white
                                 rounded-full text-center px-3 py-1 hover:bg-[#6B36C5] duration-100">
                                     View
                                 </a>
