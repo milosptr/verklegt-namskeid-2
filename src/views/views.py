@@ -11,6 +11,7 @@ from src.exceptions import ApplicationException
 from src.exceptions.ApplicationException import ApplicationSubmitted
 from src.controllers.CompanyController import CompanyController
 from src.models import Company, Job
+from src.models.user_link import UserLink
 from src.controllers.EmailController import *
 
 # Views are the functions that handle the requests from the user
@@ -21,6 +22,42 @@ from src.controllers.EmailController import *
 ############################################################################################################
 # Account views
 ############################################################################################################
+from django.shortcuts import redirect, render
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
+@login_required
+def add_link(request):
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            link = request.POST.get('link')
+            if link:  # Check if the link is not empty
+                UserLink.objects.create(user=request.user, link=link)
+                messages.success(request, 'Link added successfully!')
+                return redirect('/profile')  # Redirect to profile or another appropriate page
+            else:
+                messages.error(request, 'No link provided.')
+                return redirect('/profile')  # Redirect back to the form if no link is provided
+        else:
+            messages.error(request, 'You must be logged in to add a link.')
+            return redirect('/login')  # Redirect to login page if not authenticated
+    else:
+        # If it's not a POST request, just render the form page
+        return render(request, '/profile')
+
+
+
+#def add_link(request):
+ #   user = request.user
+  #  link = request.POST.get('link')
+#
+ #   # Assuming you have a model to store user links
+  #  UserLink.objects.create(user=user, link=link)
+#
+ #   return JsonResponse({"message": "Link added successfully!"}, status=200)
+
+
 def log_in(request):
     if request.session.get('is_authenticated'):
         return redirect('/profile')
