@@ -4,6 +4,7 @@ from django.db import models
 
 
 class UserRecommendation(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey('User', on_delete=models.CASCADE)
     company = models.CharField(max_length=150)
     position = models.CharField(max_length=150)
