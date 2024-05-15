@@ -4,6 +4,7 @@ from django.db import models
 
 
 class BugReport(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=150)
     description = models.TextField()
     created_at = models.DateTimeField( default=datetime.now)

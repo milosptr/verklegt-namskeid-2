@@ -11,7 +11,7 @@ from src.exceptions import ApplicationException
 from src.exceptions.ApplicationException import ApplicationSubmitted
 from src.controllers.CompanyController import CompanyController
 from src.models import Company, Job
-
+from src.controllers.EmailController import *
 
 # Views are the functions that handle the requests from the user
 # You can think of them as the controller in the MVC pattern
@@ -106,6 +106,10 @@ def account_created(request):
 def report_bug(request):
     return GeneralViewController(request).render('pages/report_bug.html')
 
+
+def application_submitted(request):
+    return GeneralViewController(request).render('pages/application_submitted.html')
+
 ############################################################################################################
 # Protected views
 ############################################################################################################
@@ -126,13 +130,13 @@ def make_job_offer(request):
     return ProtectedViewController(request).render('pages/make_job_offer.html')
 
 
-def application(request, id: int, step: int):
+def application(request, id: int):
     """
         This is the application view that takes two parameters
         id: The id of the job that the application is for
         step: The step of the application
     """
-    return ApplicationController().handle_application_view(request, id, step)
+    return ApplicationController().handle_application_view(request, id)
 
 
 def make_job_offer(request):
