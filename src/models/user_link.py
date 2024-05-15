@@ -7,3 +7,6 @@ class UserLink(models.Model):
 
     def __str__(self):
         return f"{self.user.username}: {self.link}"
+
+    def validate(self):
+        if self.link

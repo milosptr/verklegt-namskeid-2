@@ -10,6 +10,7 @@ from src.controllers.CountryController import CountryController
 from src.controllers.ProtectedViewController import ProtectedViewController
 from src.exceptions.UserExceptions import CreateAccountException, LoginException
 from src.models import User, Company, UserRecommendation, UserExperience, UserResume, Skill, UserSkill
+from src.models.user_link import UserLink
 
 
 class UserController:
@@ -45,12 +46,20 @@ class UserController:
         # If everything goes well, redirect to profile page
         return redirect('/profile')
     @staticmethod
-    def handle_add_link(request):
+    def handle_add_link(request, id):
         if request.method == 'POST':
             link = request.POST.get('link')
-            UserLink.objects.create(user=request.user, link=link)
+             link = UserLink(user.id=id, link=link)
+
+            if user.validate_fields():
+                raise CreateAccountException(user.validate_fields())
+
+            # Save the user if everything is okay
+            user.save()
+
             # Assuming JSON response is appropriate here
-            return JsonResponse({'message': 'Link added successfully!'})
+        return redirect('/profile')
+
     @staticmethod
     def create_account_view(request):
         """
