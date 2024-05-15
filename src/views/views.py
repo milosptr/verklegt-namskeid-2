@@ -11,7 +11,7 @@ from src.exceptions import ApplicationException
 from src.exceptions.ApplicationException import ApplicationSubmitted
 from src.controllers.CompanyController import CompanyController
 from src.models import Company
-
+from src.controllers.EmailController import *
 
 # Views are the functions that handle the requests from the user
 # You can think of them as the controller in the MVC pattern
