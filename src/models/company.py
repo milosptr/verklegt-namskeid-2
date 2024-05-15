@@ -19,10 +19,12 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
-
     def get_all_companies(self):
-        return Company.objects.all()
-      
+        return Company.objects.all().order_by('name')
+
+    def full_address(self):
+        return f'{self.address}, {self.city.name} {self.city.zip}, {self.country.name}'
+
     @classmethod
     def get_all(cls):
         return cls.objects.all()

@@ -1,15 +1,18 @@
+import base64
+
+from django.contrib import messages
 from django.contrib.sessions.models import Session
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
 
 from src.controllers.CityController import CityController
 from src.controllers.CountryController import CountryController
+from src.controllers.ProtectedViewController import ProtectedViewController
 from src.exceptions.UserExceptions import CreateAccountException, LoginException
-from src.models import User, Company
+from src.models import User, Company, UserRecommendation, UserExperience, UserResume, Skill, UserSkill
 
 
 class UserController:
-
     @staticmethod
     def logout(request):
         # clear the user's session data
@@ -109,6 +112,9 @@ class UserController:
                 email=data.get('email'),
                 password=hashed_password,
                 phone_number=data.get('phone_number'),
+                address=data.get('address'),
+                city_id=data.get('city_id'),
+                country_id=data.get('country_id')
             )
 
             if user.validate_fields():
@@ -179,3 +185,211 @@ class UserController:
             raise CreateAccountException('Something went wrong! Please try again')
         except Exception as e:
             raise CreateAccountException(str(e))
+
+    @staticmethod
+    def update_info(request, id: int):
+        user = User.get_by_id(id)
+        if not user:
+            return render(request, 'pages/404.html')
+        if request.method == 'GET':
+            return redirect('/profile')
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+        try:
+            user.first_name = request.POST.get('first_name')
+            user.last_name = request.POST.get('last_name')
+            user.address = request.POST.get('address')
+            user.city_id = request.POST.get('city_id')
+            user.country_id = request.POST.get('country_id')
+            user.save()
+        except Exception as e:
+            messages.error(request, str(e))
+            return redirect('profile')
+        return redirect('/profile')
+
+    @staticmethod
+    def update_about(request, id: int):
+        user = User.get_by_id(id)
+        if not user:
+            return render(request, 'pages/404.html')
+        if request.method == 'GET':
+            return redirect('/profile')
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+        try:
+            user.about = request.POST.get('about')
+            user.save()
+        except Exception as e:
+            messages.error(request, str(e))
+            return redirect('profile')
+        return redirect('/profile')
+
+    @staticmethod
+    def add_recommendation(request, id: int):
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+            recommendation = UserRecommendation(
+                user_id=user.id,
+                company=request.POST.get('company'),
+                name=request.POST.get('name'),
+                email=request.POST.get('email'),
+                phone=request.POST.get('phone'),
+                position=request.POST.get('position')
+            )
+            recommendation.save()
+            return redirect('/profile')
+        except Exception as e:
+            messages.error(request, str(e))
+            return redirect('profile')
+
+    @staticmethod
+    def add_experience(request, id: int):
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+
+            still_working = request.POST.get('still_working')
+            end_date = request.POST.get('end_date')
+            if still_working:
+                end_date = None
+
+            experience = UserExperience(
+                user_id=user.id,
+                description=request.POST.get('description'),
+                company=request.POST.get('company'),
+                role=request.POST.get('role'),
+                start_date=request.POST.get('start_date'),
+                end_date=end_date
+            )
+            experience.save()
+            return redirect('/profile')
+        except Exception as e:
+            messages.error(request, str(e))
+            return redirect('profile')
+
+    @staticmethod
+    def add_resume(request, id: int):
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+            resume = UserResume.objects.filter(user_id=user.id).first()
+            if resume:
+                resume.content = request.POST.get('resume')
+                resume.save()
+            else:
+                resume = UserResume(
+                    user_id=user.id,
+                    content=request.POST.get('resume')
+                )
+                resume.save()
+            return redirect('/profile')
+        except Exception as e:
+            messages.error(request, str(e))
+            return redirect('profile')
+
+    @staticmethod
+    def add_skill(request, id: int):
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+            data = dict(request.POST.items())
+            for key in data.keys():
+                if key.startswith('skill_'):
+                    skill_id = key.replace('skill_', '')
+                    skill = Skill.objects.get(id=skill_id)
+                    if not skill:
+                        continue
+
+                    user_skill = UserSkill(
+                        user_id=user.id,
+                        skill=skill,
+                        level=5  # for now hardcode the level to 5
+                    )
+                    user_skill.save()
+            return redirect('/profile')
+        except Exception as e:
+            messages.error(request, str(e))
+            return redirect('profile')
+
+    @staticmethod
+    def remove_skill(request, id: int, skill: int):
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+            user_skill = UserSkill.objects.filter(user_id=user.id, skill_id=skill).first()
+            if user_skill:
+                user_skill.delete()
+            return redirect('/profile')
+        except Exception as e:
+            messages.error(request, str(e))
+            return redirect('profile')
+
+    @staticmethod
+    def upload_avatar(request, id: int):
+        if request.method != 'POST':
+            return render(request, 'pages/404.html')
+
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+            avatar = request.FILES['avatar']
+            if not avatar:
+                return ProtectedViewController(request).render('pages/account/profile.html', {'errors': ['Avatar image is required']})
+
+            # Read the binary data from the image
+            image_data = avatar.read()
+
+            # Encode the binary data to base64
+            encoded_image = base64.b64encode(image_data)
+
+            # Store the base64-encoded data as a string in the database
+            user.avatar = 'data:image/png;base64,' + encoded_image.decode('utf-8')
+            user.save()
+            return redirect('/profile')
+        except Exception as e:
+            messages.error(request, str(e))
+            return redirect('profile')
+
+    @staticmethod
+    def remove_experience(request, id: int, experience: int):
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+            user_experience = UserExperience.objects.filter(user_id=user.id, id=experience).first()
+            if user_experience:
+                user_experience.delete()
+            return redirect('/profile')
+        except Exception as e:
+            messages.error(request, str(e))
+            return redirect('profile')
+
+    @staticmethod
+    def remove_recommendation(request, id: int, recommendation: int):
+        try:
+            user = User.get_by_id(id)
+            if not user:
+                return render(request, 'pages/404.html')
+            user_recommendation = UserRecommendation.objects.filter(user_id=user.id, id=recommendation).first()
+            if user_recommendation:
+                user_recommendation.delete()
+            return redirect('/profile')
+        except Exception as e:
+            messages.error(request, str(e))
+            return redirect('profile')

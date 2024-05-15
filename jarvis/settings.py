@@ -9,12 +9,11 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+from sshtunnel import SSHTunnelForwarder
 from pathlib import Path
 import os
 
 from django.core.exceptions import ImproperlyConfigured
-
 
 
 def get_env_variable(var_name):
@@ -45,7 +44,7 @@ INSTALLED_APPS = [
     # 'django.contrib.auth',
     # 'django.contrib.contenttypes',
     'django.contrib.sessions',
-    # 'django.contrib.messages',
+    'django.contrib.messages',
     'django.contrib.staticfiles',
     'src'
 ]
@@ -56,7 +55,7 @@ MIDDLEWARE = [
     # 'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     # 'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -78,7 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 # 'django.contrib.auth.context_processors.auth',
-                # 'django.contrib.messages.context_processors.messages',
+                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
@@ -88,17 +87,28 @@ WSGI_APPLICATION = 'jarvis.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
+# Connect to a server using the ssh keys. See the sshtunnel documentation for using password authentication
+ssh_tunnel = SSHTunnelForwarder(
+    "37.205.38.104",
+    ssh_username="dagur",
+    ssh_password="Castle2820",
+    remote_bind_address=('localhost', 5432),
+)
+ssh_tunnel.start()
+print('--------------------------------', ssh_tunnel.is_active, '--------------------------------')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'vln2_assignment_groups_20_user',
-        'PASSWORD': 'b3w1P2C1pz',
-        'HOST': 'verklegt-namskeid-ii.northeurope.cloudapp.azure.com',
-        'PORT': '5432',
-        'OPTIONS': {
-            'options': '-c search_path=vln2_assignment_groups_20'
-        }
+        'HOST': 'localhost',
+        'PORT': ssh_tunnel.local_bind_port,
+        'NAME': 'v2db',
+        'USER': 'postgres',
+        'PASSWORD': 'verklegt2',
+        # 'OPTIONS': {
+        #     'options': '-c search_path=vln2_assignment_groups_20'
+        # }
     }
 }
 
@@ -137,7 +147,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
-    BASE_DIR / 'static/jarvis',
 ]
 
 # Default primary key field type
@@ -146,3 +155,10 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 TEST_RUNNER = 'jarvis.test_runner.NoDBTestRunner.NoDBTestRunner'
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'mail.live.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'alexia22@ru.is'
+EMAIL_HOST_PASSWORD = ''

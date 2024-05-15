@@ -17,6 +17,13 @@ class City(models.Model):
     def get_all(cls):
         return cls.objects.all()
 
+    @classmethod
+    def get_by_id(cls, id):
+        try:
+            return cls.objects.get(id=id)
+        except cls.DoesNotExist:
+            return None
+
     class Meta:
         db_table = 'cities'
         ordering = ['-created_at']
