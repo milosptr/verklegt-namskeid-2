@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 
+from src.controllers.JobController import JobController
 from src.controllers.ProtectedViewController import ProtectedViewController
 from src.exceptions.ApplicationException import ApplicationSubmitted, ApplicationException
 
@@ -12,21 +13,19 @@ class ApplicationController:
         if step < 1 or step > 5:
             return redirect('/not-found')
 
-        if request.method == 'GET':
-            return ProtectedViewController(request).render('pages/application.html', {'id': id, 'step': step})
-
-        if request.POST != 'POST':
-            return redirect('/not-found')
-
         try:
+            job = JobController().get_by_id(id)
+            if not job:
+                return redirect('/not-found')
+
             # Check if the request is a POST request and if the application step was handled successfully
-            if self.handle_application_step(step, dict(request.POST.items())):
+            if request.POST and self.handle_application_step(step, dict(request.POST.items())):
                 step += 1
                 # Move to the next step
                 return redirect(f'/application/{id}/{step}')
 
             # Render the application page with the id and step
-            return ProtectedViewController(request).render('pages/application.html', {'id': id, 'step': step})
+            return ProtectedViewController(request).render('pages/application.html', {'id': id, 'step': step, 'job': job})
         except ApplicationSubmitted:
             # If the application was submitted successfully, return a success page
             return render(request, 'pages/application_submitted.html')

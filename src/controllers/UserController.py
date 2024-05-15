@@ -261,6 +261,8 @@ class UserController:
             if still_working:
                 end_date = None
 
+            print(request.POST.get('start_date'), end_date)
+
             experience = UserExperience(
                 user_id=user.id,
                 description=request.POST.get('description'),
