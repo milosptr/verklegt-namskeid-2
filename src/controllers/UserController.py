@@ -49,10 +49,8 @@ class UserController:
     def handle_add_link(request, id):
         if request.method == 'POST':
             link = request.POST.get('link')
-             link = UserLink(user.id=id, link=link)
+            link = UserLink(user.id = id, link=link)
 
-            if user.validate_fields():
-                raise CreateAccountException(user.validate_fields())
 
             # Save the user if everything is okay
             user.save()
