@@ -5,6 +5,7 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.db import models
 
 from src.exceptions.UserExceptions import CreateAccountException
+from src.models.liked_job import LikedJob
 from src.models.job import Job
 from src.models.application import Application
 from src.models.user_skill import UserSkill
@@ -99,6 +100,16 @@ class User(models.Model):
             return list()
         return Application.get_by_company(self.company.id)
 
+    def get_list_of_liked_jobs(self):
+        if self.role == 1:
+            return list()
+        liked_jobs = LikedJob.get_by_user(self.id)
+        print('liked jobs', liked_jobs)
+        jobs = list()
+        for liked_job in liked_jobs:
+            jobs.append(liked_job.job_id)
+        return jobs
+
     def save(self, *args, **kwargs):
         try:
             user = super(User, self).save(*args, **kwargs)
@@ -179,6 +190,7 @@ class User(models.Model):
             'pending_job_offers': self.get_pending_job_offers(),
             'closed_job_offers': self.get_closed_job_offers(),
             'candidates': self.get_list_of_candidates(),
+            'liked_jobs': self.get_list_of_liked_jobs(),
             'resume': self.get_resume(),
             'skills': self.get_skills(),
             'country': self.country,

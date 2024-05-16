@@ -10,7 +10,7 @@ from src.controllers.ProtectedViewController import ProtectedViewController
 from src.exceptions import ApplicationException
 from src.exceptions.ApplicationException import ApplicationSubmitted
 from src.controllers.CompanyController import CompanyController
-from src.models import Company, Job
+from src.models import Company, Job, LikedJob, Application
 from src.controllers.EmailController import *
 from src.controllers.CategoryController import CategoryController
 from ..filters import JobFilter
@@ -51,26 +51,31 @@ def home(request):
     """
     This is the home view or the index page of the application
     """
-    category_id = request.GET.get('category')
-    company_id = request.GET.get('company_filter')
-
-    if category_id and category_id != '1':
-        job_offers = JobController().get_by_category(category_id)
-    elif company_id and company_id != '1':
-        job_offers = CompanyController().get_jobs_by_company(company_id)
-    else:
-        job_offers = JobController().get_all()
-
+    job_offers = JobController().get_all()
     companies_list = CompanyController().get_all_companies()
-    category_list = CategoryController().get_categories()
+
     filters = request.GET
-    print(filters.get('category'))
-    print(filters.get('company_filter'))
+    if filters and filters.get('liked'):
+        liked_jobs = LikedJob.objects.filter(user_id=request.session.get('user_id'))
+        job_offers = [liked_job.job for liked_job in liked_jobs]
+
+    if filters and filters.get('applied'):
+        applications = Application.get_by_user(request.session.get('user_id'))
+        job_offers = [a.job for a in applications]
+
+    if filters and filters.get('company'):
+        company_id = filters.get('company')
+        job_offers = Job.get_by_company(company_id)
+
+    if filters and filters.get('order_by'):
+        order_by = filters.get('order_by') == 'asc' if '' else '-'
+        job_offers = job_offers.order_by(f'{order_by}due_date')
 
     return GeneralViewController(request).render('pages/home.html', {
         'job_offers': job_offers,
         'companies_list': companies_list,
-        'category_list': category_list
+        'company_filter': filters.get('company'),
+        'order_filter': filters.get('order_by'),
     })
 
 

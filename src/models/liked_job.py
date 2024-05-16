@@ -13,6 +13,18 @@ class LikedJob(models.Model):
     def __str__(self):
         return ''
 
+    @classmethod
+    def get_by_user(cls, user_id):
+        return cls.objects.filter(user_id=user_id)
+
+    @classmethod
+    def get_by_job(cls, job_id):
+        return cls.objects.filter(job_id=job_id)
+
+    @classmethod
+    def get_by_user_and_job(cls, user_id, job_id):
+        return cls.objects.filter(user_id=user_id, job_id=job_id)
+
     class Meta:
         db_table = 'liked_jobs'
         ordering = ['-created_at']

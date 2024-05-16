@@ -88,9 +88,20 @@
                     Company Page
                     <span class="ml-2">&#x2192;</span>
                 </a>
-                <div class="mx-10 mt-1">
-                    {% include 'common/icons/heart-empty.html' with classes="w-8 h-8"%}
-                </div>
+                {% if user.role == 0 %}
+                    <div class="mx-10 mt-1">
+                        <form method="POST" action="/api/v1/user/{{ user.id }}/like/{{ job.id }}" class="ml-auto">
+                            {% csrf_token %}
+                            <button type="submit">
+                                {% if job.id in user.liked_jobs %}
+                                    {% include 'common/icons/heart-filled.html' with classes="w-8 h-8" %}
+                                {% else %}
+                                    {% include 'common/icons/heart-empty.html' with classes="w-8 h-8" %}
+                                {% endif %}
+                            </button>
+                        </form>
+                    </div>
+                {% endif %}
             </div>
 
             <div>

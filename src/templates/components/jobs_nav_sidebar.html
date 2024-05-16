@@ -1,26 +1,26 @@
 <nav class="flex flex-col items-center sticky top-0 pt-16">
     <div class="relative z-[1] bg-[#01011A] bg-opacity-60 border border-solid border-[#6C37BD] rounded-full inline px-6 py-1">Jobs</div>
     <div class="relative z-[0] bg-[#01011A] bg-opacity-60 rounded-lg p-5 grid gap-4 pt-10 -mt-4">
-        <a 
+        <a
             href="/"
-            class="border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300 
-            {% if request.path_info == '/' %} bg-[#6C37BD] {% endif %}"
+            class="border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300
+            {% if request.get_full_path == '/' %} bg-[#6C37BD] {% endif %}"
         >
             All jobs
         </a>
-        
-        <a 
-            href="/#liked" 
+
+        <a
+            href="/?liked=true"
             class="border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300
-            {% if request.path_info == '/#liked' %} bg-[#6C37BD] {% endif %}"
+            {% if request.get_full_path == '/?liked=true' %} bg-[#6C37BD] {% endif %}"
         >
             Liked jobs
         </a>
-        
-        <a 
-            href="/#applied" 
+
+        <a
+            href="/?applied=true"
             class="border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300
-            {% if request.path_info == '/#applied' %} bg-[#6C37BD] {% endif %}"
+            {% if request.get_full_path == '/?applied=true' %} bg-[#6C37BD] {% endif %}"
         >
             Already applied
         </a>

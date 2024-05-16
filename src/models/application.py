@@ -24,8 +24,12 @@ class Application(models.Model):
         return str(self.job) + ' - ' + str(self.user)
 
     @classmethod
+    def get_by_user(cls, user_id):
+        return cls.objects.filter(user_id=user_id).filter(job__status__lt=2)
+
+    @classmethod
     def get_by_company(cls, company_id):
-        return cls.objects.filter(job__company_id=company_id)
+        return cls.objects.filter(job__company_id=company_id).filter(job__status__lt=2)
 
     def get_status(self):
         if self.status == 0:

@@ -9,7 +9,7 @@ from src.controllers.CityController import CityController
 from src.controllers.CountryController import CountryController
 from src.controllers.ProtectedViewController import ProtectedViewController
 from src.exceptions.UserExceptions import CreateAccountException, LoginException
-from src.models import User, Company, UserRecommendation, UserExperience, UserResume, Skill, UserSkill
+from src.models import User, Company, UserRecommendation, UserExperience, UserResume, Skill, UserSkill, Job, LikedJob
 
 
 class UserController:
@@ -397,3 +397,33 @@ class UserController:
         except Exception as e:
             messages.error(request, str(e))
             return redirect('profile')
+
+    @staticmethod
+    def like_job(request, id: int, job: int):
+        try:
+            if request.method != 'POST' or request.session.get('user_id') != id:
+                return redirect('/not-found')
+
+            user = User.get_by_id(id)
+            job = Job.get_by_id(job)
+
+            if not user or not job:
+                return redirect('/not-found')
+
+            if user.role == 1:
+                return redirect(f'/job-offer/{job.id}')
+
+            liked_job = LikedJob.get_by_user_and_job(user.id, job.id)
+            if not liked_job:
+                liked_job = LikedJob(
+                    user_id=user.id,
+                    job_id=job.id
+                )
+                liked_job.save()
+            else:
+                liked_job.delete()
+
+            return redirect(f'/job-offer/{job.id}')
+        except Exception as e:
+            messages.error(request, str(e))
+            return redirect('/not-found')

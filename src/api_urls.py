@@ -18,6 +18,7 @@ urlpatterns = [
     path(f'{prefix}/company/<int:id>/cover', CompanyController.upload_cover, name='upload_cover'),
 
     # User routes
+    path(f'{prefix}/user/<int:id>/like/<int:job>', UserController.like_job, name='like_job'),
     path(f'{prefix}/user/<int:id>/about', UserController.update_about, name='update_about'),
     path(f'{prefix}/user/<int:id>/recommendation', UserController.add_recommendation, name='add_recommendation'),
     path(f'{prefix}/user/<int:id>/experience', UserController.add_experience, name='add_experience'),

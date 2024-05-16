@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.db import models
+from django.utils import timezone
 
 
 class Job(models.Model):
@@ -40,6 +41,16 @@ class Job(models.Model):
     @classmethod
     def get_all(cls):
         return cls.objects.all()
+
+    def remaining_days(self):
+        now = timezone.now()
+        delta = self.due_date - now
+        if delta.days > 0:
+            return f"Ends in {delta.days} days"
+        elif delta.days == 0:
+            return "Ends today"
+        else:
+            return "Ended"
 
 
     def get_all_jobs(self):

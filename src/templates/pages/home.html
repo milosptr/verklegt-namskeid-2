@@ -16,12 +16,12 @@
             <div class="w-4/5">
                 <form id="homePageFiltersTop" method="GET" class="w-full flex items-center gap-10 pb-3 border-b border-solid border-[#1F2B62]">
                     <!-- Dropdown menus -->
-                    <!-- Job Category -->
+                    <!-- Company Filter -->
                     <div class="relative">
-                        <select name="category" onchange="this.form.submit()" class="bg-[#04031F] rounded-full border border-solid border-[#6C37BD] appearance-none px-5 pr-10 py-1.5">
-                            <option value="1">Job category</option>
-                            {% for category in category_list %}
-                                <option value="{{ category.id }}">{{ category.name }}</option>
+                        <select name="company" onchange="this.form.submit()" class="bg-[#04031F] rounded-full border border-solid border-[#6C37BD] appearance-none px-5 pr-10 py-1.5">
+                            <option value="" readonly hidden>Company</option>
+                            {% for company in companies_list %}
+                                <option value="{{ company.id }}" {% if company_filter|floatformat:0 == company.id|floatformat:0 %}selected{% endif %}>{{ company.name }}</option>
                             {% endfor %}
                         </select>
                         <div class="absolute top-4 right-3.5">
@@ -29,18 +29,17 @@
                         </div>
                     </div>
 
-                    <!-- Company Filter -->
+                    <!-- Order by Filter -->
                     <div class="relative">
-                        <select name="company_filter" onchange="this.form.submit()" class="bg-[#04031F] rounded-full border border-solid border-[#6C37BD] appearance-none px-5 pr-10 py-1.5">
-                            <option value="1">Company</option>
-                            {% for company in companies_list %}
-                                <option value="{{ company.id }}">{{ company.name }}</option>
-                            {% endfor %}
+                        <select name="order_by" onchange="this.form.submit()" class="bg-[#04031F] rounded-full border border-solid border-[#6C37BD] appearance-none px-5 pr-10 py-1.5">
+                            <option value="" hidden>Order by</option>
+                            <option value="asc" {% if order_filter == 'asc' %}selected{% endif %}>Newest</option>
+                            <option value="desc" {% if order_filter == 'desc' %}selected{% endif %}>Oldest</option>
                         </select>
                         <div class="absolute top-4 right-3.5">
                             {% include 'common/icons/accordion.html' %}
                         </div>
-                    </div>          
+                    </div>
 
                     <!-- Search bar-->
                     <div class="relative w-full">
@@ -53,7 +52,7 @@
                         />
                     </div>
                 </form>
-                <div class="grid grid-cols-3 gap-10 mt-6">
+                <div class="grid grid-cols-3 gap-6 mt-6">
                     {% if job_offers %}
                         {% for job in job_offers %}
                             {% include 'components/job_offer_card.html' with job=job %}
