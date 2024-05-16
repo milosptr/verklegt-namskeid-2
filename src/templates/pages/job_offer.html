@@ -89,6 +89,11 @@
                     Company Page
                     <span class="ml-2">&#x2192;</span>
                 </a>
+                <div id="share-job-offer" class="flex gap-3 bg-[#6C37BD] hover:bg-purple-900 text-white font-medium py-2 px-5 
+                rounded-full ml-10">
+                    <div>Copy link</div>
+                    {% include 'common/icons/link.html' with classes="w-5 h-6" %}
+                </div>
                 {% if user.role == 0 %}
                     <div class="ml-10 mt-1">
                         <form method="POST" action="/api/v1/user/{{ user.id }}/like/{{ job.id }}" class="ml-auto">
@@ -103,7 +108,8 @@
                         </form>
                     </div>
                 {% endif %}
-                <div id="share-job-offer" class="bg-[#6C37BD] hover:bg-purple-900 text-white font-medium py-2 px-4 rounded-full ml-10">Copy link</div>
+            
+            
             </div>
 
             <div>
