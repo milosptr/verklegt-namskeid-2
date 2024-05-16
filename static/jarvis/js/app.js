@@ -14,6 +14,20 @@ const main = () => {
         })
     }
 
+    //edit job offer
+    const editJobOfferButton = document.getElementById('edit-job-offer')
+    const updateJobOfferModal = document.getElementById('job-offer-modal')
+    const deleteJobOffer = document.getElementById('delete-job-offer-modal')
+    if (editJobOfferButton) {
+        editJobOfferButton.addEventListener('click', () => {
+            updateJobOfferModal.classList.remove('hidden')
+        })
+        deleteJobOffer.addEventListener('click', () => {
+            updateJobOfferModal.classList.add('hidden')
+        })
+    }
+
+
     // Company info
     const updateCompanyButton = document.getElementById('update-company-info')
     const updateCompanyModal = document.getElementById('user-company-modal')
@@ -131,7 +145,7 @@ const main = () => {
         })
     }
 
-    // Remove bug
+    // Report bug
     const report_bug_button = document.getElementById('report-bug-button')
     const report_bug = document.getElementById('report-bug')
     const close_button = document.getElementById('close-report-bug')
