@@ -29,7 +29,7 @@ class EmailController:
                 'message')
 
             send_mail(subject, msg_plain, email_from, recipient_list, html_message=msg_html)
-            messages.success(request, 'Successfully nonono')
+            messages.success(request, 'Successfully')
             return redirect('/contact-us')
         else:
             return GeneralViewController(request).render('pages/contact_us.html')
