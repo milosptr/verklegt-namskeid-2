@@ -3,17 +3,16 @@
 <footer class="bg-[#000019]">
     <div class="mx-auto max-w-screen-xl w-full p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
-          <div class="mb-6 md:mb-0">
-              <a href="http://127.0.0.1:8000/" class="flex items-center">
-                  {% load static %}
-                  <img src="{% static 'assets/footer_logo.svg' %}" class="h-20 me-3" alt="FlowBite Logo" />
-                  <span class="self-center text-2xl font-semibold whitespace-nowrap text-[#6C37BD]">Jarvis</span>
-              </a>
-          </div>
+          <div>
+                    {% load static %}
+                    <a href="/">
+                        <img src="{% static 'assets/logo.svg' %}">
+                    </a>
+                </div>
 
             <!-- Report a Bug button -->
 
-            <div>
+            <div class="mt-2">
                 <div id="report-bug-button">
                     <button type="button" class="text-[#6C37BD] hover:text-white border-2 border-purple-700 hover:bg-[#6C37BD] 
                     focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 
@@ -22,7 +21,7 @@
             </div>
 
             <!-- Contact Us button -->
-            <div>
+            <div class="mt-2">
                 <a href="/contact-us">
                     <button type="button" class="text-[#6C37BD] hover:text-white border-2 border-purple-700 hover:bg-[#6C37BD] 
                     focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 
