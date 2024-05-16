@@ -3,73 +3,130 @@
 {% block title %}Edit job offer{% endblock %}
 
 {% block content %}
-<form>
-    <div class="bg-[#6C37BD] bg-opacity-10 rounded-lg p-5 p w-2/6 shadow-md mb-10">
-        <h1 class="text-3xl text-center">
-        Edit job offer
-        </h1>
-
-        <div class="mt-5 mb-6">
-            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
-                ps-5 p-2.5 w-full text-white" placeholder="Job title">
+    {% if messages %}
+        {% include 'components/error_card.html' with title="Some fields are invalid or missing" errors=messages classes="w-full mb-5 p-5" %}
+    {% endif %}
+    <div class="flex items-start gap-4">
+        <div class="w-1/4">
+            <h2 class="text-2xl">
+                {% if job.status != 2 %}
+                Change job status
+                {% else %}
+                Job status
+                {% endif %}
+            </h2>
+            {% if job.status != 2 %}
+                <form method="POST" action="/api/v1/job/{{ job.id }}/status">
+                    {% csrf_token %}
+                    <div class="flex flex-col gap-4 mt-5 w-1/2">
+                        {% for status in job.STATUS %}
+                            <label
+                                for="job-status-{{ status.0 }}"
+                                class="has-[:checked]:bg-[#6C37BD] border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300"
+                            >
+                            <input hidden id="job-status-{{ status.0 }}" value="{{ status.0 }}" type="radio" {% if status.0 == job.status %}checked{% endif %} name="status" />
+                            {{ status.1 }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="w-1/2 mt-4 text-white bg-[#FFAA76] hover:bg-opacity-80 font-medium rounded-full text-sm py-2 px-5">
+                        Update status
+                    </button>
+                </form>
+            {% else %}
+                <div class="w-1/2 mt-5 border border-solid border-red-500 bg-red-500 rounded-full text-sm text-center py-1.5 px-6">
+                    Closed
+                </div>
+            {% endif %}
         </div>
+        <form class="w-3/4" method="POST" action="/api/v1/job/{{ job.id }}/update-job">
+            {% csrf_token %}
+            <div class="bg-[#6C37BD] bg-opacity-10 rounded-lg p-5 shadow-md mb-10">
+                <h2 class="text-2xl text-center">
+                    Edit job offer
+                </h2>
 
-        <div class="relative mt-5">
-            <select
-                name="job_type"
-                class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full w-full text-gray-400 selected:white
-                appearance-none px-5 pr-10 py-2.5" required>
-                    <option selected disabled hidden>Job type</option>
-                    <option>Teacher</option>
-                    <option>Data science</option>
-                    <option>Sales</option>
-                    <option>Software Engineering</option>
-            </select>
-            <div class="absolute top-4 right-4">
-                {% include 'common/icons/accordion.html' %}
+                <div class="mt-5 mb-6">
+                    <label class="text-gray-400">Job title:</label>
+                    <input type="text" name="title" value="{{ job.title }}" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
+                    ps-5 p-2.5 w-full text-white mt-2" placeholder="Job title">
+                </div>
+                <div class="mt-5 mb-6">
+                    <label class="text-gray-400">Job description:</label>
+                    <textarea name="description" rows="5" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-lg block
+                    ps-5 p-2.5 w-full text-white mt-2" placeholder="Job description">{{ job.description }}</textarea>
+                </div>
+
+                <div class="mt-5">
+                    <label class="text-gray-400">Job category:</label>
+                    <div class="relative">
+                        <select
+                                name="category_id"
+                                class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full w-full text-gray-400 selected:white
+                        appearance-none px-5 pr-10 py-2.5 mt-2" required>
+                            <option selected disabled hidden>Job category</option>
+                            {% for c in categories %}
+                                <option value="{{ c.id }}" {% if c.id == job.category_id %}selected{% endif %}>{{ c.name }}</option>
+                            {% endfor %}
+
+                        </select>
+                        <div class="absolute top-6 right-4">
+                            {% include 'common/icons/accordion.html' %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <label class="text-gray-400">Job types:</label>
+                    <div class="grid grid-cols-5 gap-4 mt-2">
+                        {% for t in types %}
+                            <div class="flex items-center justify-start gap-2 cursor-pointer">
+                                <input id="job-type-{{ t.id }}" type="checkbox" name="types" value="{{ t.id }}" {% if t.id in job.get_job_type_list %}checked{% endif %} class="">
+                                <label for="job-type-{{ t.id }}" class="cursor-pointer text-gray-400">{{ t.name }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+{#                {#TODO: Add job types#}
+
+                <div class="grid grid-cols-2 gap-4 mt-5">
+                    <div class="">
+                        <label class="text-gray-400">Start date:</label>
+                        <input type="datetime-local" name="start_date" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
+                        px-5 p-2.5 w-full text-white mt-2" value="{{ job.get_start_date }}">
+                    </div>
+
+                    <div class="">
+                        <label class="text-gray-400">Due date:</label>
+                        <input type="datetime-local" name="due_date" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
+                        ps-5 p-2.5 w-full text-white mt-2" value="{{ job.get_due_date }}">
+                    </div>
+                </div>
+
+                <div class="flex justify-center mt-5">
+                    <div>
+                        <button
+                            type="submit"
+                            name="action"
+                            value="delete"
+                            class="text-white w-48 bg-red-500 hover:bg-red-700 font-medium rounded-full text-sm py-2 px-5 m-4">
+                            Delete
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            type="submit"
+                            name="action"
+                            value="update"
+                            class="text-white w-48 bg-[#6836B5] hover:bg-[#411586] font-medium rounded-full text-sm py-2 px-5 m-4">
+                            Save changes
+                        </button>
+                    </div>
+                </div>
+
             </div>
-        </div>
-
-
-        <div class="mt-5 mb-5">
-            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
-                ps-5 p-2.5 w-full text-white" placeholder="Job address">
-        </div>
-
-        <div class="">
-            <label class="text-gray-400">Enter publishing date:</label>
-            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
-                px-5 p-2.5 w-full text-white mt-2" placeholder="dd/mm/yyyy">
-        </div>
-
-        <div class="mt-5 mb-6">
-            <label class="text-gray-400">Enter end date:</label>
-            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
-                ps-5 p-2.5 w-full text-white mt-2" placeholder="dd/mm/yyyy">
-        </div>
-
-
-        <textarea required cols="38" rows="10" class="bg-[#4E288F] rounded-xl text-white text:p-4
-         mt-2 placeholder:p-4" placeholder="Description of job offering" ></textarea>
-
-        <div class="flex justify-center">
-            <div>
-                <button
-                    type="submit"
-                    class="text-white bg-[#6836B5] hover:bg-[#411586] font-medium rounded-full text-sm py-2 px-5 m-4">
-                    Delete
-                </button>
-            </div>
-            <div>
-                <button
-                    type="submit"
-                    class="text-white bg-[#6836B5] hover:bg-[#411586] font-medium rounded-full text-sm py-2 px-5 m-4">
-                    Save changes
-                </button>
-            </div>
-        </div>
-        
+        </form>
     </div>
-</form>
 
 {% endblock %}

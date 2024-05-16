@@ -1,0 +1,173 @@
+[
+{
+  "model": "src.type",
+  "pk": 1,
+  "fields": {
+    "name": "Full Time",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 2,
+  "fields": {
+    "name": "Part time",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 3,
+  "fields": {
+    "name": "Remote",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 7,
+  "fields": {
+    "name": "Freelance",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 8,
+  "fields": {
+    "name": "Contract",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 9,
+  "fields": {
+    "name": "Temporary",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 10,
+  "fields": {
+    "name": "Internship",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 11,
+  "fields": {
+    "name": "Seasonal",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 12,
+  "fields": {
+    "name": "Volunteer",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 13,
+  "fields": {
+    "name": "Apprenticeship",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 14,
+  "fields": {
+    "name": "Consultant",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 15,
+  "fields": {
+    "name": "Gig/Project-Based",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 16,
+  "fields": {
+    "name": "Per Diem",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 17,
+  "fields": {
+    "name": "Casual",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 18,
+  "fields": {
+    "name": "Shift Work",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 19,
+  "fields": {
+    "name": "On-Call",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 20,
+  "fields": {
+    "name": "Co-op",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 21,
+  "fields": {
+    "name": "Job Sharing",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+},
+{
+  "model": "src.type",
+  "pk": 22,
+  "fields": {
+    "name": "Fixed-Term",
+    "created_at": "2024-05-11T11:37:42.730Z",
+    "updated_at": "2024-05-11T11:37:42.730Z"
+  }
+}
+]
