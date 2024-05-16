@@ -50,7 +50,6 @@ urlpatterns = [
     path('make-job-offer', make_job_offer, name='make_job_offer'),
     path('job-offer/<int:id>', job_offer, name='job_offer'),
     path('jobs/', job_list, name='job_list'),
-
     path('report-bug', report_bug, name='report_bug'),
     path('application-submitted', application_submitted, name='application_submitted'),
 

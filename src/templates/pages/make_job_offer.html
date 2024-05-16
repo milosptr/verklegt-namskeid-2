@@ -52,7 +52,8 @@
     
         <textarea required cols="38" rows="10" class="bg-[#4E288F] rounded-xl text-white text:p-4 
          mt-2 placeholder:p-4" placeholder="Description of job offering" ></textarea>
-        
+         <form method="POST" action="/api/v1/make-job-offer" class="ml-auto">
+             {% csrf_token %}
         <div class="w-64 mx-auto text-center">
             <button
                 type="submit"

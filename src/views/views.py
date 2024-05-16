@@ -53,6 +53,7 @@ def home(request):
     """
     job_offers = JobController().get_all()
     companies_list = CompanyController().get_all_companies()
+    categories_list = CategoryController().get_categories()
 
     filters = request.GET
     if filters and filters.get('liked'):
@@ -71,13 +72,18 @@ def home(request):
         order_by = filters.get('order_by') == 'asc' if '' else '-'
         job_offers = job_offers.order_by(f'{order_by}due_date')
 
+    if filters and filters.get('category'):
+        job_category_id = filters.get('category')
+        job_offers = Job.get_by_category(job_category_id)
+
     return GeneralViewController(request).render('pages/home.html', {
         'job_offers': job_offers,
         'companies_list': companies_list,
+        'categories_list': categories_list,
         'company_filter': filters.get('company'),
-        'order_filter': filters.get('order_by'),
+        'category_filter': filters.get('category'),
+        'order_filter': filters.get('order_by')
     })
-
 
 def contact_us(request):
     """
@@ -101,6 +107,7 @@ def companies(request):
     else:
         companies_list = CompanyController().get_all_companies()
     return GeneralViewController(request).render('pages/companies.html', {'companies_list': companies_list})
+
 
 
 def not_found(request):
@@ -152,8 +159,48 @@ def employer_dashboard(request):
     return ProtectedViewController(request).render('pages/employer-dashboard.html')
 
 
+
+
+
+"""def make_job_offer(request):
+    job_offers = JobController().get_all()
+    categories_list = CategoryController().get_categories()
+    filters = request.GET
+    if filters and filters.get('category'):
+        job_category_id = filters.get('category')
+        job_offers = Job.get_by_category(job_category_id)
+
+    return ProtectedViewController(request).render('pages/make_job_offer.html', {'categories_list':categories_list})
+"""
+
 def make_job_offer(request):
-    return ProtectedViewController(request).render('pages/make_job_offer.html')
+    if request.method == 'POST':
+        # Assuming form data is sent as POST request
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        category_id = request.POST.get('category')
+        start_date = request.POST.get('start_date')
+        due_date = request.POST.get('due_date')
+
+        # Create a new Job instance and save it
+        job = Job(
+            title=title,
+            description=description,
+            category_id=category_id,
+            start_date=start_date,
+            due_date=due_date,
+            company=request.user.company  # Assuming the user is linked to a company
+        )
+        try:
+            job.save()
+            messages.success(request, "Job offer created successfully!")
+            return redirect('some_view_name')  # Redirect after POST to avoid resubmitting the form
+        except Exception as e:
+            messages.error(request, f"Failed to create job offer: {str(e)}")
+
+    # Handle GET request
+    categories_list = CategoryController().get_categories()
+    return render(request, 'pages/make_job_offer.html', {'categories_list': categories_list})
 
 
 def application(request, id: int):
@@ -165,8 +212,8 @@ def application(request, id: int):
     return ApplicationController().handle_application_view(request, id)
 
 
-def make_job_offer(request):
-    return ProtectedViewController(request).render('pages/make_job_offer.html')
+#def make_job_offer(request):
+#    return ProtectedViewController(request).render('pages/make_job_offer.html')
 
 
 def view_candidate(request):
