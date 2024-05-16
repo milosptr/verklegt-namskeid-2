@@ -39,7 +39,15 @@
 
 
                     {% if user and user.role == 1 %}
-                    <a href="/employer-dashboard" class="text-white">Dashboard</a>
+                        
+                    <a 
+                        href="/employer-dashboard" 
+                        class="hover:underline underline-offset-8 decoration-[#6C37BD] 
+                        {% if request.path_info == '/employer-dashboard' %} underline underline-offset-8 decoration-[#6C37BD]
+                        {% endif %}"
+                    >Dashboard
+                    </a>
+                        
                     {% endif %}
                     <a href="#" class="text-2xl">🇮🇸</a>
                     <a href="#" class="hidden">🇬🇧</a>
