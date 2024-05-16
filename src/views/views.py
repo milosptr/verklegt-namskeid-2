@@ -118,8 +118,15 @@ def company_profile(request, company_name):
 
 def company_details(request, company_id):
     company = get_object_or_404(Company, id=company_id)
-    return GeneralViewController(request).render('pages/company_details.html', {'company': company})
+    
+    job_list = Job.get_by_company(company_id)
 
+    print ("Job List: ",job_list)
+    
+    return GeneralViewController(request).render('pages/company_details.html', {
+        'company': company,
+        'job_list': job_list
+    })
 
 def job_offer(request):
     return GeneralViewController(request).render('pages/job_offer.html')
