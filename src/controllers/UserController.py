@@ -46,18 +46,18 @@ class UserController:
 
         # If everything goes well, redirect to profile page
         return redirect('/profile')
-    @staticmethod
-    def handle_add_link(request, id):
-        if request.method == 'POST':
-            link = request.POST.get('link')
-            link = UserLink(user.id = id, link=link)
+    #@staticmethod
+  #  def handle_add_link(request, id):
+   #     if request.method == 'POST':
+    #        link = request.POST.get('link')
+     #       link = UserLink(user.id = id, link=link)
 
 
             # Save the user if everything is okay
-            user.save()
+      #      user.save()
 
             # Assuming JSON response is appropriate here
-        return redirect('/profile')
+       # return redirect('/profile')
 
     @staticmethod
     def create_account_view(request):

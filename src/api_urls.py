@@ -29,7 +29,7 @@ urlpatterns = [
     path(f'{prefix}/user/<int:id>/remove-skill/<int:skill>', UserController.remove_skill, name='remove_skill'),
     path(f'{prefix}/user/<int:id>/remove-experience/<int:experience>', UserController.remove_experience, name='remove_experience'),
     path(f'{prefix}/user/<int:id>/remove-recommendation/<int:recommendation>', UserController.remove_recommendation, name='remove_recommendation'),
-    path(f'{prefix}/user/<int:id>/link', UserController.handle_add_link, name='api_add_link'),
+   # path(f'{prefix}/user/<int:id>/link', UserController.handle_add_link, name='api_add_link'),
     # Contact us
      path(f'{prefix}/contact-us', EmailController.contact_us, name="contact_us")
 ]
