@@ -153,7 +153,8 @@ def employer_dashboard(request):
 
 
 def make_job_offer(request):
-    return ProtectedViewController(request).render('pages/make_job_offer.html')
+    categories_list = CategoryController().get_categories()
+    return ProtectedViewController(request).render('pages/make_job_offer.html', {'categories_list':categories_list})
 
 
 def application(request, id: int):
@@ -165,8 +166,8 @@ def application(request, id: int):
     return ApplicationController().handle_application_view(request, id)
 
 
-def make_job_offer(request):
-    return ProtectedViewController(request).render('pages/make_job_offer.html')
+#def make_job_offer(request):
+#    return ProtectedViewController(request).render('pages/make_job_offer.html')
 
 
 def view_candidate(request):

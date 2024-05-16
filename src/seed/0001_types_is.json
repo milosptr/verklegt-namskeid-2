@@ -1,0 +1,9 @@
+[
+  {
+"model": "src.type",
+  "pk": 1,
+  "fields": {
+    "name": "teacher"
+  }
+}
+]
