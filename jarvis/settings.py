@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'src'
+    'src',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -136,11 +137,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
 USE_I18N = True
 
+# Icelandic timezone
 USE_TZ = True
+TIME_ZONE = 'Atlantic/Reykjavik'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -148,6 +149,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = [
+    BASE_DIR / 'static/jarvis',
 ]
 
 # Default primary key field type

@@ -4,6 +4,7 @@ from django.db import models
 
 
 class Category(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     short = models.CharField(max_length=20)
     created_at = models.DateTimeField( default=datetime.now)
@@ -11,6 +12,10 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    @classmethod
+    def get_all(cls):
+        return cls.objects.all()
 
     class Meta:
         db_table = 'category'

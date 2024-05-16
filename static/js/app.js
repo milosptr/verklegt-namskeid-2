@@ -13,6 +13,20 @@ const main = () => {
             updateProfileModal.classList.add('hidden')
         })
     }
+
+    // Company info
+    const updateCompanyButton = document.getElementById('update-company-info')
+    const updateCompanyModal = document.getElementById('user-company-modal')
+    const closeUpdateCompanyModal = document.getElementById('close-user-company-modal')
+    if (updateCompanyButton) {
+        updateCompanyButton.addEventListener('click', () => {
+            updateCompanyModal.classList.remove('hidden')
+        })
+        closeUpdateCompanyModal.addEventListener('click', () => {
+            updateCompanyModal.classList.add('hidden')
+        })
+    }
+
     // Skills
     const addSkillsButton = document.getElementById('add-skill')
     const skillsModal = document.getElementById('skill-modal')
@@ -117,13 +131,20 @@ const main = () => {
         })
     }
 
-    //report bug
+    // Remove bug
     const report_bug_button = document.getElementById('report-bug-button')
     const report_bug = document.getElementById('report-bug')
-    // selectExistingCompany.addEventListener("click", ( ) =>
+    const close_button = document.getElementById('close-report-bug')
+    const report_button = document.getElementById('report-the-bug')
     if (report_bug_button) {
         report_bug_button.addEventListener('click', () => {
             report_bug.classList.remove('hidden')
+        })
+        report_button.addEventListener('click', () => {
+            report_bug.classList.add('hidden')
+        })
+        close_button.addEventListener('click', () => {
+            report_bug.classList.add('hidden')
         })
     }
 }

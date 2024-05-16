@@ -4,6 +4,7 @@ from django.db import models
 
 
 class UserSkill(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey('User', on_delete=models.CASCADE)
     skill = models.ForeignKey('Skill', on_delete=models.CASCADE)
     level = models.IntegerField()

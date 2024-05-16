@@ -13,6 +13,20 @@ const main = () => {
             updateProfileModal.classList.add('hidden')
         })
     }
+
+    // Company info
+    const updateCompanyButton = document.getElementById('update-company-info')
+    const updateCompanyModal = document.getElementById('user-company-modal')
+    const closeUpdateCompanyModal = document.getElementById('close-user-company-modal')
+    if (updateCompanyButton) {
+        updateCompanyButton.addEventListener('click', () => {
+            updateCompanyModal.classList.remove('hidden')
+        })
+        closeUpdateCompanyModal.addEventListener('click', () => {
+            updateCompanyModal.classList.add('hidden')
+        })
+    }
+
     // Skills
     const addSkillsButton = document.getElementById('add-skill')
     const skillsModal = document.getElementById('skill-modal')
