@@ -1,0 +1,58 @@
+{% if user and user.role == 1 %}
+    <div class="px-8 mt-8 pt-8 border-t border-gray-500 border-opacity-30">
+        <div class="flex items-center justify-between mb-2">
+            <h2 class="my-3 text-xl">
+                About your company
+            </h2>
+            <div id="update-company-info"
+                 class="block text-center border-2 border-[#6C37BD] rounded-full p-1 px-3 text-[#B188EF] text-sm hover:bg-purple-900 mt-3
+                    cursor-pointer mt-2"
+            >
+                Edit company info
+            </div>
+            {% include 'components/edit_company_modal.html' %}
+        </div>
+        <div class="flex items-start">
+            <div class="w-1/6">
+                <div class="relative w-32 aspect-square overflow-hidden bg-[#eee] rounded-lg group">
+                    <form method="POST" action="/api/v1/company/{{ user.company.id }}/logo" id="upload-login-form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label
+                                id="upload-logo"
+                                class="absolute left-0 top-0 w-32 h-32 bg-white bg-opacity-80 z-1 flex items-center justify-center
+                        text-gray-800 cursor-pointer font-semibold opacity-0 invisible group-hover:visible group-hover:opacity-100 duration-200"
+                        >
+                            Edit logo
+                            <input type="file" name="logo" id="upload-logo" class="hidden" onchange="document.getElementById('upload-login-form').submit()" />
+                        </label>
+                    </form>
+                    <img src="{{ user.company.logo }}" class="w-full h-full object-cover" />
+                </div>
+            </div>
+            <div class="w-5/6">
+                <div class="grid grid-cols-3">
+                    <div class="text-sm">
+                        <p class="text-gray-400"><strong>Name:</strong></p>
+                        <p>{{ user.company.name }}</p>
+                    </div>
+                    <div class="text-sm">
+                        <p class="text-gray-400"><strong>Address:</strong></p>
+                        <p>{{ user.company.full_address }}</p>
+                    </div>
+                    <div class="text-sm">
+                        <p class="text-gray-400"><strong>Website:</strong></p>
+                        <a href="{{ user.company.website }}" target="_blank" class="hover:text-[#EA6F6F] duration-200">
+                            {{ user.company.website }}
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <div class="text-sm">
+                        <p class="text-gray-400"><strong>About:</strong></p>
+                        <p>{{ user.company.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

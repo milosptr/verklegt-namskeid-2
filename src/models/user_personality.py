@@ -4,6 +4,7 @@ from django.db import models
 
 
 class UserPersonality(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey('User', on_delete=models.CASCADE)
     type = models.CharField(max_length=10)
     created_at = models.DateTimeField( default=datetime.now)

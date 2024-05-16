@@ -13,6 +13,7 @@ from src.models import User, Company, UserRecommendation, UserExperience, UserRe
 from src.models.user_link import UserLink
 
 
+
 class UserController:
     @staticmethod
     def logout(request):
@@ -274,14 +275,18 @@ class UserController:
             if still_working:
                 end_date = None
 
+            print(request.POST.get('start_date'), end_date)
+
             experience = UserExperience(
                 user_id=user.id,
                 description=request.POST.get('description'),
                 company=request.POST.get('company'),
                 role=request.POST.get('role'),
                 start_date=request.POST.get('start_date'),
-                end_date=end_date
             )
+            if end_date:
+                experience.end_date = end_date
+
             experience.save()
             return redirect('/profile')
         except Exception as e:
@@ -406,3 +411,33 @@ class UserController:
         except Exception as e:
             messages.error(request, str(e))
             return redirect('profile')
+
+    @staticmethod
+    def like_job(request, id: int, job: int):
+        try:
+            if request.method != 'POST' or request.session.get('user_id') != id:
+                return redirect('/not-found')
+
+            user = User.get_by_id(id)
+            job = Job.get_by_id(job)
+
+            if not user or not job:
+                return redirect('/not-found')
+
+            if user.role == 1:
+                return redirect(f'/job-offer/{job.id}')
+
+            liked_job = LikedJob.get_by_user_and_job(user.id, job.id)
+            if not liked_job:
+                liked_job = LikedJob(
+                    user_id=user.id,
+                    job_id=job.id
+                )
+                liked_job.save()
+            else:
+                liked_job.delete()
+
+            return redirect(f'/job-offer/{job.id}')
+        except Exception as e:
+            messages.error(request, str(e))
+            return redirect('/not-found')
