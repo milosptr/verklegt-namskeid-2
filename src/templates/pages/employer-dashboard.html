@@ -25,7 +25,7 @@
             </div>
             <p class=" font-bold">Candidates</p>
             <p class="text-xs mt-2">3 new applications</p>
-            <p class="text-xs">21 reviewed applications</p>
+            <p class="text-xs">{{ user.candidates.count }} reviewed applications</p>
         </a>
         <div class="px-5 py-4 bg-[#CDACFF] bg-opacity-30 rounded-lg flex-initial w-48">
             <div class="mb-2">
@@ -174,7 +174,7 @@
                             {% if c.job %}
                                 {% if c.job.status == 0 %}
                                     <td class="px-6 py-4">
-                                        <div class="bg-[#FF9C9C] rounded-full text-center px-2 py-1 text-[#DF0404]">
+                                        <div id="not-invited" class="bg-[#FF9C9C] rounded-full text-center px-2 py-1 text-[#DF0404]">
                                             Not invited
                                         </div>
                                     </td>
@@ -190,15 +190,15 @@
                             {% if c.job %}
                                 {% if c.job.status == 0 %}
                                     <td class="px-6 py-4">
-                                        <div class="bg-[#A062FF] h-1 w-10 mx-auto">
+                                        <div id="invite-for-interview" class="block bg-[#A062FF] border border-[#6B36C5] text-white rounded-full
+                                        text-center px-3 py-1 hover:bg-[#6B36C5] duration-100">
+                                            Invite
                                         </div>
                                     </td>
                                 {% endif %}
                                 {% if c.job.status == 1 %}
                                     <td class="px-6 py-4">
-                                        <div class="block bg-[#A062FF] border border-[#6B36C5] text-white rounded-full
-                                        text-center px-3 py-1 hover:bg-[#6B36C5] duration-100">
-                                            Invite
+                                        <div class="bg-[#A062FF] h-1 w-10 mx-auto">
                                         </div>
                                     </td>
                                 {% endif %}
@@ -209,7 +209,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                <a href="/view-candidate" class="block bg-[#A062FF] border border-[#6B36C5] text-white
+                                <a href="/application/{{ application.user.id }}" class="block bg-[#A062FF] border border-[#6B36C5] text-white
                                 rounded-full text-center px-3 py-1 hover:bg-[#6B36C5] duration-100">
                                     View
                                 </a>
