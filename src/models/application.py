@@ -31,6 +31,10 @@ class Application(models.Model):
     def get_by_company(cls, company_id):
         return cls.objects.filter(job__company_id=company_id).filter(job__status__lt=2)
 
+    @classmethod
+    def get_by_category(cls, job_category_id):
+        return cls.objects.filter(job__category_id=job_category_id).filter(job__status__lt=2)
+
     def get_status(self):
         if self.status == 0:
             return 'Pending'

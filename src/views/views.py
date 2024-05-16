@@ -53,6 +53,7 @@ def home(request):
     """
     job_offers = JobController().get_all()
     companies_list = CompanyController().get_all_companies()
+    categories_list = CategoryController().get_categories()
 
     filters = request.GET
     if filters and filters.get('liked'):
@@ -71,13 +72,18 @@ def home(request):
         order_by = filters.get('order_by') == 'asc' if '' else '-'
         job_offers = job_offers.order_by(f'{order_by}due_date')
 
+    if filters and filters.get('category'):
+        job_category_id = filters.get('category')
+        job_offers = Job.get_by_category(job_category_id)
+
     return GeneralViewController(request).render('pages/home.html', {
         'job_offers': job_offers,
         'companies_list': companies_list,
+        'categories_list': categories_list,
         'company_filter': filters.get('company'),
-        'order_filter': filters.get('order_by'),
+        'category_filter': filters.get('category'),
+        'order_filter': filters.get('order_by')
     })
-
 
 def contact_us(request):
     """
@@ -101,6 +107,7 @@ def companies(request):
     else:
         companies_list = CompanyController().get_all_companies()
     return GeneralViewController(request).render('pages/companies.html', {'companies_list': companies_list})
+
 
 
 def not_found(request):
@@ -152,8 +159,17 @@ def employer_dashboard(request):
     return ProtectedViewController(request).render('pages/employer-dashboard.html')
 
 
+
+
+
 def make_job_offer(request):
+    job_offers = JobController().get_all()
     categories_list = CategoryController().get_categories()
+    filters = request.GET
+    if filters and filters.get('category'):
+        job_category_id = filters.get('category')
+        job_offers = Job.get_by_category(job_category_id)
+
     return ProtectedViewController(request).render('pages/make_job_offer.html', {'categories_list':categories_list})
 
 

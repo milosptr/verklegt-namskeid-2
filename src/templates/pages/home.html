@@ -18,7 +18,7 @@
                     <!-- Dropdown menus -->
                     <!-- Company Filter -->
                     <div class="relative">
-                        <select name="company" onchange="this.form.submit()" class="bg-[#04031F] rounded-full border border-solid border-[#6C37BD] appearance-none px-5 pr-10 py-1.5">
+                        <select name="company" onchange="this.form.submit()" class="bg-[#04031F] rounded-full border border-solid border-[#6C37BD] appearance-none pl-5 pr-1 pr-1 py-1.5">
                             <option value="" readonly hidden>Company</option>
                             {% for company in companies_list %}
                                 <option value="{{ company.id }}" {% if company_filter|floatformat:0 == company.id|floatformat:0 %}selected{% endif %}>{{ company.name }}</option>
@@ -35,6 +35,20 @@
                             <option value="" hidden>Order by</option>
                             <option value="asc" {% if order_filter == 'asc' %}selected{% endif %}>Newest</option>
                             <option value="desc" {% if order_filter == 'desc' %}selected{% endif %}>Oldest</option>
+                        </select>
+                        <div class="absolute top-4 right-3.5">
+                            {% include 'common/icons/accordion.html' %}
+                        </div>
+                    </div>
+
+                    <!-- Order by Category -->
+
+                    <div class="relative">
+                        <select name="category" onchange="this.form.submit()" class="bg-[#04031F] rounded-full border border-solid border-[#6C37BD] appearance-none px-5 pr-10 py-1.5">
+                            <option value="" readonly hidden>Job category</option>
+                             {% for category in categories_list %}
+                                <option value="{{ category.id }}" {% if category_filter|floatformat:0 == category.id|floatformat:0 %}selected{% endif %}>{{ category.name }}</option>
+                            {% endfor %}
                         </select>
                         <div class="absolute top-4 right-3.5">
                             {% include 'common/icons/accordion.html' %}

@@ -77,6 +77,13 @@ class User(models.Model):
             return list()
         return Job.get_by_company(self.company.id)
 
+    def get_job_offers_by_category(self):
+        if self.role == 0:
+            return list()
+        if not self.category:
+            return list()
+        return Job.get_by_category(self.category.id).all()
+
     def get_job_offers_by_status(self, status):
         if self.role == 0:
             return list()
