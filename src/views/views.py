@@ -173,13 +173,14 @@ def view_candidate(request):
     return ProtectedViewController(request).render('pages/view_candidate.html')
 
 
-def edit_job_offer(request):
-    return ProtectedViewController(request).render('pages/edit_job_offer.html')
+def edit_job_offer(request, id: int):
+    return JobController().edit_job_offer_view(request, id)
 
 
 def job_offer(request, id:int):
     job = JobController().get_by_id(id)
     return ProtectedViewController(request).render('pages/job_offer.html', {'job': job})
+
 
 def job_list(request):
     job_list = Job.objects.all()

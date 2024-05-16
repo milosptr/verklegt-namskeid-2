@@ -1,4 +1,5 @@
 from datetime import datetime
+from django.utils.dateformat import format
 
 from django.db import models
 from django.utils import timezone
@@ -86,6 +87,18 @@ class Job(models.Model):
             return 'Interviewing'
         elif self.status == 2:
             return 'Closed'
+
+    def get_start_date(self):
+        """
+        Has to be in a format YYYY-MM-DDTHH:MM
+        """
+        return format(self.start_date, 'Y-m-d\\TH:i')
+
+    def get_due_date(self):
+        """
+        Has to be in a format YYYY-MM-DDTHH:MM
+        """
+        return format(self.due_date, 'Y-m-d\\TH:i')
 
     class Meta:
         db_table = 'jobs'
