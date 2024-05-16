@@ -9,6 +9,7 @@
         <div class="grid grid-cols-1 gap-4 mt-5">
             <div>
                 <textarea type="text" name="resume" id="resume" class="w-full rounded-xl py-2 px-6 bg-[#6C37BD] bg-opacity-30 whitespace-pre-line" placeholder="Your resume">{% if user and user.resume %}{{ user.resume }}{% endif %}</textarea>
+                <input type="file" name="resume_file" id="upload-avatar" class="mt-5 text-sm" />
             </div>
 
             <div class="mt-4 flex justify-between gap-5">
