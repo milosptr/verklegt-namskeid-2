@@ -6,7 +6,7 @@ from src.controllers.CountryController import CountryController
 from src.controllers.JobController import JobController
 from src.controllers.ProtectedViewController import ProtectedViewController
 from src.controllers.CompanyController import CompanyController
-from src.models import Company, Job, LikedJob, Application
+from src.models import Company, Job, LikedJob, Application, Type
 from src.controllers.EmailController import *
 from ..filters import JobFilter
 
@@ -48,6 +48,7 @@ def home(request):
     """
     job_offers = JobController().get_all()
     companies_list = CompanyController().get_all_companies()
+    job_types = Type.get_all()
 
     filters = request.GET
     if filters and filters.get('liked'):
@@ -68,6 +69,7 @@ def home(request):
 
     return GeneralViewController(request).render('pages/home.html', {
         'job_offers': job_offers,
+        'job_types': job_types,
         'companies_list': companies_list,
         'company_filter': filters.get('company'),
         'order_filter': filters.get('order_by'),

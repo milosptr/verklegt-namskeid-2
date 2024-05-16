@@ -1,28 +1,44 @@
-<nav class="flex flex-col items-center sticky top-0 pt-16">
-    <div class="relative z-[1] bg-[#01011A] bg-opacity-60 border border-solid border-[#6C37BD] rounded-full inline px-6 py-1">Jobs</div>
-    <div class="relative z-[0] bg-[#01011A] bg-opacity-60 rounded-lg p-5 grid gap-4 pt-10 -mt-4">
-        <a
-            href="/"
-            class="border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300
-            {% if request.get_full_path == '/' %} bg-[#6C37BD] {% endif %}"
-        >
-            All jobs
-        </a>
-
-        <a
-            href="/?liked=true"
-            class="border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300
-            {% if request.get_full_path == '/?liked=true' %} bg-[#6C37BD] {% endif %}"
-        >
-            Liked jobs
-        </a>
-
-        <a
-            href="/?applied=true"
-            class="border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300
-            {% if request.get_full_path == '/?applied=true' %} bg-[#6C37BD] {% endif %}"
-        >
-            Already applied
-        </a>
+<nav class="pt-20 w-1/5">
+    <div class="flex justify-between items-center">
+        <div class="font-semibold">Job types</div>
+        <div class="text-[#EA6F6F] text-sm">Clear all</div>
     </div>
+    <div>
+    {{ job_types }}
+        {% for t in job_types %}
+            <div class="flex items-center gap-2">
+                <input type="checkbox" id="{{ t.id }}" name="{{ t.id }}" value="{{ t.id }}" class="hidden" {% if t.id in selected_job_types %}checked{% endif %}>
+                <label for="{{ t.id }}" class="">
+                    {{ t.name }}
+                </label>
+            </div>
+        {% endfor %}
+    </div>
+{#    <div class="relative z-[1] bg-[#01011A] bg-opacity-60 border border-solid border-[#6C37BD] rounded-full inline px-6 py-1">Jobs</div>#}
+{#    <div class="relative z-[0] bg-[#01011A] bg-opacity-60 rounded-lg p-5 grid gap-4 pt-10 -mt-4">#}
+{#        <a#}
+{#            href="/"#}
+{#            class="border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300#}
+{#            {% if request.get_full_path == '/' %} bg-[#6C37BD] {% endif %}"#}
+{#        >#}
+{#            All jobs#}
+{#        </a>#}
+{#        {% if user %}#}
+{#        <a#}
+{#            href="/?liked=true"#}
+{#            class="border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300#}
+{#            {% if request.get_full_path == '/?liked=true' %} bg-[#6C37BD] {% endif %}"#}
+{#        >#}
+{#            Liked jobs#}
+{#        </a>#}
+{##}
+{#        <a#}
+{#            href="/?applied=true"#}
+{#            class="border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300#}
+{#            {% if request.get_full_path == '/?applied=true' %} bg-[#6C37BD] {% endif %}"#}
+{#        >#}
+{#            Already applied#}
+{#        </a>#}
+{#        {% endif %}#}
+{#    </div>#}
 </nav>
