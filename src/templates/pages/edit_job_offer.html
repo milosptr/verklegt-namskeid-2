@@ -70,9 +70,21 @@
                             {% endfor %}
 
                         </select>
-                        <div class="absolute top-4 right-4">
+                        <div class="absolute top-6 right-4">
                             {% include 'common/icons/accordion.html' %}
                         </div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <label class="text-gray-400">Job types:</label>
+                    <div class="grid grid-cols-5 gap-4 mt-2">
+                        {% for t in types %}
+                            <div class="flex items-center justify-start gap-2 cursor-pointer">
+                                <input id="job-type-{{ t.id }}" type="checkbox" name="types" value="{{ t.id }}" {% if t.id in job.get_job_type_list %}checked{% endif %} class="">
+                                <label for="job-type-{{ t.id }}" class="cursor-pointer text-gray-400">{{ t.name }}</label>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
 
@@ -95,19 +107,19 @@
                 <div class="flex justify-center mt-5">
                     <div>
                         <button
-                                type="submit"
-                                name="action"
-                                value="delete"
-                                class="text-white bg-[#6836B5] hover:bg-[#411586] font-medium rounded-full text-sm py-2 px-5 m-4">
+                            type="submit"
+                            name="action"
+                            value="delete"
+                            class="text-white w-48 bg-red-500 hover:bg-red-700 font-medium rounded-full text-sm py-2 px-5 m-4">
                             Delete
                         </button>
                     </div>
                     <div>
                         <button
-                                type="submit"
-                                name="action"
-                                value="update"
-                                class="text-white bg-[#6836B5] hover:bg-[#411586] font-medium rounded-full text-sm py-2 px-5 m-4">
+                            type="submit"
+                            name="action"
+                            value="update"
+                            class="text-white w-48 bg-[#6836B5] hover:bg-[#411586] font-medium rounded-full text-sm py-2 px-5 m-4">
                             Save changes
                         </button>
                     </div>

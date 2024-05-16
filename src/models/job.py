@@ -74,6 +74,12 @@ class Job(models.Model):
         if not self.types:
             errors.append("Job has to have a type")
 
+    def get_job_type_list(self):
+        try:
+            return [t.id for t in self.types.all()]
+        except:
+            return []
+
     def get_job_types(self):
         try:
             return self.types.all()

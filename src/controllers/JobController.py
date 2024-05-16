@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 
 from src.controllers.CategoryController import CategoryController
 from src.controllers.ProtectedViewController import ProtectedViewController
+from src.controllers.TypeController import TypeController
 from src.models import Job
 
 
@@ -13,9 +14,14 @@ class JobController:
     def edit_job_offer_view(self, request, id):
         job = self.get_by_id(id)
         categories = CategoryController().get_categories()
+        types = TypeController().get_types()
         if not job:
             return redirect('/not-found')
-        return ProtectedViewController(request).render('pages/edit_job_offer.html', {'job': job, 'categories': categories})
+        return ProtectedViewController(request).render('pages/edit_job_offer.html', {
+            'job': job,
+            'categories': categories,
+            'types': types
+        })
 
     def get_all(self):
         return self.job_service.get_all()
@@ -43,6 +49,13 @@ class JobController:
             job.due_date = request.POST.get('due_date')
 
             job.save()
+
+            # Update job types
+            job.types.clear()
+            types = request.POST.getlist('types')
+            for t in types:
+                job.types.add(t)
+
             return redirect(f'/edit-job-offer/{id}')
         return redirect(f'/edit-job-offer/{id}')
 
