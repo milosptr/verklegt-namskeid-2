@@ -48,13 +48,23 @@ python3 manage.py makemigrations src
 python3 manage.py migrate src
 ```
 
+## Updating static files
+If you are making changes to the static files in `static/jarvis` (CSS, JS, etc.), you will need to run the following command to update the static files:
+```
+python3 manage.py collectstatic
+```
+
 # Seed the database (countries and cities)
 This step is required (_ONLY IF DATABASE IS TRUNCATED FULLY_) to seed the database with countries and cities. Run the following commands:
 
 **Note that we are seeding only Icelandic cities for simplicity**
+
 ```
+python3 manage.py loaddata src/seed/0001_types.json
+python3 manage.py loaddata src/seed/0001_skills.json
 python3 manage.py loaddata src/seed/0001_countries.json 
 python3 manage.py loaddata src/seed/0001_cities_is.json 
+python3 manage.py loaddata src/seed/0001_companies_is.json
 ```
 # 🔴 DON'Ts 🔴
 1. **DO NOT** push directly to the main branch. Create a new branch and make a pull request.
