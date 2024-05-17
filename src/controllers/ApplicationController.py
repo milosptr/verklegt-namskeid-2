@@ -41,6 +41,12 @@ class ApplicationController:
                 messages.error(request, message)
                 return redirect(f'/application/{id}')
 
+            application_exist = Application.objects.filter(user_id=user.id, job_id=id).first()
+            if application_exist:
+                message = 'You have already applied for this job'
+                messages.error(request, message)
+                return redirect(f'/application/{id}')
+
             application = Application(
                 user_id=user.id,
                 job_id=id,
@@ -57,4 +63,29 @@ class ApplicationController:
         # you should never end up here, but if you do then 404 :)
         except Exception as e:
             print(f'Exception: {str(e)}')
+            return redirect('/not-found')
+
+    @staticmethod
+    def view_candidate(request, id):
+        application = Application.objects.get(id=id)
+        if not application:
+            return redirect('/not-found')
+
+        return ProtectedViewController(request).render('pages/view_candidate.html', {
+            'application': application
+        })
+
+    @staticmethod
+    def review_application(request, id):
+        try:
+            application = Application.objects.get(id=id)
+            if not application:
+                return redirect('/not-found')
+
+            application.status = 1
+            application.save()
+
+            return redirect(f'/view-candidate/{application.id}')
+        except Exception as e:
+            messages.error(request, f'Error: {str(e)}')
             return redirect('/not-found')

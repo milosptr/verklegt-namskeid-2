@@ -149,5 +149,23 @@ const main = () => {
     }
 }
 
+    //share job offer
+    const share_button = document.getElementById('share-job-offer')
+    if (share_button) {
+        share_button.addEventListener('click', () => {
+            const url = window.location
+            navigator.clipboard.writeText(url).then(() => {
+                const toaster = document.createElement('div')
+                const classes = 'fixed top-5 right-5 bg-green-400 text-green-800 font-medium py-2 px-4 rounded-lg z-50 shadow-md'
+                toaster.className = classes
+                toaster.textContent = 'Link copied to clipboard'
+                document.body.appendChild(toaster)
+                setTimeout(() => {
+                    toaster.remove()
+                }, 3000)
+            })
+
+        })
+    }
 window.addEventListener('load', main)
 

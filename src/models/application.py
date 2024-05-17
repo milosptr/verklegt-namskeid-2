@@ -2,13 +2,13 @@ from datetime import datetime
 
 from django.db import models
 
+from src.models.interview import Interview
+
 
 class Application(models.Model):
     STATUS_CHOICES = [
         (0, 'Pending'),
         (1, 'Reviewed'),
-        (2, 'Rejected'),
-        (3, 'Accepted')
     ]
 
     id = models.AutoField(primary_key=True)
@@ -31,15 +31,15 @@ class Application(models.Model):
     def get_by_company(cls, company_id):
         return cls.objects.filter(job__company_id=company_id).filter(job__status__lt=2)
 
+    def get_interview(self):
+        return Interview.objects.filter(user_id=self.user_id, job_id=self.job_id).first()
+
     def get_status(self):
         if self.status == 0:
             return 'Pending'
         elif self.status == 1:
             return 'Reviewed'
-        elif self.status == 2:
-            return 'Rejected'
-        else:
-            return 'Accepted'
+        return '/'
 
     def get_status_class(self):
         if self.status == 0:

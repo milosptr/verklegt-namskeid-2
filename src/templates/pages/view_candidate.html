@@ -1,30 +1,31 @@
 {% extends "common/base.html" %}
 
-{% block title %}Company profile{% endblock %}
+{% block title %}View Candidate - {{ application.user.first_name }} {{ application.user.last_name }}{% endblock %}
 
 {% block content %}
     <div class="relative w-full h-64 bg-white rounded-lg primary-gradient"></div>
         <div class="-mt-24 mr-8 flex justify-end">
             <div class="relative w-48 h-48 rounded-full bg-white border-4 border-[#000019] overflow-hidden group">
                 {% load static %}
-                {% if user and user.avatar %}
-                    <img src="{{user.avatar}}" width="100%" height="100%" />
+                {% if application.user and application.user.avatar %}
+                    <img src="{{application.user.avatar}}" width="100%" height="100%" />
                 {% else %}
                     <img src="{% static 'assets/user_avatar.jpg' %}" width="100%" height="100%" />
                 {% endif %}
             </div>
         </div>
-    
+
     <div class="grid grid-cols-2 gap-4 items-start -mt-16">
         <div>
             <h3 class="text-xl text-[#9E6DE9]">Contact information</h3>
-            <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6 mt-2">
-                <p class=""><b>Full name:</b> {{ full_name }} test</p>
-                <p class="mt-1"><b>Address:</b> {{ full_name }} test</p>
-                <p class="mt-1"><b>City:</b> {{ full_name }} test</p>
-                <p class="mt-1"><b>Country:</b> {{ full_name }} test</p>
-                <p class="mt-1"><b>Zip code:</b> {{ full_name }} test</p>
-            </div>
+            {% if application.user %}
+                <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6 mt-2">
+                    <p class=""><b>Full name:</b> {{ application.user.first_name }} {{ application.user.last_name }}</p>
+                    <p class="mt-1"><b>Email:</b> {{ application.user.email }}</p>
+                    <p class="mt-1"><b>Phone:</b> {{ application.user.phone }}</p>
+                    <p class="mt-1"><b>Address:</b> {{ application.user.full_address }}</p>
+                </div>
+            {% endif %}
         </div>
         <div>
             <div class="px-8">
@@ -36,84 +37,90 @@
         </div>
         </div>
     </div>
-    
-    
+
+
     <h3 class="text-xl text-[#9E6DE9] mt-10">Experience</h3>
     <div class="grid grid-cols-3 gap-4 mt-2">
-        <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6">
-            <p class=""><b>Place of work:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Role:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Start date:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>End date:</b> {{ full_name }} test</p>
-        </div>
-        <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6">
-            <p class=""><b>Place of work:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Role:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Start date:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>End date:</b> {{ full_name }} test</p>
-        </div>
-        <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6">
-            <p class=""><b>Place of work:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Role:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Start date:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>End date:</b> {{ full_name }} test</p>
-        </div>
-        <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6">
-            <p class=""><b>Place of work:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Role:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Start date:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>End date:</b> {{ full_name }} test</p>
-        </div>
+        {% if application.user.get_experience %}
+            {% for e in application.user.get_experience %}
+                <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6">
+                    <h3 class="text-xl text-[#9E6DE9]">Experience</h3>
+                    <p class="mt-4"><b>Place of work:</b> {{ e.company }}</p>
+                    <p class="mt-1"><b>Role:</b> {{ e.role }}</p>
+                    <p class="mt-1"><b>Start date:</b> {{ e.start_date }}</p>
+                    <p class="mt-1"><b>End date:</b> {% if e.end_date %}{{ e.end_date }}{% else %}Still work here{% endif %}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6">
+                <h3 class="text-xl text-[#9E6DE9]">Experience</h3>
+                <p class="mt-4">You have not added any experiences yet.</p>
+            </div>
+        {% endif %}
     </div>
-    
-    
+
+
     <h3 class="text-xl text-[#9E6DE9] mt-10">Recommendation</h3>
     <div class="grid grid-cols-3 gap-4 mt-2">
-        <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6">
-            <p class=""><b>Full name:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Email:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Phone number:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Company:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Role:</b> {{ full_name }} test</p>
-        </div>
-        <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6">
-            <p class=""><b>Full name:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Email:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Phone number:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Company:</b> {{ full_name }} test</p>
-            <p class="mt-1"><b>Role:</b> {{ full_name }} test</p>
-        </div>
+        {% if application.user.get_recommendation %}
+            {% for r in user.get_recommendation %}
+                <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6">
+                    <h3 class="text-xl text-[#9E6DE9]">Recommendation</h3>
+                    <p class="mt-4"><b>Full name:</b> {{ r.name }}</p>
+                    <p class="mt-1"><b>Email:</b> {{ r.email }}</p>
+                    <p class="mt-1"><b>Phone number:</b> {{ r.phone }}</p>
+                    <p class="mt-1"><b>Company:</b> {{ r.company }}</p>
+                    <p class="mt-1"><b>Role:</b> {{ r.position }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6">
+                <h3 class="text-xl text-[#9E6DE9]">Recommendation</h3>
+                <p class="mt-4">You have not added any recommendations yet.</p>
+            </div>
+        {% endif %}
     </div>
-    
+
+    <h3 class="text-xl text-[#9E6DE9] mt-10">Skills</h3>
+    <div class="grid grid-cols-5 gap-5 mt-2">
+        {% if application.user.get_skills %}
+            {% for skill in application.user.get_skills %}
+                <div class="bg-[#6C37BD] p-4 rounded-lg text-sm flex justify-between items-center">
+                    <div class="font-medium">{{ skill.name }}</div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
     <h3 class="text-xl text-[#9E6DE9] mt-10">Cover letter</h3>
         <div class="grid grid-cols-1 gap-4 mt-2">
             <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6">
                 <p class="">
-                    lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    {{ application.cover_letter }}
                 </p>
             </div>
         </div>
-    
+
     <div class="flex justify-center">
         <div class="m-5">
+            {% if not application.get_interview %}
             <button class="bg-[#FFAA76] hover:bg-[#FF8438] shadow-md text-white font-medium py-3 px-7 rounded-full">
                 Invite for interview
             </button>
+            {% endif %}
         </div>
-        <div class="m-5">
-            <button class="bg-[#FFAA76] hover:bg-[#FF8438] shadow-md text-white font-medium py-3 px-7 rounded-full">
-                Download application
-            </button>
-        </div>
-        <div class="m-5">
-            <button class="bg-[#FFAA76] hover:bg-[#FF8438] shadow-md text-white font-medium py-3 px-7 rounded-full">
-                Mark as reviewed
-            </button>
-        </div>
+        {% if application.status == 0 %}
+            <div class="m-5">
+                <form method="POST" action="/api/v1/application/{{ application.id }}/review">
+                    {% csrf_token %}
+                    <button type="submit" class="bg-[#FFAA76] hover:bg-[#FF8438] shadow-md text-white font-medium py-3 px-7 rounded-full">
+                        Mark as reviewed
+                    </button>
+                </form>
+            </div>
+        {% endif %}
     </div>
-    
-    
+
+
 
 {% endblock %}

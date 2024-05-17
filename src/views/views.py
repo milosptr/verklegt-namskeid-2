@@ -9,6 +9,8 @@ from src.controllers.ProtectedViewController import ProtectedViewController
 from src.controllers.CompanyController import CompanyController
 from src.models import Company, Job, LikedJob, Application, Type
 from src.controllers.EmailController import *
+from ..controllers.CategoryController import CategoryController
+from ..controllers.TypeController import TypeController
 
 # Views are the functions that handle the requests from the user
 # You can think of them as the controller in the MVC pattern
@@ -56,6 +58,10 @@ def home(request):
         job_offers = JobController.filter(request)
     if request.GET.get('q'):
         job_offers = JobController.search(request)
+
+    query = filters.get('q')
+    if query:
+        job_offers = job_offers.filter(title__icontains=query)
 
     return GeneralViewController(request).render('pages/home.html', {
         'job_offers': job_offers,
@@ -147,7 +153,12 @@ def employer_dashboard(request):
 
 
 def make_job_offer(request):
-    return ProtectedViewController(request).render('pages/make_job_offer.html')
+    categories = CategoryController().get_categories()
+    types = TypeController().get_types()
+    return ProtectedViewController(request).render('pages/make_job_offer.html', {
+        'categories': categories,
+        'types': types
+    })
 
 
 def application(request, id: int):
@@ -157,10 +168,6 @@ def application(request, id: int):
         step: The step of the application
     """
     return ApplicationController().handle_application_view(request, id)
-
-
-def make_job_offer(request):
-    return ProtectedViewController(request).render('pages/make_job_offer.html')
 
 
 def view_candidate(request):

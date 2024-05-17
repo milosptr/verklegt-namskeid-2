@@ -7,7 +7,7 @@
             <div class="col-span-2 pl-4">Position and company</div>
             <div>Submission date</div>
             <div>Company address</div>
-            <div class="text-center">Job types</div>
+            <div>Job types</div>
         </div>
         <div class="grid grid-cols-1 gap-4 mt-4">
             {% if user and user.applications %}
@@ -41,9 +41,9 @@
                             </div>
                             <div class="font-medium">{{ application.submission_date }}</div>
                             <div>{{ application.job.company.city }} {{ application.job.company.city.zip }}, {{ application.job.company.country.code }}</div>
-                            <div class="flex justify-end gap-2">
+                            <div class="grid grid-cols-3 gap-2">
                                 {% for type in application.job.get_job_types %}
-                                    <span class="bg-purple-800 text-purple-300 px-3 py-1 rounded">{{ type.name }}</span>
+                                    <span class="bg-purple-800 text-center text-purple-300 px-3 py-1 rounded text-xs whitespace-nowrap">{{ type.name }}</span>
                                 {% endfor %}
                             </div>
                         </div>
@@ -58,12 +58,40 @@
         <h2 class="text-xl mt-20">
             Interview invitations
         </h2>
-        <div class="grid grid-cols-5 gap-4 mt-5 pb-1.5 border-b border-gray-100 border-opacity-20 text-gray-300">
-            <div class="col-span-2 pl-4">Position and company</div>
-            <div>Submission date</div>
+        <div class="grid grid-cols-4 gap-4 mt-5 pb-1.5 border-b border-gray-100 border-opacity-20 text-gray-300">
+            <div class="pl-4">Company</div>
+            <div>Interview date</div>
             <div>Company address</div>
-            <div class="text-center">Job types</div>
+            <div>Status</div>
         </div>
-        <div class="grid grid-cols-1 gap-4 mt-4"></div>
+        <div class="grid grid-cols-1 gap-4 mt-4">
+            {% if user.interviews %}
+                {% for i in user.interviews %}
+                    <div class="grid grid-cols-4 gap-4 bg-[#6C37BD] p-4 rounded-lg text-sm">
+                        <div>
+                            {{ i.company.name }}
+                        </div>
+                        <div>
+                            {{ i.interview_date }}
+                        </div>
+                        <div>
+                            {{ i.location }}
+                        </div>
+                        <div class="flex items-center justify-between gap-5">
+                            <div>{{ i.get_status }}</div>
+                             <form method="POST" action="/api/v1/interview/{{ i.id }}/status" class="flex items-center gap-2">
+                                 {% csrf_token %}
+                                 {% if i.status != 1 and i.status != 3 %}
+                                    <button name="action" value="accept" class="bg-green-600 hover:bg-opacity-70 duration-200 text-white px-4 py-1 text-sm rounded-full text-center">Accept</button>
+                                 {% endif %}
+                                {% if i.status != 2 and i.status != 3 %}
+                                    <button name="action" value="reject" class="bg-red-500 hover:bg-opacity-70 duration-200 text-white px-4 py-1 text-sm rounded-full text-center">Reject</button>
+                                {% endif %}
+                             </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
     </section>
 {% endif %}

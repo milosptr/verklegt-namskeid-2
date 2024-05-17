@@ -1,5 +1,6 @@
 from django.urls import path, re_path
 
+from .controllers.ApplicationController import ApplicationController
 from .controllers.UserController import UserController
 from .views.views import home, account_created
 from .views.views import about_us
@@ -65,7 +66,7 @@ urlpatterns = [
     path('application/<int:id>', application, name='application'),
     path('forgot-password', forgot_password, name='forgot-password'),
     path('edit-job-offer/<int:id>', edit_job_offer, name='edit-job-offer'),
-    path('view-candidate', view_candidate, name='view_candidate'),
+    path('view-candidate/<int:id>', ApplicationController.view_candidate, name='view_candidate'),
 
     re_path(r'not-found', not_found, name='not_found'),
     re_path(r'.*', not_found, name='not_found')  # This is a catch-all url that leads to a 404 page

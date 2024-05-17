@@ -68,8 +68,18 @@
                     <p class="font-semibold text-lg">Add or Edit</p>
                 </a>
             </div>
+            <h3 class="text-xl text-[#9E6DE9] mt-5">Skills</h3>
+            <div class="grid grid-cols-5 gap-5 mt-2">
+                {% if user and user.skills %}
+                    {% for skill in user.skills %}
+                        <div class="bg-[#CDACFF] bg-opacity-10 p-4 rounded-lg text-sm flex justify-between items-center">
+                            <div class="font-medium">{{ skill.name }}</div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
             <div class="grid grid-cols-3 gap-4 mt-5">
-                {% if not user.experiences %}
+                {% if not user.recommendations %}
                     <div class="bg-[#CDACFF] bg-opacity-10 rounded-lg p-6">
                         <h3 class="text-xl text-[#9E6DE9]">Recommendation</h3>
                         <p class="mt-4">You have not added any recommendations yet.</p>

@@ -7,5 +7,8 @@ class CategoryController:
 
     def get_categories(self):
         return self.categoryService.get_all()
-    
-    
+
+    def create_category(self, name: str):
+        return self.categoryService.create(name)
+
+

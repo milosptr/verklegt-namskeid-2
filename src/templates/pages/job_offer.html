@@ -80,16 +80,34 @@
 
 
             <div class="flex mb-10">
+                {% if user.role == 0 and job.id not in user.applied_job_ids %}
                 <a href="/application/{{ job.id }}" class="bg-[#FFAA76] hover:bg-[#FF8438] text-white font-medium py-2 px-4 rounded-full">
                     Apply Now !
                     <span class="ml-2">&#x2192;</span>
                 </a>
+                {% endif %}
+                {% if job.id in user.applied_job_ids %}
+                <div class="bg-green-400 text-green-800 font-medium py-2 px-4 rounded-full">
+                    Already applied
+                </div>
+                {% endif %}
+
+                {% if job.status == 2 %}
+                <div class="bg-red-400 text-red-800 font-medium py-2 px-4 rounded-full">
+                    Closed at {{ job.updated_at }}
+                </div>
+                {% endif %}
                 <a href="/company-details/{{ job.company.id }}" class="bg-[#6C37BD] hover:bg-purple-900 text-white font-medium py-2 px-4 rounded-full ml-10">
                     Company Page
                     <span class="ml-2">&#x2192;</span>
                 </a>
+                <div id="share-job-offer" class="flex gap-3 bg-[#6C37BD] hover:bg-purple-900 text-white font-medium py-2 px-5
+                rounded-full ml-10">
+                    <div>Copy link</div>
+                    {% include 'common/icons/link.html' with classes="w-5 h-6" %}
+                </div>
                 {% if user.role == 0 %}
-                    <div class="mx-10 mt-1">
+                    <div class="ml-10 mt-1">
                         <form method="POST" action="/api/v1/user/{{ user.id }}/like/{{ job.id }}" class="ml-auto">
                             {% csrf_token %}
                             <button type="submit">
