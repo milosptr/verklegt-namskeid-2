@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterField(
             model_name='userexperience',
-            name='end_date',
+            name='due_date',
             field=models.DateField(null=True),
         ),
         migrations.AlterField(

@@ -11,6 +11,7 @@ class JobFilter(django_filters.FilterSet):
             ('start_date', 'start_date'),
             ('due_date', 'due_date'),
             ('created_at', 'created_at'),
+            ('address', 'address')
         ],
         field_labels={
             'category__name': 'Job Category',
@@ -18,6 +19,7 @@ class JobFilter(django_filters.FilterSet):
             'start_date': 'Start Date',
             'due_date': 'Due Date',
             'created_at': 'Created At',
+            'address': 'Address'
         }
     )
    

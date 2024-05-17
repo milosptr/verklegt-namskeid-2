@@ -3,21 +3,21 @@
 {% block title %}Make job offer{% endblock %}
 
 {% block content %}
-<form>
-    <div class="bg-[#6C37BD] bg-opacity-10 rounded-lg p-5 p w-2/6 shadow-md mb-10 mx-auto">
+<div class="bg-[#6C37BD] bg-opacity-10 rounded-lg p-5 p w-2/6 shadow-md mb-10 mx-auto">
+<form action="{% url 'create_job_offer' %}" method="post">
+        {% csrf_token %}
         <h1 class="text-3xl text-center">
         Make new job offer
         </h1>
         
         <div class="mt-5 mb-6">
-            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block 
+            <input type="text" name="title" required class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
                 px-5 p-2.5 w-full text-white" placeholder="Job title">
         </div>
         
         <div class="relative mt-5">
-            <select
-                name="job_type"
-                class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full w-full text-gray-400 selected:white 
+            <select name="category"
+                class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full w-full text-gray-400 selected:white
                 appearance-none px-5 pr-10 py-2.5" required>
                     <option value="" readonly hidden>Job type</option>
                     {% for category in categories_list %}
@@ -42,25 +42,25 @@
                 
         
         <div class="mt-5 mb-5">
-            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block 
+            <input type="text" required name="address" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
                 px-5 p-2.5 w-full text-white" placeholder="Job address">
         </div>
         
         <div class="">
             <label class="pl-2 text-gray-400">Publishing date:</label>
-            <input type="date" name="start_date" id="start_date" class="text-sm w-full rounded-full p-2 px-6 bg-[#6C37BD] 
+            <input type="date" required name="start_date" id="start_date" class="text-sm w-full rounded-full p-2 px-6 bg-[#6C37BD]
             bg-opacity-30" placeholder="Start date" />
 
         </div>
         
         <div class="mt-5 mb-6">
             <label class="pl-2 text-gray-400">End date:</label>
-            <input type="date" name="start_date" id="start_date" class="text-sm w-full rounded-full p-2 px-6 bg-[#6C37BD] 
+            <input type="date" required name="due_date"  class="text-sm w-full rounded-full p-2 px-6 bg-[#6C37BD]
             bg-opacity-30" placeholder="Start date" />
         </div>
         
     
-        <textarea required cols="38" rows="10" class="bg-[#4E288F] rounded-xl text-white text:p-4 
+        <textarea name="description" required cols="38" rows="10" class="bg-[#4E288F] rounded-xl text-white text:p-4
          mt-2 placeholder:p-4 w-full" placeholder="Description of job offering" ></textarea>
         
         <div class="w-64 mx-auto text-center">
@@ -71,7 +71,9 @@
                 Create job offer
             </button>
         </div>
-    </div>
-</form>
+
+
+    </form>
+</div>
     
 {% endblock %}
