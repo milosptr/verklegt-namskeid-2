@@ -3,15 +3,15 @@ from django.contrib import messages
 #from src.business.application import ApplicationLogic
 from django.shortcuts import get_object_or_404
 
-from src.business.application import ApplicationLogic
+#from src.business.application import ApplicationLogic
 from src.controllers.ApplicationController import ApplicationController
 from src.controllers.CityController import CityController
 from src.controllers.CountryController import CountryController
 from src.controllers.GeneralViewController import GeneralViewController
 from src.controllers.JobController import JobController
 from src.controllers.ProtectedViewController import ProtectedViewController
-from src.exceptions import ApplicationException
-from src.exceptions.ApplicationException import ApplicationSubmitted
+#from src.exceptions import ApplicationException
+#from src.exceptions.ApplicationException import ApplicationSubmitted
 from src.controllers.CompanyController import CompanyController
 from src.models import Company, Job, LikedJob, Application, Category
 from src.controllers.EmailController import *
