@@ -64,7 +64,7 @@ urlpatterns = [
     path('make-job-offer', make_job_offer, name='make_job_offer'),
     path('application/<int:id>', application, name='application'),
     path('forgot-password', forgot_password, name='forgot-password'),
-    path('edit-job-offer', edit_job_offer, name='edit-job-offer'),
+    path('edit-job-offer/<int:id>', edit_job_offer, name='edit-job-offer'),
     path('view-candidate', view_candidate, name='view_candidate'),
 
     re_path(r'not-found', not_found, name='not_found'),

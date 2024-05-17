@@ -1,18 +1,13 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import get_object_or_404
 
-from src.business.application import ApplicationLogic
 from src.controllers.ApplicationController import ApplicationController
 from src.controllers.CityController import CityController
 from src.controllers.CountryController import CountryController
-from src.controllers.GeneralViewController import GeneralViewController
 from src.controllers.JobController import JobController
 from src.controllers.ProtectedViewController import ProtectedViewController
-from src.exceptions import ApplicationException
-from src.exceptions.ApplicationException import ApplicationSubmitted
 from src.controllers.CompanyController import CompanyController
 from src.models import Company, Job, LikedJob, Application
 from src.controllers.EmailController import *
-from src.controllers.CategoryController import CategoryController
 from ..filters import JobFilter
 
 # Views are the functions that handle the requests from the user
@@ -118,7 +113,11 @@ def company_profile(request, company_name):
 
 def company_details(request, company_id):
     company = get_object_or_404(Company, id=company_id)
-    job_list = Job.get_by_company(company_id)    
+
+    job_list = Job.get_by_company(company_id)
+
+    print ("Job List: ",job_list)
+
     return GeneralViewController(request).render('pages/company_details.html', {
         'company': company,
         'job_list': job_list
@@ -176,13 +175,14 @@ def view_candidate(request):
     return ProtectedViewController(request).render('pages/view_candidate.html')
 
 
-def edit_job_offer(request):
-    return ProtectedViewController(request).render('pages/edit_job_offer.html')
+def edit_job_offer(request, id: int):
+    return JobController().edit_job_offer_view(request, id)
 
 
 def job_offer(request, id:int):
     job = JobController().get_by_id(id)
     return ProtectedViewController(request).render('pages/job_offer.html', {'job': job})
+
 
 def job_list(request):
     job_list = Job.objects.all()
