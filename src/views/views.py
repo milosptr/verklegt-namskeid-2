@@ -3,6 +3,7 @@ from django.contrib import messages
 #from src.business.application import ApplicationLogic
 from django.shortcuts import get_object_or_404
 
+from src.business.application import ApplicationLogic
 from src.controllers.ApplicationController import ApplicationController
 from src.controllers.CityController import CityController
 from src.controllers.CountryController import CountryController
@@ -87,6 +88,7 @@ def home(request):
         'order_filter': filters.get('order_by')
     })
 
+
 def contact_us(request):
     """
     This is the contact us view
@@ -109,7 +111,6 @@ def companies(request):
     else:
         companies_list = CompanyController().get_all_companies()
     return GeneralViewController(request).render('pages/companies.html', {'companies_list': companies_list})
-
 
 
 def not_found(request):
@@ -208,7 +209,6 @@ def employer_dashboard(request):
     return ProtectedViewController(request).render('pages/employer-dashboard.html')
 
 
-
 def make_job_offer(request):
     if request.method == 'POST':
         # Assuming form data is sent as POST request
@@ -250,10 +250,6 @@ def application(request, id: int):
     return ApplicationController().handle_application_view(request, id)
 
 
-#def make_job_offer(request):
-#    return ProtectedViewController(request).render('pages/make_job_offer.html')
-
-
 def view_candidate(request):
     return ProtectedViewController(request).render('pages/view_candidate.html')
 
@@ -265,7 +261,6 @@ def edit_job_offer(request, id: int):
 def job_offer(request, id:int):
     job = JobController().get_by_id(id)
     return ProtectedViewController(request).render('pages/job_offer.html', {'job': job})
-
 
 def job_list(request):
     job_list = Job.objects.all()
