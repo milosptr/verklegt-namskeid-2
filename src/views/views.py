@@ -68,11 +68,16 @@ def home(request):
         order_by = filters.get('order_by') == 'asc' if '' else '-'
         job_offers = job_offers.order_by(f'{order_by}due_date')
 
+    query = filters.get('q')
+    if query:
+        job_offers = job_offers.filter(title__icontains=query)
+
     return GeneralViewController(request).render('pages/home.html', {
         'job_offers': job_offers,
         'companies_list': companies_list,
         'company_filter': filters.get('company'),
         'order_filter': filters.get('order_by'),
+        'query': query,
     })
 
 

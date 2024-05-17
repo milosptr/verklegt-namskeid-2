@@ -149,5 +149,13 @@ const main = () => {
     }
 }
 
+    //share job offer
+    const share_button = document.getElementById('share-job-offer')
+    if (share_button) {
+        share_button.addEventListener('click', () => {
+            const url = window.location
+            navigator.clipboard.writeText(url)
+        })
+    }
 window.addEventListener('load', main)
 

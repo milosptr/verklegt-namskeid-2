@@ -5,6 +5,7 @@ from src.controllers.InterviewController import InterviewController
 from src.controllers.JobController import JobController
 from src.controllers.UserController import UserController
 from src.controllers.EmailController import EmailController
+from src.controllers.BugReportController import BugReportController
 from src.controllers.ApplicationController import ApplicationController
 
 prefix = 'api/v1'
@@ -14,6 +15,9 @@ urlpatterns = [
     path(f'{prefix}/create-business-account', UserController.create_business_account_view, name='create_business_account'),
     path(f'{prefix}/login', UserController.login, name='login'),
     path(f'{prefix}/reset-password', EmailController.reset_password, name='reset_password'),
+
+    # Report bug
+    path(f'{prefix}/report-bug', BugReportController.report_bug, name='report_bug'),
 
     # Company routes
     path(f'{prefix}/company/<int:id>/update-info', CompanyController.upload_info, name='upload_info'),
