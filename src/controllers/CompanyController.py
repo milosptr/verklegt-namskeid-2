@@ -16,7 +16,7 @@ class CompanyController:
         return Job.objects.filter(company_id=company_id)
     
     def get_all_available_jobs(self):
-        return Job.objec
+        pass
 
     @staticmethod
     def upload_info(request, id):
