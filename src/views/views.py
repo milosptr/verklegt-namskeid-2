@@ -8,6 +8,8 @@ from src.controllers.ProtectedViewController import ProtectedViewController
 from src.controllers.CompanyController import CompanyController
 from src.models import Company, Job, LikedJob, Application
 from src.controllers.EmailController import *
+from ..controllers.CategoryController import CategoryController
+from ..controllers.TypeController import TypeController
 from ..filters import JobFilter
 
 # Views are the functions that handle the requests from the user
@@ -46,7 +48,7 @@ def home(request):
     """
     This is the home view or the index page of the application
     """
-    job_offers = JobController().get_all()
+    job_offers = JobController().get_active()
     companies_list = CompanyController().get_all_companies()
 
     filters = request.GET
@@ -155,7 +157,12 @@ def employer_dashboard(request):
 
 
 def make_job_offer(request):
-    return ProtectedViewController(request).render('pages/make_job_offer.html')
+    categories = CategoryController().get_categories()
+    types = TypeController().get_types()
+    return ProtectedViewController(request).render('pages/make_job_offer.html', {
+        'categories': categories,
+        'types': types
+    })
 
 
 def application(request, id: int):
@@ -165,10 +172,6 @@ def application(request, id: int):
         step: The step of the application
     """
     return ApplicationController().handle_application_view(request, id)
-
-
-def make_job_offer(request):
-    return ProtectedViewController(request).render('pages/make_job_offer.html')
 
 
 def view_candidate(request):

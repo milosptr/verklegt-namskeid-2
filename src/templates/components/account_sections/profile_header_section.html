@@ -2,17 +2,19 @@
     {% if user.company.cover_image %}
         <img src="{{ user.company.cover_image }}" class="w-full h-full object-contain" />
     {% endif %}
-    <form method="POST" action="/api/v1/company/{{ user.company.id }}/cover" id="upload-cover-form" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label
-                id="upload-cover"
-                class="absolute right-4 text-[#FFAA76] text-sm bottom-3 z-1 border border-[#FFAA76] border-opacity-100 rounded-lg py-1 px-5
-                        cursor-pointer hover:bg-[#FFAA76] hover:bg-opacity-80 hover:text-white duration-200 shadow-md"
-        >
-            Upload company cover photo
-            <input type="file" name="cover" id="upload-cover" class="hidden" onchange="document.getElementById('upload-cover-form').submit()" />
-        </label>
-    </form>
+    {% if user.role == 1 %}
+        <form method="POST" action="/api/v1/company/{{ user.company.id }}/cover" id="upload-cover-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label
+                    id="upload-cover"
+                    class="absolute right-4 text-[#FFAA76] text-sm bottom-3 z-1 border border-[#FFAA76] border-opacity-100 rounded-lg py-1 px-5
+                            cursor-pointer hover:bg-[#FFAA76] hover:bg-opacity-80 hover:text-white duration-200 shadow-md"
+            >
+                Upload company cover photo
+                <input type="file" name="cover" id="upload-cover" class="hidden" onchange="document.getElementById('upload-cover-form').submit()" />
+            </label>
+        </form>
+    {% endif %}
 </div>
 <div class="-mt-16 ml-8">
     <div class="relative w-32 h-32 rounded-full bg-white border-4 border-[#000019] overflow-hidden group">

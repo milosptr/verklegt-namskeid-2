@@ -5,6 +5,7 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.db import models
 
 from src.exceptions.UserExceptions import CreateAccountException
+from src.models.interview import Interview
 from src.models.liked_job import LikedJob
 from src.models.job import Job
 from src.models.application import Application
@@ -100,6 +101,16 @@ class User(models.Model):
             return list()
         return Application.get_by_company(self.company.id)
 
+    def get_interviews(self):
+        if self.role == 1:
+            return list()
+        return Interview().get_by_user(self.id)
+
+    def get_interview_companies(self):
+        if self.role == 1:
+            return list()
+        return Interview().get_by_user(self.id).values_list('company_id', flat=True).distinct()
+
     def get_list_of_liked_jobs(self):
         if self.role == 1:
             return list()
@@ -109,6 +120,11 @@ class User(models.Model):
         for liked_job in liked_jobs:
             jobs.append(liked_job.job_id)
         return jobs
+
+    def get_interviews(self):
+        if self.role == 1:
+            return list()
+        return Interview().get_by_user(self.id)
 
     def save(self, *args, **kwargs):
         try:
@@ -195,6 +211,7 @@ class User(models.Model):
             'skills': self.get_skills(),
             'country': self.country,
             'applications': self.get_applications(),
+            'interviews': self.get_interviews(),
             'company': self.company,
             'avatar': self.avatar,
             'verified_at': self.verified_at

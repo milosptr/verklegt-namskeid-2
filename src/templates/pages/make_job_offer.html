@@ -1,67 +1,94 @@
 {% extends "common/base.html" %}
 
-{% block title %}Make job offer{% endblock %}
+{% block title %}Make new job offer{% endblock %}
 
 {% block content %}
-<form>
-    <div class="bg-[#6C37BD] bg-opacity-10 rounded-lg p-5 p w-2/6 shadow-md mb-10 mx-auto">
-        <h1 class="text-3xl text-center">
-        Make new job offer
-        </h1>
-        
-        <div class="mt-5 mb-6">
-            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block 
-                px-5 p-2.5 w-full text-white" placeholder="Job title">
-        </div>
-        
-        <div class="relative mt-5">
-            <select
-                name="job_type"
-                class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full w-full text-gray-400 selected:white 
-                appearance-none px-5 pr-10 py-2.5" required>
-                    <option selected disabled hidden>Job type</option>
-                    <option>Teacher</option>
-                    <option>Data science</option>
-                    <option>Sales</option>
-                    <option>Software Engineering</option>
-            </select>
-            <div class="absolute top-4 right-4">
-                {% include 'common/icons/accordion.html' %}
-            </div>
-        </div>
-                
-        
-        <div class="mt-5 mb-5">
-            <input type="text" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block 
-                px-5 p-2.5 w-full text-white" placeholder="Job address">
-        </div>
-        
-        <div class="">
-            <label class="pl-2 text-gray-400">Publishing date:</label>
-            <input type="date" name="start_date" id="start_date" class="text-sm w-full rounded-full p-2 px-6 bg-[#6C37BD] 
-            bg-opacity-30" placeholder="Start date" />
+    {% if messages %}
+        {% include 'components/error_card.html' with title="Some fields are invalid or missing" errors=messages classes="w-full mb-5 p-5" %}
+    {% endif %}
+    <div class="flex items-start justify-center gap-4">
+        <form class="w-3/4" method="POST" action="/api/v1/job/create">
+            {% csrf_token %}
+            <div class="bg-[#6C37BD] bg-opacity-10 rounded-lg p-5 shadow-md mb-10">
+                <h2 class="text-2xl text-center">
+                    Make new job offer
+                </h2>
 
-        </div>
-        
-        <div class="mt-5 mb-6">
-            <label class="pl-2 text-gray-400">End date:</label>
-            <input type="date" name="start_date" id="start_date" class="text-sm w-full rounded-full p-2 px-6 bg-[#6C37BD] 
-            bg-opacity-30" placeholder="Start date" />
-        </div>
-        
-    
-        <textarea required cols="38" rows="10" class="bg-[#4E288F] rounded-xl text-white text:p-4 
-         mt-2 placeholder:p-4" placeholder="Description of job offering" ></textarea>
-        
-        <div class="w-64 mx-auto text-center">
-            <button
-                type="submit"
-                class="text-white bg-[#6836B5] hover:bg-[#411586] hover:border-[#9F68F3] focus:ring-4 font-medium 
-                rounded-full text-sm px-5 py-2.5 m-4">
-                Create job offer
-            </button>
-        </div>
+                <div class="mt-5 mb-6">
+                    <label class="text-gray-400">Job title:</label>
+                    <input type="text" name="title" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
+                    ps-5 p-2.5 w-full text-white mt-2" placeholder="Job title" required>
+                </div>
+                <div class="mt-5 mb-6">
+                    <label class="text-gray-400">Job description:</label>
+                    <textarea name="description" rows="5" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-lg block
+                    ps-5 p-2.5 w-full text-white mt-2" placeholder="Job description" required></textarea>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mt-5">
+                    <div>
+                        <label class="text-gray-400">Job category:</label>
+                        <div class="relative">
+                            <select
+                                    name="category_id"
+                                    class="bg-[#6C37BD] bg-opacity-30 text-sm rounded-full w-full text-gray-400 selected:white
+                        appearance-none px-5 pr-10 py-2.5 mt-2" required>
+                                <option selected disabled hidden>Job category</option>
+                                {% for c in categories %}
+                                    <option value="{{ c.id }}">{{ c.name }}</option>
+                                {% endfor %}
+
+                            </select>
+                            <div class="absolute top-6 right-4">
+                                {% include 'common/icons/accordion.html' %}
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-gray-400">Or add new job category (optional):</label>
+                        <input type="text" name="new_job_category" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
+                    ps-5 p-2.5 w-full text-white mt-2" placeholder="New job category">
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <label class="text-gray-400">Job types:</label>
+                    <div class="grid grid-cols-5 gap-4 mt-2">
+                        {% for t in types %}
+                            <div class="flex items-center justify-start gap-2 cursor-pointer">
+                                <input id="job-type-{{ t.id }}" type="checkbox" name="types" value="{{ t.id }}">
+                                <label for="job-type-{{ t.id }}" class="cursor-pointer text-gray-400">{{ t.name }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mt-5">
+                    <div class="">
+                        <label class="text-gray-400">Start date:</label>
+                        <input type="datetime-local" name="start_date" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
+                        px-5 p-2.5 w-full text-white mt-2" required>
+                    </div>
+
+                    <div class="">
+                        <label class="text-gray-400">Due date:</label>
+                        <input type="datetime-local" name="due_date" class="bg-[#6C37BD] bg-opacity-30 text-gray-900 text-sm rounded-full block
+                        ps-5 p-2.5 w-full text-white mt-2" required>
+                    </div>
+                </div>
+
+                <div class="flex justify-center mt-5">
+                    <div>
+                        <button
+                            type="submit"
+                            class="text-white w-48 bg-[#6836B5] hover:bg-[#411586] font-medium rounded-full text-sm py-2 px-5 m-4">
+                            Create
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
     </div>
-</form>
-    
+
 {% endblock %}

@@ -43,6 +43,10 @@ class Job(models.Model):
     def get_all(cls):
         return cls.objects.all()
 
+    @classmethod
+    def get_active(cls):
+        return cls.objects.filter(status__lt=2).all()
+
     def remaining_days(self):
         now = timezone.now()
         delta = self.due_date - now

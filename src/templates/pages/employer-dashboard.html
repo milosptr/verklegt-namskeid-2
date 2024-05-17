@@ -103,7 +103,11 @@
                                 <td class="px-6 py-4">
                                     <a href="/edit-job-offer/{{ job.id }}">
                                         <div class="bg-[#A062FF] border border-[#6B36C5] text-white rounded-full text-center px-3 py-1 hover:bg-[#6B36C5] whitespace-nowrap duration-100">
-                                            Edit
+                                            {% if job.status == 2 %}
+                                                View
+                                            {% else %}
+                                                Edit
+                                            {% endif %}
                                         </div>
                                     </a>
                                 </td>
@@ -148,10 +152,10 @@
                                 Status
                             </th>
                             <th scope="col" class="px-6 py-3 text-gray-300">
-                                Invite for interview
+                                Interview status
                             </th>
                             <th scope="col" class="px-6 py-3 text-gray-300">
-                                Reviewed applications
+                                Application status
                             </th>
                             <th scope="col" class="px-6 py-3 text-gray-300">
                                 View application
@@ -160,6 +164,7 @@
                     </thead>
                     <tbody>
                     {% if user and user.candidates %}
+
                         {% for c in user.candidates %}
                         <tr class="border-b text-xs">
                             <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ">
@@ -172,44 +177,80 @@
                                 {{ c.user.email }}
                             </td>
                             {% if c.job %}
-                                {% if c.job.status == 0 %}
+                                {% if c.get_interview.status == 0 %}
+                                    <td class="px-6 py-4">
+                                        <div class="bg-blue-500 rounded-full text-center px-2 py-1 text-blue-800">
+                                            Invited
+                                        </div>
+                                    </td>
+                                {% endif %}
+                                {% if c.get_interview.status == 1 %}
+                                    <td class="px-6 py-4">
+                                        <div class="bg-[#69C683] rounded-full text-center px-2 py-1 text-[#1F7532]">
+                                            Accepted
+                                        </div>
+                                    </td>
+                                {% endif %}
+                                {% if c.get_interview.status == 2 %}
+                                    <td class="px-6 py-4">
+                                        <div class="bg-red-400 rounded-full text-center px-2 py-1 text-red-800">
+                                            Rejected
+                                        </div>
+                                    </td>
+                                {% endif %}
+                                {% if c.get_interview.status == 3 %}
+                                    <td class="px-6 py-4">
+                                        <div class="bg-green-400 rounded-full text-center px-2 py-1 text-green-800">
+                                            Completed
+                                        </div>
+                                    </td>
+                                {% endif %}
+                                {% if not c.get_interview %}
                                     <td class="px-6 py-4">
                                         <div class="bg-[#FF9C9C] rounded-full text-center px-2 py-1 text-[#DF0404]">
                                             Not invited
                                         </div>
                                     </td>
                                 {% endif %}
-                                {% if c.job.status == 1 %}
-                                    <td class="px-6 py-4">
-                                        <div class="bg-[#69C683] rounded-full text-center px-2 py-1 text-[#1F7532]">
-                                            Invited
-                                        </div>
-                                    </td>
-                                {% endif %}
                             {% endif %}
                             {% if c.job %}
-                                {% if c.job.status == 0 %}
+                                {% if c.get_interview and c.get_interview.status == 1 %}
                                     <td class="px-6 py-4">
-                                        <div class="bg-[#A062FF] h-1 w-10 mx-auto">
-                                        </div>
+                                        <form method="POST" action="/api/v1/invite-candidate/{{ c.job.id }}/{{ c.user.id }}/status" class="w-full block">
+                                            {% csrf_token %}
+                                            <button type="submit" name="action" value="complete" class="w-full block bg-green-600 border border-green-700 text-white rounded-full
+                                        text-center px-3 py-1 hover:bg-green-700 duration-100">
+                                                Complete
+                                            </button>
+                                        </form>
                                     </td>
-                                {% endif %}
-                                {% if c.job.status == 1 %}
+                                {% elif c.get_interview.status == 3 or c.get_interview.status == 2 or c.get_interview.status == 0 %}
+                                    <td class="px-6 py-4"></td>
+                                {% else %}
                                     <td class="px-6 py-4">
-                                        <div class="block bg-[#A062FF] border border-[#6B36C5] text-white rounded-full
+                                        <form method="POST" action="/api/v1/invite-candidate/{{ c.job.id }}/{{ c.user.id }}" class="w-full block">
+                                            {% csrf_token %}
+                                            <button type="submit" class="w-full block bg-[#A062FF] border border-[#6B36C5] text-white rounded-full
                                         text-center px-3 py-1 hover:bg-[#6B36C5] duration-100">
-                                            Invite
-                                        </div>
+                                                Invite
+                                            </button>
+                                        </form>
                                     </td>
                                 {% endif %}
                             {% endif %}
                             <td class="px-6 py-4">
+                                {% if c.status == 1 %}
                                 <div class="bg-[#69C683] rounded-full text-center px-2 py-1 text-[#1F7532]">
                                     Reviewed
                                 </div>
+                                {% else %}
+                                <div class="bg-[#FF9C9C] rounded-full text-center px-2 py-1 text-[#DF0404]">
+                                    Not reviewed
+                                </div>
+                                {% endif %}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="/view-candidate" class="block bg-[#A062FF] border border-[#6B36C5] text-white
+                                <a href="/view-candidate/{{ c.id }}" class="block bg-[#A062FF] border border-[#6B36C5] text-white
                                 rounded-full text-center px-3 py-1 hover:bg-[#6B36C5] duration-100">
                                     View
                                 </a>

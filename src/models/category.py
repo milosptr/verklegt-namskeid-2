@@ -14,6 +14,12 @@ class Category(models.Model):
         return self.name
 
     @classmethod
+    def create(cls, name: str):
+        short = name.split(' ')
+        short = ''.join([s[0] for s in short])
+        return cls.objects.create(name=name, short=short)
+
+    @classmethod
     def get_all(cls):
         return cls.objects.all()
 

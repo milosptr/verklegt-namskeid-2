@@ -58,3 +58,28 @@ class ApplicationController:
         except Exception as e:
             print(f'Exception: {str(e)}')
             return redirect('/not-found')
+
+    @staticmethod
+    def view_candidate(request, id):
+        application = Application.objects.get(id=id)
+        if not application:
+            return redirect('/not-found')
+
+        return ProtectedViewController(request).render('pages/view_candidate.html', {
+            'application': application
+        })
+
+    @staticmethod
+    def review_application(request, id):
+        try:
+            application = Application.objects.get(id=id)
+            if not application:
+                return redirect('/not-found')
+
+            application.status = 1
+            application.save()
+
+            return redirect(f'/view-candidate/{application.id}')
+        except Exception as e:
+            messages.error(request, f'Error: {str(e)}')
+            return redirect('/not-found')

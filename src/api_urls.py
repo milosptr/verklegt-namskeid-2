@@ -1,9 +1,11 @@
 from django.urls import path
 
 from src.controllers.CompanyController import CompanyController
+from src.controllers.InterviewController import InterviewController
 from src.controllers.JobController import JobController
 from src.controllers.UserController import UserController
 from src.controllers.EmailController import EmailController
+from src.controllers.ApplicationController import ApplicationController
 
 prefix = 'api/v1'
 
@@ -18,9 +20,19 @@ urlpatterns = [
     path(f'{prefix}/company/<int:id>/logo', CompanyController.upload_logo, name='upload_logo'),
     path(f'{prefix}/company/<int:id>/cover', CompanyController.upload_cover, name='upload_cover'),
 
+    # Interview routes
+    path(f'{prefix}/invite-candidate/<int:job_id>/<int:user_id>', InterviewController.invite_candidate, name='invite_candidate'),
+    path(f'{prefix}/invite-candidate/<int:job_id>/<int:user_id>/status', InterviewController.update_interview_status, name='update_interview_status'),
+    path(f'{prefix}/interview/<int:id>/status', InterviewController.update_status, name='update_status'),
+
     # Job routes
+    path(f'{prefix}/job/create', JobController.create_job, name='create_job'),
     path(f'{prefix}/job/<int:id>/status', JobController().update_status, name='update_status'),
     path(f'{prefix}/job/<int:id>/update-job', JobController().update_job, name='update_job'),
+
+    # Application routes
+    path(f'{prefix}/view-candidate/<int:id>', ApplicationController().view_candidate, name='view_candidate'),
+    path(f'{prefix}/application/<int:id>/review', ApplicationController().review_application, name='review_application'),
 
     # User routes
     path(f'{prefix}/user/<int:id>/like/<int:job>', UserController.like_job, name='like_job'),
