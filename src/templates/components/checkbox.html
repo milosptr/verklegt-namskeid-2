@@ -1,0 +1,6 @@
+<input type="checkbox" id="{{ id }}" name="{{ name }}" value="{{ value }}" class="peer" hidden {% if checked %}checked{% endif %}>
+{% include 'common/icons/check.html' with classes='w-[18px] h-[18px] hidden peer-checked:block' %}
+{% include 'common/icons/uncheck.html' with classes='w-[18px] h-[18px] block peer-checked:hidden' %}
+<label for="{{ id }}" class="opacity-70 duration-200 group-hover:opacity-100 cursor-pointer peer-checked:text-[#EA6F6F] peer-checked:opacity-100">
+    {{ label }}
+</label>

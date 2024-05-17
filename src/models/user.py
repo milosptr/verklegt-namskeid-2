@@ -120,7 +120,7 @@ class User(models.Model):
         if self.role == 1:
             return list()
         liked_jobs = LikedJob.get_by_user(self.id)
-        print('liked jobs', liked_jobs)
+
         jobs = list()
         for liked_job in liked_jobs:
             jobs.append(liked_job.job_id)
