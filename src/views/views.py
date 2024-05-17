@@ -83,15 +83,6 @@ def home(request):
         'query': query,
     })
 
-def home_search(request):
-    query = request.GET.get('q')
-    results = []
-    if query:
-        # Perform your search logic here
-        # Example: results = YourModel.objects.filter(name__icontains=query)
-        pass
-    return render(request, 'your_template.html', {'query': query, 'results': results})
-
 
 def contact_us(request):
     """
