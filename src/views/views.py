@@ -209,19 +209,6 @@ def employer_dashboard(request):
 
 
 
-
-
-"""def make_job_offer(request):
-    job_offers = JobController().get_all()
-    categories_list = CategoryController().get_categories()
-    filters = request.GET
-    if filters and filters.get('category'):
-        job_category_id = filters.get('category')
-        job_offers = Job.get_by_category(job_category_id)
-
-    return ProtectedViewController(request).render('pages/make_job_offer.html', {'categories_list':categories_list})
-"""
-
 def make_job_offer(request):
     if request.method == 'POST':
         # Assuming form data is sent as POST request

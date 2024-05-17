@@ -2,7 +2,7 @@
     {% if user.company.cover_image %}
         <img src="{{ user.company.cover_image }}" class="w-full h-full object-contain" />
     {% endif %}
-    <form method="POST"
+    <form method="POST" action="/api/v1/company/{{ user.company.id }}/cover" id="upload-cover-form" enctype="multipart/form-data">
         {% csrf_token %}
         <label
                 id="upload-cover"
