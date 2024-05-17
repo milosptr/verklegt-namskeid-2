@@ -78,6 +78,7 @@ class Job(models.Model):
             return self.types.all()
         except:
             return []
+        
 
     def get_status(self):
         if self.status == 0:
