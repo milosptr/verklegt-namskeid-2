@@ -41,6 +41,12 @@ class ApplicationController:
                 messages.error(request, message)
                 return redirect(f'/application/{id}')
 
+            application_exist = Application.objects.filter(user_id=user.id, job_id=id).first()
+            if application_exist:
+                message = 'You have already applied for this job'
+                messages.error(request, message)
+                return redirect(f'/application/{id}')
+
             application = Application(
                 user_id=user.id,
                 job_id=id,

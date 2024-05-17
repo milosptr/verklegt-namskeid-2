@@ -68,14 +68,12 @@
                     <p class="font-semibold text-lg">Add or Edit</p>
                 </a>
             </div>
-            <div class="grid grid-cols-5 gap-5">
+            <h3 class="text-xl text-[#9E6DE9] mt-5">Skills</h3>
+            <div class="grid grid-cols-5 gap-5 mt-2">
                 {% if user and user.skills %}
                     {% for skill in user.skills %}
-                        <div class="bg-[#6C37BD] p-4 rounded-lg text-sm flex justify-between items-center">
+                        <div class="bg-[#CDACFF] bg-opacity-10 p-4 rounded-lg text-sm flex justify-between items-center">
                             <div class="font-medium">{{ skill.name }}</div>
-                            <a href="/api/v1/user/{{ user.id }}/remove-skill/{{ skill.id }}" class="hover:text-red-500 cursor-pointer">
-                                {% include 'common/icons/trash.html' with classes='w-5 h-5' %}
-                            </a>
                         </div>
                     {% endfor %}
                 {% endif %}

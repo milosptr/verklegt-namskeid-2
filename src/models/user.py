@@ -61,6 +61,11 @@ class User(models.Model):
             return list()
         return Application.objects.filter(user_id=self.id)
 
+    def get_applied_applications(self):
+        if self.role == 1:
+            return list()
+        return Application.objects.filter(user_id=self.id).values_list('job_id', flat=True).distinct()
+
     def get_skills(self):
         if self.role == 1:
             return list()
@@ -211,6 +216,7 @@ class User(models.Model):
             'skills': self.get_skills(),
             'country': self.country,
             'applications': self.get_applications(),
+            'applied_job_ids': self.get_applied_applications(),
             'interviews': self.get_interviews(),
             'company': self.company,
             'avatar': self.avatar,
