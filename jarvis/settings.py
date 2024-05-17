@@ -97,7 +97,6 @@ ssh_tunnel = SSHTunnelForwarder(
     remote_bind_address=('localhost', 5432),
 )
 ssh_tunnel.start()
-print('--------------------------------', ssh_tunnel.is_active, '--------------------------------')
 
 DATABASES = {
     'default': {

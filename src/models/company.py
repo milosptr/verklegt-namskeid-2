@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from django.db import models
-
+from src.models.job import Job 
 
 class Company(models.Model):
     id = models.AutoField(primary_key=True)
@@ -26,6 +26,9 @@ class Company(models.Model):
 
     def full_address(self):
         return f'{self.address}, {self.city.name} {self.city.zip}, {self.country.name}'
+
+    def get_available_jobs(self):
+        return Job.objects.filter(company_id=self.id, status__lt=2)
 
     def validate_fields(self):
         errors = list()

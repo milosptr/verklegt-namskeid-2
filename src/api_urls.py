@@ -1,8 +1,10 @@
 from django.urls import path
 
 from src.controllers.CompanyController import CompanyController
+from src.controllers.JobController import JobController
 from src.controllers.UserController import UserController
 from src.controllers.EmailController import EmailController
+from src.controllers.BugReportController import BugReportController
 
 prefix = 'api/v1'
 
@@ -12,10 +14,17 @@ urlpatterns = [
     path(f'{prefix}/login', UserController.login, name='login'),
     path(f'{prefix}/reset-password', EmailController.reset_password, name='reset_password'),
 
+    # Report bug
+    path(f'{prefix}/report-bug', BugReportController.report_bug, name='report_bug'),
+
     # Company routes
     path(f'{prefix}/company/<int:id>/update-info', CompanyController.upload_info, name='upload_info'),
     path(f'{prefix}/company/<int:id>/logo', CompanyController.upload_logo, name='upload_logo'),
     path(f'{prefix}/company/<int:id>/cover', CompanyController.upload_cover, name='upload_cover'),
+
+    # Job routes
+    path(f'{prefix}/job/<int:id>/status', JobController().update_status, name='update_status'),
+    path(f'{prefix}/job/<int:id>/update-job', JobController().update_job, name='update_job'),
 
     # User routes
     path(f'{prefix}/user/<int:id>/like/<int:job>', UserController.like_job, name='like_job'),

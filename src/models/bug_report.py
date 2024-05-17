@@ -7,7 +7,7 @@ class BugReport(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=150)
     description = models.TextField()
-    created_at = models.DateTimeField( default=datetime.now)
+    created_at = models.DateTimeField(default=datetime.now)
     updated_at = models.DateTimeField(default=datetime.now)
 
     def __str__(self):

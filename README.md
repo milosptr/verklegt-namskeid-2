@@ -48,13 +48,23 @@ python3 manage.py makemigrations src
 python3 manage.py migrate src
 ```
 
-# Seed the database (countries and cities)
-This step is required (_ONLY IF DATABASE IS TRUNCATED FULLY_) to seed the database with countries and cities. Run the following commands:
+## Updating static files
+If you are making changes to the static files in `static/jarvis` (CSS, JS, etc.), you will need to run the following command to update the static files:
+```
+python3 manage.py collectstatic
+```
+
+# Seed the database
+This step is required (_ONLY IF DATABASE IS TRUNCATED FULLY_) to seed the database. Run the following commands:
 
 **Note that we are seeding only Icelandic cities for simplicity**
+
 ```
+python3 manage.py loaddata src/seed/0001_types.json
+python3 manage.py loaddata src/seed/0001_skills.json
 python3 manage.py loaddata src/seed/0001_countries.json 
 python3 manage.py loaddata src/seed/0001_cities_is.json 
+python3 manage.py loaddata src/seed/0001_companies_is.json
 ```
 # 🔴 DON'Ts 🔴
 1. **DO NOT** push directly to the main branch. Create a new branch and make a pull request.
@@ -67,3 +77,24 @@ python3 manage.py loaddata src/seed/0001_cities_is.json
 2. **DO** make a pull request to the main branch when you are ready to merge your changes.
 3. **DO** use Django's ORM to make changes to the database.
 4. **DO** use Tailwind CSS for styling.
+
+# Extra requirements
+1. Like job offer
+2. Job application guide
+3. Report a bug
+4. About the authors section
+5. Share a job offer by copying a link
+6. Invite applicants to interview
+7. Delete job offer
+8. Mark applications that have been reviewed as reviewed
+9. Contact Jarvis
+10. View list of applied jobs
+11. Add details about a company
+12. Create job offer
+13. Login using email and password
+14. Change password
+15. Create a profile
+16. Edit job offer
+17. View list of interview invites
+
+

@@ -34,12 +34,13 @@
     <div class="mt-6">
         <h2 class="text-xl font-semibold">Job offers</h2>
 
-        {% for job_offer in company.jobs.all %}
-            {% include 'components/job_offer_company_profile_card.html' with job_offer=job_offer %}
-        {% empty %}
-            <p>No job offers available.</p>
-        {% endfor %}
-
+        <div class="grid grid-cols-2 gap-6 mt-6">
+            {% if job_list %}
+                {% for job in job_list %}
+                    {% include 'components/job_offer_card.html' with job=job %}
+                {% endfor %}
+            {% endif %}
+        </div>
     </div>
 </div>
 
