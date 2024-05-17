@@ -211,7 +211,7 @@ def employer_dashboard(request):
 
 def make_job_offer(request):
     if request.method == 'POST':
-        # Assuming form data is sent as POST request
+
         title = request.POST.get('title')
         description = request.POST.get('description')
         category_id = request.POST.get('category')
@@ -219,7 +219,6 @@ def make_job_offer(request):
         end_date = request.POST.get('end_date')
         address = request.POST.get('address')
 
-        # Create a new Job instance and save it
         job = Job(
             title=title,
             address=address,
@@ -227,16 +226,15 @@ def make_job_offer(request):
             category_id=category_id,
             start_date=start_date,
             due_date=due_date,
-            company=request.user.company  # Assuming the user is linked to a company
+            company=request.user.company
         )
         try:
             job.save()
             messages.success(request, "Job offer created successfully!")
-            return redirect('some_view_name')  # Redirect after POST to avoid resubmitting the form
+            return redirect('some_view_name')
         except Exception as e:
             messages.error(request, f"Failed to create job offer: {str(e)}")
 
-    # Handle GET request
     categories_list = CategoryController().get_categories()
     return render(request, 'pages/make_job_offer.html', {'categories_list': categories_list})
 
