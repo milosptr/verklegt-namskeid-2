@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404
 
 from src.controllers.ApplicationController import ApplicationController
+from src.controllers.CategoryController import CategoryController
 from src.controllers.CityController import CityController
 from src.controllers.CountryController import CountryController
 from src.controllers.JobController import JobController
@@ -8,7 +9,6 @@ from src.controllers.ProtectedViewController import ProtectedViewController
 from src.controllers.CompanyController import CompanyController
 from src.models import Company, Job, LikedJob, Application, Type
 from src.controllers.EmailController import *
-from ..filters import JobFilter
 
 # Views are the functions that handle the requests from the user
 # You can think of them as the controller in the MVC pattern
@@ -47,32 +47,22 @@ def home(request):
     This is the home view or the index page of the application
     """
     job_offers = JobController().get_all()
-    companies_list = CompanyController().get_all_companies()
+    companies = CompanyController().get_all_companies()
+    categories = CategoryController().get_categories()
     job_types = Type.get_all()
+    selected_types = [int(i) for i in request.GET.getlist('type')]
 
-    filters = request.GET
-    if filters and filters.get('liked'):
-        liked_jobs = LikedJob.objects.filter(user_id=request.session.get('user_id'))
-        job_offers = [liked_job.job for liked_job in liked_jobs]
-
-    if filters and filters.get('applied'):
-        applications = Application.get_by_user(request.session.get('user_id'))
-        job_offers = [a.job for a in applications]
-
-    if filters and filters.get('company'):
-        company_id = filters.get('company')
-        job_offers = Job.get_by_company(company_id)
-
-    if filters and filters.get('order_by'):
-        order_by = filters.get('order_by') == 'asc' if '' else '-'
-        job_offers = job_offers.order_by(f'{order_by}due_date')
+    if request.GET.get('jobs'):
+        job_offers = JobController.filter(request)
+    if request.GET.get('q'):
+        job_offers = JobController.search(request)
 
     return GeneralViewController(request).render('pages/home.html', {
         'job_offers': job_offers,
         'job_types': job_types,
-        'companies_list': companies_list,
-        'company_filter': filters.get('company'),
-        'order_filter': filters.get('order_by'),
+        'categories': categories,
+        'companies': companies,
+        'selected_types': selected_types
     })
 
 

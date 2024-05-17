@@ -1,44 +1,106 @@
-<nav class="pt-20 w-1/5">
-    <div class="flex justify-between items-center">
-        <div class="font-semibold">Job types</div>
-        <div class="text-[#EA6F6F] text-sm">Clear all</div>
-    </div>
-    <div>
-    {{ job_types }}
-        {% for t in job_types %}
-            <div class="flex items-center gap-2">
-                <input type="checkbox" id="{{ t.id }}" name="{{ t.id }}" value="{{ t.id }}" class="hidden" {% if t.id in selected_job_types %}checked{% endif %}>
-                <label for="{{ t.id }}" class="">
-                    {{ t.name }}
-                </label>
+<nav class="mt-[22px] w-1/5">
+    <form>
+        {% if user %}
+        <div class="flex justify-between items-center border-b border-gray-100 border-opacity-20 pb-1 mb-2">
+            <div class="font-semibold">Filter jobs</div>
+        </div>
+        <div class="grid grid-cols-1 gap-1">
+            <div class="flex items-center gap-2 cursor-pointer group">
+                {% if request.GET.jobs|default:"1" == "1"  %}
+                    {% include 'components/radiobutton.html' with id="jobs-all" name="jobs" value="1" label="All jobs" checked="checked" %}
+                {% else %}
+                    {% include 'components/radiobutton.html' with id="jobs-all" name="jobs" value="1" label="All jobs" %}
+                {% endif %}
             </div>
-        {% endfor %}
-    </div>
-{#    <div class="relative z-[1] bg-[#01011A] bg-opacity-60 border border-solid border-[#6C37BD] rounded-full inline px-6 py-1">Jobs</div>#}
-{#    <div class="relative z-[0] bg-[#01011A] bg-opacity-60 rounded-lg p-5 grid gap-4 pt-10 -mt-4">#}
-{#        <a#}
-{#            href="/"#}
-{#            class="border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300#}
-{#            {% if request.get_full_path == '/' %} bg-[#6C37BD] {% endif %}"#}
-{#        >#}
-{#            All jobs#}
-{#        </a>#}
-{#        {% if user %}#}
-{#        <a#}
-{#            href="/?liked=true"#}
-{#            class="border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300#}
-{#            {% if request.get_full_path == '/?liked=true' %} bg-[#6C37BD] {% endif %}"#}
-{#        >#}
-{#            Liked jobs#}
-{#        </a>#}
-{##}
-{#        <a#}
-{#            href="/?applied=true"#}
-{#            class="border border-solid border-[#6C37BD] rounded-full text-sm text-center py-1.5 px-6 hover:bg-[#6C37BD] duration-300#}
-{#            {% if request.get_full_path == '/?applied=true' %} bg-[#6C37BD] {% endif %}"#}
-{#        >#}
-{#            Already applied#}
-{#        </a>#}
-{#        {% endif %}#}
-{#    </div>#}
+            <div class="flex items-center gap-2 cursor-pointer group">
+                {% if request.GET.jobs|default:"0" == "2" %}
+                    {% include 'components/radiobutton.html' with id="jobs-liked" name="jobs" value="2" label="Liked jobs" checked="checked" %}
+                {% else %}
+                    {% include 'components/radiobutton.html' with id="jobs-liked" name="jobs" value="2" label="Liked jobs" %}
+                {% endif %}
+            </div>
+            <div class="flex items-center gap-2 cursor-pointer group">
+                {% if request.GET.jobs|default:"0" == "3"  %}
+                    {% include 'components/radiobutton.html' with id="jobs-applied" name="jobs" value="3" label="Applied jobs" checked="checked" %}
+                {% else %}
+                    {% include 'components/radiobutton.html' with id="jobs-applied" name="jobs" value="3" label="Applied jobs" %}
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        <div class="flex justify-between items-center border-b border-gray-100 border-opacity-20 pb-1 mb-2 mt-6">
+            <div class="font-semibold">Order by</div>
+        </div>
+        <div class="grid grid-cols-1 gap-1">
+            <div class="flex items-center gap-2 cursor-pointer group">
+                {% if request.GET.order_by|default:"0" == "default"  %}
+                    {% include 'components/radiobutton.html' with id="order-default" name="order_by" value="default" label="Default" checked="checked" %}
+                {% else %}
+                    {% include 'components/radiobutton.html' with id="order-default" name="order_by" value="default" label="Default" %}
+                {% endif %}
+            </div>
+            <div class="flex items-center gap-2 cursor-pointer group">
+                {% if request.GET.order_by|default:"0" == "newest"  %}
+                    {% include 'components/radiobutton.html' with id="order-popular" name="order_by" value="newest" label="Newest" checked="1" %}
+                {% else %}
+                    {% include 'components/radiobutton.html' with id="order-popular" name="order_by" value="newest" label="Newest" %}
+                {% endif %}
+            </div>
+            <div class="flex items-center gap-2 cursor-pointer group">
+                {% if request.GET.order_by|default:"0" == "oldest"  %}
+                    {% include 'components/radiobutton.html' with id="order-oldest" name="order_by" value="oldest" label="Oldest" checked="1" %}
+                {% else %}
+                    {% include 'components/radiobutton.html' with id="order-oldest" name="order_by" value="oldest" label="Oldest" %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="flex justify-between items-center border-b border-gray-100 border-opacity-20 pb-1 mb-2 mt-6">
+            <div class="font-semibold">Job types</div>
+        </div>
+        <div class="grid grid-cols-1 gap-1">
+            {% for t in job_types %}
+                <div class="flex items-center gap-2 cursor-pointer group">
+                    {% if t.id in selected_types %}
+                        {% include 'components/checkbox.html' with id=t.id name='type' value=t.id label=t.name checked="checked" %}
+                    {% else %}
+                        {% include 'components/checkbox.html' with id=t.id name='type' value=t.id label=t.name %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="flex justify-between items-center border-b border-gray-100 border-opacity-20 pb-1 mb-4 mt-6">
+            <div class="font-semibold">Job category</div>
+        </div>
+        <div class="grid grid-cols-1 mt-1">
+            <div class="relative w-full">
+                <select name="category" class="bg-transparent w-full rounded-full border border-solid border-[#6C37BD] appearance-none px-5 pr-10 py-1">
+                    <option value="" hidden>All</option>
+                    {% for c in categories %}
+                        <option value="{{ c.id }}" {% if c.id|floatformat:0 == request.GET.category|floatformat:0 %}selected{% endif %}>{{ c.name }}</option>
+                    {% endfor %}
+                </select>
+                <div class="absolute top-4 right-3.5">
+                    {% include 'common/icons/accordion.html' %}
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between items-center border-b border-gray-100 border-opacity-20 pb-1 mb-4 mt-6">
+            <div class="font-semibold">Job company</div>
+        </div>
+        <div class="grid grid-cols-1 mt-1">
+            <div class="relative w-full">
+                <select name="company" class="bg-transparent w-full rounded-full border border-solid border-[#6C37BD] appearance-none px-5 pr-10 py-1">
+                    <option value="" hidden>All</option>
+                    {% for c in companies %}
+                        <option value="{{ c.id }}" {% if c.id|floatformat:0 == request.GET.company|floatformat:0 %}selected{% endif %}>{{ c.name }}</option>
+                    {% endfor %}
+                </select>
+                <div class="absolute top-4 right-3.5">
+                    {% include 'common/icons/accordion.html' %}
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="bg-[#EA6F6F] hover:bg-opacity-80 duration-200 text-white font-medium py-1 px-4 rounded-full w-full mt-5">Apply Filters</button>
+        <a href="/" class="block border border-[#EA6F6F] hover:bg-[#EA6F6F] duration-200 text-white text-[#EA6F6F] text-center font-medium py-1 px-4 rounded-full w-full mt-5">Reset Filters</a>
+    </form>
 </nav>

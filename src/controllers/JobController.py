@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from src.controllers.CategoryController import CategoryController
 from src.controllers.ProtectedViewController import ProtectedViewController
 from src.controllers.TypeController import TypeController
-from src.models import Job
+from src.models import Job, LikedJob
 
 
 class JobController:
@@ -77,3 +77,53 @@ class JobController:
         except Exception as e:
             messages.error(request, f'An error occurred while updating job status: {str(e)}')
             return redirect(f'/edit-job-offer/{id}')
+
+
+    @staticmethod
+    def filter(request):
+        query_set = Job.objects.all()
+
+        jobs = request.GET.get('jobs')
+        if jobs:
+            if jobs == '1':
+                query_set = Job.objects.all()
+            elif jobs == '2':
+                job_ids = LikedJob.objects.filter(user=request.session.get('user_id')).values_list('job_id', flat=True)
+                query_set = Job.objects.filter(id__in=job_ids)
+            elif jobs == '3':
+                query_set = Job.objects.filter(application__user_id=request.session.get('user_id')).distinct()
+            else:
+                query_set = Job.objects.all()
+
+        types = request.GET.getlist('type')
+        if types:
+            query_set = query_set.filter(types__id__in=types).distinct()
+
+        category = request.GET.get('category')
+        if category:
+            query_set = query_set.filter(category__id=category)
+
+        company = request.GET.get('company')
+        if company:
+            query_set = query_set.filter(company__id=company)
+
+        order_by = request.GET.get('order_by', 'created_at')
+
+        if order_by == 'oldest':
+            order_by = 'created_at'
+        elif order_by == 'newest':
+            order_by = '-created_at'
+        else:
+            order_by = 'created_at'
+
+        query_set = query_set.order_by(order_by)
+
+        return query_set
+
+    @staticmethod
+    def search(request):
+        query = request.GET.get('q')
+        if query:
+            return Job.objects.filter(title__icontains=query).order_by('title') | Job.objects.filter(
+                description__icontains=query).order_by('title')
+        return Job.objects.all()
