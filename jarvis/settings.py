@@ -41,21 +41,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # 'django.contrib.auth',
-    # 'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'src',
-    'django_filters'
 ]
 
 MIDDLEWARE = [
-    # 'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -77,7 +71,6 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
-                # 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -101,14 +94,14 @@ ssh_tunnel.start()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST': 'localhost',
-        'PORT': ssh_tunnel.local_bind_port,
-        'NAME': 'v2db',
-        'USER': 'postgres',
-        'PASSWORD': 'verklegt2',
-        # 'OPTIONS': {
-        #     'options': '-c search_path=vln2_assignment_groups_20'
-        # }
+        'NAME': 'postgres',
+        'USER': 'vln2_assignment_groups_20_user',
+        'PASSWORD': 'b3w1P2C1pz',
+        'HOST': 'verklegt-namskeid-ii.northeurope.cloudapp.azure.com',
+        'PORT': '5432',
+        'OPTIONS': {
+            'options': '-c search_path=vln2_assignment_groups_20'
+        }
     }
 }
 

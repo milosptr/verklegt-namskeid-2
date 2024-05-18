@@ -59,10 +59,6 @@ def home(request):
     if request.GET.get('q'):
         job_offers = JobController.search(request)
 
-    query = filters.get('q')
-    if query:
-        job_offers = job_offers.filter(title__icontains=query)
-
     return GeneralViewController(request).render('pages/home.html', {
         'job_offers': job_offers,
         'job_types': job_types,
